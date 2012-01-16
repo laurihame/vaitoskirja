@@ -1,0 +1,420 @@
+%% Select the dissertation mode on
+% See the documentation for more information about the available class options
+% If you give option 'draft' or 'draft*', the draft mode is set on
+\documentclass[dissertation]{aaltoseries}
+\usepackage[utf8]{inputenc}
+% Lipsum package generates bullshit
+\usepackage{lipsum}
+% Set the document languages
+\usepackage[finnish,swedish,english]{babel}
+
+% The author of the dissertation
+\author{Lauri H\"ame}
+% The title of the thesis
+\title{Demand-Responsive Transport: Models and Algorithms}
+
+\begin{document}
+
+%% The abstract of the dissertation in English
+% Use this command!
+\draftabstract{
+Demand-responsive transport (DRT) is an advanced, user-oriented form of public transport between 
+bus and taxi, involving flexible routing of small or medium sized vehicles.
+This dissertation presents mathematical models for demand-responsive transport and algorithms
+that can be used to solve combinatorial problems related to vehicle routing and journey planning.}
+% Let's add another one in Finnish
+\draftabstract[finnish]{Demand-responsive transport (DRT) is an advanced, user-oriented form of public transport between 
+bus and taxi, involving flexible routing of small or medium sized vehicles.
+This dissertation presents mathematical models for demand-responsive transport and algorithms
+that can be used to solve combinatorial problems related to vehicle routing and journey planning.}
+% And yet another one in Swedish
+\draftabstract[swedish]{Demand-responsive transport (DRT) is an advanced, user-oriented form of public transport between 
+bus and taxi, involving flexible routing of small or medium sized vehicles.
+This dissertation presents mathematical models for demand-responsive transport and algorithms
+that can be used to solve combinatorial problems related to vehicle routing and journey planning.}
+
+%% Preface
+% If you write this somewhere else than in Helsinki, use the optional location.
+%\begin{preface}[Helsinki]
+%\lipsum[1-4]
+%\end{preface}
+\maketitle
+
+%% Table of contents of the dissertation
+\tableofcontents
+
+%% For article dissertations, remove if you write a monograph dissertation.
+\listofpublications
+
+%% Add lists of figures and tables as you usually.
+
+%% Add list of abbreviations, list of symbols, etc., using your preferred package/method.
+
+%% The main matter, one can obviously use \input or \include
+
+\chapter{Introduction}
+\section{Demand-responsive transport today$\ldots$}
+Demand-Responsive Transport (DRT) is often referred to as a form of public transport between bus and taxi involving 
+flexible routing and scheduling of small or medium sized vehicles. This means that 
+the vehicle routes are updated daily or in real time by incorporating information on
+the demand for transportation. Usually, the customers of a DRT service are required to
+request and book their trips in advance by placing trip requests including information
+on the origin and destination of the trip as well as the desired pickup or drop-off time.
+The vehicle operator uses this information to provide service in a way that the passenger
+needs are satisfied.
+
+
+DRT systems are typically used to provide transportation in areas with low 
+transportation demand, where a regular bus service might not be as efficient. 
+Another common application of DRT arises in door-to-door transportation
+of elderly or handicapped people (paratransit).
+%Paratransit: DRT is available to the general public, whereas paratransit is available to pre-qualified user bases
+%share taxis: DRT is pre-booked in advance, whereas share taxis are operated on an ad-hoc basis
+%Taxicabs: DRT generally carries more people, and passengers may have less control over their journey on the principle of DRT being a shared[4] system as opposed to an exclusive vehicle for hire. Additionally, journeys may divert en-route for new bookings.[6]
+DRT services are often fully or partially funded by local 
+authorities, as providers of socially necessary transport. 
+%A small fraction 
+Most services that are provided by private companies for commercial reasons
+are related to transporting passengers between airports and urban areas.
+%Demand-responsive transport services are restricted to a certain operating zone.
+
+The implementation of demand-responsive transport is strongly dependent on the target group
+or the business concept of the service. In some services, the vehicle routes are built 
+freely according to customer requests, whereas 
+other services make use of so-called skeleton routes and schedules, that are varied as required. 
+%As such, customers are given specific pick-up and drop-off points and time windows for pick-up and drop-off. 
+Some DRT systems make use of terminals, at one or both ends of a route, such as an urban center or airport.
+In these applications (one-to-many or many-to-one), customers may specify either the origin or destination of the 
+desired trip. Some systems provide door-to-door service within a certain service area and others provide 
+service between a set of specified stops. 
+For example, a DRT service operating in Nurmij\"arvi (Finland) aims to improve the level and
+accessibility of services in a sparsely populated area and
+to reduce the costs of public transport. The service operates on
+a "many-to-many" basis, that is, there are no predefined routes. 
+The stop points are located at a maximum of
+900 m from origins and destinations. In the case of
+special users, the stop points are non-predefined (door-to-door service). 
+%What is clear from the foregoing is that there is an extremely wide range of
+%applications of the  
+
+%Generally, DRT systems require passengers to request a journey by booking with a central dispatcher, who determines the 
+%trip options available given the customer's location and destination.
+%The vehicles used in DRT services are generally small minibuses, 
+%allowing to provide a near door to door service by being able to use residential streets.
+
+%\subsection{Strengths}
+The popularity of demand-responsive transport has recently grown
+mainly due to the shortcomings of conventional
+bus and taxi services and new technical developments.
+In addition, flexible public transport services provided by local authorities and bus operators in
+partnerships with employers, stores and leisure centres are thought to help to break down social exclusion \cite{detr}.
+%\subsection{Weaknesses}
+However, current DRT services have often been
+criticised because of their relatively high cost of provision,
+their lack of flexibility in route planning and their
+inability to manage high demand \cite{mageean}. 
+
+At the present moment, a large number of demand-responsive transport services are 
+in operation. Most of such services operate within relatively small neighbourhoods and 
+during low-use daytime hours, when there is not enough demand for traditional 
+public transport. Thus, while the current services meet their current needs,
+demand-responsive transport remains a relatively small business
+compared to traditional transportation services, not to speak of private cars.
+
+What if a DRT system was implemented in large scale, in a way that service could be provided
+for an entire metropolitan area?
+
+\section{$\ldots$and tomorrow}
+Several new ideas and concepts related to demand-responsive transport
+services operating in urban areas have been recently presented, see for example \cite{cortes}.
+These ideas are often motivated by problems arising from the congestion of urban 
+areas caused by the increasing number of private cars.
+Thus, one of the main present goals of planning demand-responsive transport is seen
+to be the developing of \emph{functional public transport services able to compete
+with private car and taxicab traffic}.
+
+
+The popularity of the private car as a means of transport is partly based on
+a direct connection between the origin and destination of a trip and
+a short total travel time. In order to compete with private cars, public transport 
+should thus offer connections as direct and fast as possible, in which 
+the walking and waiting time are minimized. 
+Another major advantage of the private car is seen to be the availability
+of the car at any time, even without planning beforehand. The study of large scale 
+demand-responsive transport has therefore been directed towards highly dynamic services, which allow 
+customers to request service not long before they are willing to depart.
+In addition, a demand-responsive public transport system should be
+able to offer an alternative for transportation without
+the inconvenience related to conventional public transport.
+
+%The popularity of the private car as a means of transport is based on
+%a direct connection between the origin and destination of a trip and
+%a short total travel time. Thus, to compete with private cars, a transportation system 
+%should offer connections as direct and fast as possible, in which 
+%the walking and waiting times of customers are minimized. 
+%In addition, a demand-responsive transport service should be
+%able to offer an alternative for transportation without
+%the inconvenience related to conventional public transport.
+
+The total travel time in public transport consists of
+\emph{walking time} from origin to pick-up point, \emph{waiting time} at
+the pick-up point, \emph{ride time}, that is, the time spent in the
+vehicle, possible \emph{transfer time} and walking time from 
+drop-off point to destination. In order %for this door-to-door travel time
+to attract people with private cars, it is necessary that the waiting and 
+riding times are within acceptable bounds. In addition, it can be suggested that
+the service should be a near door-to-door service and the amount of
+transfers between vehicles should be minimal. 
+
+Intuitively, the idea of a large scale DRT system seems promising.
+With state-of-the-art engineering, there should be no insuperable technical hindrances
+in implementing such a service.
+
+%In the following sections, the strengths and weaknesses of a large scale DRT
+%system providing a high level of service are examined.
+
+\subsection{Opportunities}
+The fact that demand-responsive transport is "there for you when you want
+and where you want" is thought to be a major advantage compared to conventional 
+public transport. While it may not be feasible to think that DRT could provide
+a level of service substantially better than that offered by taxi cabs, a system that could combine customers'
+trips efficiently could be more cost-efficient than a conventional taxi organization.
+This would make it possible to provide more inexpensive service without compromising
+too much on the level of service experienced by customers.
+%In addition, if the trips were aggregated efficiently, and the number of vehicles
+%per unit area was large, the waiting times could in fact be slightly shorter compared to current
+%taxi services.
+
+Compared to private cars, demand-responsive transport is thought to have several advantages in urban areas.
+%For example, the current average occupancy in private cars in the Helsinki metropolitan area is around 1.3.
+For a model of a hypothetical large-scale demand-responsive public transport system for the Helsinki 
+metropolitan area, simulation results published in 2005 demonstrated that "in an urban area with one 
+million inhabitants, trip aggregation could reduce the health, environmental, and other detrimental 
+impacts of car traffic typically by 50 - 70\%, and if implemented could attract about half of the car 
+passengers, and within a broad operational range would require no public subsidies" \cite{tuomisto}. 
+In addition to providing affordable transportation without the additional expenses related 
+to maintenance, taxes and parking fees, 
+demand-responsive transport could eliminate many other, possibly concealed, concerns related to private cars, 
+including the difficulty of finding parking space and the stress related to
+driving in hazardous conditions or traffic jams.
+
+At this point, one might ask: If the large scale demand-responsive transport system is superior 
+compared to the alternatives, why has it not been implemented in practice? 
+
+\subsection{Possible issues} %Possible issues
+%As previously stated, current demand-responsive transport services are often fully or partially funded by local 
+%authorities. This is also true for public transport in general. Thus, 
+While it is clear is that implementing a large-scale demand-responsive transport system 
+would require significant investments, it is not clear 
+whether there would be enough demand for such a service were it implemented. 
+
+For example, it might not be realistic nor beneficial from the social point of view 
+to think that a conventional heavy rail system was replaced by demand-responsive minibuses, 
+due to the high efficiency of heavy rail.
+Moreover, traditional public transport in general has many significant advantages compared to
+demand-responsive transport: Taking into account the current experience from DRT services,
+a major issue can be seen to be the reliability of the service. So far, estimating ride times accurately
+in a service with no fixed routes has proven to be somewhat insuperable, not least because
+of the human drivers, who are required to follow routes that are constantly changing, and the
+differences in their driving styles. Another disadvantage of DRT arises when customers are 
+required to book their trips in advance and thus commit themselves to the service or payment
+at the time the trip is booked. In traditional bus services, this problem does not
+exist since customers may adjust their personal schedules dynamically according to known timetables,
+without pre-commitments. A commitment to a trip can be even more binding than in a taxi service:
+A normal taxi can wait for some time for the customer, for example, if the customer is at home 
+when the taxi arrives, but it might not be reasonable that a demand-responsive minibus with 
+customers on board would wait many minutes for one customer with the expense of other customers.
+
+While demand-responsive transport has many rewards compared to the private car as argued above,
+the car has many characteristics that are hard to compensate with public services. 
+Firstly, a person who has already invested in a car and thus settles yearly taxes and
+maintenance costs, is often not willing to use other transportation services since it would
+cost more than the marginal cost of using the car.
+Secondly, the car is unbeatable in many cases when speaking of flexibility: 
+It is available at any time of the day, even without planning beforehand. 
+Even if a demand-responsive transport service accepted immediate requests without
+a minimum pre-order time, the customer would still be committed to wait for the 
+designated vehicle to arrive. Thirdly, the private car is thought to be the most convenient 
+way of carrying large amounts of luggage and goods. The car is also often used for
+storing equipment, which is not likely to be possible in a public service. 
+%Finally, the private car is still thought to give its owner a certain status.   
+
+Despite the above threats related to large scale 
+demand-responsive transport, the concept should be studied carefully.
+Even if the private car has its advantages in the current state of the world,
+it may become practically useless in congested urban areas.
+%In addition, environmental issues are given a lot of consideration at the present moment.
+%: % in welfare states:  Some are even ready compromise on price and quality if a service proves to be "green". 
+
+%
+%
+%
+%%Conventional public transport, especially heavy rail, is thought to be more
+%%beneficial from the social point of view.
+%
+%For example, demand-responsive minibuses are not likely to be able to compete with heavy rail
+%systems
+%
+%
+%The private car,
+%as a means of transport, has many advantages  
+%
+%
+%
+%
+%
+%
+%
+%%Furthermore, in order to achieve efficiency and a good level of service, it 
+%%is suggested that the following elements should be given special attention.
+
+\section{Problem statement}
+This work is focused on the theoretical problems arising in the planning of
+public transport in general and demand-responsive transport in particular. The main goals are i) to develop models for a priori studying 
+different forms of transportation services without having to implement them in practice and ii) to
+develop algorithms for solving combinatorial problems related to public transport.
+
+
+
+\subsection{Vehicle routing}
+A vast majority of theoretical studies related to DRT are formalized as combinatorial
+optimization problems involving the construction of vehicle routes with respect to
+a set of customers, whose pickup and drop-off points are known a priori (see \cite{toth03}).
+A large scale system operating in real time, however, induces %imposes 
+new challenges: 
+%\begin{itemize}
+
+%\item
+In order to be able to compete with private cars, service
+should be available within a short period of time from the trip request.
+This calls for efficient and scalable route construction algorithms, since the modifications 
+in vehicle routes have to be executed in real-time.
+
+%\item
+In order to ensure a sufficient level of service, the customers' waiting and ride times 
+should be relatively limited. The vehicle dispatching algorithms should be designed
+in a way that the constrained nature of the problem is taken into account.
+
+%\item
+In order to provide efficient stop-to-stop service, %by vehicle mileage and trip duration, 
+it is required that the pickup and drop-off points of customers are chosen in a way that 
+the vehicle mileage and the excess ride time reflected to customers on board is minimized while 
+the walking distance remains within reasonable limits.
+
+\subsection{Journey planning}
+A DRT service should be compatible with other transportation
+modes. In conventional dial-a-ride services, trip bookings
+are made by calling the service provider, but
+a modern service should certainly be automated and enable on-line trip booking in order
+to attract a large population. This requires a route planner that is capable of 
+communicating with conventional public transport as well as DRT.
+%\end{itemize}
+   
+
+% The remainder of this document is organized as follows. In chapter \ref{potential},
+% the potential for passenger pooling and trip combining is evaluated by means of
+% a simplified simulation model. In chapter \ref{irdarp}, the problem of dispathcing
+% vehicles in a dynamic DRT service is formalized and a solution approach is described.
+% Chapter \ref{simutools} introduces a generalized simulation model designed for large scale DRT and
+% a collection of simulation results for an unconstrained immediate-request service.
+% An adjustable single vehicle routing algorithm, an important subroutine in the proposed 
+% solution, designed for constrained problems arising in real-life situations, 
+% is described in chapter \ref{eadarp}.
+
+
+\section{Mathematical highlights}
+
+
+%% Examples of article references, remove these from your manuscript!
+% Uncomment them, if you want to see the results of these commands in this example document
+
+ % Refer to the Journal paper 1 of this example document
+%\citepub{j1} \& \cpub{j1} \& \cp{j1} \& \pageref{j1} \& \ref{j1}
+
+% Refer to the Conference paper of this example document
+%\citepub[p.~2]{c1} \& \cpub[Sec.~ 1]{c1} \&  \cp[pp.~1--2]{c1} \& \pageref{c1} \& \ref{c1} 
+
+
+
+%% The following commands are for article dissertations, remove them if you write a monograph dissertation.
+
+% Errata list, if you have errors in the publications.
+%\errata
+
+\bibliographystyle{plain}
+\bibliography{vk}
+
+
+%% The first publication (journal article)
+% Set the publication information.
+% This command musts to be the first!
+\addpublication{Lauri H\"ame}{An adaptive insertion algorithm for the single-vehicle dial-a-ride problem with narrow time windows}{European Journal of Operational Research}{209, p. 11–22}{February}{2011}{Elsevier B.V.}{jeadarp}
+% Add the dissertation author's contribution to that publication (the order can be interchanged with \adderrata).
+\addcontribution{This article was written by the author.}
+% Add the errata of the publication, remove if there are none (the order can be interchanged with \addauthorscontribution).
+%\adderrata{This is wrong}
+% Add the publication pdf file, the filename is the parameter (must be the last).
+\addpublicationpdf{articles/eadarpejor.pdf}
+
+%% The second publication (conference article, note the optional parameter)
+% Set the publication information.
+\addpublication[conference]{Esa Hyyti\"a, Lauri H\"ame, Aleksi Penttinen, Reijo Sulonen}{Simulation of a Large Scale Dynamic Pickup and Delivery Problem}{SIMUTools}{Malaga, Spain}{March}{2010}{ICST}{csimutools}
+% Add the dissertation author's contribution to that publication.
+\addcontribution{Parts of this paper were written the author, including most of Section 3 and parts of Section 1. 
+The simulations reported in Section 3 were designed and conducted by the author.}
+% No errata
+% Add the publication pdf file, the filename is the parameter.
+\addpublicationpdf{articles/simutools-2010b.pdf}
+
+\addpublication[conference]{Lauri H\"ame, Jani-Pekka Jokinen, Reijo Sulonen}{Modeling a competitive demand-responsive transport market}{Kuhmo Nectar Conference on Transport Economics}{Stockholm, Sweden}{June-July}{2011}{No copyright holder at this moment}{ccompejor}
+\addcontribution{The author was the main author of this article, which was nominated for the best student paper award in Kuhmo Nectar 2011.
+The article is under review for publication in Economics of Transportation.}
+\addpublicationpdf{articles/compejor.pdf}
+
+\addpublication[conference]{Jani-Pekka Jokinen, Lauri H\"ame, Esa Hyyti\"a, Reijo Sulonen}{Simulation Model for a Demand Responsive Transportation Monopoly}{Kuhmo Nectar Conference on Transport Economics}{Stockholm, Sweden}{June-July}{2011}{No copyright holder at this moment}{cmonop_ecotran}
+\addcontribution{Parts of this paper were written the author, including major parts of Sections 2 and 3.
+The market mechanisms were programmed into the simulation model and the simulations were executed by the author.
+The author produced the figures in this paper and the idea of using the simulation model reported in 
+"Simulation of a Large Scale Dynamic Pickup and Delivery Problem" to study market mechanims was originally suggested by the author.
+This paper is also under review for publication in Economics of Transportation.
+}
+\addpublicationpdf{articles/monop_ecotran.pdf}
+
+%% The third publication (another journal paper, accepted for publication, note the optional parameter)
+% Set the publication information, detailed information can be empty
+\addpublication[conference]{Teemu Sihvola, Lauri H\"ame, Reijo Sulonen}{Passenger-Pooling and Trip-Combining Potential of High-Density Demand Responsive
+Transport}{Annual Meeting of the Transportation Research Board}{Washington, D.C.}{January}{2010}{Transportation Research Board}{cpooling}
+% Add the dissertation author's contribution to that publication.
+\addcontribution{The author programmed and executed the simulations reported in this paper.}
+% Add the errata of the publication, remove if there are none.
+%\adderrata{This is wrong}
+% Add the publication pdf file, the filename is the parameter.
+\addpublicationpdf{articles/pooling.pdf}
+
+
+%% The fourth publication (yet another journal paper, submitted for publication, note the optional parameter)
+%% Note that you are allowed to use this option only when submitting the dissertation for pre-examination!
+% Set the publication information, detailed information is not printed
+\addpublication[submitted]{Lauri H\"ame, Harri Hakula}{Dynamic journeying under uncertainty}{Under review for publication in European Journal of Operational Research}{}{20.12.2011}{}{No copyright holder at this moment}{jdjuejor}
+\addcontribution{The author was the main author of this article.}
+\addpublicationpdf{articles/djuejor2.pdf}
+
+\addpublication[submitted]{Lauri H\"ame, Harri Hakula, Saara Hyv\"onen}{Dynamic journeying in scheduled networks}{Under review for publication in IEEE Transactions on Intelligent Transportation Systems}{}{16.1.2012}{}{No copyright holder at this moment}{jtoits}
+\addcontribution{The author was the main author of this article.}
+\addpublicationpdf{articles/rbrorl2.pdf}
+
+\addpublication[submitted]{Lauri H\"ame, Harri Hakula}{A Maximum Cluster Algorithm for Checking the
+Feasibility of Dial-A-Ride Instances}{Under review for publication in Transportation Science}{}{16.1.2012}{}{No copyright holder at this moment}{jhitsdarpts}
+\addcontribution{The author was the main author of this article.}
+\addpublicationpdf{articles/hitsdarpts2.pdf}
+
+\addpublication[submitted]{Lauri H\"ame, Harri Hakula}{Routing by Ranking: A Link Analysis Method for the Constrained Dial-A-Ride Problem}
+{Under review for publication in Operations Research Letters}{}{16.1.2012}{}{No copyright holder at this moment}{jrbrorl}
+\addcontribution{The author was the main author of this article.}
+\addpublicationpdf{articles/rbrorl2.pdf}
+
+
+
+
+
+\end{document}
