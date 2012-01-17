@@ -131,7 +131,7 @@ for an entire metropolitan area?
 
 \section{$\ldots$and tomorrow}
 Several new ideas and concepts related to demand-responsive transport
-services operating in urban areas have been recently presented, see for example \cite{cortes}.
+services operating in urban areas have been recently presented, see for example \cite{cortes,jokinen-fists-2011}.
 These ideas are often motivated by problems arising from the congestion of urban 
 areas caused by the increasing number of private cars.
 Thus, one of the main present goals of planning demand-responsive transport is seen
@@ -330,10 +330,10 @@ at which point does the demand for transportation meet the supply and how do reg
 % Uncomment them, if you want to see the results of these commands in this example document
 
  % Refer to the Journal paper 1 of this example document
-%\citeub{j1} \& \cpub{j1} \& \cp{j1} \& \pageref{j1} \& \ref{j1}
+%\citepub{j1} \& \cpub{j1} \& \cp{j1} \& \pageref{j1} \& \ref{j1}
 
 % Refer to the Conference paper of this example document
-%\citeub[p.~2]{c1} \& \cpub[Sec.~ 1]{c1} \&  \cp[pp.~1--2]{c1} \& \pageref{c1} \& \ref{c1} 
+%\citepub[p.~2]{c1} \& \cpub[Sec.~ 1]{c1} \&  \cp[pp.~1--2]{c1} \& \pageref{c1} \& \ref{c1} 
 
 \chapter{Vehicle Routing}
 \label{vehiclerouting}
@@ -344,7 +344,7 @@ This problem is often referred to as the \emph{dial-a-ride problem}.
 A demand-responsive transport service operating in real time induces the following specific challenges: 
 In order to be able to compete with private cars, service
 should be available within a short period of time from the trip request.
-This calls for adaptive routing algorithms, since the modifications 
+This calls for routing algorithms capable of adapting to high-demand situations, since the modifications 
 in vehicle routes have to be executed in real-time.
 In order to ensure a sufficient level of service, the customers' waiting and ride times 
 should be relatively limited. Thus, the vehicle dispatching algorithms should be designed
@@ -373,12 +373,11 @@ restricted by time limits for pick-up and delivery of each customer.
 Narrow time windows emerge in transport services, in which each customer
 is given an estimate or guarantee regarding the pick-up and delivery times in the 
 form of time windows. These time windows are examined as hard limits to be met by the vehicle.
-Time windows have been incorporated in many early and recent studies of the DARP, see for example references 
+Time windows have been incorporated in many early and recent studies of the DARP, see for example 
 \cite{psaraftis02, jaw, madsen, toth02,cordeau02,diana, wong, cordeau01, berbegliafeas}.
 In these studies it is noted that in dynamic settings, time windows eliminate the possibility of indefinite
 deferment of customers and strict time limits help provide reliable service.
-While the main focus is on fixed time windows, 
-maximum ride time constraints that limit the time spent by passengers on the vehicle
+Maximum ride time constraints that limit the time spent by passengers on the vehicle
 between their pick-up and their delivery \cite{hunsaker}, 
 are considered as well.
 
@@ -393,8 +392,8 @@ In \cite{psaraftis02}, the approach is extended to handle time windows on depart
 but only the route duration is minimized. 
 
 In \ref{jeadarp}, both aspects of the problem (general objective function and time windows)
-are considered. The main contribution is a solution method designed in a way that i) it is capable of
-handling practically any objective function suitable for dynamic routing and ii) the computational
+are considered. The main contribution is a solution method designed in a way that (i) it is capable of
+handling practically any objective function suitable for dynamic routing and (ii) the computational
 effort of the algorithm can be controlled smoothly: If the problem size is reasonable, 
 the algorithm produces optimal solutions efficiently and as the problem size is increased,
 the search space may be narrowed in order to achieve locally optimal solutions.
@@ -403,7 +402,7 @@ Publications \cp{jhitsdarpts} and \cp{jrbrorl} discuss a single-vehicle algorith
 for maximizing the number of customers in a single vehicle route. The method is seen to
 be useful in determining the feasibility of multi-vehicle instances. 
 
-\subsection*{Literature review}
+\subsection{Literature review}
 In the following paragraphs, a short review on the studies related to the single vehicle dial-a-ride problem is
 presented, based on \cite{cordeau03, cordeau05, cordeau07} and \cite{berbeglia}, to which the reader is referred 
 for more exhaustive summaries. 
@@ -456,8 +455,8 @@ that one's ability to solve the single-vehicle DARP is considered important.}
 \label{staticnarrow}
 Let there be $N$ customers, each of which have been assigned a number $i$ between 1 and $N$.
 For each customer $i \in \{1,\ldots,N\}$, let $u_i$ be the pick-up point and $u_{N+i}$ be the delivery point,
-$[e_i,l_i]$ be the pick-up time window and $[e_{N+i},l_{N+i}]$ be the delivery time window. 
-In addition to the fixed time windows $[e_i,l_i]$ and $[e_{N+i},l_{N+i}]$, to each 
+$[E_i,L_i]$ be the pick-up time window and $[E_{N+i},L_{N+i}]$ be the delivery time window. 
+In addition to the fixed time windows $[E_i,L_i]$ and $[E_{N+i},L_{N+i}]$, to each 
 customer is associated a specific maximum ride time constraint $T_i^{\max}$. 
 Let $q_i$ be the load (number of passengers) associated to customer $i$. 
 Let $A$ be the starting point of the vehicle (location of the vehicle at $t=0$).
@@ -516,16 +515,16 @@ dissatisfaction.
 The feasibility of time windows is governed by the following two assumptions:
  
 	If the vehicle arrives at any node (either pick-up or delivery)
-	later than the upper bound of that node's time constraint ($l_j$),
+	later than the upper bound of that node's time constraint ($L_j$),
 	then the entire vehicle route and schedule is infeasible. In other words,
 	those upper bounds constitute hard constraints that should be met
 	by the vehicle. 
 
 
 	If the vehicle arrives at any node earlier
-	than the lower bound on that node's time constraint ($e_j$),
+	than the lower bound on that node's time constraint ($E_j$),
 	then the vehicle will stay idle at that point and depart immediately 
-	at $e_j$. 
+	at $E_j$. 
 
 
 \subsection{The dynamic case}
@@ -591,7 +590,7 @@ The \emph{vehicle checkpoint} $(B',T')$ acts as the starting point for all servi
 	on the particular version of the dynamic routing problem and the performance
 	of different objective functions may be sensitive to, for example, constraints, demand intensity
 	or the number of vehicles. For a study related to choosing an objetive function
-	for the immediate-request DARP, the reader is referred to \cite{hyytia}.
+	for the immediate-request DARP, the reader is referred to \ref{csimutools}.
 
 
 \subsection{Adaptive insertion algorithm [\citepub{jeadarp}]}
@@ -639,8 +638,8 @@ and the new customer and leads to a globally optimal solution but is computation
 if the number of feasible service sequences grows large. However, if the route is constructed under relatively narrow time window constraints,
 the number of feasible routes with respect to all customers
 will be small compared to the number of all legitimate routes. 
-Furthermore, the algorithm may be easily extended to an adjustable heuristic algorithm
-able to handle any types of time windows, see Section \ref{heuristic}. 
+Furthermore, the algorithm is easily extended to an adjustable heuristic algorithm
+capable of handling any types of time windows. 
 
 The idea of the advanced insertion method is 
 clarified by the following example, where no
@@ -710,10 +709,10 @@ a significant portion of service sequences can be eliminated before
 the actual insertion process by simply studying the mutual relationships between nodes, similarly 
 as described in \cite{dumas03}.
 More precisely, assume that the vehicle departs from a node $i$ at the lower
-bound $e_i$ of the time window and moves directly to node $j$. If the vehicle 
+bound $E_i$ of the time window and moves directly to node $j$. If the vehicle 
 does make it in time to $j$, that is, if
 	\begin{align}
-		e_{i} + t(i,j) & > l_{j},
+		E_{i} + t(i,j) & > L_{j},
 	\end{align}
 it is said that the transition $i\to j$ is \emph{a priori infeasible}.
 
@@ -735,7 +734,7 @@ $C_a \prec C_c$. In addition, note that if a single node $i$ has an infinite tim
 only one cluster since all transitions $j \to i$
 and $i \to j$ are feasible a priori.
 
-In practice, the clusters can be determined by means of an adjacency matrix $F$ for which $F_{ij}=1$ if $i\to j$ is
+The clusters can be illustrated by means of an adjacency matrix $F$ for which $F_{ij}=1$ if $i\to j$ is
 feasible and $F_{ij}=0$ if $i\to j$ is infeasible a priori. By arranging the rows and
 columns suitably we get a block upper triangular matrix where each block corresponds to
 a cluster. Figure \ref{clusterexample01} shows the adjacency matrix of a sample problem
@@ -803,17 +802,15 @@ For example, if $m(i) = kN$ for some constant $k$, the computational complexity 
 is reduced to $\mathcal{O}(N^4)$. 
 If $m(i) = k$, the computational complexity is reduced to $\mathcal{O}(N^3)$.
 
-On the grounds of previous calculations, it can be stated that the adaptive insertion
-algorithm will generally not be able to produce exact solutions efficiently in cases where
-the capacity and time constraints are not restrictive. However, if the number
+On the grounds of previous calculations, it can be stated that if the number
 of feasible service sequences is bounded due to strict constraints, the 
 algorithm will lead to an exact solution computationally inexpensevely.
-In addition, the advanced insertion 
+In addition, the 
 algorithm has a special property of being extendable to an adjustable heuristic,
-as described in the following subsection.
+as described in the following section.
 
 \subsubsection{A heuristic extension}
-\label{heuristic}
+\label{svheuristic}
 Even if the capacity and time constraints were not highly restrictive, the algorithm can be 
 modified easily by bounding the size of the set $S_i$ 
 of service sequences, in which new customers are inserted, 
@@ -822,7 +819,7 @@ for each customer $i$. More precisely, if after inserting
 customer $i$, the number of feasible service sequences with respect to customers $1,\ldots, i$
 is larger than $L$, the set of feasible service sequences $S_i$ with respect to 
 customers $1,\ldots, i$ is narrowed by including only $L$  
-service sequences, that seem to allow the insertion of remaining customers (see part \ref{hobjfunc}).
+service sequences, that seem to allow the insertion of remaining customers.
 After the last customer has been inserted, the feasible service sequences are evaluated
 by means of the objective function \eqref{tavoitefunktio01}.
 
@@ -862,13 +859,13 @@ of the functions
 \label{rl}
 f_{rl}(s) &= t_m, & \mbox{(Route duration)} \\
 \label{ts}
-f_{ts}(s) & = \sum_{j=1}^{m} l_j -t_j ,  & \mbox{(Total time slack)} \\
+f_{ts}(s) & = \sum_{j=1}^{m} L_j -t_j ,  & \mbox{(Total time slack)} \\
 \label{maxmin}
-f_{min}(s) &= \min_{j \in \{1, \ldots, m\}}  l_j - t_j, & \mbox{(Max-min time slack)} 
+f_{min}(s) &= \min_{j \in \{1, \ldots, m\}}  L_j - t_j, & \mbox{(Max-min time slack)} 
 %\label{lastnode}
-%f_{LN}(s) &= l_m - t_m, & \mbox{(Last node time slack)} 
+%f_{LN}(s) &= L_m - t_m, & \mbox{(Last node time slack)} 
 \end{align}
-where $[e_j,l_j]$ is the time window and $t_j$ is the calculated time of arrival at node $p_j$.
+where $[E_j,L_j]$ is the time window and $t_j$ is the calculated time of arrival at node $p_j$.
 
 In general, each of the above objective functions aim to 
 maximize the temporal flexibility of service sequences in different ways.
@@ -959,15 +956,6 @@ E(\tau(L_0)) \leq E(\tau(KL_0))
 \end{align*}
 for all $L_0 \in \mathbb{N}$ and $K \geq 2$.
 \end{theorem}
-\begin{proof}
-Since 
-it is clear that $E(\tau(l)) \geq T(l)$ for $l \in \mathbb{N}$, for any $K \geq 2$, we get 
-\begin{align*}
-E(\tau(L_0)) & = T(L_0) + (1-P(S|L=L_0)) E(\tau(KL_0)) < T(L_0) + \frac 12 E(\tau(KL_0)) \\
-								& = \frac 1k T(KL_0) + \frac 12 E(\tau(KL_0)) \leq (\frac 1K + \frac 12) E(\tau(KL_0)) \leq E(\tau(KL_0)).
-\end{align*}
-\end{proof}
-
 Then, the following theorem states that if the probability of finding a solution
 is at least $1 - 1/K$, the optimal initial value is 
 bounded above by the logarithm of the smallest natural number $l$ for which $P(S|L=l)=1$.
@@ -981,20 +969,9 @@ E(\tau(L_0)) < T(L_0(1+\log_K l'/L_0))
 \end{align*}
 for all $L_0 \in \mathbb{N}$ and for all $K > 1$.
 \end{theorem}
-\begin{proof}
-The expected CPU time is given by the formula
-\begin{align*}
-E(\tau(L_0)) &= \sum_{i=0}^{\infty} (1-P(S|L=K^iL_0))^i T(K^iL_0). 
-\end{align*}
-Since $(1-P(S|L=K^iL_0)) = 0$ for $K^iL_0 > l'$, that is, $i > \log_K l'/L_0$, we get
-\begin{align*}
-E(\tau(L_0)) &= \sum_{i=0}^{\lfloor \log_K l'/L_0 \rfloor} (1-P(S|L=K^iL_0))^i T(K^iL_0) 
-								 \leq \sum_{i=0}^{\lfloor \log_K l'/L_0 \rfloor} (1-(1-1/K))^{i} K^i T(L_0) \\
-								 & \leq T(L_0)(1+\log_K l'/L_0).
-\end{align*}
-\end{proof}
-In general, the two theorems suggest that the expected CPU time is minimized 
-when the initial degree $L_0$ is small. 
+
+In general, the two theorems (for proofs, see \ref{jeadarp}) suggest that the expected 
+CPU time is minimized when the initial degree $L_0$ is small. 
 For example, if $l' = 16$ , $K=2$ and $P(S|L \geq 1) > 0.5$, theorem \ref{doublingthm02} states that
 that $E(\tau(1)) < T(5)$. By theorem \ref{doublingthm01} we know that
 the values $2$ and $4$ are suboptimal for $K=2$. Thus, the optimal initial value
@@ -1004,8 +981,8 @@ Finally, it should be noted that
 by increasing the values of $K$ and $L_0$, the optimality of the 
 solution with respect to the objective of the problem is increased as well since more sequences are evaluated.
 
-
 \subsection{Routing by ranking [\citepub{jrbrorl}]}
+\label{routingbyranking}
 Several web information retrieval (IR) methods have been developed
 for finding the most appropriate web pages corresponding to 
 queries given to search engines. The most sophisticated methods, such as HITS \cite{kleinberg}, PageRank \cite{brin01} and SALSA \cite{lempel}
@@ -1019,7 +996,7 @@ also by exploiting information regarding the hyperlink-induced relationships bet
 
 The bringing of hyperlinks to bear on the ordering of web pages has given rise to
 a mathematical analysis related to hyperlink-induced web IR methods, such as in
-\citep{farahat, langville, ng, agosti}, in which the 
+\cite{farahat, langville, ng, agosti}, in which the 
 behaviour of several IR methods is studied from the computational point of view.
 
 The HITS (Hyperlink-Induced Topic Search) algorithm defines \emph{authorities} 
@@ -1029,9 +1006,7 @@ are pointed to by good hubs}. Based on this thesis, both a hub score and an auth
 each web page \cite{langville}. 
 
 \ref{jrbrorl} presents an application of HITS on the dial-a-ride problem (DARP)
-\cite{berbegliathesis,berbegliahybrid,berbegliafeas},
-in which the goal is to construct a set of vehicle routes, serving a set of customers, satisfying 
-the given time, capacity and precedence constraints.
+\cite{berbegliathesis,berbegliahybrid,berbegliafeas}.
 Here the DARP is examined as a \emph{constraint satisfaction problem}, in which the goal
 is to find a feasible vehicle route that serves all customers, or to maximize the number of served customers.
 
@@ -1135,7 +1110,7 @@ a dynamic programming algorithm for the dial-a-ride problem.
 
 \subsubsection{The ranking method}
 \label{svsolution}
-Let us present an exact constraint programming method for the single-vehicle DARP that 
+\ref{jrbrorl} presents an exact constraint programming method for the single-vehicle DARP that 
 produces a feasible solution whenever one exists or proves that the problem is infeasible.
 In the latter case, the algorithm returns a route that maximizes the number of served customers.
 The main challenge is to find a sequence of pick-up and drop-off nodes for which 
@@ -1156,14 +1131,13 @@ Then, the node $p^{*}$ with the highest ranking is added to the sequence and the
 repeated for the remaining nodes $P \setminus \{p^{*}\}$.
 
 Formally, the search is executed by means of the recursion 
-REC($S,R_S$) shown in Algorithm \ref{alg01}, where $S$ denotes a sequence of nodes (initially $S=(0)$), $R_S$ denotes %based on a two-step feasibility check 
+REC($S,R_S$) shown in Algorithm \ref{rralg}, where $S$ denotes a sequence of nodes (initially $S=(0)$), $R_S$ denotes %based on a two-step feasibility check 
 the set of remaining nodes at $S$ (initially $R_S=\{1^{+},1^{-}, \ldots, n^{+},n^{-}\}$) and $S_{\max}$ denotes the sequence that maximizes the number 
 of served customers (initially $S_{\max} = (0)$). $C(S)$ denotes the number of served customers in sequence $S$, which is equal to the 
 number of drop-off points in $S$.
 \begin{algorithm}
 {\footnotesize
 \begin{algorithmic}
-
 \STATE Check time, capacity and precedence constraints;
 \IF {$S$ is infeasible} 
 \STATE \ \ Return;
@@ -1177,7 +1151,7 @@ number of drop-off points in $S$.
 %\IF {$C(S) = n$}
 %\STATE \ \ Terminate recursion; \hfill (Feasible route.)
 %\ENDIF
-\STATE Rank the remaining nodes $i \in R_S$ and remove infeasible nodes from $R_S$; \hfill(See Section \ref{feasibility}.)
+\STATE Rank the remaining nodes $i \in R_S$ and remove infeasible nodes from $R_S$; 
 \FOR{all $i \in R_S$ (in ranked order)}
 \STATE \ \ REC$((S,i) , R_S \setminus \{i\})$; %\hfill ($R_{(S,i)}$ = the set of remaining nodes at $(S,i)$.) 
 %\ELSE 
@@ -1189,7 +1163,7 @@ nodes (initially $S=(0)$), $R_S$ denotes %based on a two-step feasibility check
 the set of remaining nodes (initially $R_S=\{1^{+},1^{-}, \ldots, n^{+},n^{-}\}$) and $S_{\max}$ denotes the sequence that maximizes the number 
 of served customers (initially $S_{\max} = (0)$). $C(S)$ denotes the number of served customers in sequence $S$, which is equal to the 
 number of drop-off points in $S$.}
-\label{alg01}
+\label{rralg}
 }
 \end{algorithm}
 
@@ -1200,13 +1174,13 @@ If $S$ is feasible and all customers have been served, that is, if $C(S) = n$, a
 the recursion is terminated.
 Otherwise,
 the remaining nodes $R_S$ are ranked by hub scores and the infeasible nodes 
-are removed from $R_S$ (see Section \ref{feasibility}).
+are removed from $R_S$.
 Then, the recursive function REC($(S,i),R \setminus \{i\}$) is called
 for all sequences $(S,i)$ in ranked order.
 In the following, we describe the ranking of remaining nodes in more detail.
 
 
-\subsubsection{Adjacency matrix and hub vector}
+\subsubsection{Hub scores}
 \label{feasibility}
 The ranking of the remaining nodes $R_S$ is determined in two phases: 
 First, the adjacency matrix of the remaining nodes is determined by studying 
@@ -1222,7 +1196,7 @@ of the following equations for non-zero service times is straightforward.
 In addition, we consider %The above definition of feasible transitions %\ref{feasibletransitions} 
 fixed time windows $[E_i,L_i]$ for each node.
 However, maximum ride time constraints \cite{hunsaker} are taken into account by updating the 
-upper bounds $L_i$ of the time windows during run-time as described in \cite{hitsdarp}.
+upper bounds $L_i$ of the time windows during run-time as described in \ref{jhitsdarpts}.
 
 First, all nodes that are seen to be non-reachable from $S$ are removed from the set $R_S$ of remaining nodes.
 \begin{definition}
@@ -1233,7 +1207,7 @@ there does not exist a feasible sequence $(S,\ldots,i)$ ending at $i$.
 Clearly, if the time of arrival $t_i$ staisfies $t_i > L_i$, the node $i$ is infeasible.
 The nodes $i \in I$ for which $t_i > L_i$ are removed from $R_S$, 
 that is, $R_S \leftarrow R_S \setminus I$. This elimination criteria is similar to 
-the one presented in \citep{desrosiers01}.
+the one presented in \cite{desrosiers01}.
 
 For nodes that are not seen to be infeasible, we define feasible transitions as follows.
 \begin{definition}
@@ -1246,8 +1220,8 @@ The above definition is similar to the one studied in \cite{dumas03},
 in which the set of \emph{admissible arcs} between the pick-up and delivery nodes is constructed
 as a preprocessing step in the pickup and delivery problem. The set of admissible arcs is 
 made up of arcs which a priori satisfy the precedence, capacity and time constraints of the problem.
-The difference in our formulation is that we define the feasibility of 
-transitions as a function of the state of the vehicle (see Figure \ref{transitions01}).
+The difference in the formulation studied in this work is that feasibility of 
+transitions is defined as a function of the state of the vehicle (see Figure \ref{transitions01}).
 
 \begin{figure}[ht]
 \begin{center}
@@ -1267,7 +1241,7 @@ $L_{ij}= 1$, if $i \neq j$ and $i \to j$ is feasible, $L_{ij} = 0$ otherwise.
 
 After the adjacency matrix $L$ has been determined, the hub vector $h=(h_1,\ldots,h_{|R_S|})$ of $L$ is determined by 
 Equation \eqref{modhub} (here the remaining nodes $i \in R_S$ are numbered from $1$ to $|R_S|$ for clarity). 
-In our formulation, a large hub score of node $i$ means that many 
+A large hub score of node $i$ means that many 
 nodes can be visited after $i$. 
 The hub ranking method is defined as follows.
 \begin{definition}[Hub ranking]
@@ -1288,7 +1262,6 @@ number of served customers, can be discarded by studying the neighborhoods of th
 \begin{definition}
  The neighborhood of node $i \in R_S$ is defined by $N(i) = \{i\} \cup \{j \in R_S \mid L_{ij} = 1\}$.
 \end{definition}
-Suboptimal sequences are detected as follows.
 \begin{theorem}
 Let $S_{\max}$ denote the best found solution.
 The sequence $S$ is suboptimal if 
@@ -1298,28 +1271,23 @@ C(S) + \max_{i \in R_S} C(N(i)) \leq C(S_{\max}),
 where $C(S), C(N(i))$ and $C(S_{\max})$ denote the number of drop-off points in $S,N(i)$ and $S_{\max}$,
 respectively. 
 \end{theorem}
-\begin{proof}
- Suppose there exists a feasible sequence $(S,i_1,\ldots,i_h)$ for which $C((i_1,\ldots,i_h)) > \max_{i \in R_S} C(N(i))$.
-Then, since $\{i_1,\ldots,i_h\} \subset N(i_1)$, we have $C(N(i_1)) \geq C((i_1,\ldots,i_h)) > \max_{i \in R_S} C(N(i))$, 
-which is a contradiction.  
-\end{proof}
 
 
 \subsubsection{A heuristic extension}
-\label{heuristic}
-Algorithm \ref{alg01} describes an exact procedure for maximizing the number of served customers
+\label{rrheuristic}
+Algorithm \ref{rralg} describes an exact procedure for maximizing the number of served customers
 in a single route. In order to find the exact solution, the algorithm goes through all
 branches until no further nodes can be added to the current sequence or the sequence is seen to be suboptimal.
 
 The effort of the algorithm can be controlled by limiting the number of branches that are evaluated
 by means of a positive parameter $J$. For example, if $J=1$, the algorithm constructs a single sequence
-and stops when the set of remaining nodes in empty. By increasing $J$ the search space is expanded and
+and stops when the set of remaining nodes is empty. By increasing $J$ the search space is expanded and
 if $J = (2n)!/2^n$ (the number of permutations that satisfy precedence constraints), the heuristic
 coincides with the exact algorithm.
 
 
 \subsubsection{Structure and complexity}
-\label{structure}
+\label{rrstructure}
 The structure of the ranking algorithm is as follows. 
 Briefly described, each recursion step involves checking the the feasibility
 of sequences $(S,i,j)$, where $i,j \in R_S$.
@@ -1345,7 +1313,7 @@ The overall complexity of the single vehicle algorithm is thus $\mathcal{O}(n^3 
 
 
 \subsection{Numerical experiments}
-\label{experience}
+\label{svexperience}
 The following paragraphs present a summary of the computational results reported in \ref{jeadarp}. 
 The exact and heuristic versions of the single-vehicle algorithm
 were tested on a set of problems involving different numbers of customers and different time
@@ -1423,7 +1391,7 @@ outperforms the other two in all studied cases.
 
 
 \subsubsection{Experiment 1: Number of customers}
-At first we study the complexity of the exact algorithm with respect to the number of customers.
+%At first we study the complexity of the exact algorithm with respect to the number of customers.
 In practice, the number of customers assigned to a single vehicle is governed by the
 pre-order time of the dial-a-ride service: If customers may request service in
 advance, the planned vehicle routes are expected to be longer than in immediate-request
@@ -1436,7 +1404,7 @@ with respect to the number of customers with all studied values of the travel ti
 In addition, the complexity is increased with the travel time ratio. 
 
 \subsubsection{Experiment 2: Travel time ratio}
-Let us study the complexity of the exact algorithm as a function of travel time ratio.
+%Let us study the complexity of the exact algorithm as a function of travel time ratio.
 Figure \ref{ttivertailu01} shows the average number of feasible sequences in feasible problem instances 
 on a logarithmic scale, computed over 10000
 randomized instances for $R=1.5\ldots 3$, $N = 5,10,20$ and $\mu = 1800$s. 
@@ -1448,9 +1416,9 @@ between complexity and $R$ is superexponential.
 
 
 \subsubsection{Experiment 3: Time interval}
-Let us conclude the study of the exact algorithm by examining complexity with respect to the average time interval between customer requests. 
-The solid lines in figure \ref{intvertailu01} represent the average number of feasible sequences in
-i) feasible problem instances and ii) all problem instances, on a logarithmic scale, computed over 10000
+%Let us conclude the study of the exact algorithm by examining complexity with respect to the average time interval between customer requests. 
+The solid lines in Figure \ref{intvertailu01} represent the average number of feasible sequences in
+(i) feasible problem instances and (ii) all problem instances, on a logarithmic scale, computed over 10000
 randomized instances for $N=10$, $R=3$ and $\mu = 6 \ldots 40$ minutes. The dashed line corresponds to the fraction
 of problem instances, for which at least one feasible solution was found.
 
@@ -1510,16 +1478,1130 @@ the heuristic coincides with the exact algorithm regardeless of the studied prob
 
 \section{Multi-vehicle dial-a-ride problem}
 \label{multivehicle}
+Most recent studies related to the dial-a-ride problem are related to the multi-vehicle case, in which 
+a set of vehicle routes is designed for a predefined set of customers, see for example 
+\cite{cordeau02, cordeau01, bent, ropke, xiang2006, melachrinoudis, parragh, garaix, berbegliathesis,berbegliafeas,berbegliapdp}.
+Reference \cite{berbegliafeas} examines the multi-vehicle dial-a-ride problem as a \emph{constraint satisfaction problem}, in which the goal
+is to find a set of $m$ feasible vehicle routes that serve all customers, where $m$ is the 
+number of vehicles, or to prove that such a set of routes does not exist.
+In this reference, it is noted that 
+an algorithm for checking the feasibility of a DARP instance has two main applications:  
+1) Determining the feasibility can be the first phase in an 
+optimization algorithm in a \emph{static} setting, where all trip requests are known, for example, one day in advance. 
+2) In \emph{dynamic} services, a constraint satisfaction algorithm can be used 
+for deciding whether to accept or reject incoming user requests. 
+
+This work is partly motivated by the latter application, namely, a dynamic demand-responsive transport (DRT) service 
+currently being planned to operate in Helsinki. The service, run by 
+Helsinki Region Transport, The Finnish Transport Agency and Aalto University,
+will be deployed by the end of 2012.
+Similarly as the current service routes \cite{jouko}, the new DRT
+service is designed to operate on a demand-responsive basis, that is, 
+each trip is booked in advance and the vehicle routes are modified according to
+the trips. The main difference to existing services is 
+that no pre-order times for trips are required and the trips can be booked
+"on the fly" by means of an interactive user interface. 
+A main goal is to provide high-quality service that could compete with
+private car traffic. 
+
+In addition to passenger transportation, we note that a time-constrained problem similar to the DARP arises in 
+food delivery services. Instead of passengers with pick-up and drop-off time windows, the goal is to transport 
+\emph{meals} from restaurants to specified delivery points within guaranteed time limits.
+Similarly as in the dynamic DARP, the food delivery service provider needs to decide quickly whether to take an incoming order or not,
+if there is a guaranteed maximum delivery time, for example, one hour.
+
+In both contexts (passenger transportation and food service), a good level of service means that the problem is highly constrained \cite{jokinen-fists-2011}. 
+In such problems, the number of feasible solutions becomes so limited that often
+any feasible solution will be relatively close to the optimal solution with respect to the
+objective function \cite{psaraftis02}.
+Thus, we suggest that in highly constrained cases, solving the consraint satisfaction problem provides, 
+if not the optimal solution, at least a good initial solution. 
+
+The main result of \ref{jhitsdarpts} is an exact algorithm for the constraint satisfaction dial-a-ride problem
+introduced in \cite{berbegliafeas}. In contrast to most works related to vehicle routing and dial-a-ride problems,
+no specific cost function is considered\footnote{
+For approaches to vehicle routing and dial-a-ride problems with cost functions, 
+we refer to \cite{braysy01,braysy02,groer} and \cite{cordeau02,berbegliahybrid}.}. 
+The algorithm stops as soon as a feasible solution is found regardeless of
+the quality of the solution. If a feasible solution is not found through exhaustive search, the algorithm 
+proves that the problem instance is infeasible. In addition, some infeasible instances are detected in advance
+by studying the feasiblility of routes involving two customers. 
 
 
 
+\subsection{The maximum cluster algorithm [\ref{jhitsdarpts}]}
+\label{mvsolution}
+\ref{jhitsdarpts} presents the following exact approach to the multi-vehicle DARP as a constraint satisfaction problem.
+By using the ranking algorithm (Algortithm \ref{rralg}) described in Section \ref{routingbyranking} as a subroutine, the method produces a feasible solution to 
+any instance or proves that the instance is infeasible. The main idea is that the vehicle routes are constructed
+one by one, each maximizing the number of served customers in the set of remaining customers.
+The customers are denoted by numbers $1,\ldots,n$ and the vehicles are denoted by numbers $1,\ldots,m$.
+
+First, a route is constructed for vehicle $1$, serving as many 
+customers as possible. Then, the process is repeated with vehicle $2$ for the set of customers
+that were not served by vehicle $1$ and so forth (see Figure \ref{greedyidea}). 
+Letting $X$ denote a
+set of customers, we denote by RR($X$) the single-vehicle ranking algorithm (Algorithm \ref{rralg}) that returns a route 
+that maximizes number of served customers in set $X$ and the corresponding set of served customers.
+This set will be referred to as a maximum cluster of $X$, which is formally defined as follows.
+\begin{definition}
+Let $X$ be a set of customers and $M \subset X$ be a subset of $X$, for which there exists a feasible 
+route serving all customers in $M$. If $|M| \geq |Y|$ for all sets $Y \subset X$
+for which there exists a feasible route serving all customers in $Y$, then $M$ is a \emph{maximum cluster} of $X$.
+\end{definition}
+Note that if there exists a feasible route serving all customers in $X$, we have $M(X) = X$.
+The solution to the multi-vehicle case is outlined in Algorithm \ref{alg03}.
+
+\begin{algorithm}
+\begin{algorithmic}
+\FORALL {$k \in \{1,\ldots,m\}$}
+\STATE \ \ $[S_k,X_k'] \leftarrow $ RR($X_k$); \hfill ($S_k$ = route, $X_k'$ = set of served customers)
+\STATE \ \ $X_{k+1}  \leftarrow X_{k+1} \cup (X_k \setminus X_k')$, where $X_{m+1} = X_1$;
+\ENDFOR
+\end{algorithmic}
+\caption{Outline of the multi-vehicle algorithm. $X_k$ denotes the set of customers assigned 
+to vehicle $k$ and RR($X_k$) denotes the single-vehicle 
+subroutine presented in Algorithm \ref{rralg} that returns
+a maximum cluster $X_k'$ of $X_k$ and the corresponding route $S_k$. 
+Initially, all customers are assigned to the first vehicle, that is, $X_1 = \{1,\ldots,n\}$ and $X_k = \emptyset$ for all $k \in \{2,\ldots,m\}$.}
+\label{alg03}
+\end{algorithm}
 
 
+\begin{figure}[ht]
+\includegraphics[width=0.45\textwidth]{greedy01b.pdf} \ \ \ \ \  \ \ \ \ \  
+\includegraphics[width=0.45\textwidth]{greedy05b.pdf}  \\ \ \\  
+\includegraphics[width=0.45\textwidth]{greedy06b.pdf} \ \ \ \ \  \ \ \ \ \   
+\includegraphics[width=0.45\textwidth]{greedy07b.pdf}  \\ \ \\   
+\caption{A one-dimensional example of the approach to the multi-vehicle problem involving five customers 
+and three vehicles. The first route is constructed by maximizing 
+the number of customers that can be served by a single vehicle (Figure b). 
+Then, the customers $2$ and $4$ served by the first vehicle are removed from the set of remaining customers and the process 
+is repeated for the second vehicle (Figure c). Finally, a route is construced for the third vehicle, serving the
+last remaining customer $3$ (Figure d).
+}
+\label{greedyidea}
+\end{figure}
+
+\subsection{Iteration}
+\label{iteration}
+If a feasible solution is not found directly by using the procedure described in Algorithm \ref{alg03}, 
+the process is repeated. The goal is to find a set of customer-vehicle assignments 
+such that for each vehicle there exists a feasible route serving all customers assigned to the vehicle
+or to prove infeasibility by going through all possible sets of customer-vehicle assignments.
+
+Formally, we define a \emph{partition} of customers as a disjoint cover of $\{1,\ldots,n\}$ consisting of $m$ sets $(X_1,\ldots,X_m)$,
+where $X_k$ denotes the set of customers assigned to vehicle $k$.
+The set of all partitions is denoted by $\mathcal{P}$. Since each customer can be assigned to any of the $m$ vehicles, the total 
+number of possible partitions is equal to the Stirling number of the second kind, that is,
+$|\mathcal{P}| = S_2(n,m) = \frac {1}{m!} \sum_{i=0}^{m} (-1)^i {m \choose i} (m-i)^n$.
+A partition is said to be \emph{feasible}, if $M(X_k) = X_k$ for all $k \in \{1,\ldots,m\}$.
+
+Note that if the multi-vehicle instance has a solution,
+there exists a partition $(X_1^*, X_2^*, \ldots, X_m^*)$ for which $M(X_k^*)=X_k^*$ for all $k \in \{1,\ldots,m\}$. 
+Thus, infeasibility can be proved by iteratively checking all partitions for feasibility.
+
+%The main idea in going through all partitions is that 
+Each iteration starts with the \emph{candidate} partition $(X_1,\ldots,X_m)$ and 
+results in another partition $(X_1',\ldots,X_m')$. If the partition $(X_1',\ldots,X_m')$ is not feasible,
+the candidate partition $(X_1,\ldots,X_m)$ is marked as 'checked'. Otherwise, a feasible solution 
+has been found and the algorithm is terminated.
+
+If $(X_1',\ldots,X_m')$ is marked as 'checked', the algorithm proceeds to the next candidate partition that is
+not marked as 'checked'.
+Otherwise, $(X_1',\ldots,X_m')$ becomes the
+candidate partition, $(X_1,\ldots,X_m) \leftarrow (X_1',\ldots,X_m')$. 
+
+
+
+The main idea is that the first iteration (Algorithm \ref{alg03}) produces an \emph{initial candidate partition} of customers, 
+which is improved during later iterations. This procedure is motivated by the fact that the initial vehicle routes are
+constructed by attempting to serve as many customers as possible from the initial set 
+$\{1,\ldots,n\}$ of all customers. After the initial routes have been determined, 
+we know that at least the 
+customers in $X_k'$ can be served by vehicle $k$. Thus, for any set $X$, the number of 
+served customers from the set $X \cup X_k'$ is \emph{at least} equal to the number of customers
+in the set $X_k'$. A customer $x$ that has relatively few feasible transitions to all nodes may 
+be in a good position with respect to the customers assigned to a
+single vehicle $k$. That is, even if customer $x$ was left out of the initial 
+vehicle routes due to a small number of feasible transitions to other nodes,
+$x$ can be added to one of the routes during a later iteration. 
+
+
+\subsection{A priori screening}
+\label{earlydetection}
+Since the  
+number of possible partitions of $n$ customers into $m$ sets is equal to the Stirling number of the second kind,
+going through all possible partitions is computationally taxing.
+However, some instances 
+are rendered infeasible by studying the feasibility of routes involving two customers as follows: 
+If there exist no feasible
+routes involving customers $\{i,j\}$, an arc between $i$ and $j$ is formed. This means that 
+customers $i$ and $j$ can not be assigned to the same vehicle. Then, we find the \emph{maximum clique} $C$
+within the set of customers, that is, the largest set of customers for which there is
+an arc between all pairs of nodes $i,j \in C$, see \citep{wood1997}. If the size of the maximum clique
+is greater than the number $m$ of vehicles, the instance is infeasible since there are $|C| > m$ customers
+which should all be served by different vehicles. 
+
+Otherwise, since the customers in the maximum clique $C = \{c_1,\ldots,c_{|C|}\}$ all have to be assigned to different vehicles, 
+with no loss of generality we may initially assign customer $c_j$ to vehicle $j$ for all $j \in \{1,\ldots,|C|\}$.
+Then, we determine the set of \emph{feasible vehicles} $V_i$ for each customer $i$ as follows.
+1) For $c_j \in \{c_1,\ldots,c_{|C|}\}$, we have $V_{c_j} = \{j\}$. For other customers $i \in \{1,\ldots,n\} \setminus C$, 
+we initially define $V_i = \{1,\ldots,m\}$.
+2) If $|V_j|=1$ and there is an arc between $j$ and $i$, customer $i$ may not be assigned to the 
+same vehicle as $j$, that is, $V_i \leftarrow V_i \setminus V_j$. This step is repeated for all $i,j \in \{1,\ldots,n\}$ until convergence.
+
+After the set of feasible vehicles $V_i$ has been determined for each customer $i \in \{1,\ldots,n\}$,
+the set of \emph{a priori feasible partitions} is defined as follows.
+\begin{definition}
+A partition $(X_1,\ldots,X_m)$ of customers is feasible a priori, if $i \in X_k \Rightarrow k \in V_i$ for all $k \in \{1,\ldots,m\}$.
+The set of a priori feasible partitions is denoted by $\mathcal{P}'$.
+\end{definition}
+Note that assigning each customer $i$ a vehicle number $v_i \in V_i$ defines a unique partition.
+Since the vehicle number of customer $i$ can be chosen from the set $V_i$ of feasible vehicles, 
+the number of a priori feasible partitions is given by $|\mathcal{P}'| = \prod_{i=1}^n |V_i|$.
+
+\begin{theorem}
+\label{partitions}
+The number of a priori feasible partitions satisfies $|\mathcal{P}| \leq m^{n-|C|}$.
+\end{theorem}
+
+The set of a priori feasible partitions is represented by the set $V_1 \times \ldots \times V_n$ and each a 
+priori feasible partition is represented by a vector $(v_1,\ldots,v_n) \in V_1 \times \ldots \times V_n$.
+Information on checked partitions is stored in a sparse array 'CHECKED'.
+The partitions not marked as checked are included in the set of remaining partitions $I$
+(initially $I = V_1 \times \ldots \times V_n$).
+During run-time, each candidate partition is marked as 'checked' by setting CHECKED$(v_1,\ldots,v_n) = 1$ and
+removed from the set of remaining partitions, that is, $I \leftarrow I \setminus \{(v_1,\ldots,v_n)\}$.
+If the iteration results in a partition that is marked as 'checked', the 
+next candidate partition is chosen randomly from the set of remaining partitions $I$.
+This way, the iteration described in Section \ref{iteration} goes through all feasible partitions.
+
+
+
+\subsection{Structure and complexity}
+\label{mvstructure}
+The multi-vehicle algorithm involves solving the single-vehicle case
+for each vehicle in $r$ iterations. Thus the complexity is bounded above by $\mathcal{O}\left(rm(n^3+A(n))\right)$, 
+where $A(N) \leq (2N)!/2^N$.                                                                                                                  
+
+Note that the complexity is in general lower since the size of the set of customers is
+$n$ only for the first vehicle in the first iteration. For the other vehicles, the number of customers is
+smaller since the customers that are already included in another vehicle route
+are not a part of the subproblem. 
+Since the total number of possible partitions is 
+equal to the Stirling number of the second kind, the number of iterations $r$ needed to find a feasible solution
+or to prove infeasibility satisfies $r \leq S_2(n,m) = \frac {1}{m!} \sum_{i=0}^{m} (-1)^i {m \choose i} (m-i)^n$.
+Given the maximum clique $C$ (see section \ref{earlydetection}), we have $r \leq |\mathcal{P}'| = \prod_{i=1}^n |V_i| \leq m^{n-|C|}$.
+
+In summary, the worst case complexity is high especially when the set of a priori feasible partitions $\mathcal{P}'$ is large. 
+However, as will be seen in the next section, solutions to problems with loose constraints are usually found with little effort. 
+On the other hand, tight constraints reduce the set of a priori feasible partitions $\mathcal{P}'$ 
+and thus also the complexity of the algorithm.
+
+%Similarly, for $N$-step feasibility screening discussed in Section \ref{nstep}, 
+%the complexity is bounded above by $\mathcal{O}(rmn^{N+1})$.
+
+%Note that in this case the dominant eigenvector is not recalculated.
+%If all candidate nodes at a certain step result in an infeasible
+%sequence, the recursion takes two steps back, as described in section \ref{recursion}. 
+
+
+\subsection{Numerical experiments}
+\label{mvexperience}
+In the following, we present a summary of the results of computational tests reported in \ref{jhitsdarpts}.
+An algorithm using the ranking idea (Algorithm \ref{rralg}) is compared with two existing solution methods,
+namely, a tabu search algorithm \citep{cordeau02} and
+a constraint programming (CP) algorithm \citep{berbegliafeas}. 
+
+The ranking algorithm was implemented in Matlab and the tests were performed on a 2.2 GHz Dual Core Intel PC. 
+The tabu and CP algorithms were tested on a 2.5 GHz Dual Core AMD Opteron computer \citep{berbegliathesis}. 
+
+In the studied instances the pick-up and drop-off points are located in a $20 \times 20$ square and the 
+ride times between points (in minutes) are equal to Euclidean distances. The time windows
+have 15 minutes of length. In the first set of instances marked with $a$, the capacity of a vehicle equals $Q=3$ and 
+the load of each customer is $1$. In the 
+second set marked with $b$, we have $Q=6$ and the load associated to each customer
+is chosen randomly according to a uniform distribution on the set $\{1, \ldots,Q\}$.
+In both sets, the maximum ride time is equal to $R=22$ and the service time is 
+proportional to the number of passengers, namely $d_i = d_{n+i} = q_i$.
+The instances are described in more detail in \citep{cordeau01,ropke2007,berbegliafeas}.
+
+The results of the tests are shown in Table \ref{comparisontable}. The first
+column shows the instance labels of the form $am$-$n$ or $bm$-$n$, where $m$
+indicates the number of vehicles and $n$ corresponds to the number of customers.
+The other columns show the average time (in seconds) needed to solve the
+instances and the corresponding modifications by using the different solution methods,
+calculated over ten runs. 
+The results obtained by the first two algorithms, tabu and CP, have been reported
+previously in \citep{berbegliathesis,berbegliafeas}\footnote{The computing time for the instance 
+'b6-48' has been reported for the tabu algorithm in \citep{ropke2007}.}. 
+A number in parentheses indicates that the instance was proven to be infeasible,
+a dash indicates that a solution was not found in three minutes computing time and
+a star indicates that results for the instance have not been reported. 
+First, the heuristic version of the ranking algorithm was executed with $L=1$. If a solution was not found and the problem
+was not rendered infeasible by the a priori screening procedure described in
+Section \ref{earlydetection}, the exact version of the algorithm was executed.
+
+\begin{table}
+{\scriptsize
+\begin{center}
+\begin{tabular}{|c|ccc|ccc|ccc|ccc|}
+\hline
+Instance & \multicolumn{3}{|c|}{Original} & \multicolumn{3}{|c|}{RT=30} & \multicolumn{3}{|c|}{RT=22} & \multicolumn{3}{|c|}{75 \% of vehicles} \\
+\hline
+& Tabu & CP & Ranking & Tabu & CP & Ranking & Tabu & CP & Ranking & Tabu & CP & Ranking\\
+\hline
+a4-40 & 0.8 & 0.5 & 0.02 & 0.8 & 0.5 & 0.02 &0.5 & 0.3 &0.05 & 1.7 & 0.3 & 0.64\\ % (0.2)\\
+\hline
+a4-48 & 1.0 & 0.5 & 0.05 & 1.0 & 0.5 & 0.05 &1.3 & 0.4 &0.05& 78.5 & 0.6 & 0.08 \\ % (0.2)\\
+\hline
+a5-40 & 0.3 & 0.3 & 0.02 & 0.3 & 0.3 & 0.02 &0.3 & 0.3 &0.02& 1.3 & 0.3 & 0.02\\ % 0.2 \\
+\hline
+a5-50 & 0.7 & 0.5 & 0.04 & 0.7 & 0.5 & 0.04 &0.6 & 0.6 &0.03& 3.9 & 1.3 &2.0\\ % 0.3\\
+\hline
+a5-60 & 1.4 & 1.0 & 0.05    & 1.4 & 1.0 & 0.05 &1.5 & 0.9 &0.05& - & 24.5 & 64.7 \\ % 0.5 \\
+\hline
+a6-48 & 0.4 & 0.6 & 0.03    & 0.4 & 0.6 & 0.03 &0.4 & 0.7 &0.03& 1.1 & 0.5 &0.07\\ % 0.2 \\
+\hline
+a6-60 & 1.0 & 5.6 & 0.04    & 1.0 & 5.6 & 0.04 & - & (1.1) &(0.63)& 11.6 & 6.2 & 10.7 \\ % (0.4)\\
+\hline
+a6-72 & 1.9 & 5.0 &  0.06   & 1.9 & 5.0 & 0.06 & - & (1.7) &(0.77) & 5.7 & 2.0 &0.90\\ % 0.7\\
+\hline
+a7-56 & 0.5 & 1.8 &  0.04   & 0.5 & 1.8 & 0.04 & - & (0.6) &(0.40)& 0.9 & 1.5 &0.06\\ % 0.3 \\
+\hline
+a7-70 & 1.7 & 41.5 & 0.06   & 1.7 & 41.5 & 0.06 & 1.4 & 7.6 &0.06& 3.2 & 5.1 &0.06\\ % 0.6 \\
+\hline
+a7-84 & 2.7 & 3.4 & 0.08   & 2.7 & 3.4 & 0.08 & 3.0 & 4.1 &0.08& 7.5 & 3.5 &0.07\\ % 1.0\\
+\hline
+a8-64 & 0.8 & 6.2 & 0.05    & 0.8 & 6.2 & 0.05 & - &  (1.9) & (0.84) & 1.1 & 2.5 &0.04\\ % 0.4\\
+\hline
+a8-80 & 1.5 & 8.5 & 0.07    & 1.5 & 8.5 & 0.07 & 1.8 & 6.0 &0.07& 3.0 & 3.6 &0.07\\ % 0.9\\
+\hline
+a8-96 & 3.5 & 37.7 & 0.11   & 3.5 & 38.7 & 0.11 &- & (3.7) & (1.72) & 8.1 & 5.3 &0.15\\ % 1.6 \\
+\hline
+b4-40 & 0.6 & 0.4 & 0.02    & 0.4 & 0.3 & 0.05 & 0.4 & 0.3 &0.05& - &(0.1) & (0.40) \\ % (0.1)\\
+\hline
+b4-48 & 1.3 & 0.4 & 0.03    & 1.6 & 0.4 & 0.08 & - & (0.1) & (0.32) & - & (0.1) & (0.59)\\ % (0.2)\\
+\hline
+b5-40 & 0.4 & 0.3 & 0.03    & 0.4 & 0.4 & 0.03 & - & (0.1) & (0.27) & - &  (0.1) & (0.37)\\ % 0.1\\
+\hline
+b5-50 & 1.2 & 6.8 & 0.06    & 0.9 & 0.8 & 0.05 & 1.1 & 0.9 &0.18& - & (0.1) & (0.58) \\ % (0.2)\\
+\hline
+b5-60 & 1.5 & 109.5 & 0.04  & 1.8 & 3.1 & 0.04 & 1.6 & 1.2 &0.04& - & (0.1) & (0.78) \\ % 0.4\\
+\hline
+b6-48 & 0.3 & * & 0.02    & * & * & 0.02 & * & * &0.02& * & * & (0.54) \\ % 0.3\\
+\hline
+b6-60 & 0.9 & 5.1 & 0.04    & 1.5 & 1.5 & 0.04 & 1.0 & 1.4 &0.04& 5.3 & 3.8 & 3.2 \\ % 0.3\\
+\hline
+b6-72 & 2.1 & 27.3 & 0.05   & 2.3 & 2.4 & 0.06 & 2.4 & 2.4 &0.05& 9.7 & 25.6 & 5.1 \\ % 0.5 \\
+\hline
+b7-56 & 0.5 & 13.3 & 0.04   & 0.6 & 1.5 & 0.03 & 0.5 & 1.5 &0.04& 2.1 & 3.9 & 0.19\\ % 0.2\\
+\hline
+b7-70 & 1.4 & 5.6 & 0.08    & 1.6 & 18.4 & 0.08 & 1.3 & 2.7 &0.05& 12.6 & 78.7 & 4.3\\ %(0.4)\\
+\hline
+b7-84 & 3.0 & 25.8 & 1.60      & 2.9 & 6.3 & 0.08 & - & (0.1) & (0.64) & - & - & - \\ %0.7\\
+\hline
+b8-64 & 0.7 & 12.7 & 0.09   & 0.8 & 1.9 & 0.09 & 0.8 & 1.9 &0.04& 1.8 & 4.8 & 0.98 \\ % 0.3\\
+\hline
+b8-80 & 1.9 & 23.9 & 0.07   & 1.8 & 19.2 & 0.07 & - & (0.5) &(1.28)& 4.0 & 13.9 &0.27\\ % 0.6\\
+\hline
+b8-96 & 4.1 & 149.1 & 0.12 & 3.9 & 34.8 & 0.12 & 3.9 & 56.1 &0.15& 8.2 & - &0.74 \\ % 1.0\\
+\hline
+\end{tabular} \\ 
+\end{center}
+\caption{Comparison between a tabu search algorithm \citep{cordeau02}, 
+a constraint programming algorithm \citep{berbegliathesis} and the ranking algorithm.
+The results obtained by the first two algorithms are given in \citep{berbegliathesis,berbegliafeas}.
+The upper table shows the average time (in seconds) needed to solve the
+instance of the dial-a-ride problem in the first column by using the different solution methods,
+calculated over ten runs. The times without parentheses indicate that a feasible solution was found and 
+the times in parentheses indicate that the instance was proven to be infeasible. A star (*) indicates that 
+the computing time has not been reported.
+}
+\label{comparisontable}
+}
+\end{table}
+
+By looking at the results obtained by the ranking algorithm we see that most instances
+were solved within a fraction of a second. 
+Except for a single modified instance (b7-84, 75\% of vehicles), the 
+ranking algorithm produced a feasible solution or proved ineasibility in all instances.
+Note that the ranking algorithm produced a feasible solution or proved infeasibility in 
+the modified instances with six vehicles and 48 customers (b6-48), for which results have not been previously reported.
+
+The CPU times obtained by the ranking algorithm are 
+typically of order ten times smaller
+compared to the results of the tabu and CP algorithms. 
+The best improvement factor is 
+$109.5 / 0.04 \approx 2 700$ compared to CP (instance b5-60)
+and $78.5/0.06 \approx 1300$ compared to tabu (instance a4-48, 75\% of vehicles).
+Although the algorithms
+were tested on different platforms, the results seem to justify the efficiency of the 
+ranking algorithm on the test instances. We acknowledge that 
+there are instances in wich tabu and CP produced a feasible solution or 
+proved infeasibility faster than the ranking algorithm.
+However, the results suggest that the ranking algorithm may have practical importance
+since it is capable of handling large problems in short computation times.
 
 
 
 \chapter{Journey planning}
 \label{journeyplanning}
+The urban journey planning problem involves
+determining a path, possibly involving transfers between different transport modes, 
+from a specified origin to a similarly specified destination 
+in a transport network. Common criteria used for evaluating itineraries
+include the total duration, number of transfers and cost \cite{androutsopoulos, 
+zografos,peng,modesti,huang, huang2, horn2003, tong, tong2, ziliaskopoulos, 
+berube, cooke, cai, chabini, kostreva, hamacher, bander,tan}.
+
+Reference \cite{zografos} classifies the journey planning models into
+the following types of formulations: 1) the headway-based model, in which
+a constant headway for each transit line is assumed \cite{wong1998}
+and 2) the schedule-based model, which assumes a
+fixed route and timetable for each transit line.
+
+\ref{jdjuejor} extends approach 2) into a dynamic model taking into account the 
+uncertainty of transport services (buses, trams, trains, ferries, \ldots). 
+In contrast to existing itinerary planning algorithms designed for scheduled public transport networks, 
+where the path is a priori optimized with respect to an objective, for example,
+\cite{androutsopoulos}, the realized journey may differ from the original plan. 
+
+Real-time information on the status of transport services is available via mobile devices 
+with location-based capabilities. This makes it possible for a commuter to
+dynamically modify the planned journey in case of a delay or cancellation.
+For example, if a transfer from a transport service
+to another is unsuccessful due to a delay, the commuter may reconsider the 
+remaining path to the destination. 
+Clearly, the importance of being able to modify the planned journey dynamically
+is emphasized when the number of transfers between different transport services is increased.
+
+Taking into account the uncertainty in transport services is particularly important in difficult weather conditions
+when delays are common. In addition to traditional public transport with fixed schedules, uncertainty 
+should be given special attention in flexible transport 
+services without fixed routes \cite{mulley}. If the vehicle routes are modified 
+in real time, the estimation of travel times between subsequent stops is more difficult than in the case
+of fixed routes.
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.9\columnwidth]{stokvsdet01}
+\end{center}
+\caption{The difference between dynamic and a priori journey planning for a commuter 
+traveling from $A$ to $D$. The four points represent public transport stops ($A,B,C,D$) and 
+the arrows between them represent public transport services ($1,\ldots,5$).
+Initially, there are three possible journeys from $A$ to $D$: $(1,2),(3,4)$ and $(3,5)$.
+If the commuter initially chooses service $1$, the success of the journey is 
+dependent of the success of the transfer from $1$ to $2$ at stop $B$. If the commuter chooses
+service $3$ first, the destination is reached if one of the transfers $3 \to 4$ or $3 \to 5$
+is successful at stop $C$.
+}
+\label{stokvsdet01}
+\end{figure}
+
+A simplified example clarifying the main difference between dynamic and a priori journey planning is 
+shown in Figure \ref{stokvsdet01}. 
+
+Generally, a commuter wishes to travel from an origin node $v_o$ 
+to a destination node $v_d$ within a time horizon $[0,T]$ using different transport services.
+Each transport service is represented as a sequence of \emph{legs}. Each leg is associated
+with a \emph{start node} and \emph{end node}, as well as a random \emph{start time} and \emph{end time}.
+Adjacent nodes in the network are connected with similarly defined walking legs. %, as in \cite{zografos}.
+
+A path from the origin to the
+destination is represented as a sequence of legs, in which the start node of
+each leg is equal to the end node of the previous leg.
+We assume that during the execution of a leg, 
+the commuter receives information on which
+services have already visited the end node %stop $v_i'$ 
+and which are yet to arrive.
+In other words, the customer ``sees'' the available successor legs of the current leg
+and may choose to (i) stay in the vehicle, %if leg $i$ is not the last leg of the service, 
+(ii) transfer to another vehicle or (iii) get off the vehicle and start
+walking towards a nearby stop (or the destination).
+The goal the above context is to determine an optimal policy specifying the actions
+that are executed in different situations in order to 
+optimize reliability, ride time, waiting time, walking time, the number of transfers
+of a combination of these objectives.
+
+Dynamic path finding problems (see \cite{hall,bander2002,fu1998,miller-hooks2000,davies,kim2005a,kim2005b,azaron,ferris,thomas,waller}) are often modeled
+as \emph{Markov decision processes} \cite{psaraftis93,polychronopoulos}, in which the 
+\emph{actions} of a decision maker at a given \emph{state} are independent of all previous actions and states.
+\ref{jdjuejor} presents a conditional Markov model, in which the path history is included in each state by
+defining states as sequences of legs in the transport network.
+That is, the current state is determined by the path taken so far.
+This model is approximated in \ref{jtoits}, where the current state is defined as the current leg.
+
+The demand-responsive transport service currently being planned to operate in Helsinki
+is designed to operate on a demand-responsive basis, that is, 
+vehicle routes are modified according to the demand situation. The main difference to existing services is 
+that no pre-order times for trips are required and the trips can be booked
+``on the fly'' by means of an interactive user interface. 
+This type of new service calls for a journey planner that is
+capable of communicating with flexible services as well as traditional
+public transport, thus combining the benefits of both transport modes.
+
+In addition to public transport, a journey planning problem with a similar objective 
+arises in freight transportation by for-hire carriers. 
+
+
+\section{Stochastic model of a scheduled network}
+Let $\mathcal{V}$ denote a set of \emph{nodes} representing public transport stops
+in a specific area and let $\mathcal{K} \subset \mathbb{N}$ denote a set of public 
+transport \emph{services} operating in this area, indexed by natural numbers. 
+
+Each service $k \in \mathcal{K}$ follows a \emph{route}, represented as a sequence of nodes $(v_1^k,\ldots,v_m^k)$ in $\mathcal{V}$. 
+Each service departs at node $v_1^k$ at a specific time and proceeds to nodes $v_2^k, \ldots,v_m^k$ in the order determined by the route.
+Due to uncertainty in departure and travel times, we define the arrival times of services at nodes
+as real-valued random variables. Letting $\tau_j^k$ denote the \emph{random arrival time} of 
+service $k$ at node $v_j^k$, 
+a service $k$ can be represented as a sequence of deterministic nodes and random arrival 
+times $((v_1^k, \tau_1^k), \ldots, (v_m^k, \tau_m^k))$, see Figure \ref{stokvsdet02}.
+Any two arrival times $\tau_j^k$ and $\tau_l^h$ of 
+distinct services $k$ and $h$ are assumed to be independent,
+whereas the arrival times $\tau_j^k$ and $\tau_l^k$ of a single 
+service $k$ at stops $v_j^k$ and $v_l^k$ are not necessarily independent (see Section \ref{durationmodels}).
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{stokvsdet02}
+\end{center}
+\caption{The schedule of a transport service. The real numbers $t_j^k$ represent the scheduled arrival
+times of a transport service at six subsequent stops. The curves  
+represent the distributions of random variables $\tau_j^k$ that are used to model the actual arrival 
+times of the service at stops $v_j^k$, $j \in \{1,\ldots,6\}$.}
+\label{stokvsdet02}
+\end{figure}
+
+\subsection{Service legs}
+Each service $k \in \mathcal{K}$ can be decomposed as a set of scheduled \emph{legs} between subsequent stops.
+That is, each leg has a start node, end node, start time and end time.
+By this decomposition, we can represent any path in the transport network as a sequence 
+of legs indexed by natural numbers. For example, consider a transport network consisting of ten legs
+numbered from $1$ to $10$. Then, the sequences $(5,2,7)$ and $(5,8,3,7)$ define two paths in the network 
+involving two and three \emph{transfers}, respectively. Each transfer between two legs has a specific probability of success.
+Transfers between subsequent legs of the same service are assumed to be successful with 
+probability $1$.
+
+Formally, letting $\mathcal{L} \subset \mathbb{N}$ denote the set of indices of legs, 
+a leg corresponding to index $i \in \mathcal{L}$ is defined by a pair of 
+node-arrival time pairs and a service number $((v_i, \tau_i), (v_i', \tau_i'), k_i)$,
+where $v_i$ is the \emph{start node}, $v_i'$ is the \emph{end node}, $\tau_i$ is the \emph{start time}, $\tau_i'$ 
+is the \emph{end time} and the \emph{service number} $k_i$ is the index of the service that executes leg $i$.
+
+By using this definition, a service  $((v_1^k, \tau_1^k), \ldots, (v_m^k, \tau_m^k))$ is
+represented by a set of legs ${\{i_1^k,\ldots,i_{m-1}^k\} \subset \mathcal{L}}$, where leg $i_h^k$
+is determined by 
+\begin{align}
+\label{legdefinition}
+\left( (v_{i_h^k}, \tau_{i_h^k}), (v_{i_h^k}', \tau_{i_h^k}'),k_{i_h^k} \right) 
+= \left((v_{h}^k, \tau_{h}^k),(v_{h+1}^k, \tau_{h+1}^k),k \right)
+\end{align}
+for $h \in \{1,\ldots , m-1\}$. 
+Note that the end time $\tau_{i_h^k}'$ of leg $i_h^k$ refers to 
+the same specific random variable as the start time $\tau_{i_{h+1}^k}$ of leg $i_{h+1}^k$, that is, 
+$\tau_{i_h^k}' = \tau_{i_{h+1}^k} = \tau_{h+1}^k$. 
+To keep track which legs are subsequent
+legs of the same service, we define for each leg $i_h^k$ the \emph{set
+of immediate successors} $I_{i_h^k} = \{ i_{h+1}^k\}$ for $h \in \{1,\ldots , m-1\}$.
+
+\subsection{Walking legs}
+After each leg traversed, a commuter may choose to continue the journey by foot. 
+Similarly as the service legs defined above, each \emph{walking leg} $i \in \mathcal{L}$ 
+is determined by a start node $v_i$, end node $v_i'$, start time $\tau_i$, end time $\tau_i'$ 
+and service number $k_i$. For all walking legs, we choose $k_i < 0$ in order to have a distinction 
+between walking legs and service legs.
+
+Walking legs are added by associating with each service leg $((v_i, \tau_i), (v_i', \tau_i'),k_i)$ a set 
+$L_i \subset \mathcal{L}$ of walking legs beginning at $v_i'$ and ending at a stop within a specific 
+\emph{maximum walking distance} $d_w^{\max }$ from $v_i'$, see Figure \ref{walking01}a. Such walking legs $j \in L_i$
+are of the form
+$
+\left((v_j, \tau_j), (v_j', \tau_j'),k_j\right)=\left( (v_i', \tau_i'),(v_j',\tau_j'),-k_i \right),
+$
+where the walking distance $d_w$ satisfies $d_w(v_i',v_j') \leq d_w^{\max }$. % and
+Note that the end time $\tau_i'$ of service leg $i$ and the start time $\tau_j$ of a walking leg $j \in L_i$
+refer to the same specific random variable. 
+For each service leg $i$, the walking legs are added to the set of immediate
+successors $I_{i}$ of $i$, that is, $I_{i} \leftarrow I_{i} \cup L_i$.
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{walking01}
+\ \ \ \ \ \ \ 
+\includegraphics[width=0.45\textwidth]{walking01c}
+\end{center}
+\caption{a) A sample transport network with eight stops and five 
+transport services consisting of a single leg (solid arrows $3,4,6,8,10$).
+Adjacent stops are connected with walking legs (dashed arrows $2,5,7,9$).
+b) A directed graph representing the relations of legs in Figure \ref{walking01}a. 
+The origin and destination are represented by legs $1$ and $11$. 
+%Note that legs $1$ and $5$ have two successors whereas the other legs have a single successor.
+The prior transfer probability from leg $i$ to leg $j$  is denoted by $p_{ij}$.
+Note that $p_{12}=p_{45}=p_{67}=p_{69}=1$, since $2,5,7$ and $9$ are walking legs.
+}
+\label{walking01}
+\end{figure}
+
+Sequential walking legs are added to the network iteratively:
+First, walking legs (indexed with service number $-k_i$) are added to the end of each each service leg $i$ (step 1).
+Then, walking legs (indexed with service number $k_j$) are added to the end of each walking leg $j$ (step 2).
+Step 2 is repeated until the desired amount of walking legs is obtained.
+The number of walking legs included in the model is thus controlled by two parameters:
+The maximum walking distance $d_w^{\max }$ and the maximum number of sequential walking legs.
+
+
+\subsection{Transfer probability}
+A transfer from leg $i$ to leg $j$ is possible only if leg $i$ ends at the node from which leg $j$ begins, that is, $v_{i}' = v_{j}$ (see Figure \ref{walking01}b).
+Letting $\mathcal{L}$ denote the set of legs and $S_i = \{j \in \mathcal{L} \ | \ v_{i}' = v_{j} \}$ denote the 
+\emph{successor set} of leg $i$,
+%In this case, 
+the \emph{prior transfer probability} from leg $i$ to leg $j$ is defined by
+\begin{align}
+\label{transferprob}
+p_{ij}=
+\left\{
+\begin{array}{ll}
+P(\tau_{i}' \leq \tau_{j}), & \mbox{if $j \in S_{i}$}, \\
+0, & \mbox{otherwise.}
+\end{array}
+\right.
+\end{align}
+
+Note that if $j$ is a walking leg beginning at the end of leg $i$
+or if $i$ and $j$ are successive legs of the same service,
+by definition we have $p_{ij}= 1$, since $\tau_{i}'$ and $\tau_{j}$ refer to the same random variable. 
+The legs and prior transfer probabilities
+form a directed graph (Figure \ref{walking01}b).
+
+More generally, since the start and end time of a leg are not necessarily independent, 
+the transfer probability from $i$ to $j$ depends on the \emph{path} taken to get to $i$.
+A path can be represented as an acyclic sequence of legs $(i_1,\ldots,i_m)$ satisfying
+$i_{h+1} \in S_{i_h}$ for all $h \in \{1,\ldots,m-1\}$, see Figure \ref{journey01}. 
+The path is \emph{successful}, if $\tau_{i_h}' \leq \tau_{i_{h+1}}$ for all $h \in \{1,\ldots,m-1\}$.
+Note that if $i_{h+1}$ is an immediate successor of $i_h$, that is, $i_{h+1} \in I_{i_h}$,
+we have $\tau_{i_h}' = \tau_{i_{h+1}}$ since the start time of $i_{h+1} \in I_{i_h}$ refers to 
+the same specific random variable as the end time of $i_h$. 
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{journey02}
+\end{center}
+\caption{Deterministic and stochastic representations of a path. The ticks on the time axis represent the 
+schedule of a deterministic itinerary from $v_1$ to $v_5$. The curves represent the distributions 
+of random variables $\tau_i, \tau_i'$ that are used to model the start and end times of four legs that 
+define the corresponding stochastic path. 
+(1) A commuter starts walking at $\tau_1$ from the origin $v_1$, and arrives at stop $v_2$ at $\tau_1'$. 
+(2) A transport service departs at $v_2$ at $\tau_2$ and travels to stop $v_3$,
+arriving at $\tau_2'$. (3) A transport service departs at $v_3$ at $\tau_3$ and arrives at stop $v_4$ at $\tau_3'$. 
+(4) Immediately at $\tau_4=\tau_3'$, 
+the commuter continues by foot to the destination $v_5$, arriving at $\tau_4'$. Note that the path is successful
+with probability 
+$P(\tau_1' \leq \tau_2 \cap \tau_2' \leq \tau_3) 
+= P(\tau_1' \leq \tau_2) \cdot P (\tau_2' \leq \tau_3 \ | \ \tau_1' \leq \tau_2)$.
+}
+\label{journey01}
+\end{figure}
+
+
+\section{Markov Decision process}
+The dynamic journeying problem is defined as follows.
+Let $[0,T] \subset \mathbb{R}$ be the time horizon of the problem,
+let $v_1$ denote the origin node and $v_d$ denote the destination node. 
+The \emph{origin leg} is defined by $((v_1,\tau_1),(v_1,\tau_1),0)$, where $P(\tau_1=0)=1$, 
+and the \emph{destination leg} 
+is defined by $((v_{d},\tau_{d}),(v_{d},\tau_{d}),0)$, where $P(\tau_d=T)=1$.
+Although it is possible to reach the destination node before $T$, the start time of the 
+destination leg equals $T$ with probability $1$. By this definition, we can represent the entire journey 
+as legs, including the origin and the destination. If a journey ends at a successful transfer 
+to the destination leg, we know that the commuter has reached the destination node before $T$ or at $T$.
+
+With no loss of generality, all legs for
+which the start or end time is outside the time horizon $[0,T]$ with probability $1$ and 
+all legs for which the start node is the destination node (except the destination leg)
+are excluded from the problem.
+The cropped set of legs is defined by 
+\begin{align*}
+\mathcal{L}_{[0,T]}= \left\{i \in \mathcal{L} \ | \ P( 0 \leq \tau_i \leq T) > 0 \mbox{ and } P( 0 \leq \tau_i' \leq T) > 0\right\}
+\setminus \{i \in \mathcal{L} \setminus \{d\} \mid v_i = v_d\}.  
+\end{align*}
+For clarity, we define $n:=|\mathcal{L}_{[0,T]}|$ and the legs in $\mathcal{L}_{[0,T]}$ 
+are numbered from $1$ to $n$, where the origin leg is indexed by $1$ and the destination leg is indexed by $n$.
+
+The problem is modeled as a finite-state Markov decision process $(S,A,P_{\cdot}(\cdot,\cdot),R_{\cdot}(\cdot,\cdot))$, 
+where the parameters are defined as follows.
+
+\subsection{States}
+\label{statesdef}
+The set of \emph{states} $S$ consists of paths $(1,i_1,\ldots,i_m)$ of legs, where $i_h \in \{1,\ldots,n\}$ for $h \in \{0,\ldots,m\}$,
+beginning from the origin leg $1$. The state $(1)$ is referred to as the \emph{origin state}.
+Each state $s=(i_0,i_1,\ldots,i_m) \in S$, where $i_0=1$, is associated with a set of successor states
+$S_{s} = \{(i_0,i_1,\ldots,i_m,j)\in S \mid j \in S_{i_m} \}$, where $S_{i_m}$ is the successor set of leg $i_m$.
+Similarly, the set of immediate successors of state $s$ is defined by
+$I_{s} = \{(i_0,i_1,\ldots,i_m,j)\in S \mid j \in I_{i_m} \}$, where $I_{i_m}$ is the immediate successor set of leg $i_m$.
+Formally, the set of states is defined by
+\begin{align}
+\label{statejoukko}
+ S=\left\{(i_0,\ldots,i_m) \mid i_0=1 \mbox{ and } i_{h+1} \in S_{i_h} \mbox{ for } h \in \{0,\ldots,m-1\} \right\}.
+\end{align}
+The above definition of a state includes travel history in the form of a path, see Figure \ref{treemodel01}. 
+The history of performed actions is not taken into account in our model.
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{treemodel01}
+\end{center}
+\caption{
+States of the markov decision process. A state is defined as a path consisting of legs, beginning from the origin leg $1$.
+The states $s$ in the figure are connected to successor states $s' \in S_s$ by arrows.
+Since the travel history is included in the definition of a state, the state space has a tree structure.
+In this example, the destination leg is denoted by $i_4$  and the set of destination states equals
+$\mathcal{D} = \{(1,i_1,i_2,i_3,i_4),(1,i_1,i_5,i_4),(1,i_6,i_7,i_3,i_4),(1,i_6,i_7,i_8,i_4)\}$.
+}
+\label{treemodel01}
+\end{figure}
+
+The set of \emph{destination states}, that is, the set of states $(1,\ldots,i_m) \in S$ for which the last leg $i_m$ 
+is the destination leg, is defined by $\mathcal{D} = \left\{(1,\ldots,i_m) \in S \mid i_m=n  \right\}$.
+Since legs beginning from the destination node are not included in the problem, we have $S_s = I_s = \emptyset$ for all $s \in \mathcal{D}$.
+
+The start and end times of state $s$ are denoted by the random variables $\tau_s$ and $\tau_s'$, respectively.
+The distributions of $\tau_s$ and $\tau_s'$, where $s=(i_0,i_1,\ldots,i_m)$ and $i_0=1$, are defined by
+\begin{align}
+\label{ehdollinen1}
+f_{\tau_s }(x) &= f_{\tau_{i_m}} (x  \mid \cap_{h=0}^{m-1} \tau_{i_h}' \leq \tau_{i_{h+1}} ), \\
+\label{ehdollinen2}
+f_{\tau_s'}(x) &= f_{\tau_{i_m}'}(x \mid  \cap_{h=0}^{m-1} \tau_{i_h}' \leq \tau_{i_{h+1}} ),
+\end{align}
+for $x \in \mathbb{R}$.
+Note that if state $s'$ is an immediate successor of state $s$, that is, $s' \in I_s$, the end time of state
+$s$ and the start time of state $s'$ refer to the same specific random variable $\tau_s' = \tau_{s'}$.
+In addition, if $i_m$ is the first leg in the path executed by service $k_{i_m}$, that is, 
+$k_{i_h} \neq k_{i_m}$ for all $h \in \{0,\ldots,m-1\}$, we have $f_{\tau_s }(x) = f_{\tau_{i_m}}(x)$
+due to the fact that the arrival times of different services are assumed to be independent.
+
+The service number of state $s=(i_0,i_1,\ldots,i_m)$ is defined by $k_s = k_{i_m}$.
+
+\subsection{Actions}
+\label{actionsdef}
+The set of \emph{actions} $A$ consists of sets $A_s$ of actions available at states $s \in S$.
+An action $a \in A_s$ is defined as a \emph{preference order} of the successor states $s' \in S_s$, 
+that is, a bijection $a:S_s \to \{1,\ldots,|S_s|\}$, where $a(s')$ denotes the ranking of the successor state $s' \in S_s$
+in the preference order. The successor states of $s$ ranked by the preference order $a$ are denoted by $s^{a,a(s')}$.
+Given the the sorted successor states $s^{a,1}, \ldots, s^{a,|S_s|} \in S_{s}$ of $s$, 
+the commuter transfers to state $s^{a,k}$ if 
+(i) the transfer to $s^{a,g}$ is unsuccessful for $1 \leq g < k$ and 
+(ii) the transfer to $s^{a,k}$ is successful.
+
+\subsection{Transition probabilities}
+\label{transitiondef}
+$P_a(s,s') = P(s_{t+1}=s' \mid s_t = s, a_t=a)$ is the probability that action $a$ in state $s$ 
+at step $t$ will lead to state $s' \in S_s$ at step $t + 1$. 
+Given the preference order $s^{a,1}, \ldots, s^{a,|S_s|} \in S_{s}$ defined by action $a \in A_s$, 
+we have 
+\begin{align}
+\label{ekakaava}
+P_a(s,s^{a,k}) 
+= 
+P\left(\tau_{s}' \leq \tau_{s^{a,k}} \cap \bigcap_{g=1}^{k-1} \tau_{s}' > \tau_{s^{a,g}} \right).
+\end{align}
+If the service numbers of all pairs of distinct successor states $s',s'' \in S_s$ of state $s$ satisfy $k_{s'} \neq k_{s''}$,
+we have 
+\begin{align*}
+P_a(s,s^{a,k}) = \int_{-\infty}^{\infty} f_{\tau_{s}'}(x) P\left(x \leq \tau_{s^{a,k}} \right) 
+\prod_{g=1}^{k-1} P\left(x > \tau_{s^{a,g}} \right) \ dx,
+\end{align*}
+since the start times of legs with different service numbers 
+are independent.
+Note that since the end time $\tau_s'$ of state $s$ and the start time of an immediate successor state $s' \in I_s$ refer to the same
+random variable, that is, $\tau_s' = \tau_{s'}$ for all $s' \in I_s$, the transfer probability \eqref{ekakaava}
+satisfies
+\begin{align}
+\label{ekakaava2}
+P_a(s,s^{a,k}) = 
+\left\{
+\begin{array}{ll}
+0, &  \mbox{if $\{s^{a,1},\ldots,s^{a,k-1}\} \cap I_s \neq \emptyset$ },\\ 
+P\left(\bigcap_{g=1}^{k-1} \tau_{s}' > \tau_{s^{a,g}} \right), &  \mbox{if $\{s^{a,1},\ldots,s^{a,k-1}\} \cap I_s = \emptyset$ and $s^{a,k} \in I_{s}$ },\\ 
+P\left(\tau_{s}' \leq \tau_{s^{a,k}} \cap \bigcap_{g=1}^{k-1} \tau_{s}' > \tau_{s^{a,g}} \right), & \mbox{otherwise.}
+\end{array}
+\right.
+\end{align}
+For example, let $s^{a,1},s^{a,2},s^{a,3}$ denote three successor states of state $s$, sorted in the preference
+order defined by action $a$. If $s^{a,2}$ is an immediate successor of $s$, that is, $s^{a,2} \in I_s$, and $s^{a,1} \notin I_s$, 
+we have $P_a(s,s^{a,1}) = P\left(\tau_{s}' \leq \tau_{s^{a,1}} \right)$, $P_a(s,s^{a,2}) = P\left( \tau_{s}' > \tau_{s^{a,1}} \right)$
+and $P_a(s,s^{a,3}) = 0$.
+
+\subsection{Rewards}
+\label{rewardsdef}
+$R_a(s,s')$ is the expected immediate reward received after transition from state $s \in S$ to state $s' \in S$ 
+with transition probability $P_a(s,s')$. 
+Since the objective is to arrive at a destination state $s \in \mathcal{D}$, we define $R_a(s,s')$ by
+\begin{align}
+\label{rewards}
+ R_a(s,s')= 
+\left\{
+\begin{array}{ll}
+1, &  \mbox{if $s' \in \mathcal{D}$ },\\ 
+0, & \mbox{otherwise.}
+\end{array}
+\right.
+\end{align}
+Note that $R_a(s,s')$ is independent of the action $a$. Thus, for the remainder of this document, we will use
+the notation $R(s,s') = R_a(s,s')$.
+
+Travel and overdue costs can be included in the reward function with minimial effort as follows.
+Instead of maximizing the probability of reaching the destination leg, the goal is to 
+maximize the expected profit gained by arriving at the destination node.
+
+Let $u$ denote the revenue (or utility) received upon arrival at the destination node and $c(s)$ 
+denote a real valued positive function representing the cost of state $s$. 
+For example, $c((i_0,\ldots,i_m))$ could be defined as the sum of the \emph{leg costs} $c_{i}$,
+that is, $c((i_0,\ldots,i_m))= \sum_{h=0}^{m-1} c_{i_h}$ or a combination of ride time, waiting time, walking time and the 
+number of transfers, as in \ref{jtoits}. 
+Let $C_o$ denote the \emph{overdue cost}, 
+that is, the cost of arriving at the destination node after $T$. By introducing an
+additional \emph{late destination leg} $((v_{d},\tau_{l}),(v_{d},\tau_{l}),0)$, where $P(\tau_l=\infty)=1$,
+and the set of \emph{late destination states} $\mathcal{D}'$, for which the last leg is the late destination leg,
+the reward function is written in the general form
+\begin{align}
+\label{rewards2}
+ R'(s,s')= 
+\left\{
+\begin{array}{ll}
+u - c(s'), &  \mbox{if $s' \in \mathcal{D}$ },\\ 
+u - c(s') - C_o, &  \mbox{if $s' \in \mathcal{D}' \setminus \mathcal{D}$ },\\ 
+0, & \mbox{otherwise.}
+\end{array}
+\right.
+\end{align}
+
+
+\section{Optimal policy}
+\label{solution}
+The solutions to Markov decision processes are characterized as policies, 
+that is, functions $\pi$ that specify the action 
+$a(s) $ that the commuter chooses when in state $s$. 
+The goal is to find a policy $\pi$ that maximizes the expected reward. 
+Generally, the calculation of an optimal policy requires two arrays indexed by state: 
+value $V$, which contains real values, and policy $\pi$ which contains actions. 
+In our problem, $V(s)$ corresponds to the probability of reaching a destination state $s' \in \mathcal{D}$
+from state $s$ by following a policy that maximizes the expected reward.
+Note that the value $V((1))$ of the origin state $(1)$ is strictly positive if and only if 
+there exists a state $s \in S$ for which $S_{s} \cap \mathcal{D} \neq \emptyset$ and
+$P(\tau_{s} \leq T) > 0$.
+
+Similarly as in \citep{bellman}, the value $V(s)$ is defined by 
+\begin{align}
+\label{value}
+V(s) := \max_{a \in A_s} \left\{ \sum_{s' \in S_s} P_a(s,s') \left(R(s,s') +V(s')\right)\right\}
+\end{align}
+for all $s \in S$. Note that $V(s)=0$ for all $s \in \mathcal{D}$, since $S_s = \emptyset$ for all $s \in \mathcal{D}$.
+
+An optimal policy is characterized as follows:
+When at state $s$, the available transfer options $X \subset S_s$ to successor states are revealed.
+The commuter transfers to a state $s' \in X$ for which $R(s,s') +V(s')$ is maximized.
+Formally, an optimal action $a$ at state $s$ is determined by
+the following theorem.
+
+\begin{theorem}
+\label{optimalpolicy}
+Let $s \in S$ be a state. An action $a \in A_s$ is optimal satisfying Equation \eqref{value}, if 
+\begin{align}
+\label{jarjestys}
+R(s,s^{a,1})+V(s^{a,1}) \geq R(s,s^{a,2})+V(s^{a,2}) \geq \ldots \geq R(s,s^{a,|S_s|})+V(s^{a,|S_s|}),
+\end{align}
+where the successor states ranked by action $a$ are denoted by $s^{a,a(s')}$ for all $s' \in S_s$.
+\end{theorem}
+Theorem \ref{optimalpolicy} gives an optimal action
+for a state $s$, given that the values $V(s')$ of its successor states are known.
+In the following, we present an algorithm for calculating the values for all states.
+
+\subsection{Backward induction algorithm}
+The values $V(s)$ of states can be determined
+by means of backward induction, as shown in Algorithm \ref{backward01}.
+By executing Val($(1)$), the program recursively calculates values and optimal actions for 
+all states $s$ that are reachable from the origin state $(1)$.
+
+Initially, we only know the values of destination states, that is, $V(s)=0$ for all $s \in \mathcal{D}$.
+Thus, the first states for which the value can be calculated
+are the ones that precede a destination state. 
+The algorithm then proceeds backwards until the value $V((1))$ of the origin state is calculated.
+
+\begin{algorithm}
+\begin{algorithmic}
+ \FORALL {$s' \in S_{s}$ (successor set of $s$)}
+\STATE $V(s') \leftarrow $ Val($s'$);
+\STATE Determine an optimal action $a$ by sorting the states $s' \in S_{s}$ in descending order of $R(s,s') + V(s')$;
+\STATE $V(s) \leftarrow \sum_{k=1}^{|S_s|} P_{a}(s,s^{a,k}) \left( R(s,s^{a,k}) +V(s^{a,k}) \right)$ \hfill ($V(s) = 0$ for destination states);
+\STATE Return $V(s)$;
+\ENDFOR
+\end{algorithmic}
+\caption{A recursive function Val($s$) for calculating the value $V(s)$ for state $s$.}
+\label{backward01}
+% {\scriptsize
+% \ForAll{$s' \in S_{s}$ (successor set of $s$)}{
+% $V(s') \leftarrow $ Prob($s'$)\; 
+% }
+% Determine an optimal action $a$ by sorting the states $s' \in S_{s}$ in descending order of $R(s,s') + V(s')$\;
+% $V(s) \leftarrow \sum_{k=1}^{|S_s|} P_{a}(s,s^{a,k}) \left( R(s,s^{a,k}) +V(s^{a,k}) \right)$ \hfill ($V(s) = 0$ for destination states)\;
+% Return $V(s)$\;
+% }
+\end{algorithm}
+
+
+
+\subsection{Analysis}
+\label{analysis}
+\ref{jdjuejor} presents the following theoretical results related to 
+optimal policies described in the previous section. 
+\begin{lemma}
+\label{perustulos01}
+%Let $(1,i_2,\ldots,i_d)$ denote a path from leg $1$ to the destination leg $i_d$ and
+Let $(i_0,i_{1},\ldots,i_{d-1},i_d)$, where $i_0=1$, be a destination state.
+Let $p_{s_h}$ % $P((i_h,i_{h+1},\ldots,i_{d-1},i_d) \mid s_h)$ %$p_{i_h|(1,\ldots,i_{h})}$ 
+denote the probability of success of the path $(i_h,\ldots,i_d)$ from leg $i_h$
+to the destination leg $i_d$,
+given that the commuter is at state $s_h=(i_0,i_1,\ldots,i_{h-1},i_{h})$. %, that is, has successfully taken the path $(1,\ldots,i_{h})$.
+%Then, $p_{s_1}$ defined by equation \eqref{rekursio01} satisfies 
+%$p_{s_1} \geq p_{s_i|(s_1,\ldots,s_{i-1})}'$.
+Then, $V(s_h)$ defined by Equation \eqref{rekursio01} satisfies 
+$V(s_h) \geq p_{s_h}$ %P((i_h,\ldots,i_d) \mid s_h)$
+for all ${h \in \{0,\ldots,d-1\}}$. 
+\end{lemma}
+Lemma \ref{perustulos01} states that the probability of reaching the destination
+from a given state $s$ by following an optimal policy is always greater than or equal to
+the probability of success of any predetermined path from $s$ to the destination.
+Note that this is true for any path that maximizes the probability
+of success for reaching the destination. 
+
+By using the above result, it can be shown that the ratio of 
+probabilities $V(s_h)/p(s_h)$ is an increasing function
+of the distance from the destination.
+\begin{theorem}
+\label{kasvavat}
+Using the notation of Lemma \ref{perustulos01}, we have
+$V(s_h) / p(s_h) \geq V(s_{h+1}) / p(s_{h+1}) \geq 1$ for all $h \in \{0,\ldots,d-1\}$.
+\end{theorem}
+Theorem \ref{kasvavat} establishes a fundamental difference between dynamic and static journey planning: 
+The importance of being able to reconsider the remaining path is emphasized when the number of transfers is increased.
+
+\section{Leg duration models}
+\label{durationmodels}
+Thus far we have considered the general case where the start and end times of legs
+are defined as arbitrary real-valued random variables. 
+For a more specific analysis, let us study two alternative ways of modeling the durations of legs.
+
+\subsection{Independent durations}
+\label{independentdurations}
+Perhaps the most intuitive way of defining the start and end times of a leg of a public transport service
+is to assume that the \emph{duration} of each leg $i$ is a real-valued random variable $D_i$
+with a strictly positive distribution and that the durations of legs are independent.
+Given a service consisting of legs $i_1,\ldots,i_r$ and the start time $\tau_{i_1}$, the end time of leg $i_h$
+and the start time of leg $i_{h+1}$ satisfy $\tau_{i_h}' = \tau_{i_{h+1}} = \tau_{i_1} + \sum_{h=1}^r D_{i_h}$.
+Note that in this model the uncertainty of start and end times are greater at
+the end of the route (see Figure \ref{stokvsdet02}). In addition, the conditional transfer probabilities 
+are smaller than the prior transfer probabilities: For example, let us consider a 
+transfer $j \to l$ with prior transfer probability $p_{jl} = P(\tau_j' \leq \tau_l)=P(\tau_j + D_j \leq \tau_l)$.
+Given that the commuter has already successfully transferred from $i$ to $j$, where $P(\tau_i' \leq \tau_j) < 1$,
+the transfer $j \to l$ is generally less likely to be successful, that is, 
+$P(\tau_j + D_j \leq \tau_l \ | \ \tau_i' \leq \tau_j) \leq P(\tau_j + D_j \leq \tau_l)$.
+In this model, the start and end time distributions of states are characterized by the following theorem.
+\begin{theorem}
+\label{vaikeathm}
+ Let $s = (i_0,\ldots,i_m) \in S, i_0=1$ be a state for which all 
+legs are executed by different services, that is, 
+$g\neq h \Rightarrow k_{i_g} \neq k_{i_h}$ for all $g,h \in \{0,\ldots,m\}$. Then, the density function $f_{\tau_s}(x)$ of the start 
+time $\tau_s$ of state $s$ is given by $f_{\tau_s}(x) = f_{\tau_{i_m}}(x)$ and the cumulative distribution function
+$F_{\tau_s}(x)$ of the end time $\tau_s'$ of state $s$ is given by
+\begin{align}
+ \label{vaikeaintegraali}
+F_{\tau_{s}'}(x)=
+\int_{-\infty}^{\infty} f_{\tau_{i_0} + D_{i_0}} (x_0') 
+\int_{x_0'}^{\infty} f_{\tau_{i_1}} (x_1)
+\int_{x_1}^{\infty} f_{x_1+D_{i_1}} (x_1')
+\cdots
+\int_{x_{m-1}'}^{\infty} f_{\tau_{i_m}} (x_m) 
+& \int_{x_{m}}^{x} f_{x_{m} + D_{i_{m}}}(x_{m}')
+dx_m' dx_m \ldots dx_0'.
+\end{align}
+\end{theorem}
+
+Theorem \ref{vaikeathm} gives us a formula for calculating the end time distribution of
+a state defined as a sequence of legs, given that the legs are executed by different services.
+For a state $s = (i_0,\ldots,i_m)$ for which some subsequent legs $i_g,\ldots,i_{h}$ are immediate successors, 
+equation \eqref{vaikeaintegraali} can be used by joining these legs to produce a single 
+leg with duration $\sum_{k=g}^h D_{i_k}$. 
+
+
+\subsection{Independent start and end times}
+\label{independentstartandendtimes}
+In some cases it might be reasonable
+to think that the driver of a transport service is capable
+of adapting to the situation: If the service is behind schedule,
+the driver makes an effort to reach the remaining stops on the
+route in time by increasing the pace. That is, the durations of
+subsequent legs of a service are not necessarily independent. 
+This scenario can be approximated by assuming that the start 
+and end times of all legs are independent random variables.
+In this case, the transition probabilities between legs are 
+conditionally independent of all previous states and actions.
+
+Since the travel history is ignored, the states are definded
+as legs, and the state space is defined by
+\begin{align}
+\label{rekursio02}
+ S = \mathcal{L}_{[0,T]} = \{1,\ldots,n\},
+\end{align}
+where state $1$ denotes the orgin leg and state $n$
+denotes the destination leg, see Figure \ref{randomgraph}.
+Furthermore, the start and end times of states coincide with the unconditional start and end
+times of legs, in contrast to Equations \eqref{ehdollinen1} and \eqref{ehdollinen2}, where the start and end times are defined as conditional
+random variables.
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{randomgraph}
+\end{center}
+\caption{A timeline of the history independent markov decision process. The points denote states (=legs) and the arrows
+between the points denote transfers between states. The solid arrows denote
+successful \emph{past transfers}, which
+form an acyclic graph. The dashed arrows denote \emph{present transfers}, which are realized
+at the present time. The dotted arrows denote \emph{future transfers} $i\to j$, each
+of which is successful with prior probability $p_{ij}$. Note that there may exist 
+states $i,j$ for which both $p_{ij}>0$ and $p_{ji}>0$. Over time, 
+future transfers become present transfers and present transfers become
+past transfers.
+}
+\label{randomgraph}
+\end{figure}
+
+
+We suggest that the history independent model \eqref{rekursio02} can be used to
+approximate to the conditional case \eqref{statejoukko}.
+The following theorem characterizes the relation between the two models.
+\begin{theorem}
+\label{durationthm}
+Let $i,j$ and $k$ denote three legs and
+let $D_j$ denote the random duration of leg $j$.
+Given that the transfer $i \to j$ is successful and assuming that the durations of 
+legs are independent, the conditional probability 
+$P(\tau_{j}' \leq \tau_{k} \ | \ \tau_{i}' \leq \tau_{j})$ of a successful
+transfer $j \to k$ satisfies
+\begin{align*}
+P(\tau_{j}' \leq \tau_{k}) \geq 
+P(\tau_{j}' \leq \tau_{k} \ | \ \tau_{i}' \leq \tau_{j}) \geq 
+\frac{P(\tau_{i}' \leq \textnormal{inf supp} f_{\tau_{j}})}{P(\tau_{i}' \leq \tau_{j})} P(\tau_{j}' \leq \tau_{k}), 
+\end{align*}
+where $\textnormal{inf supp} f_{\tau_{j}}$ denotes the greatest real number $t$ for which $f_{\tau_j}(t) = 0$ and
+$t \leq x$ for all $x$ satisfying $f_{\tau_j}(x) > 0$.
+\end{theorem}
+Theorem \ref{durationthm} states that if the distributions of $\tau_i'$ and $\tau_j$ are
+relatively far apart, the conditional probability $P(\tau_{j}' \leq \tau_{k} \ | \ \tau_{i}' \leq \tau_{j})$
+of a successful transfer from $j$ to $k$ is close to the unconditional probability $P(\tau_{j}' \leq \tau_{k})$.
+In this case, the two leg duration models discussed above converge and the 
+independent durations model can be approximated by assuming independence of start and end times. 
+
+
+
+
+\subsection{Unconditional transfers}
+\label{unconditional}
+The history independent model defined by Equation \eqref{rekursio02} can be further approximated by 
+assuming that successful transfers from a state $s$ to its successor states are 
+independent events, which is not generally true. However, if the 
+spreads of the time distributions are relatively small, we obtain a 
+reasonable approximation by assuming independence of successful transfers. 
+From a practical viewpoint, since we are particularly interested in the choice for the commuter in 
+each situation, the values 
+are not as interesting  as the \emph{descending order} of the values, that is, the action at each state.
+We suggest that even if approximate models are used, the actions of 
+the commuter are in most cases similar as with more accurate models since the 
+descending order of the probabilities is preserved.
+
+Since transfers between legs are assumed to be independent events, the transition probability function \eqref{ekakaava} satisfies
+\begin{align}
+\label{ylaraja01}
+P_a(s,s^{a,k}) 
+= 
+P\left(\tau_{s}' \leq \tau_{s^{a,k}} \cap \bigcap_{g=1}^{k-1} \tau_{s}' > \tau_{s^{a,g}} \right)
+= \sum_{k=1}^h p_{ss^{a,k}} \prod_{g = 1}^{k-1}(1-p_{ss^{a,g}}),
+\end{align}
+where $p_{ss^{a,k}}$ denotes the prior transfer probability from $s$ to $s^{a,k}$, as defined in Equation \eqref{transferprob}.
+Since the state space is equal to the state space of the history independent model, 
+Algorithms \ref{alg01b} and \ref{alg02} can be used to calculate the unconditional values . 
+
+\begin{theorem}
+The history independent value $V_H(s)$ defined by model \eqref{rekursio02} and the unconditional value $V_U(s)$ 
+defined by \eqref{ylaraja01} satisfy $V_H(s) \leq V_U(s)$ for all $s \in \{1,\ldots,n\}$.
+\end{theorem} 
+Note in particular that if the transfer probabilities satisfy $P(\tau_{s}' \leq \tau_{s^{a,k}}) \in \{0,1\}$
+for all successor states $s^{a,k} \in S_{s}$, we have $V_H(s) = V_U(s) = V_U(s^{a,k^*})$, where $k^*$ is the smallest index 
+for which $P(\tau_{s}' \leq \tau_{s^{a,k}}) = 1$. In this case, the history independent and unconditional
+coincide. In other words, the approximation given by \eqref{ylaraja01} is seen to be most accurate when 
+the variances of the arrival times are small, which means that the transfer probabilities are likely
+to be close to zero or one. 
+
+Furthermore, if each state has a single successor state, the history independent and unconditional models yield the same result.
+We suggest that the accuracy of the unconditional model is greatest when the average number of successor states is small.
+
+\subsection{Expected number of successful paths [\ref{jtoits}]}
+\label{enumber}
+\ref{jtoits} presents the following approximate method for maximizing the reliability
+of a journey from
+the origin leg $1$ to the destination leg $n$ in the unconditional model. The approach is to maximize the \emph{expected number 
+of successful paths} to the destination leg from each leg of the journey. 
+The method is motivated by the idea that paths that allow several detours are considered
+more reliable than paths with no alternatives (see Figure \ref{stokvsdet01}).
+
+Let $h_i$ denote the expected number of successful acyclic paths from leg $i \in \{1,\ldots,n-1\}$ 
+to the destination leg $n$. When the commuter is
+at leg $i$, the available transfer options $X$ to successor legs are revealed. 
+The commuter transfers to the leg $i' \in X$ for which $h_{i'}$ is maximized.
+
+Theorem \ref{epolut} establishes a relation between eigenvectors and the expected number of successful paths.
+For this purpose, we define a \emph{sink graph} as follows.
+\begin{definition}
+  Let $G=(V,A)$ be a weighted directed acyclic graph, where a weight $p_{ij} \in [0,1]$ is assigned to each arc $(i,j) \in A$
+and let $s \in V$ be a node such that $(s,i) \notin A$ for all $i \in V$.
+The graph $G_s=(V, A \cup (s,s))$, where $p_{ss}=1$, is called a \emph{sink graph}. 
+\end{definition}
+In other words, a sink graph is a directed acyclic graph $(V,A)$ with the exception that one node $s \in V$ with zero outdegree is
+associated with a loop $(s,s)$.
+
+\begin{theorem}
+\label{epolut}
+Let $P$ denote the adjacency matrix of a sink graph $G_s=(V,A)$, where $V=\{1,\ldots,|V|\}$,  
+let $h_i$ denote the expected number of successful paths from $i$ to $s$ for $i \in V \setminus \{s\}$ and let $h_s=1$. 
+Then, $h=(h_1,\ldots,h_{|V|})^T$ is a unique dominant eigenvector of $L$.
+\end{theorem}
+Theorem \ref{polut} states that by constructing a sink graph, the expected number of successful paths $h_i$ from leg $i$ to the destination leg $n$
+is given by the dominant eigenvector of the adjacency matrix $P$ consisting of the prior transfer probabilities $p_{ij}$
+between legs (and $p_{nn}=1$). 
+
+The expected number of successful paths can also be calculated for all legs that are reachable from the 
+origin leg by means of Algorithm \ref{backward02}.
+\begin{algorithm}
+\begin{algorithmic}
+\IF {$h_i \geq 0$ \ \ ($h_i$ has already been determined )}
+\STATE Return $h_i$;
+\ENDIF
+\FORALL {$i' \in S_{i} $ such that $p_{ij} > 0$ ($S_i$ = successor set of $i$)}
+\STATE $h_{i'} \leftarrow $ Ex($i'$); 
+\ENDFOR
+\STATE $h_i \leftarrow \sum_{j \in S_i} p_{ij} h_j$;
+\STATE Return $h_i$;
+\end{algorithmic}
+\caption{A recursive function Ex($i$) for calculating the expected number of feasible 
+paths $h_i$ from leg $i$ to the destination leg $n$. 
+Initially, set $h_i=-1$ for all $i \in \{1,\ldots,n-1\}$ and $h_n \leftarrow 1$.}
+\label{backward02}
+\end{algorithm}
+The complexity of the algorithm is of order $\mathcal{O}(n+|A|)$, where $A$ is the set of transfers for which $p_{ij} > 0$.
+Letting $m = \max{i \in \{1,\ldots,n-1\}} |S_i|$ denote size of the largest successor set, the complexity
+is bounded above by $\mathcal{O}(n(m+1))$.
+
 
 \chapter{Economic equilibrium}
 \label{economicmodels}
@@ -1595,9 +2677,9 @@ However, as suggested in \cite{cortes}, one of the key issues in a large scale d
 responsive service ever becoming a reality, is the
 institutional inertia against change in transit paradigms. No models exist that are
 directly applicable in finding to what extent a completely new transportation system is possible in real life.
-How to model demand for a hypothetical transportation service remains a relatively open question.
+How to accurately estimate the demand for a hypothetical transportation service remains a relatively open question.
 In order to be able to access such practical problems, future work calls for 
-real-life pilot services, which would probably give valuable information on the demand for demand-responsive transport.
+real-life pilot services, which would probably give valuable information on the demand for and performance of demand-responsive transport.
 
 
 
@@ -1610,7 +2692,7 @@ real-life pilot services, which would probably give valuable information on the 
 %\errata
 
 \bibliographystyle{plain}
-\bibliography{vk,eadarp,hitsdarp,hitsdarp2,dju,kuhmo}
+\bibliography{dju,vk,eadarp,hitsdarp,hitsdarp2,kuhmo}
 
 
 %% The first publication (journal article)
