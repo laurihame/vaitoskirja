@@ -276,10 +276,14 @@ it may become practically useless in congested urban areas.
 \section{Problem statement}
 This work is focused on the discrete and combinatorial problems arising in the planning of
 public transport in general and demand-responsive transport in particular. The main goals are (i) to develop models for a priori studying 
-different forms of transportation services without having to implement them in practice and (ii) to
+different forms of demand-responsive transport without having to implement them in practice and (ii) to
 develop algorithms for solving combinatorial problems related to public transport.
 
-The following chapters present three approaches to the demand and supply of public transport: 
+Generally, public transport can be viewed as a market where demand affects supply and vice versa.
+For a given demand, we are interested in the optimal actions for the transport operator and for a given supply, 
+we study the optimal actions for customers with specific travel needs. By relaxing both demand and supply, 
+we seek to determine the economic equilibrium, where the demand meets the supply.
+More precisely, the three main research questions considered in this work are stated as follows: 
 %First, we assume that the demand is fixed and optimize the supply. Second, for a given supply,
 %More precisely, the main problems are stated as follows:
 
@@ -289,9 +293,9 @@ Using a fleet of vehicles, what is the best way to satisfy the demand?
 In Chapter \ref{journeyplanning}: \emph{Journey planning}, the schedules and routes of transport services are assumed to be known during a specific time horizon.
 Using the scheduled transport services, what is the best way for a commuter to travel from a given origin to a given destination?
 
-In Chapter \ref{economicmodels}: \emph{Economic models}, we define the demand model by assuming that customers seek trips with
+In Chapter \ref{economicmodels}: \emph{Economic equilibrium}, we define the demand model by assuming that customers seek trips with
 small travel times and the supply model by assuming that transport service providers aim to maximize profit. Given these models,
-where does the demand for transportation meet the supply? How do regulation policies affect the economic equilibrium?
+at which point does the demand for transportation meet the supply and how do regulation policies affect the economic equilibrium?
 
 % \subsection{Vehicle routing}
 % 
@@ -337,17 +341,17 @@ A vast majority of theoretical studies related to demand-responsive transport ar
 optimization problems involving the construction of vehicle routes with respect to
 a set of customers, whose pick-up and drop-off points are known a priori \cite{toth03}.
 This problem is often referred to as the \emph{dial-a-ride problem}.
-A large scale system operating in real time induces new challenges: 
+A demand-responsive transport service operating in real time induces the following specific challenges: 
 In order to be able to compete with private cars, service
 should be available within a short period of time from the trip request.
 This calls for adaptive routing algorithms, since the modifications 
 in vehicle routes have to be executed in real-time.
 In order to ensure a sufficient level of service, the customers' waiting and ride times 
-should be relatively limited. The vehicle dispatching algorithms should be designed
+should be relatively limited. Thus, the vehicle dispatching algorithms should be designed
 in a way that the constrained nature of the problem is taken into account.
 
 In Section \ref{singlevehicle}, we study the \emph{single-vehicle dial-a-ride problem} which involves the construction
-of an optimal single vehicle route serving a set of customers. This problem is motivated by the
+of a single vehicle route serving a set of customers. This problem is motivated by the
 fact that solutions to the single-vehicle problem can be used as subroutines in environments with 
 multiple vehicles \cite{psaraftis01,psaraftis02}. The extension from the single-vehicle problem to the multi-vehicle
 case is dicussed in Section \ref{multivehicle}.
@@ -360,17 +364,17 @@ For example, if a dial-a-ride service requires customers to request
 service during the previous day, the nature of vehicle
 dispatching will certainly differ from a service in which
 customers may request immediate service.
-In this section, a specific version of the dial-a-ride problem (DARP) is examined, namely, the \emph{single-vehicle DARP
-with time windows}, in which the goal is to determine the optimal
+This Section focuses on %, a specific version of the dial-a-ride problem (DARP) is examined, namely, 
+the \emph{single-vehicle DARP with time windows}, in which the goal is to determine the optimal
 route for a single vehicle serving a certain set of customers.
 
-The consideration of narrow time windows means that the vehicle route is 
-restricted by relatively strict time limits for pick-up and delivery of each customer.
-Narrow time windows emerge in real-time dial-a-ride services, in which each customer
+The consideration of time windows means that the vehicle route is 
+restricted by time limits for pick-up and delivery of each customer.
+Narrow time windows emerge in transport services, in which each customer
 is given an estimate or guarantee regarding the pick-up and delivery times in the 
 form of time windows. These time windows are examined as hard limits to be met by the vehicle.
 Time windows have been incorporated in many early and recent studies of the DARP, see for example references 
-\cite{psaraftis02, jaw, madsen, toth02,cordeau02,diana, wong, cordeau01}.
+\cite{psaraftis02, jaw, madsen, toth02,cordeau02,diana, wong, cordeau01, berbegliafeas}.
 In these studies it is noted that in dynamic settings, time windows eliminate the possibility of indefinite
 deferment of customers and strict time limits help provide reliable service.
 While the main focus is on fixed time windows, 
@@ -447,24 +451,37 @@ Psaraftis noted that \emph{although single-vehicle Dial-A-Ride systems do not ex
 practice, single-vehicle Dial-A-Ride algorithms can be used as subroutines in
 large scale multivehicle Dial-A-Ride environments. It is mainly for this reason
 that one's ability to solve the single-vehicle DARP is considered important.}
-A similar approach is used in this work, where the idea is to use the
-solution of the single-vehicle DARP as a subroutine in a dynamic multiple-vehicle
-scenario. An effort is made to solve the single vehicle problem up to optimality
-whenever the problem size is reasonable. 
 
 \subsection{Problem formulation \cite{psaraftis01,psaraftis02}}
 \label{staticnarrow}
 Let there be $N$ customers, each of which have been assigned a number $i$ between 1 and $N$.
 For each customer $i \in \{1,\ldots,N\}$, let $u_i$ be the pick-up point and $u_{N+i}$ be the delivery point,
-$[e_i,l_i]$ be the pick-up time window and $[e_{N+i},l_{N+i}]$ be the delivery time 
-window\footnote{In addition to the fixed time windows $[e_i,l_i]$ and $[e_{N+i},l_{N+i}]$, to each 
-customer may be associated a specific maximum ride time constraint $T_i^{\max}$. 
-The handling of these constraints is discussed in section \ref{considerations}.}, 
-$q_i$ be the load (number of passengers) associated to customer $i$. 
+$[e_i,l_i]$ be the pick-up time window and $[e_{N+i},l_{N+i}]$ be the delivery time window. 
+In addition to the fixed time windows $[e_i,l_i]$ and $[e_{N+i},l_{N+i}]$, to each 
+customer is associated a specific maximum ride time constraint $T_i^{\max}$. 
+Let $q_i$ be the load (number of passengers) associated to customer $i$. 
 Let $A$ be the starting point of the vehicle (location of the vehicle at $t=0$).
 It is assumed that the time to go from any one of the pick-up and delivery points 
 $u_i$, where $i \in \{1, \ldots, 2N\}$, directly to another point $u_{j}$ is a 
 known and fixed quantity $t(i,j)$.
+The above parameters are illustrated in Figure \ref{timeline01}.
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.5 \columnwidth]{timeline01}
+\caption{Time pick-up and drop-off time windows. The pick-up point of
+customer $i$ is denoted by $i^{+}$ and the drop-off point is denoted by $i^{-}$.
+The customer should be picked up at $i^{+}$ within the time window $[E_{i^+},L_{i^+}]$
+and the customer should be dropped off at $i^{-}$ within the time window $[E_{i^{-}},L_{i^{-}}]$.
+The service times needed for the customer to get on the vehicle
+and get off the vehicle are denoted by $D_{i^+}$ and $D_{i^-}$. The time between
+the drop-off and the pick-up (excluding $D_{i^+}$) should not exceed the maximum ride time $T^{\max}$.
+}
+\label{timeline01}
+\end{center}
+\end{figure}
+
+
+
 
 The goal is to find a vehicle route starting from $A$ and ending at one of
 the delivery points so that the following conditions hold.
@@ -496,36 +513,86 @@ until their delivery, where $\alpha$ is the customers' time preference
 constant describing the impact of ride time and waiting time on the degree of
 dissatisfaction. 
 
-In reference \cite{powell95}, it is noted that in static and deterministic transportation models, finding an 
-appropriate objective function is fairly easy and that the objective function is 
-usually a good measure for evaluating the solution. In dynamic models, the objective function
-used to find the solution over a rolling horizon has often little to do with
-the measures developed to evaluate the overall quality of a solution.
-In stochastic models it might be useful to minimize the probability of violating time windows.
-However, the advanced insertion method to be described is designed in a way that several objective 
-functions, that are thought to be suitable
-for dynamic and stochastic problems, may be incorporated with minimal work.
-Generally, the choice of the objective function depends 
-on the particular version of the problem and is
-discussed only briefly in this document. 
-For a study related to choosing an appropriate objetive function
-for the dynamic DARP, the reader is referred to \cite{hyytia}.
-
-
-The feasibility of time windows is governed by the following two assumptions.
-\begin{enumerate}
-	\item 
+The feasibility of time windows is governed by the following two assumptions:
+ 
 	If the vehicle arrives at any node (either pick-up or delivery)
 	later than the upper bound of that node's time constraint ($l_j$),
 	then the entire vehicle route and schedule is infeasible. In other words,
 	those upper bounds constitute hard constraints that should be met
 	by the vehicle. 
-	\item
+
+
 	If the vehicle arrives at any node earlier
 	than the lower bound on that node's time constraint ($e_j$),
 	then the vehicle will stay idle at that point and depart immediately 
 	at $e_j$. 
-\end{enumerate}
+
+
+\subsection{The dynamic case}
+\label{dynamicdarp}
+Let us discuss the extension of the predescribed single-vehicle dial-a-ride problem to 
+the dynamic case, in which new customers are appended to the route in real time.
+Generally, it can be seen that there is no need to compute a new route
+except when a new customer request occurs, a customer does not show up at the agreed pick-up location,
+the vehicle is ahead or behind of schedule or the vehicle has lost its way. 
+
+A simple example, similar to the one presented in \cite{psaraftis01},
+on the real-time updating of a vehicle route %might operate 
+is shown in figure \ref{dynamicexample02}.
+Initially, customers $1$ and $2$ have been assigned 
+pick-up and delivery points and corresponding time windows. The vehicle located at $A$ follows the
+tentative optimal route $(1^{\uparrow},2^{\uparrow},1^{\downarrow},2^{\downarrow})$,
+where "$\uparrow$"-symbols denote pick-up nodes and "$\downarrow$"-symbols denote delivery nodes. 
+(see figure \ref{dynamicexample02}a).
+At the time the vehicle is at $B$, the vehicle route is updated with respect 
+to customers $1,2$ and $3$. At this instant %in time, %the procedure revises the
+% nonexecuted portion of the route and produces the 
+a new tentative optimal route shown in figure \ref{dynamicexample02}b is produced. 
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=1.0\textwidth]{dynamicexample04.pdf}
+\caption{Modifications in the vehicle route. The route is updated when the vehicle is at $B$ and 
+a new tentative optimal route beginning at $B'$ is produced. 
+The figures on the right show the routes as so-called labeled Dyck 
+paths \cite{cori}, in which each pick-up $i^{\uparrow}$ precedes the correspoding drop-off $i^{\downarrow}$. 
+At the time a new customer is added to the route, a new path is formed. Clearly, the "height" of the path
+shows the number of customers aboard in different parts of the route.}
+\label{dynamicexample02}
+\end{center}
+\end{figure}
+
+Note that the new route does not have $B$ as origin, but
+a point $B'$, slightly ahead of $B$. This is due to two facts:
+i) It will take some time for the algorithm to process the new input and reoptimize, 
+ii) It will take some time for the driver
+of the vehicle to process the information regarding the new route. 
+The distance between $B$ and $B'$ depends in general on the particular 
+dial-a-ride service examined. For example, in a highly dynamic setting,
+in which the modification of the route is not
+allowed to take more than a few seconds, it may be assumed that
+the latter of the facts is more restrictive. 
+Any dynamic dial-a-ride
+service should make use of a mechanism to update the point $B'$
+and estimated time of arrival $T'$ at $B'$ at sufficient time intervals.
+The \emph{vehicle checkpoint} $(B',T')$ acts as the starting point for all service sequences.
+
+	In addition, for customers that have already been picked up, the pick-up point 
+	is not a part of the input of the problem. Thus, for such customers
+	only the delivery point is considered.
+
+	In dynamic models, the objective function
+	used to find the solution over a rolling horizon has often little to do with
+	the measures developed to evaluate the overall quality of a solution \cite{powell95}.
+	However, the adaptive insertion method described in \ref{jeadarp} is designed in a way that several objective 
+	functions, that are thought to be suitable
+	for dynamic settings, may be incorporated with minimal work.
+	Generally, the choice of the objective function depends 
+	on the particular version of the dynamic routing problem and the performance
+	of different objective functions may be sensitive to, for example, constraints, demand intensity
+	or the number of vehicles. For a study related to choosing an objetive function
+	for the immediate-request DARP, the reader is referred to \cite{hyytia}.
+
 
 \subsection{Adaptive insertion algorithm [\citepub{jeadarp}]}
 In general, exact procedures for solving routing  
@@ -545,8 +612,7 @@ make use of what is called the insertion procedure, in the classical version of 
 the pick-up and delivery node of a new customer are inserted into the 
 \emph{current optimal sequence} of pick-up and delivery nodes of existing customers.
 In these references, several improvements to the insertion algorithm 
-have been suggested. However, the main idea
-of the classical insertion algorithm a priori
+have been suggested. However, the main idea of the classical insertion algorithm a priori
 excludes the possibility that the appearance of a new customer may render
 the optimal sequencing of already existing customers no longer optimal.
 While the basic insertion algorithm can be seen to
@@ -574,7 +640,7 @@ if the number of feasible service sequences grows large. However, if the route i
 the number of feasible routes with respect to all customers
 will be small compared to the number of all legitimate routes. 
 Furthermore, the algorithm may be easily extended to an adjustable heuristic algorithm
-able to handle any types of time windows, see Section \ref{structure}. 
+able to handle any types of time windows, see Section \ref{heuristic}. 
 
 The idea of the advanced insertion method is 
 clarified by the following example, where no
@@ -637,7 +703,6 @@ we can simply choose the sequence for which the arrival time at the last
 node is smallest.
 
 
-
 \subsubsection{A priori clustering}
 \label{clustering}
 In problems involving a large number of customers, assuming that the time windows are relatively narrow,
@@ -651,14 +716,6 @@ does make it in time to $j$, that is, if
 		e_{i} + t(i,j) & > l_{j},
 	\end{align}
 it is said that the transition $i\to j$ is \emph{a priori infeasible}.
-A priori infeasibility could be defined similarly for capacity constraints.
-However, assuming that the load associated to each customer 
-is at most $C/2$, where $C$ is the capacity of the vehicle,
-each transition is a priori feasible with respect to capacity.
-In other words, two customers $i$ and $j$ with loads satisfying $q_i \leq C/2$ and $q_j \leq C/2$
-may be picked up and dropped of in any order without the capacity constraint 
-being violated.
-
 
 Note that if for any two nodes $i$ and $j$, both transitions $i \to j$ and 
 $j \to i$ are infeasible a priori, the entire problem is infeasible. 
@@ -867,12 +924,9 @@ At first, the problem is solved by using an initial degree $L_0$.
 Each time the algorithm is unable to find a feasible solution, the degree is increased and 
 the problem is solved again.
 \end{enumerate}
-Let us study the expected CPU time of the tuning method.
+Let us study the expected CPU time of the tuning method described above.
 Let $P(S|L=l)$ denote the probability that a solution is found by using the degree $L=l$
 and let $T(l)$ denote the average running time of the algorithm with $L=l$. 
-The average CPU times of feasible runs are assumed equal to those occurring during infeasible runs, although
-infeasible runs are actually slightly less expensive. However, it can be seen that this approximation 
-will not affect the results of the following examination. 
 The expected CPU time for a given tuning strategy $(L_0,L_1,\ldots)$, where $L_0 < L_1 < L_2 < \ldots$, 
 is given by the formula %can be written in the form
 \begin{align*}
@@ -939,112 +993,361 @@ E(\tau(L_0)) &= \sum_{i=0}^{\lfloor \log_K l'/L_0 \rfloor} (1-P(S|L=K^iL_0))^i T
 								 & \leq T(L_0)(1+\log_K l'/L_0).
 \end{align*}
 \end{proof}
-In general, the two theorems imply that the expected CPU time is minimized 
-when the initial degree $L_0$ is small. However, this is true only if %due to 
-the probability of finding a solution with small values of $L$ is relatively high.
+In general, the two theorems suggest that the expected CPU time is minimized 
+when the initial degree $L_0$ is small. 
 For example, if $l' = 16$ , $K=2$ and $P(S|L \geq 1) > 0.5$, theorem \ref{doublingthm02} states that
 that $E(\tau(1)) < T(5)$. By theorem \ref{doublingthm01} we know that
 the values $2$ and $4$ are suboptimal for $K=2$. Thus, the optimal initial value
 is either $1$ or $3$ depending on the actual probabilities of finding solutions with different values of $L$. 
-%The fact that the optimal value of $L_0$ (with respect to complexity) is small 
-%is verified by the computational results presented in section \ref{experience}.
 
-Finally, it should be noted that the optimal choice
-of $K$ and $L_0$ will in general depend on the type of the problem to be solved and that
-by increasing the values, the optimality of the %probability of achieving the globally optimal
-solution with respect to the objective of the problem is increased as well since more sequences are evaluated,
-as will be seen in section \ref{experience}. 
-%In this work, however, the heuristic algorithm is designed to solve the problem as quickly as possible 
-%and thus the choice of $K$ and $L_0$ which minimizes the CPU time is considered optimal.
-
-%Since the expected CPU time is an increasing function of the initial value $L_0$,
-%the value $L_0=1$ is used in the following experiments.
+Finally, it should be noted that 
+by increasing the values of $K$ and $L_0$, the optimality of the 
+solution with respect to the objective of the problem is increased as well since more sequences are evaluated.
 
 
+\subsection{Routing by ranking [\citepub{jrbrorl}]}
+Several web information retrieval (IR) methods have been developed
+for finding the most appropriate web pages corresponding to 
+queries given to search engines. The most sophisticated methods, such as HITS \cite{kleinberg}, PageRank \cite{brin01} and SALSA \cite{lempel}
+in use today make use of the hyperlinked structure of the web, since
+the goodness of a web page and the position of the page with respect to
+other web pages seem to have a certain connection. 
+For example, a web page may be
+considered good if there are many other web pages linking to that page. In other words, 
+web pages are ranked by search engines not only by means of the content of the page, but
+also by exploiting information regarding the hyperlink-induced relationships between pages.
+
+The bringing of hyperlinks to bear on the ordering of web pages has given rise to
+a mathematical analysis related to hyperlink-induced web IR methods, such as in
+\citep{farahat, langville, ng, agosti}, in which the 
+behaviour of several IR methods is studied from the computational point of view.
+
+The HITS (Hyperlink-Induced Topic Search) algorithm defines \emph{authorities} 
+(web pages with several inlinks) and \emph{hubs} (several outlinks). 
+The HITS thesis is that \emph{good hubs point to good authorities and good authorities
+are pointed to by good hubs}. Based on this thesis, both a hub score and an authority score is assigned to
+each web page \cite{langville}. 
+
+\ref{jrbrorl} presents an application of HITS on the dial-a-ride problem (DARP)
+\cite{berbegliathesis,berbegliahybrid,berbegliafeas},
+in which the goal is to construct a set of vehicle routes, serving a set of customers, satisfying 
+the given time, capacity and precedence constraints.
+Here the DARP is examined as a \emph{constraint satisfaction problem}, in which the goal
+is to find a feasible vehicle route that serves all customers, or to maximize the number of served customers.
+
+In the context of the dial-a-ride problem, 
+the links between nodes are defined as feasible transitions with respect to the %time, capacity and precedence 
+constraints of the problem: If node $j$ can be visited after $i$, a link from $i$ to $j$ 
+is formed. Thus, a good hub score of a pick-up or drop-off node $i$ means 
+that many nodes can be reached in time from $i$. 
+Thus, in order to efficiently find feasible solutions to the dial-a-ride problem, we suggest that nodes with large 
+hub scores should be visited first since there are many nodes that can
+be visited after such nodes. 
 
 
-\subsection{Maximum cluster algorithm [\citepub{jhitsdarpts}]}
+\subsubsection{The HITS algorithm \cite{kleinberg}}
+\label{hits}
+Given a web graph $G = (V,A)$ consisting of pages $V$ and links $A$ between pages,
+the authority and hub scores $a_i$ and $h_i$ are computed for each page $i$ as follows.
+Letting 
+$(i,j)$ represent a link from page $i$ to page $j$, given that each page has been 
+assigned an initial authority score $a_i(0)$ and hub score $h_i(0)$, HITS successively
+refines these scores by computing
+\begin{align*}
+a_i(k) & = \sum_{(j,i) \in A} h_j(k-1) \\
+h_i(k) & = \sum_{(i,j) \in A} a_j(k-1)
+\end{align*}
+for $k \in \{1,2,\ldots\}$. By using matrix notation, these equations can be written the form 
+$a(k) = L^T h(k-1)$ and $h(k) = L a(k-1)$,
+where $a(k)$ is the authority vector containing the authority scores of
+each of the pages at step $k$, $h(k)$ is the corresponding hub vector and
+$L$ is the adjacency matrix of the graph with elements $L_{ij} = 1$ if
+$(i,j) \in A$ and $L=0$ otherwise \cite{langville}. 
+
+It has been shown in \cite{farahat} that the authority and hub vectors
+describing the authority and hub scores of nodes of a given graph are given by 
+the dominant eigenvectors of the matrices $L^TL$ and $LL^T$ 
+(or equivalently, dominant singular vectors of $L$), 
+where $L$ is the adjacency matrix of the graph. 
+%Thus the authority and hub
+%scores may be efficiently calculated by using eigenvalue (or singular value) algorithms. 
+
+\subsubsection{Modified HITS}
+\label{modifiedhits}
+For constrained routing problems, a modified version of the HITS algorithm is used, in which only the hub scores
+are considered. More precisely, the thesis is that \emph{good hubs point to good hubs}. 
+This formulation is motivated by Theorem \ref{polut}, which states that for a specific class of graphs,
+the hub score of a node $i$ corresponds to the number of self-avoiding paths
+from $i$ to a given destination node.
+When attempting to construct a path that visits all nodes, or to maximize the number of visited nodes, 
+the modified HITS idea induces the following intuitive policy: 
+Good hubs are visited first, since many nodes can be reached from good hubs. 
+
+The hub scores are calculated as follows.
+Let $L$ denote the adjacency matrix of a directed graph $G$. 
+Similarly as in the HITS algorithm, the hub vector containing the \emph{hub scores} of nodes is first initialized, $h(0) = (1,1,\ldots,1)$ 
+and the hub vector is successively updated by means of the power method
+\begin{align}
+\label{modhub}
+h'(k) & = L h(k-1).
+\end{align}
+Similarly as in the original HITS algorithm, the hub vector
+converges to a dominant eigenvector of $L$.
+
+Theorem \ref{polut} characterizes the hub scores produced by the modified HITS algorithm for 
+\emph{sink graphs} defined as follows.
+\begin{definition}
+  Let $G=(V,A)$ be a directed acyclic graph and let $s \in V$ be a node such that $(s,i) \notin A$ for all $i \in V$.
+The graph $G_s=(V, A \cup (s,s))$ is called a \emph{sink graph}. 
+\end{definition}
+In other words, a sink graph is a directed acyclic graph $(V,A)$ with the exception that one node $s \in V$ with zero outdegree is
+associated with a loop $(s,s)$.
+
+\begin{theorem}
+\label{polut}
+Let $L$ denote the adjacency matrix of a sink graph $G_s=(V,A)$, where $V=\{1,\ldots,|V|\}$,  
+let $h_i$ denote the number of self-avoiding paths from $i$ to $s$ for $i \in V \setminus \{s\}$ and let $h_s=1$. 
+Then, $h=(h_1,\ldots,h_{|V|})^T$ is a unique dominant eigenvector of $L$.
+\end{theorem}
+\begin{proof}
+ Since the adjacency matrix of a directed acyclic graph is an upper triangular matrix with zeros on the diagonal,
+the adjacency matrix of a sink graph is an upper triangular matrix with diagonal elements $L_{ii}=0$ except 
+for the sink node $s$, for which we have $L_{ss} = 1$. The eigenvalues of an upper triangular matrix are equal to the
+diagonal elements \cite{axler} and thus there exists a unique dominant eigenvalue $1$. Let us show that $h=(h_1,\ldots,h_{|V|})^T$ 
+is the corresponding eigenvector of $L$.  
+
+Since all paths in a directed acyclic graph are self-avoiding and by definition we have $h_s=1$, 
+the number of self-avoiding paths $h_i$ from node $i$ to the sink node $s$ in the sink graph $G_s$ satisfies
+$h_i = \sum_{j \in V} L_{ij} h_j$
+for $i \in V \setminus \{s\}$ and $h_s$ satisfies $h_s= 1 = L_{ss} h_s = \sum_{j \in V} L_{sj} h_j$.
+In matrix form, we have $h = Lh$ and thus $h$ is the unique eigenvector corresponding to eigenvalue $1$.
+\end{proof}
+Note that since $h_i \leq h_j$ for all $i,j \in V$ for which $L_{ij} = 1$, the vector $h$ defines a \emph{topological
+ordering} \cite{cormen} of the nodes for which $h_i > 0$.
+Although Theorem \ref{polut} considers a special class of 
+graphs\footnote{The calculation of self-avoiding paths in graphs with cycles is discussed in \cite{ponstein}.}, 
+the result gives us an idea of the behaviour of the modified HITS method: There are many paths beginning from 
+nodes with high hub scores. 
+
+In the following section, we show how the 
+hub scores are used to give indicative guidance to 
+a dynamic programming algorithm for the dial-a-ride problem.
+
+\subsubsection{The ranking method}
+\label{svsolution}
+Let us present an exact constraint programming method for the single-vehicle DARP that 
+produces a feasible solution whenever one exists or proves that the problem is infeasible.
+In the latter case, the algorithm returns a route that maximizes the number of served customers.
+The main challenge is to find a sequence of pick-up and drop-off nodes for which 
+the time and precedence constraints are satisfied. While capacity constraints are 
+also considered, the focus is on problems, in which time limits are more restrictive.
+
+Letting node $0 \in V$ be the location of the vehicle at $t=0$,
+we aim to find a feasible path $(0,p_1,\ldots,p_{2n},0)$
+consisting of the pick-up and drop-off nodes of $n$ customers.
+The number of permutations is $(2n)!$ and the number of feasible permutations
+with respect to precedence constraints is $(2n)!/2^n$, see \ref{jeadarp}.
+
+Briefly, our approach to the problem is a \emph{depth-first} search, in which the
+remaining nodes are ranked by means of hub scores at each step and the order of the depth-first search is determined by the 
+ranking. %\footnote{This idea is remotely similar to lexicographic depth first search (LDFS) \cite{golumbic}.}.
+The search begins from node $0$ by ranking the pick-up and drop-off nodes $P$ of all customers.
+Then, the node $p^{*}$ with the highest ranking is added to the sequence and the ranking procedure is
+repeated for the remaining nodes $P \setminus \{p^{*}\}$.
+
+Formally, the search is executed by means of the recursion 
+REC($S,R_S$) shown in Algorithm \ref{alg01}, where $S$ denotes a sequence of nodes (initially $S=(0)$), $R_S$ denotes %based on a two-step feasibility check 
+the set of remaining nodes at $S$ (initially $R_S=\{1^{+},1^{-}, \ldots, n^{+},n^{-}\}$) and $S_{\max}$ denotes the sequence that maximizes the number 
+of served customers (initially $S_{\max} = (0)$). $C(S)$ denotes the number of served customers in sequence $S$, which is equal to the 
+number of drop-off points in $S$.
+\begin{algorithm}
+{\footnotesize
+\begin{algorithmic}
+
+\STATE Check time, capacity and precedence constraints;
+\IF {$S$ is infeasible} 
+\STATE \ \ Return;
+\ENDIF
+ \IF {$C(S) > C(S_{\max})$}
+ \STATE \ \ $S_{\max} \leftarrow S$;   \hfill (Store the current sequence $S$.) %$C(S) = $ The set of served customers in sequence $S$)
+ \STATE \ \ \textbf{if} $C(S) = n$
+ \STATE \ \ \ \ Terminate recursion; \hfill (Feasible route.)
+ \STATE \ \ \textbf{end if}
+ \ENDIF
+%\IF {$C(S) = n$}
+%\STATE \ \ Terminate recursion; \hfill (Feasible route.)
+%\ENDIF
+\STATE Rank the remaining nodes $i \in R_S$ and remove infeasible nodes from $R_S$; \hfill(See Section \ref{feasibility}.)
+\FOR{all $i \in R_S$ (in ranked order)}
+\STATE \ \ REC$((S,i) , R_S \setminus \{i\})$; %\hfill ($R_{(S,i)}$ = the set of remaining nodes at $(S,i)$.) 
+%\ELSE 
+%\STATE \ \ \ \ $R = R \setminus \{i\}$; 
+\ENDFOR
+\end{algorithmic}
+\caption{\footnotesize A recursive solution REC($S,R_S$) to the single-vehicle DARP. $S$ denotes a sequence of 
+nodes (initially $S=(0)$), $R_S$ denotes %based on a two-step feasibility check 
+the set of remaining nodes (initially $R_S=\{1^{+},1^{-}, \ldots, n^{+},n^{-}\}$) and $S_{\max}$ denotes the sequence that maximizes the number 
+of served customers (initially $S_{\max} = (0)$). $C(S)$ denotes the number of served customers in sequence $S$, which is equal to the 
+number of drop-off points in $S$.}
+\label{alg01}
+}
+\end{algorithm}
+
+The main idea of the recursion is that at each step, we have the current sequence $S$ 
+and the set of remaining nodes $R_S$ (nodes that can possibly be added to the sequence). 
+At first, we check the time, capacity and precedence constraints of $S$.
+If $S$ is feasible and all customers have been served, that is, if $C(S) = n$, a feasible solution is found and 
+the recursion is terminated.
+Otherwise,
+the remaining nodes $R_S$ are ranked by hub scores and the infeasible nodes 
+are removed from $R_S$ (see Section \ref{feasibility}).
+Then, the recursive function REC($(S,i),R \setminus \{i\}$) is called
+for all sequences $(S,i)$ in ranked order.
+In the following, we describe the ranking of remaining nodes in more detail.
 
 
+\subsubsection{Adjacency matrix and hub vector}
+\label{feasibility}
+The ranking of the remaining nodes $R_S$ is determined in two phases: 
+First, the adjacency matrix of the remaining nodes is determined by studying 
+feasible transitions between the nodes.
+Then, the hub vector is calculated by means of Equation \eqref{modhub}.
 
+Given that the vehicle is at the last node $s$ of sequence $S$, we study which sequences $(S,i,j)$, where 
+$i,j \in R_S$, are feasible with respect to the time and precedence constraints. %, capacity and precedence constraints. 
+Let $t_s$ denote the departure time and $Q_s$ denote the load of the vehicle at $s$, 
+and $t_i = t_s + T_{si}$ denote the arrival time at $i \in R_S$. For clarity, service times are 
+assumed equal to zero. However, the modification
+of the following equations for non-zero service times is straightforward.
+In addition, we consider %The above definition of feasible transitions %\ref{feasibletransitions} 
+fixed time windows $[E_i,L_i]$ for each node.
+However, maximum ride time constraints \cite{hunsaker} are taken into account by updating the 
+upper bounds $L_i$ of the time windows during run-time as described in \cite{hitsdarp}.
 
+First, all nodes that are seen to be non-reachable from $S$ are removed from the set $R_S$ of remaining nodes.
+\begin{definition}
+ \label{linkki02}
+A node $i \in R_S$ is said to be infeasible if
+there does not exist a feasible sequence $(S,\ldots,i)$ ending at $i$.
+\end{definition}
+Clearly, if the time of arrival $t_i$ staisfies $t_i > L_i$, the node $i$ is infeasible.
+The nodes $i \in I$ for which $t_i > L_i$ are removed from $R_S$, 
+that is, $R_S \leftarrow R_S \setminus I$. This elimination criteria is similar to 
+the one presented in \citep{desrosiers01}.
 
-
-\subsection{The dynamic case}
-\label{dynamicdarp}
-Let us discuss the extension of the predescribed single-vehicle algorithms to 
-the dynamic case, in which new customers are appended to the route in real time.
-Generally, it can be seen that there is no need to compute a new route
-except when a new customer request occurs, a customer does not show up at the agreed pick-up location,
-the vehicle is ahead or behind of schedule or the vehicle has lost its way. 
-
-A simple example, similar to the one presented in \cite{psaraftis01},
-on the real-time updating of a vehicle route %might operate 
-is shown in figure \ref{dynamicexample02}.
-Initially, customers $1$ and $2$ have been assigned 
-pick-up and delivery points and corresponding time windows. The vehicle located at $A$ follows the
-tentative optimal route $(1^{\uparrow},2^{\uparrow},1^{\downarrow},2^{\downarrow})$,
-where "$\uparrow$"-symbols denote pick-up nodes and "$\downarrow$"-symbols denote delivery nodes. 
-(see figure \ref{dynamicexample02}a).
-At the time the vehicle is at $B$, the vehicle route is updated with respect 
-to customers $1,2$ and $3$. At this instant %in time, %the procedure revises the
-% nonexecuted portion of the route and produces the 
-a new tentative optimal route shown in figure \ref{dynamicexample02}b is produced. 
+For nodes that are not seen to be infeasible, we define feasible transitions as follows.
+\begin{definition}
+\label{feasibletransitions}
+The transition 
+$i \to j$ from node $i \in R_S$ to node $j \in R_S$ is said to be \emph{feasible}, if 
+$\max(t_i, E_i) + T_{ij} \leq L_j$. 
+\end{definition}
+The above definition is similar to the one studied in \cite{dumas03}, 
+in which the set of \emph{admissible arcs} between the pick-up and delivery nodes is constructed
+as a preprocessing step in the pickup and delivery problem. The set of admissible arcs is 
+made up of arcs which a priori satisfy the precedence, capacity and time constraints of the problem.
+The difference in our formulation is that we define the feasibility of 
+transitions as a function of the state of the vehicle (see Figure \ref{transitions01}).
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=1.0\textwidth]{dynamicexample04.pdf}
-\caption{Modifications in the vehicle route. The route is updated when the vehicle is at $B$ and 
-a new tentative optimal route beginning at $B'$ is produced. 
-The figures on the right show the routes as so-called labeled Dyck 
-paths \cite{cori}, in which each pick-up $i^{\uparrow}$ precedes the correspoding drop-off $i^{\downarrow}$. 
-At the time a new customer is added to the route, a new path is formed. Clearly, the "height" of the path
-shows the number of customers aboard in different parts of the route.}
-\label{dynamicexample02}
+\includegraphics[width=0.5\columnwidth]{transitions01.pdf}
+\caption{Feasible transitions. The figure shows the 
+locations and time windows of two nodes $i$ and $j$.
+If the vehicle left from $a$ at the instant $t_a$, visited node $i$
+and moved directly to node $j$, the time constraint $L_j$ would be satisfied. 
+However, assuming that at the instant $t_b$ the vehicle is located at $b$, the
+transition $i \to j$ is seen to be infeasible.
+}
+\label{transitions01}
 \end{center}
 \end{figure}
+The elements of the adjacency matrix are defined for all $i,j \in R_S$ by 
+$L_{ij}= 1$, if $i \neq j$ and $i \to j$ is feasible, $L_{ij} = 0$ otherwise.
 
-Note that the new route does not have $B$ as origin, but
-a point $B'$, slightly ahead of $B$. This is due to two facts:
-i) It will take some time for the algorithm to process the new input and reoptimize, 
-ii) It will take some time for the driver
-of the vehicle to process the information regarding the new route. 
-The distance between $B$ and $B'$ depends in general on the particular 
-dial-a-ride service examined. For example, in a highly dynamic setting,
-in which the modification of the route is not
-allowed to take more than a few seconds, it may be assumed that
-the latter of the facts is more restrictive. 
-Any dynamic dial-a-ride
-service should make use of a mechanism to update the point $B'$
-at sufficient time intervals.
-In this work, however, it is assumed that the point $B'$ is
-known at each instant, as well as the estimated time of arrival $T'$ at $B'$.
-The \emph{vehicle checkpoint} $(B',T')$ acts as the starting point for all service sequences.
+After the adjacency matrix $L$ has been determined, the hub vector $h=(h_1,\ldots,h_{|R_S|})$ of $L$ is determined by 
+Equation \eqref{modhub} (here the remaining nodes $i \in R_S$ are numbered from $1$ to $|R_S|$ for clarity). 
+In our formulation, a large hub score of node $i$ means that many 
+nodes can be visited after $i$. 
+The hub ranking method is defined as follows.
+\begin{definition}[Hub ranking]
+The remaining nodes $i \in R_S$ are sorted in descending order of the hub scores $h_i$: 
+The branches are evaluated in the order $i_1,\ldots,i_{|R_S|}$, where
+$h_{i_1} \geq h_{i_2} \geq \ldots \geq h_{i_{|R_S|}}$.
+%branches beginning from good hubs
+%are evaluated first.  
+\end{definition}
 
-	For customers that have already been picked up, the pick-up point 
-	is not a part of the input of the problem. Thus, for such customers
-	only the delivery point is considered.
+% \textbf{Authority ranking:}
+% The remaining nodes are sorted in ascending order of the authority scores; branches beginning from
+% bad authorities are evaluated first.
+The hub scores are used to give guidance to the algorithm regarding the order in which the 
+depth-first search visits the nodes. 
+Since the goal is to maximize the number of served customers, the sequences that can not improve the maximum 
+number of served customers, can be discarded by studying the neighborhoods of the remaining nodes. 
+\begin{definition}
+ The neighborhood of node $i \in R_S$ is defined by $N(i) = \{i\} \cup \{j \in R_S \mid L_{ij} = 1\}$.
+\end{definition}
+Suboptimal sequences are detected as follows.
+\begin{theorem}
+Let $S_{\max}$ denote the best found solution.
+The sequence $S$ is suboptimal if 
+\begin{align*}
+C(S) + \max_{i \in R_S} C(N(i)) \leq C(S_{\max}),
+\end{align*}
+where $C(S), C(N(i))$ and $C(S_{\max})$ denote the number of drop-off points in $S,N(i)$ and $S_{\max}$,
+respectively. 
+\end{theorem}
+\begin{proof}
+ Suppose there exists a feasible sequence $(S,i_1,\ldots,i_h)$ for which $C((i_1,\ldots,i_h)) > \max_{i \in R_S} C(N(i))$.
+Then, since $\{i_1,\ldots,i_h\} \subset N(i_1)$, we have $C(N(i_1)) \geq C((i_1,\ldots,i_h)) > \max_{i \in R_S} C(N(i))$, 
+which is a contradiction.  
+\end{proof}
 
-	In dynamic models, the objective function
-	used to find the solution over a rolling horizon has often little to do with
-	the measures developed to evaluate the overall quality of a solution \cite{powell95}.
-	However, the adaptive insertion method described in \ref{jeadarp} is designed in a way that several objective 
-	functions, that are thought to be suitable
-	for the dynamic problem, may be incorporated with minimal work.
-	For example, if the vehicle route is subject to several modifications
-	in short periods of time, one of the flexibility measures \eqref{maxmin}, \eqref{ts} 
-	or forward time slack defined in \cite{savelsbergh} may be used as an objective 
-	function for the problem in order to be able to insert as many future customers in the 
-	route as possible. Generally, the choice of the objective function depends 
-	on the particular version of the dynamic routing problem and the performance
-	of different objective functions may be sensitive to, for example, constraints, demand intensity
-	or the number of vehicles. For a study related to choosing an objetive function
-	for the immediate-request DARP, the reader is referred to \cite{hyytia}.
+
+\subsubsection{A heuristic extension}
+\label{heuristic}
+Algorithm \ref{alg01} describes an exact procedure for maximizing the number of served customers
+in a single route. In order to find the exact solution, the algorithm goes through all
+branches until no further nodes can be added to the current sequence or the sequence is seen to be suboptimal.
+
+The effort of the algorithm can be controlled by limiting the number of branches that are evaluated
+by means of a positive parameter $J$. For example, if $J=1$, the algorithm constructs a single sequence
+and stops when the set of remaining nodes in empty. By increasing $J$ the search space is expanded and
+if $J = (2n)!/2^n$ (the number of permutations that satisfy precedence constraints), the heuristic
+coincides with the exact algorithm.
 
 
-\section{Numerical experiments}
+\subsubsection{Structure and complexity}
+\label{structure}
+The structure of the ranking algorithm is as follows. 
+Briefly described, each recursion step involves checking the the feasibility
+of sequences $(S,i,j)$, where $i,j \in R_S$.
+Clearly, this process has a complexity of order $\mathcal{O} (|R_S|^2)$,
+where $|R_S|$ is the number of remaining nodes. 
+After the adjacency matrix $L$ of the remaining nodes has been determined, the complexity of 
+calculating $k$ steps of the power method (Equation \eqref{modhub}) is of order $\mathcal{O} (k |R_S|^2)$.
+
+The overall complexity of finding a feasible solution is strongly dependent on the number of recursion
+steps needed to find the solution. 
+Finding a feasible solution to a problem with $n$ customers involves at least $2n$
+recursion steps: At first, the number of remaining nodes is $2n$ and each time 
+a feasible node is added to the end of the service sequence, the 
+number of remaining nodes is decreased by one.
+In the best case, no infeasible states are encountered and thus there are $2n$ recursion steps 
+(one for each node added to the sequence).
+At step $k \in \{1,\ldots,2n\}$, the number of remaining nodes is $2n+1-k$
+and thus the complexity is of order $\mathcal{O} (\sum_{k=1}^{2n} (2n+1-k)^2) =\mathcal{O}(n^3)$.
+Roughly, the computational work is linearly increased with the 
+number of dead ends $M$ encountered during the recursion.
+The overall complexity of the single vehicle algorithm is thus $\mathcal{O}(n^3 + M)$.
+
+
+
+\subsection{Numerical experiments}
 \label{experience}
-The following paragraphs present a summary of the computational results reported in \ref{jeadarp}. The exact and heuristic versions of the algorithm
+The following paragraphs present a summary of the computational results reported in \ref{jeadarp}. 
+The exact and heuristic versions of the single-vehicle algorithm
 were tested on a set of problems involving different numbers of customers and different time
 window widths determined by a travel time ratio $R$ describing the maximum allowed ratio of travel time
 to direct ride time. The pick-up and drop-off points of customers were chosen randomly from a
@@ -1062,9 +1365,7 @@ since any enumeration algorithm would have to evaluate the same number of feasib
 Then, the performance of the heuristic with different objective functions was evaluated.
 The complexity was measured in terms of the number of sequences evaluated by the heuristic.
 
-
-\subsection{Experiments}
-The following experiments were performed on a standard laptop computer with a 2.2 GHz processor. 
+The experiments were performed on a standard laptop computer with a 2.2 GHz processor. 
 The CPU times and the number of evaluated sequences appeared to have a roughly linear relationship.
 A typical problem instance involving 20 customers could be solved up to optimality within less than a second.
 
@@ -1121,7 +1422,7 @@ outperforms the other two in all studied cases.
 
 
 
-\subsection*{Experiment 1: Number of customers}
+\subsubsection{Experiment 1: Number of customers}
 At first we study the complexity of the exact algorithm with respect to the number of customers.
 In practice, the number of customers assigned to a single vehicle is governed by the
 pre-order time of the dial-a-ride service: If customers may request service in
@@ -1134,7 +1435,7 @@ Referring to the figure, it can be seen that the complexity of the problem incre
 with respect to the number of customers with all studied values of the travel time ratio.  
 In addition, the complexity is increased with the travel time ratio. 
 
-\subsection*{Experiment 2: Travel time ratio}
+\subsubsection{Experiment 2: Travel time ratio}
 Let us study the complexity of the exact algorithm as a function of travel time ratio.
 Figure \ref{ttivertailu01} shows the average number of feasible sequences in feasible problem instances 
 on a logarithmic scale, computed over 10000
@@ -1146,13 +1447,12 @@ The fact that the slopes of the curves increase with $R$ on the logarithmic scal
 between complexity and $R$ is superexponential.
 
 
-\subsection*{Experiment 3: Time interval}
+\subsubsection{Experiment 3: Time interval}
 Let us conclude the study of the exact algorithm by examining complexity with respect to the average time interval between customer requests. 
 The solid lines in figure \ref{intvertailu01} represent the average number of feasible sequences in
 i) feasible problem instances and ii) all problem instances, on a logarithmic scale, computed over 10000
 randomized instances for $N=10$, $R=3$ and $\mu = 6 \ldots 40$ minutes. The dashed line corresponds to the fraction
 of problem instances, for which at least one feasible solution was found.
-
 
 The figure indicates that the complexity of feasible problem instances decreases exponentially 
 with respect to the average time interval $\mu$. On the other hand, the probability of finding
@@ -1170,7 +1470,7 @@ how the complexity of the single vehicle subroutine behaves with respect to the 
 the earliest pick-up times of customers assigned to a single vehicle.
 
 
-\subsection*{Experiment 4: Objective functions}
+\subsubsection{Experiment 4: Objective functions}
 Let us study the performance of the three different heuristic cost functions \eqref{rl}, \eqref{ts} and \eqref{maxmin}
 as a function of the degree $L$ of the heuristic.
 Figure \ref{objvertailu01} shows the fraction of problem instances for which a feasible solution was 
@@ -1188,38 +1488,40 @@ the heuristic coincides with the exact algorithm regardeless of the studied prob
 
 
 
-
-\subsection{Conclusions}
-In this work, an exact optimization procedure is developed to solve the
-static and dynamic versions of the single vehicle dial-a-ride problem with time 
-windows. Using complete enumeration to solve the problem with respect
-to a generalized objective function is motivated by the dynamic nature of 
-online demand responsive transport services,
-in which looking only at the tentative route duration, as in existing algorithms for the problem,
-may decrease the possibilities of serving future customers.
-
-In addition, an adjustable heuristic extension to the algorithm
-is introduced, in order to be able to control the CPU times:
-If the problem size is reasonable, the proposed solution method
-produces globally optimal solutions. If the problem size is increased, 
-the algorithm adjusts itself to produce locally optimal solutions,
-closing the gap between the classical insertion heuristic and the exact solution and thus
-making the algorithm applicable to any static or dynamic dial-a-ride problem.
-
-
-
-
-
-
+% 
+% \subsection{Conclusions}
+% In this work, an exact optimization procedure is developed to solve the
+% static and dynamic versions of the single vehicle dial-a-ride problem with time 
+% windows. Using complete enumeration to solve the problem with respect
+% to a generalized objective function is motivated by the dynamic nature of 
+% online demand responsive transport services,
+% in which looking only at the tentative route duration, as in existing algorithms for the problem,
+% may decrease the possibilities of serving future customers.
+% 
+% In addition, an adjustable heuristic extension to the algorithm
+% is introduced, in order to be able to control the CPU times:
+% If the problem size is reasonable, the proposed solution method
+% produces globally optimal solutions. If the problem size is increased, 
+% the algorithm adjusts itself to produce locally optimal solutions,
+% closing the gap between the classical insertion heuristic and the exact solution and thus
+% making the algorithm applicable to any static or dynamic dial-a-ride problem.
+% 
 
 
 \section{Multi-vehicle dial-a-ride problem}
 \label{multivehicle}
 
+
+
+
+
+
+
+
 \chapter{Journey planning}
 \label{journeyplanning}
 
-\chapter{Economic models}
+\chapter{Economic equilibrium}
 \label{economicmodels}
 
 \chapter{Conclusions}
@@ -1308,7 +1610,7 @@ real-life pilot services, which would probably give valuable information on the 
 %\errata
 
 \bibliographystyle{plain}
-\bibliography{vk3}
+\bibliography{vk,eadarp,hitsdarp,hitsdarp2,dju,kuhmo}
 
 
 %% The first publication (journal article)
@@ -1361,21 +1663,21 @@ Transport}{Annual Meeting of the Transportation Research Board}{Washington, D.C.
 %% The fourth publication (yet another journal paper, submitted for publication, note the optional parameter)
 %% Note that you are allowed to use this option only when submitting the dissertation for pre-examination!
 % Set the publication information, detailed information is not printed
-\addpublication[submitted]{Lauri H\"ame, Harri Hakula}{Dynamic journeying under uncertainty}{Under review for publication in European Journal of Operational Research}{}{20.12.2011}{}{No copyright holder at this moment}{jdjuejor}
+\addpublication[submitted]{Lauri H\"ame, Harri Hakula}{Dynamic journeying under uncertainty}{European Journal of Operational Research}{}{20.12.2011}{}{No copyright holder at this moment}{jdjuejor}
 \addcontribution{The author was the main author of this article.}
 \addpublicationpdf{articles/djuejor2.pdf}
 
-\addpublication[submitted]{Lauri H\"ame, Harri Hakula, Saara Hyv\"onen}{Dynamic journeying in scheduled networks}{Under review for publication in IEEE Transactions on Intelligent Transportation Systems}{}{16.1.2012}{}{No copyright holder at this moment}{jtoits}
+\addpublication[submitted]{Lauri H\"ame, Harri Hakula, Saara Hyv\"onen}{Dynamic journeying in scheduled networks}{IEEE Transactions on Intelligent Transportation Systems}{}{16.1.2012}{}{No copyright holder at this moment}{jtoits}
 \addcontribution{The author was the main author of this article.}
 \addpublicationpdf{articles/rbrorl2.pdf}
 
 \addpublication[submitted]{Lauri H\"ame, Harri Hakula}{A Maximum Cluster Algorithm for Checking the
-Feasibility of Dial-A-Ride Instances}{Under review for publication in Transportation Science}{}{16.1.2012}{}{No copyright holder at this moment}{jhitsdarpts}
+Feasibility of Dial-A-Ride Instances}{Transportation Science}{}{16.1.2012}{}{No copyright holder at this moment}{jhitsdarpts}
 \addcontribution{The author was the main author of this article.}
 \addpublicationpdf{articles/hitsdarpts2.pdf}
 
 \addpublication[submitted]{Lauri H\"ame, Harri Hakula}{Routing by Ranking: A Link Analysis Method for the Constrained Dial-A-Ride Problem}
-{Under review for publication in Operations Research Letters}{}{16.1.2012}{}{No copyright holder at this moment}{jrbrorl}
+{Operations Research Letters}{}{16.1.2012}{}{No copyright holder at this moment}{jrbrorl}
 \addcontribution{The author was the main author of this article.}
 \addpublicationpdf{articles/rbrorl2.pdf}
 
