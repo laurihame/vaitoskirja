@@ -4,7 +4,7 @@
 \documentclass[dissertation,draft*]{aaltoseries}
 \usepackage[utf8]{inputenc}
 % Lipsum package generates bullshit
-\usepackage{amsthm, amssymb, amsmath,natbib, algorithm, algorithmic, amsxtra, txfonts}
+\usepackage{multirow, amsthm, amssymb, amsmath,natbib, algorithm, algorithmic, amsxtra, txfonts}
 % Set the document languages
 \usepackage[finnish,swedish,english]{babel}
 
@@ -23,20 +23,57 @@
 %% The abstract of the dissertation in English
 % Use this command!
 \draftabstract{
-Demand-responsive transport (DRT) is an advanced, user-oriented form of public transport between 
-bus and taxi, involving flexible routing of small or medium sized vehicles.
-This dissertation presents mathematical models for demand-responsive transport and algorithms
-that can be used to solve combinatorial problems related to vehicle routing and journey planning.}
+Demand-responsive transport is a form of public transport between 
+bus and taxi services, involving flexible routing of small or medium sized vehicles.
+This dissertation presents mathematical models for demand-responsive transport and methods
+that can be used to solve combinatorial problems related to vehicle routing and journey planning
+in a transport network.
+
+Public transport can be viewed as a market where demand affects supply and vice versa.
+In the first part of the dissertation, 
+we show how the demand for transportation can be satisfied by using a fleet of vehicles,
+assuming a specific demand at the individual level. In the second part, we study how the demand adapts to the 
+supply of transport services, assuming that the supply remains unchanged for a short period of time.
+In the third part we present methods
+for determining the economic equilibrium, that is, the point at which the demand meets the supply,
+by assuming that commuters attempt to minimize travel time and transport operators aim to maximize profit.
+
+The mathematical models proposed in this work can be used to simulate the operations of public transport services in 
+a wide range of scenarios, from paratransit services for the elderly and disabled to 
+large-scale demand-responsive transport services designed to compete with private car traffic. Such calculations can 
+provide valuable information to public authorities and planners of transportation services,
+regarding, for example, regulation and investments.
+In addition to public transport, potential applications of the proposed methods for solving vehicle routing and journey planning problems
+include freight transportation, courier and food delivery services, military logistics and air traffic.
+}
 % Let's add another one in Finnish
-\draftabstract[finnish]{Demand-responsive transport (DRT) is an advanced, user-oriented form of public transport between 
-bus and taxi, involving flexible routing of small or medium sized vehicles.
-This dissertation presents mathematical models for demand-responsive transport and algorithms
-that can be used to solve combinatorial problems related to vehicle routing and journey planning.}
+\draftabstract[finnish]{Kysynt\"aohjautuvalla joukkoliikenteell\"a tarkoitetaan 
+bussi- ja taksipalvelujen v\"alimuotoa, joka perustuu pienten tai keskisuurten ajoneuvojen joustavaan reititykseen.
+T\"ass\"a v\"aitöskirjassa esitet\"a\"an matemaattisia malleja kysynt\"aohjautuvalle joukkoliikenteelle ja menetelmi\"a
+joilla voidaan ratkaista ajoneuvojen reititykseen ja matkansuunnitteluun liittyvi\"a kombinatorisia ongelmia liikenneverkossa.
+
+Joukkoliikennett\"a voidaan tarkastella markkinana, jossa kysynt\"a vaikuttaa tarjontaan ja p\"ainvastoin.
+V\"aitoskirjan ensimm\"aisessa osassa n\"aytet\"a\"an miten kysynt\"a\"an voidaan 
+vastata k\"aytt\"am\"all\"a tietty\"a ajoneuvokantaa, kun oletetaan kysynt\"a tunnetuksi yksil\"otasolla. 
+Toisessa osassa tarkastellaan kysynn\"an
+mukautumista liikennepalvelujen tarjonnan mukaan, kun oletetaan tarjonta muuttumattomaksi lyhyellä aikavälillä.
+Kolmannessa osassa esitet\"a\"an menetelmi\"a
+taloudellisen tasapainopisteen, eli kysynn\"an ja tarjonnan kohtaamispisteen, m\"a\"aritt\"amiseksi,
+kun oletetaan ett\"a matkustajat pyrkiv\"at minimoimaan matka-aikaa ja liikennepalvelujen 
+tarjoajat pyrkiv\"at maksimoimaan taloudellista voittoa.
+
+T\"ass\"a työss\"a esiteltyjen mallien avulla voidaan simuloida useita erityyppisi\"a liikennepalveluja 
+vanhuksille ja liikuntarajoitteisille suunnatuista kutsulinjoista 
+henkilöautoliikenteen kanssa kilpaileviin laajamittaisiin kysynt\"aohjautuviin joukkoliikennej\"arjestelmiin. 
+Mallien avulla tehdyt laskelmat voivat tuottaa arvokasta tietoa viranomaisille ja liikennepalvelujen suunnittelijoille 
+liikenteen s\"a\"annöstelyyn ja investointeihin liittyen.
+Joukkoliikenteen lis\"aksi esiteltyj\"a reititys- ja matkansuunnittelumenetelmi\"a voidaan soveltaa muun muassa 
+rahti- ja lentoliikenteess\"a, l\"ahetti- ja ruoankuljetuspalveluissa sek\"a sotilaslogistiikassa.}
 % And yet another one in Swedish
-\draftabstract[swedish]{Demand-responsive transport (DRT) is an advanced, user-oriented form of public transport between 
-bus and taxi, involving flexible routing of small or medium sized vehicles.
-This dissertation presents mathematical models for demand-responsive transport and algorithms
-that can be used to solve combinatorial problems related to vehicle routing and journey planning.}
+% \draftabstract[swedish]{Demand-responsive transport (DRT) is an advanced, user-oriented form of public transport between 
+% bus and taxi, involving flexible routing of small or medium sized vehicles.
+% This dissertation presents mathematical models for demand-responsive transport and algorithms
+% that can be used to solve combinatorial problems related to vehicle routing and journey planning.}
 
 %% Preface
 % If you write this somewhere else than in Helsinki, use the optional location.
@@ -466,7 +503,7 @@ known and fixed quantity $t(i,j)$.
 The above parameters are illustrated in Figure \ref{timeline01}.
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.5 \columnwidth]{timeline01}
+\includegraphics[width=0.9 \columnwidth]{timeline01}
 \caption{Time pick-up and drop-off time windows. The pick-up point of
 customer $i$ is denoted by $i^{+}$ and the drop-off point is denoted by $i^{-}$.
 The customer should be picked up at $i^{+}$ within the time window $[E_{i^+},L_{i^+}]$
@@ -893,7 +930,7 @@ presented in figure \ref{flexibility01}.
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.65\textwidth]{flexibility03.pdf}
+\includegraphics[width=0.9\textwidth]{flexibility03.pdf}
 \caption{Route flexibility. A vehicle is located at $A$ at $t = 0$,
 and two customers are due to be picked up within the presented time windows at $i$ and $j$.
 The dashed lines represent two possible routes for the vehicle.
@@ -1084,19 +1121,7 @@ Let $L$ denote the adjacency matrix of a sink graph $G_s=(V,A)$, where $V=\{1,\l
 let $h_i$ denote the number of self-avoiding paths from $i$ to $s$ for $i \in V \setminus \{s\}$ and let $h_s=1$. 
 Then, $h=(h_1,\ldots,h_{|V|})^T$ is a unique dominant eigenvector of $L$.
 \end{theorem}
-\begin{proof}
- Since the adjacency matrix of a directed acyclic graph is an upper triangular matrix with zeros on the diagonal,
-the adjacency matrix of a sink graph is an upper triangular matrix with diagonal elements $L_{ii}=0$ except 
-for the sink node $s$, for which we have $L_{ss} = 1$. The eigenvalues of an upper triangular matrix are equal to the
-diagonal elements \cite{axler} and thus there exists a unique dominant eigenvalue $1$. Let us show that $h=(h_1,\ldots,h_{|V|})^T$ 
-is the corresponding eigenvector of $L$.  
 
-Since all paths in a directed acyclic graph are self-avoiding and by definition we have $h_s=1$, 
-the number of self-avoiding paths $h_i$ from node $i$ to the sink node $s$ in the sink graph $G_s$ satisfies
-$h_i = \sum_{j \in V} L_{ij} h_j$
-for $i \in V \setminus \{s\}$ and $h_s$ satisfies $h_s= 1 = L_{ss} h_s = \sum_{j \in V} L_{sj} h_j$.
-In matrix form, we have $h = Lh$ and thus $h$ is the unique eigenvector corresponding to eigenvalue $1$.
-\end{proof}
 Note that since $h_i \leq h_j$ for all $i,j \in V$ for which $L_{ij} = 1$, the vector $h$ defines a \emph{topological
 ordering} \cite{cormen} of the nodes for which $h_i > 0$.
 Although Theorem \ref{polut} considers a special class of 
@@ -1225,7 +1250,7 @@ transitions is defined as a function of the state of the vehicle (see Figure \re
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.5\columnwidth]{transitions01.pdf}
+\includegraphics[width=0.9\columnwidth]{transitions01.pdf}
 \caption{Feasible transitions. The figure shows the 
 locations and time windows of two nodes $i$ and $j$.
 If the vehicle left from $a$ at the instant $t_a$, visited node $i$
@@ -1339,7 +1364,7 @@ A typical problem instance involving 20 customers could be solved up to optimali
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.7\textwidth]{nvertailu01.pdf}
+\includegraphics[width=0.9\textwidth]{nvertailu01.pdf}
 \caption{Experiment 1. The complexity of the exact algorithm with respect to the number of customers on a logarithmic scale. 
 The three curves represent, as a function of the number of customers, the average number of feasible sequences 
 for $R=2,2.5,3$ and $\mu=1800$s. Clearly, the complexity increases exponentially with respect
@@ -1352,7 +1377,7 @@ to the number of customers.}
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.7\textwidth]{ttivertailu01.pdf}
+\includegraphics[width=0.9\textwidth]{ttivertailu01.pdf}
 \caption{Experiment 2. The complexity of the exact algorithm with respect to travel time ratio on a logarithmic scale. 
 The three curves represent, as a function of the travel time ratio, the average number of feasible sequences
 for $N=5,10,20$ and $\mu = 1800$s.}
@@ -1363,7 +1388,7 @@ for $N=5,10,20$ and $\mu = 1800$s.}
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{intvertailu01.pdf}
+\includegraphics[width=1.0\textwidth]{intvertailu01.pdf}
 \caption{Experiment 3. The complexity of the exact algorithm with respect to the average time 
 interval between customers. The solid lines represent the average number of feasible sequences in
 feasible problem instances and all problem instances, on a logarithmic scale for $N=10$ and $R=3$.
@@ -1376,7 +1401,7 @@ of problem instances, for which at least one feasible solution was found.}
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.7\textwidth]{objvertailu01.pdf}
+\includegraphics[width=0.9\textwidth]{objvertailu01.pdf}
 \caption{Experiment 4. The performance of three different heuristic objective functions as functions of degree $L$.
 The curves represent the fractions of instances for which a feasible solution was found by the objective functions 
 (compared to the exact algorithm), 
@@ -1532,7 +1557,8 @@ by studying the feasiblility of routes involving two customers.
 \subsection{The maximum cluster algorithm [\ref{jhitsdarpts}]}
 \label{mvsolution}
 \ref{jhitsdarpts} presents the following exact approach to the multi-vehicle DARP as a constraint satisfaction problem.
-By using the ranking algorithm (Algortithm \ref{rralg}) described in Section \ref{routingbyranking} as a subroutine, the method produces a feasible solution to 
+By using the ranking algorithm (Algortithm \ref{rralg}) described in Section \ref{routingbyranking} as a subroutine,
+ the method produces a feasible solution to 
 any instance or proves that the instance is infeasible. The main idea is that the vehicle routes are constructed
 one by one, each maximizing the number of served customers in the set of remaining customers.
 The customers are denoted by numbers $1,\ldots,n$ and the vehicles are denoted by numbers $1,\ldots,m$.
@@ -1612,8 +1638,6 @@ not marked as 'checked'.
 Otherwise, $(X_1',\ldots,X_m')$ becomes the
 candidate partition, $(X_1,\ldots,X_m) \leftarrow (X_1',\ldots,X_m')$. 
 
-
-
 The main idea is that the first iteration (Algorithm \ref{alg03}) produces an \emph{initial candidate partition} of customers, 
 which is improved during later iterations. This procedure is motivated by the fact that the initial vehicle routes are
 constructed by attempting to serve as many customers as possible from the initial set 
@@ -1637,19 +1661,16 @@ However, some instances
 are rendered infeasible by studying the feasibility of routes involving two customers as follows: 
 If there exist no feasible
 routes involving customers $\{i,j\}$, an arc between $i$ and $j$ is formed. This means that 
-customers $i$ and $j$ can not be assigned to the same vehicle. Then, we find the \emph{maximum clique} $C$
-within the set of customers, that is, the largest set of customers for which there is
+customers $i$ and $j$ can not be assigned to the same vehicle. Then, the \emph{maximum clique} $C$
+is determined, that is, the largest set of customers for which there is
 an arc between all pairs of nodes $i,j \in C$, see \citep{wood1997}. If the size of the maximum clique
 is greater than the number $m$ of vehicles, the instance is infeasible since there are $|C| > m$ customers
 which should all be served by different vehicles. 
 
 Otherwise, since the customers in the maximum clique $C = \{c_1,\ldots,c_{|C|}\}$ all have to be assigned to different vehicles, 
 with no loss of generality we may initially assign customer $c_j$ to vehicle $j$ for all $j \in \{1,\ldots,|C|\}$.
-Then, we determine the set of \emph{feasible vehicles} $V_i$ for each customer $i$ as follows.
-1) For $c_j \in \{c_1,\ldots,c_{|C|}\}$, we have $V_{c_j} = \{j\}$. For other customers $i \in \{1,\ldots,n\} \setminus C$, 
-we initially define $V_i = \{1,\ldots,m\}$.
-2) If $|V_j|=1$ and there is an arc between $j$ and $i$, customer $i$ may not be assigned to the 
-same vehicle as $j$, that is, $V_i \leftarrow V_i \setminus V_j$. This step is repeated for all $i,j \in \{1,\ldots,n\}$ until convergence.
+Then, the set of \emph{feasible vehicles} $V_i$ for each customer $i$ is determined by noting that if there is an 
+arc between $i$ and $c_j \in C$, customer $i$ may not be assigned to the same vehicle as $c_j$.
 
 After the set of feasible vehicles $V_i$ has been determined for each customer $i \in \{1,\ldots,n\}$,
 the set of \emph{a priori feasible partitions} is defined as follows.
@@ -1744,7 +1765,7 @@ was not rendered infeasible by the a priori screening procedure described in
 Section \ref{earlydetection}, the exact version of the algorithm was executed.
 
 \begin{table}
-{\scriptsize
+{\tiny
 \begin{center}
 \begin{tabular}{|c|ccc|ccc|ccc|ccc|}
 \hline
@@ -1851,7 +1872,7 @@ since it is capable of handling large problems in short computation times.
 The urban journey planning problem involves
 determining a path, possibly involving transfers between different transport modes, 
 from a specified origin to a similarly specified destination 
-in a transport network. Common criteria used for evaluating itineraries
+in a transport network. Common criteria used for evaluating journeys
 include the total duration, number of transfers and cost \cite{androutsopoulos, 
 zografos,peng,modesti,huang, huang2, horn2003, tong, tong2, ziliaskopoulos, 
 berube, cooke, cai, chabini, kostreva, hamacher, bander,tan}.
@@ -2080,9 +2101,6 @@ the transfer probability from $i$ to $j$ depends on the \emph{path} taken to get
 A path can be represented as an acyclic sequence of legs $(i_1,\ldots,i_m)$ satisfying
 $i_{h+1} \in S_{i_h}$ for all $h \in \{1,\ldots,m-1\}$, see Figure \ref{journey01}. 
 The path is \emph{successful}, if $\tau_{i_h}' \leq \tau_{i_{h+1}}$ for all $h \in \{1,\ldots,m-1\}$.
-Note that if $i_{h+1}$ is an immediate successor of $i_h$, that is, $i_{h+1} \in I_{i_h}$,
-we have $\tau_{i_h}' = \tau_{i_{h+1}}$ since the start time of $i_{h+1} \in I_{i_h}$ refers to 
-the same specific random variable as the end time of $i_h$. 
 
 \begin{figure}[ht]
 \begin{center}
@@ -2105,7 +2123,7 @@ $P(\tau_1' \leq \tau_2 \cap \tau_2' \leq \tau_3)
 \end{figure}
 
 
-\section{Markov Decision process}
+\section{Problem formulation and solution}
 The dynamic journeying problem is defined as follows.
 Let $[0,T] \subset \mathbb{R}$ be the time horizon of the problem,
 let $v_1$ denote the origin node and $v_d$ denote the destination node. 
@@ -2129,10 +2147,11 @@ The cropped set of legs is defined by
 For clarity, we define $n:=|\mathcal{L}_{[0,T]}|$ and the legs in $\mathcal{L}_{[0,T]}$ 
 are numbered from $1$ to $n$, where the origin leg is indexed by $1$ and the destination leg is indexed by $n$.
 
+\subsection{Markov decision process}
 The problem is modeled as a finite-state Markov decision process $(S,A,P_{\cdot}(\cdot,\cdot),R_{\cdot}(\cdot,\cdot))$, 
 where the parameters are defined as follows.
 
-\subsection{States}
+\subsubsection{States}
 \label{statesdef}
 The set of \emph{states} $S$ consists of paths $(1,i_1,\ldots,i_m)$ of legs, where $i_h \in \{1,\ldots,n\}$ for $h \in \{0,\ldots,m\}$,
 beginning from the origin leg $1$. The state $(1)$ is referred to as the \emph{origin state}.
@@ -2146,11 +2165,11 @@ Formally, the set of states is defined by
  S=\left\{(i_0,\ldots,i_m) \mid i_0=1 \mbox{ and } i_{h+1} \in S_{i_h} \mbox{ for } h \in \{0,\ldots,m-1\} \right\}.
 \end{align}
 The above definition of a state includes travel history in the form of a path, see Figure \ref{treemodel01}. 
-The history of performed actions is not taken into account in our model.
+The history of performed actions is not taken into account in the model.
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{treemodel01}
+\includegraphics[width=0.9\textwidth]{treemodel01}
 \end{center}
 \caption{
 States of the markov decision process. A state is defined as a path consisting of legs, beginning from the origin leg $1$.
@@ -2175,15 +2194,9 @@ f_{\tau_s }(x) &= f_{\tau_{i_m}} (x  \mid \cap_{h=0}^{m-1} \tau_{i_h}' \leq \tau
 f_{\tau_s'}(x) &= f_{\tau_{i_m}'}(x \mid  \cap_{h=0}^{m-1} \tau_{i_h}' \leq \tau_{i_{h+1}} ),
 \end{align}
 for $x \in \mathbb{R}$.
-Note that if state $s'$ is an immediate successor of state $s$, that is, $s' \in I_s$, the end time of state
-$s$ and the start time of state $s'$ refer to the same specific random variable $\tau_s' = \tau_{s'}$.
-In addition, if $i_m$ is the first leg in the path executed by service $k_{i_m}$, that is, 
-$k_{i_h} \neq k_{i_m}$ for all $h \in \{0,\ldots,m-1\}$, we have $f_{\tau_s }(x) = f_{\tau_{i_m}}(x)$
-due to the fact that the arrival times of different services are assumed to be independent.
-
 The service number of state $s=(i_0,i_1,\ldots,i_m)$ is defined by $k_s = k_{i_m}$.
 
-\subsection{Actions}
+\subsubsection{Actions}
 \label{actionsdef}
 The set of \emph{actions} $A$ consists of sets $A_s$ of actions available at states $s \in S$.
 An action $a \in A_s$ is defined as a \emph{preference order} of the successor states $s' \in S_s$, 
@@ -2194,7 +2207,7 @@ the commuter transfers to state $s^{a,k}$ if
 (i) the transfer to $s^{a,g}$ is unsuccessful for $1 \leq g < k$ and 
 (ii) the transfer to $s^{a,k}$ is successful.
 
-\subsection{Transition probabilities}
+\subsubsection{Transition probabilities}
 \label{transitiondef}
 $P_a(s,s') = P(s_{t+1}=s' \mid s_t = s, a_t=a)$ is the probability that action $a$ in state $s$ 
 at step $t$ will lead to state $s' \in S_s$ at step $t + 1$. 
@@ -2233,7 +2246,7 @@ order defined by action $a$. If $s^{a,2}$ is an immediate successor of $s$, that
 we have $P_a(s,s^{a,1}) = P\left(\tau_{s}' \leq \tau_{s^{a,1}} \right)$, $P_a(s,s^{a,2}) = P\left( \tau_{s}' > \tau_{s^{a,1}} \right)$
 and $P_a(s,s^{a,3}) = 0$.
 
-\subsection{Rewards}
+\subsubsection{Rewards}
 \label{rewardsdef}
 $R_a(s,s')$ is the expected immediate reward received after transition from state $s \in S$ to state $s' \in S$ 
 with transition probability $P_a(s,s')$. 
@@ -2258,7 +2271,7 @@ maximize the expected profit gained by arriving at the destination node.
 Let $u$ denote the revenue (or utility) received upon arrival at the destination node and $c(s)$ 
 denote a real valued positive function representing the cost of state $s$. 
 For example, $c((i_0,\ldots,i_m))$ could be defined as the sum of the \emph{leg costs} $c_{i}$,
-that is, $c((i_0,\ldots,i_m))= \sum_{h=0}^{m-1} c_{i_h}$ or a combination of ride time, waiting time, walking time and the 
+that is, \\ ${c((i_0,\ldots,i_m))= \sum_{h=0}^{m-1} c_{i_h}}$ or a combination of ride time, waiting time, walking time and the 
 number of transfers, as in \ref{jtoits}. 
 Let $C_o$ denote the \emph{overdue cost}, 
 that is, the cost of arriving at the destination node after $T$. By introducing an
@@ -2271,30 +2284,27 @@ the reward function is written in the general form
 \left\{
 \begin{array}{ll}
 u - c(s'), &  \mbox{if $s' \in \mathcal{D}$ },\\ 
-u - c(s') - C_o, &  \mbox{if $s' \in \mathcal{D}' \setminus \mathcal{D}$ },\\ 
+u - c(s') - C_o, &  \mbox{if $s' \in \mathcal{D}'$ },\\ 
 0, & \mbox{otherwise.}
 \end{array}
 \right.
 \end{align}
 
 
-\section{Optimal policy}
+\subsection{Optimal policy}
 \label{solution}
 The solutions to Markov decision processes are characterized as policies, 
 that is, functions $\pi$ that specify the action 
-$a(s) $ that the commuter chooses when in state $s$. 
+$a(s)$ that the commuter chooses when in state $s$. 
 The goal is to find a policy $\pi$ that maximizes the expected reward. 
 Generally, the calculation of an optimal policy requires two arrays indexed by state: 
 value $V$, which contains real values, and policy $\pi$ which contains actions. 
-In our problem, $V(s)$ corresponds to the probability of reaching a destination state $s' \in \mathcal{D}$
-from state $s$ by following a policy that maximizes the expected reward.
-Note that the value $V((1))$ of the origin state $(1)$ is strictly positive if and only if 
-there exists a state $s \in S$ for which $S_{s} \cap \mathcal{D} \neq \emptyset$ and
-$P(\tau_{s} \leq T) > 0$.
+%In our problem, $V(s)$ corresponds to the probability of reaching a destination state $s' \in \mathcal{D}$
+%from state $s$ by following a policy that maximizes the expected reward.
 
 Similarly as in \citep{bellman}, the value $V(s)$ is defined by 
 \begin{align}
-\label{value}
+\label{rekursio01}
 V(s) := \max_{a \in A_s} \left\{ \sum_{s' \in S_s} P_a(s,s') \left(R(s,s') +V(s')\right)\right\}
 \end{align}
 for all $s \in S$. Note that $V(s)=0$ for all $s \in \mathcal{D}$, since $S_s = \emptyset$ for all $s \in \mathcal{D}$.
@@ -2307,7 +2317,7 @@ the following theorem.
 
 \begin{theorem}
 \label{optimalpolicy}
-Let $s \in S$ be a state. An action $a \in A_s$ is optimal satisfying Equation \eqref{value}, if 
+Let $s \in S$ be a state. An action $a \in A_s$ is optimal satisfying Equation \eqref{rekursio01}, if 
 \begin{align}
 \label{jarjestys}
 R(s,s^{a,1})+V(s^{a,1}) \geq R(s,s^{a,2})+V(s^{a,2}) \geq \ldots \geq R(s,s^{a,|S_s|})+V(s^{a,|S_s|}),
@@ -2352,10 +2362,11 @@ The algorithm then proceeds backwards until the value $V((1))$ of the origin sta
 
 
 
-\subsection{Analysis}
+\section{Analysis}
 \label{analysis}
 \ref{jdjuejor} presents the following theoretical results related to 
-optimal policies described in the previous section. 
+optimal policies described in the previous section. Here the reward function is defined by \eqref{rewards} and
+thus $V(s)$ corresponds to the probability of reaching a destination state from state $s$.
 \begin{lemma}
 \label{perustulos01}
 %Let $(1,i_2,\ldots,i_d)$ denote a path from leg $1$ to the destination leg $i_d$ and
@@ -2387,13 +2398,13 @@ $V(s_h) / p(s_h) \geq V(s_{h+1}) / p(s_{h+1}) \geq 1$ for all $h \in \{0,\ldots,
 Theorem \ref{kasvavat} establishes a fundamental difference between dynamic and static journey planning: 
 The importance of being able to reconsider the remaining path is emphasized when the number of transfers is increased.
 
-\section{Leg duration models}
+\subsection{Leg duration models}
 \label{durationmodels}
 Thus far we have considered the general case where the start and end times of legs
 are defined as arbitrary real-valued random variables. 
 For a more specific analysis, let us study two alternative ways of modeling the durations of legs.
 
-\subsection{Independent durations}
+\subsubsection{Independent durations}
 \label{independentdurations}
 Perhaps the most intuitive way of defining the start and end times of a leg of a public transport service
 is to assume that the \emph{duration} of each leg $i$ is a real-valued random variable $D_i$
@@ -2407,35 +2418,9 @@ transfer $j \to l$ with prior transfer probability $p_{jl} = P(\tau_j' \leq \tau
 Given that the commuter has already successfully transferred from $i$ to $j$, where $P(\tau_i' \leq \tau_j) < 1$,
 the transfer $j \to l$ is generally less likely to be successful, that is, 
 $P(\tau_j + D_j \leq \tau_l \ | \ \tau_i' \leq \tau_j) \leq P(\tau_j + D_j \leq \tau_l)$.
-In this model, the start and end time distributions of states are characterized by the following theorem.
-\begin{theorem}
-\label{vaikeathm}
- Let $s = (i_0,\ldots,i_m) \in S, i_0=1$ be a state for which all 
-legs are executed by different services, that is, 
-$g\neq h \Rightarrow k_{i_g} \neq k_{i_h}$ for all $g,h \in \{0,\ldots,m\}$. Then, the density function $f_{\tau_s}(x)$ of the start 
-time $\tau_s$ of state $s$ is given by $f_{\tau_s}(x) = f_{\tau_{i_m}}(x)$ and the cumulative distribution function
-$F_{\tau_s}(x)$ of the end time $\tau_s'$ of state $s$ is given by
-\begin{align}
- \label{vaikeaintegraali}
-F_{\tau_{s}'}(x)=
-\int_{-\infty}^{\infty} f_{\tau_{i_0} + D_{i_0}} (x_0') 
-\int_{x_0'}^{\infty} f_{\tau_{i_1}} (x_1)
-\int_{x_1}^{\infty} f_{x_1+D_{i_1}} (x_1')
-\cdots
-\int_{x_{m-1}'}^{\infty} f_{\tau_{i_m}} (x_m) 
-& \int_{x_{m}}^{x} f_{x_{m} + D_{i_{m}}}(x_{m}')
-dx_m' dx_m \ldots dx_0'.
-\end{align}
-\end{theorem}
-
-Theorem \ref{vaikeathm} gives us a formula for calculating the end time distribution of
-a state defined as a sequence of legs, given that the legs are executed by different services.
-For a state $s = (i_0,\ldots,i_m)$ for which some subsequent legs $i_g,\ldots,i_{h}$ are immediate successors, 
-equation \eqref{vaikeaintegraali} can be used by joining these legs to produce a single 
-leg with duration $\sum_{k=g}^h D_{i_k}$. 
 
 
-\subsection{Independent start and end times}
+\subsubsection{Independent start and end times}
 \label{independentstartandendtimes}
 In some cases it might be reasonable
 to think that the driver of a transport service is capable
@@ -2462,7 +2447,7 @@ random variables.
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{randomgraph}
+\includegraphics[width=0.9\textwidth]{randomgraph}
 \end{center}
 \caption{A timeline of the history independent markov decision process. The points denote states (=legs) and the arrows
 between the points denote transfers between states. The solid arrows denote
@@ -2479,7 +2464,7 @@ past transfers.
 
 
 We suggest that the history independent model \eqref{rekursio02} can be used to
-approximate to the conditional case \eqref{statejoukko}.
+approximate the conditional case \eqref{statejoukko}.
 The following theorem characterizes the relation between the two models.
 \begin{theorem}
 \label{durationthm}
@@ -2529,8 +2514,6 @@ P\left(\tau_{s}' \leq \tau_{s^{a,k}} \cap \bigcap_{g=1}^{k-1} \tau_{s}' > \tau_{
 = \sum_{k=1}^h p_{ss^{a,k}} \prod_{g = 1}^{k-1}(1-p_{ss^{a,g}}),
 \end{align}
 where $p_{ss^{a,k}}$ denotes the prior transfer probability from $s$ to $s^{a,k}$, as defined in Equation \eqref{transferprob}.
-Since the state space is equal to the state space of the history independent model, 
-Algorithms \ref{alg01b} and \ref{alg02} can be used to calculate the unconditional values . 
 
 \begin{theorem}
 The history independent value $V_H(s)$ defined by model \eqref{rekursio02} and the unconditional value $V_U(s)$ 
@@ -2550,7 +2533,8 @@ We suggest that the accuracy of the unconditional model is greatest when the ave
 \label{enumber}
 \ref{jtoits} presents the following approximate method for maximizing the reliability
 of a journey from
-the origin leg $1$ to the destination leg $n$ in the unconditional model. The approach is to maximize the \emph{expected number 
+the origin leg $1$ to the destination leg $n$ in the unconditional model described in the previous
+section. The approach is to maximize the \emph{expected number 
 of successful paths} to the destination leg from each leg of the journey. 
 The method is motivated by the idea that paths that allow several detours are considered
 more reliable than paths with no alternatives (see Figure \ref{stokvsdet01}).
@@ -2567,7 +2551,7 @@ For this purpose, we define a \emph{sink graph} as follows.
 and let $s \in V$ be a node such that $(s,i) \notin A$ for all $i \in V$.
 The graph $G_s=(V, A \cup (s,s))$, where $p_{ss}=1$, is called a \emph{sink graph}. 
 \end{definition}
-In other words, a sink graph is a directed acyclic graph $(V,A)$ with the exception that one node $s \in V$ with zero outdegree is
+In other words, a sink graph is a weighted directed acyclic graph $(V,A)$ with the exception that one node $s \in V$ with zero outdegree is
 associated with a loop $(s,s)$.
 
 \begin{theorem}
@@ -2576,7 +2560,7 @@ Let $P$ denote the adjacency matrix of a sink graph $G_s=(V,A)$, where $V=\{1,\l
 let $h_i$ denote the expected number of successful paths from $i$ to $s$ for $i \in V \setminus \{s\}$ and let $h_s=1$. 
 Then, $h=(h_1,\ldots,h_{|V|})^T$ is a unique dominant eigenvector of $L$.
 \end{theorem}
-Theorem \ref{polut} states that by constructing a sink graph, the expected number of successful paths $h_i$ from leg $i$ to the destination leg $n$
+Theorem \ref{epolut} states that by constructing a sink graph, the expected number of successful paths $h_i$ from leg $i$ to the destination leg $n$
 is given by the dominant eigenvector of the adjacency matrix $P$ consisting of the prior transfer probabilities $p_{ij}$
 between legs (and $p_{nn}=1$). 
 
@@ -2599,9 +2583,107 @@ Initially, set $h_i=-1$ for all $i \in \{1,\ldots,n-1\}$ and $h_n \leftarrow 1$.
 \label{backward02}
 \end{algorithm}
 The complexity of the algorithm is of order $\mathcal{O}(n+|A|)$, where $A$ is the set of transfers for which $p_{ij} > 0$.
-Letting $m = \max{i \in \{1,\ldots,n-1\}} |S_i|$ denote size of the largest successor set, the complexity
+Letting $m = \max_{i \in \{1,\ldots,n-1\}} |S_i|$ denote size of the largest successor set, the complexity
 is bounded above by $\mathcal{O}(n(m+1))$.
 
+
+
+
+\section{Numerical experiments}
+\label{experiments}
+In the following, we present computational results obtained by the 
+conditional model \eqref{statejoukko} and the unconditional model \eqref{ylaraja01}.
+In the conditional model, the durations of legs are assumed to be independent 
+and in the unconditional model, the start and end times of legs are assumed to
+be independent, as described in Section \ref{independentstartandendtimes}.
+The studied instances are based on the tram network of Helsinki, see Figure \ref{verkot01}.
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.7\columnwidth]{verkot01a}
+\end{center}
+\caption{The tram network of Helsinki consisting of ten tram lines and 154 stops. 
+}
+\label{verkot01}
+\end{figure}
+
+The travel times between stops are defined as shifted gamma distributed random variables. 
+More precisely, given the average travel time $t_{uv}$ between stops $u$ and $v$, we define the 
+travel time $\tau_{uv}$ as a random variable $\tau_{uv} \sim \text{Gamma}( \alpha t_{uv}, \beta , \delta t_{uv} )$,
+where the $\text{Gamma}( \alpha, \beta , \delta )$ distribution is defined by the 
+probability density function 
+\begin{align}
+\label{gammakaava}
+f(x)=\frac{(x-\delta)^{\alpha-1} e^{-(x-\delta)/\beta}}{\beta^{\alpha} \Gamma (\alpha)} \ \ \ \mbox{ for } x > \delta \geq 0.
+\end{align}
+The mean of a $\text{Gamma} (\alpha, \beta, \delta)$ distribution is $\alpha \beta + \delta$,
+that is, by choosing $\alpha, \beta$ and $\delta$ such that $\alpha \beta + \delta= 1$,
+we have $E(\tau_{uv})=t_{uv}$. 
+
+
+\subsection{Results}
+\begin{table}[ht] 
+\caption{Computational results of the conditional and unconditional models, 99.9\% screening. 
+The decision time for each model is given by the sum of screening time and algorithm time.}
+\centering     
+{\tiny
+\begin{tabular}{|c|c|c|c|cc|cc|}
+\hline 
+\multirow{2}{*}{Instance} & Number &Time horizon & Screening  & \multicolumn{2}{|c|}{Conditional model } & 
+\multicolumn{2}{|c|}{Unconditional model}\\
+\cline{5-8}
+& of legs & $T$ (min) & time (s) & Algorithm time (s) & Probability $V((1))$ & Algorithm time (s) & Probability $V_U(1)$ \\
+\hline 
+ \text{r1} & 745 & 20.4 & 455.29 & 12.42 & 0.989 &  0.54 & 0.989 \\
+ \text{r2} & 559 & 18. & 474.83 & 62.67 & 0.693 & 3.99 & 0.693 \\
+ \text{r3} & 90 & 9.6 & 36.33 & 4.15 & 0.482 & 0.14 & 0.504 \\
+ \text{r4} & 355 & 15.6 & 1419.24 & 898.54 & 0.839 &  2.08 & 0.859 \\
+ \text{r5} & 558 & 24. & 234.2 & 5.94 & 0.181  & 0.28 & 0.203 \\
+ \text{r6} & 704 & 22.8 & 1646.43 & 98.31 & 0.677  & 3.04 & 0.678 \\
+ \text{r7} & 615 & 19.2 & 1642.85 & 30.05 & 0.555  & 2.66 & 0.602 \\
+ \text{r8} & 562 & 21.6 & 1028.88 & 20.94 & 0.295  & 1.08 & 0.455 \\
+ \text{r9} & 508 & 15.6 & 787.51 & 883.16 & 0.588  & 1.43 & 0.677 \\
+ \text{r10} & 85 & 10.8 & 37.57 & 4.64 & 0.311 & 0.49 & 0.312 \\
+ \hline
+\end{tabular}
+}
+\label{tulokset01a}
+\end{table}
+
+
+The computational results are shown in Table \ref{tulokset01a}, 
+The first column shows the name of the instance, the second column shows the number of
+legs included the instance and the third column shows the length of the time window in minutes.
+
+In order to be able to compute the probability in the conditional model, 
+which requires the enumeration of all paths,
+the set of paths from the origin state to destination states was initially narrowed by excluding paths for
+which the probability of success is less than a minimum probability $p$ with confidence level $1-p$.
+The duration of this screening phase (in seconds) is shown in the third column of the tables.
+
+The remaining columns show the algorithm times for the different models and the corresponding probability values for the 
+origin state. The \emph{decision time} for each model is given by the sum of screening time and algorithm time.
+The decision time corresponds to the time needed to produce an optimal policy in each instance, that is, 
+the time needed to suggest a decision for the commuter.
+
+In the screening phase, paths for
+which the probability of success is less than 0.1\% with a 99.9\% confidence level were excluded.
+This screening phase was executed by performing $R=6905$ random tests, in each of which all paths
+beginning from the origin state were enumerated.
+For all states not excluded during the screening phase, the distributions of the start and end times in the conditional model were 
+approximated by random sampling with $R=10000$ samples.
+
+By looking at the algorithm times in the tables,  
+we see that the unconditional algorithm is significantly, typically of order ten times, faster than the  conditional model.
+Furthermore, in a part of the instances, the difference between the results obtained by the 
+models is insignificant. For example, in instance r6, the probability of reaching the destination state
+is equal with three-digit precision for both models.
+However, the results also indicate that the modeling error in the unconditional model is significant in some cases. 
+
+As a conclusion, it can be stated that even though the algorithm time of the conditional model is significantly greater 
+compared to the unconditional model, the conditional model is justified by the fact that it may be used to
+estimate the error in approximate methods. By heuristic screening, the compuation times can be significantly
+decreased, see \ref{jdjuejor}.
 
 \chapter{Economic equilibrium}
 \label{economicmodels}
