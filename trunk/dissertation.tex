@@ -32,9 +32,10 @@ that can be used to solve combinatorial problems related to vehicle routing and 
 in a transport network.
 
 Public transport can be viewed as a market where demand affects supply and vice versa.
-In the first part of the dissertation, 
-we show how the demand for transportation can be satisfied by using a fleet of vehicles,
-assuming a specific demand at the individual level. In the second part, we study how the demand adapts to the 
+In the first part of the dissertation related to vehicle routing, 
+we show how a given demand for transportation can be satisfied by using a fleet of vehicles,
+assuming that the demand is known at the individual level. In the second part, by considering 
+the journey planning problem faced by commuters, we study how the demand adapts to the 
 supply of transport services, assuming that the supply remains unchanged for a short period of time.
 In the third part we present methods
 for determining the economic equilibrium, that is, the point at which the demand meets the supply,
@@ -55,9 +56,9 @@ T\"ass\"a v\"aitöskirjassa esitet\"a\"an matemaattisia malleja kysynt\"aohjautu
 joilla voidaan ratkaista ajoneuvojen reititykseen ja matkansuunnitteluun liittyvi\"a kombinatorisia ongelmia liikenneverkossa.
 
 Joukkoliikennett\"a voidaan tarkastella markkinana, jossa kysynt\"a vaikuttaa tarjontaan ja p\"ainvastoin.
-V\"aitoskirjan ensimm\"aisessa osassa n\"aytet\"a\"an miten kysynt\"a\"an voidaan 
+V\"aitoskirjan ensimm\"aisessa osassa, joka käsittelee ajoneuvojen reitinlaskentaa, n\"aytet\"a\"an miten tunnettuun kysynt\"a\"an voidaan 
 vastata k\"aytt\"am\"all\"a tietty\"a ajoneuvokantaa, kun oletetaan kysynt\"a tunnetuksi yksil\"otasolla. 
-Toisessa osassa tutkitaan, miten kysynt\"a
+Toisessa osassa tarkastellaan matkustajien matkansuunnittelua joukkoliikenneverkossa eli sitä miten kysynt\"a
 mukautuu liikennepalvelujen tarjonnan mukaan, kun oletetaan tarjonta muuttumattomaksi lyhyellä aikavälillä.
 Kolmannessa osassa esitet\"a\"an menetelmi\"a
 taloudellisen tasapainopisteen, eli kysynn\"an ja tarjonnan kohtaamispisteen, m\"a\"aritt\"amiseksi,
@@ -69,7 +70,7 @@ vanhuksille ja liikuntarajoitteisille suunnatuista kutsulinjoista
 henkilöautoliikenteen kanssa kilpaileviin laajamittaisiin kysynt\"aohjautuviin joukkoliikennej\"arjestelmiin. 
 Mallien avulla tehdyt laskelmat voivat tuottaa arvokasta tietoa viranomaisille ja liikennepalvelujen suunnittelijoille 
 liikenteen s\"a\"annöstelyyn ja investointeihin liittyen.
-Joukkoliikenteen lis\"aksi esiteltyj\"a reititys- ja matkansuunnittelumenetelmi\"a voidaan soveltaa muun muassa 
+Joukkoliikenteen lis\"aksi esiteltyj\"a reitinlaskenta- ja matkansuunnittelumenetelmi\"a voidaan soveltaa muun muassa 
 rahti- ja lentoliikenteess\"a, l\"ahetti- ja ruoankuljetuspalveluissa sek\"a sotilaslogistiikassa.}
 % And yet another one in Swedish
 % \draftabstract[swedish]{Demand-responsive transport (DRT) is an advanced, user-oriented form of public transport between 
@@ -171,7 +172,7 @@ for an entire metropolitan area?
 
 \section{$\ldots$and tomorrow}
 Several new ideas and concepts related to demand-responsive transport
-services operating in urban areas have been recently presented, see for example \cite{cortes,jokinen-fists-2011}.
+services operating in urban areas have been recently presented, see for example \cite{cortes,jokinen-fists-2011}, \ref{cpooling}.
 These ideas are often motivated by problems arising from the congestion of urban 
 areas caused by the increasing number of private cars.
 Thus, one of the main present goals of planning demand-responsive transport is seen
@@ -417,7 +418,7 @@ Time windows have been incorporated in many early and recent studies of the DARP
 \cite{psaraftis02, jaw, madsen, toth02,cordeau02,diana, wong, cordeau01, berbegliafeas}.
 In these studies it is noted that in dynamic settings, time windows eliminate the possibility of indefinite
 deferment of customers and strict time limits help provide reliable service.
-Maximum ride time constraints that limit the time spent by passengers on the vehicle
+Maximum ride time constraints that limit the time spent by passengers in the vehicle
 between their pick-up and their delivery \cite{hunsaker}, 
 are considered as well.
 
@@ -491,7 +492,7 @@ practice, single-vehicle Dial-A-Ride algorithms can be used as subroutines in
 large scale multivehicle Dial-A-Ride environments. It is mainly for this reason
 that one's ability to solve the single-vehicle DARP is considered important.}
 
-\subsection{Problem formulation \cite{psaraftis01,psaraftis02}}
+\subsection{Problem formulation}
 \label{staticnarrow}
 Let there be $N$ customers, each of which have been assigned a number $i$ between 1 and $N$.
 For each customer $i \in \{1,\ldots,N\}$, let $u_i$ be the pick-up point and $u_{N+i}$ be the delivery point,
@@ -1248,7 +1249,7 @@ The above definition is similar to the one studied in \cite{dumas03},
 in which the set of \emph{admissible arcs} between the pick-up and delivery nodes is constructed
 as a preprocessing step in the pickup and delivery problem. The set of admissible arcs is 
 made up of arcs which a priori satisfy the precedence, capacity and time constraints of the problem.
-The difference in the formulation studied in this work is that feasibility of 
+The difference in \eqref{feasibletransitions} is that feasibility of 
 transitions is defined as a function of the state of the vehicle (see Figure \ref{transitions01}).
 
 \begin{figure}[ht]
@@ -1970,7 +1971,7 @@ In addition to public transport, a journey planning problem with a similar objec
 arises in freight transportation by for-hire carriers. 
 
 
-\section{Stochastic model of a scheduled network}
+\section{Stochastic model of a scheduled network [\ref{jdjuejor}]}
 Let $\mathcal{V}$ denote a set of \emph{nodes} representing public transport stops
 in a specific area and let $\mathcal{K} \subset \mathbb{N}$ denote a set of public 
 transport \emph{services} operating in this area, indexed by natural numbers. 
@@ -2828,7 +2829,7 @@ choose to travel from $i$ to $j$ by DRT per unit time is given by
 Q_{ij}^{\rm DRT} = \sum_{r\in \mathcal{R}_{ij}} Q_{r}^{\rm DRT}.
 \end{align}
 
-\subsection{Vehicle movements}
+\subsection{Supply}
 \label{vehiclemovements}
 We assume that there are $N$ vehicles available for transporting customers. 
 At any point in time, each vehicle follows a specific \emph{route} $(i_0,i_1,\ldots,i_m)$ 
@@ -3421,7 +3422,7 @@ is maximized, that is
 \end{align}
  
 
-\subsection{A three node example}
+\subsubsection{A three node example}
 The long-run market equilibria described above was determined for the three node example case introduced
 in Section \ref{networkequilibrium}. The network equilibrium was calculated for different numbers
 of vehicles $N$ and prices per kilometer $p$ by means of Algorithm \ref{compalg}.
@@ -3514,25 +3515,25 @@ The simulation model is governed by the following preliminary assumptions.
 \item
 There are $K$ vehicles available for transporting customers requesting service within a certain operating zone $A$. For each pair of points $a$ and $b$ in $A$, the distance $d(a,b)$ and direct ride time $t(a,b)$ are known and equal for all vehicles.
 \item
-At each moment, each vehicle is assigned a certain set of customers and a tentative route passing through all unvisited pick-up and drop-off points associated with these customers. In this work, we assume that the vehicles follow the shortest route with respect to known customers.
+At each moment, each vehicle is assigned a certain set of customers and a tentative (shortest) route passing through all 
+unvisited pick-up and drop-off points associated with these customers. 
 \item
-At any moment, a new customer may request a trip from a specific pick-up point $a$ to a specific drop-off point $b$ constituting a request for trip $(a,b)$. 
-In addition, each request is associated with a unit load (1 passenger/request).
+At any moment, a new customer may request a trip from a specific pick-up point $a$ to a specific drop-off 
+point $b$.
 \item
-As an instant response to each customer request, one or several trips are offered to the customer, from which the customer
-accepts at most one. 
-If an offer is accepted, the customer is assigned to the corresponding vehicle and its route is modified appropriately (see Figure \ref{dynamicexample07}).
-% 	\item
-% 	There is a fixed fare structure. 
-% 	The price $R$ of a trip is assumed to be dependent on the direct trip 
-% 	length $d(a,b)$ exclusively by means of the formula
-% 	\begin{align}
-% R(a,b)=p\cdot d(a,b),
-% \end{align}
-% where $p$ is the price per kilometer in relation to direct trip length.
+As an instant response to each customer request, one or several trip offers are presented to the customer, from which the customer
+accepts at most one. If an offer is accepted, the customer is assigned to the corresponding vehicle and the route of the vehicle
+is modified (see Figure \ref{dynamicexample07}).
+	\item
+	There is a fixed fare structure. 
+	The price $R$ of a trip is assumed to be dependent on the direct trip 
+	length $d(a,b)$ exclusively by means of the formula
+	\begin{align}
+R(a,b)=p\cdot d(a,b),
+\end{align}
+where $p$ is the price per kilometer in relation to direct trip length.
 % The customers know the fare structure and the direct trip lengths beforehand.
 \end{enumerate}
-
 
 
 
@@ -3575,8 +3576,10 @@ The level of service offered to a customer traveling from $a$ to $b$ is defined 
 \end{align}
 where $t_d$ is the drop-off time, $t_r$ is the release time of the request and $t(a,b)$ is the direct ride time from $a$ to $b$. 
 
-The demand model is expressed by means of a probability distribution $P(\mbox{accept} \ | \ \tau,p)$, which denotes the conditional probability that an arbitrary customer accepts an offer with travel time ratio $\tau$ and price $p$. 
-An example of a linear acceptance probability function is illustrated in Figure \ref{acceptanceprob01}. The relation to alternative transportation modes is clarified in Figure \ref{acceptanceprob02}, which shows the basic idea behind the linear demand model.
+The demand model is expressed by means of a probability distribution $P(\mbox{accept} \ | \ \tau,p)$, 
+which denotes the conditional probability that an arbitrary customer accepts an offer with travel time ratio $\tau$ and price $p$. 
+An example of a linear acceptance probability function is illustrated in Figure \ref{acceptanceprob01}. The relation 
+to alternative transportation modes is clarified in Figure \ref{acceptanceprob02}, which shows the basic idea behind the linear demand model.
 
 \begin{figure} [ht]
 \begin{center}
@@ -3604,31 +3607,89 @@ If the level of service is as good as that of a normal taxi
 \label{dailydecisions}
 Let us present the following mechanisms for generating trip offers at the time a customer request is released: 
 
-\textbf{Monopoly:} In order to maximize the total revenue, the monopolist aims to formulate a single offer in a way that the additional cost of providing the service is minimized and the probability that the customer accepts the offer is maximized. In other words, the monopolist chooses for each trip $(a,b)$ the vehicle in a way that the expected profit
+\textbf{Monopoly:} In order to maximize total profit, the monopolist formulates a single offer in a way that the additional cost of 
+providing service is as small as possible and the probability that the customer accepts the offer is as high as possible. In other words, 
+the monopolist chooses for each trip $(a,b)$ a vehicle in a way that the expected profit
 \begin{align}
 \label{dailymonopoly}
-\E{\pi}=P(\mbox{accept} \ | \ \tau, p) \cdot \Big( R(a,b)-\E{\Delta C} \Big)
+\E{\pi}=P(\mbox{accept} \ | \ \tau, p) \cdot \Big( p -\E{\Delta C} \Big)
 \end{align}
-is maximized, where $P(\mbox{accept} \ | \ \tau, p)$ denotes the acceptance probability with level of service $\tau$ and price $p$ and 
+is maximized, where $P(\mbox{accept} \ | \ \tau, p)$ denotes the acceptance probability with level of service $\tau$, price $p$ and 
 $\E{\Delta C}$ denotes the expected increase in the cost of the vehicle route caused by the new potential customer.
 
 \textbf{Competitive market:}
-For each vehicle,
-a new route serving the new potential passenger and the previously assigned passengers
-is computed. The best vehicle for the passenger is the one that
-provides the smallest travel time ratio. The customer chooses the trip offered by this vehicle.
+For each vehicle, a new route serving the new potential customer and the previously assigned customers
+is computed. The best vehicle from the customer's point of view is the one that
+provides the smallest travel time ratio $\tau^*$. The customer chooses the trip offered by this vehicle with probability
+$P(\mbox{accept} \ | \ \tau^*, p)$.
 
 
-\subsection{Description of the simulator}
-The simulator is based on \ref{csimutools}, where trip requests occur within a bounded region in a plane. Each trip request is defined as a triple, $(t_i, a_i,b_i)$, where $t_i$ denotes the time instance (release time) of the $i$th request, $a_i$ and $b_i$ denote the origin and the destination of the trip, respectively.
-There are $K$ vehicles each with capacity of $c$ customers. When a trip request arrives, it is immediately assigned to a single vehicle with probability $P(\mbox{accept} \ | \ \tau,p)$. The chosen vehicle then carries the passenger from the origin to the destination. With $c>1$, several passengers can share a vehicle, which allows the system to combine trips and decrease the effort per passenger.
+\subsection{Simulation experiments}
+\ref{csimutools} describes a simulation model, where trip requests occur within a bounded region in a plane. Each trip request is defined as a triple, $(t_i, a_i,b_i)$, where $t_i$ denotes the release time of request $i$, $a_i$ and $b_i$ denote the origin and the destination of the trip, respectively. There are $K$ vehicles each with capacity of $c$ customers. 
+When a trip request arrives, it is immediately assigned to a single vehicle. The chosen vehicle then carries the customer from the origin to the destination. With $c>1$, several customers can share a vehicle, which allows the system to combine trips and decrease the effort per customer.
 A constant velocity $v$ and a constant minimum stop time of $t_{\mbox{st}}$ is assumed for each vehicle. The minimum stop time is assumed to include the time needed for deceleration and acceleration. 
 
+\ref{cmonop_ecotran} extends this model by the following modification:
+Upon arrival of a trip request, it is assigned to a single vehicle, assuming that the customer accepts the 
+best trip offered by the studied market mechanism, that is, with probability $P(\mbox{accept} \ | \ \tau, p)$.
+If the customer does not accept the best offer, no vehicle routes are modified.
 
+\subsubsection{Long-run market equilibria}
+Similarly as in Section \ref{longrun}, the simulator is used to find the optimal number of 
+vehicles $K$ and price per kilometer $p$ in two mechanisms: 
+1) monopoly and 2) competitive market.
+In both mechanisms, the objective is to maximize profit. The optimal values $K^*$ and $p^*$
+are determined for each mechanism by running the simulator with different values of $K$ and $p$ and choosing the
+best combination with respect to the objective, see Figure \ref{simulationkuva}. 
 
+\begin{figure} [ht]
+\begin{center}
+\includegraphics[width=\textwidth]{simulation02}
+\caption{Determining optimal number of vehicles $K$ and price per kilometer $p$ by means of 
+simulation. At first, an initial run is executed for each $(K,p) \in \{100, 110, \ldots, 800\} \times \{0.4, 0.45, \ldots, 2.3\}$.
+Then, the optimum $(K^*_1,p^*_1)$ is updated by narrowing the parameter space to 81 points chosen from the neighborhood of the optimal point and 
+performing 10 runs for each point, yielding $(K^*_2,p^*_2)$.
+Finally, a new optimum is determined by performing 100 runs for nine points in the neighborhood of the previous optimum. 
+The last step is repeated until convergence.} 
+\label{simulationkuva}
+\end{center}
+\end{figure}
 
+\subsubsection{Results}
+Table \ref{tulokset} presents the long-run equilibria for the studied market mechanisms. The table shows the optimal price per kilometer and the optimal number of vehicles for the market mechanisms together with the corresponding daily profit, customer surplus and social welfare, that is, the sum of the profit and surplus. In addition, the number of served customers, average realized travel time ratio and relative driven distance are given. The average travel time ratio is determined by dividing the total travel time of customers by the sum of direct trip ride times. Thus, it describes the average level of service experienced by the customers. The relative driven distance is calculated by dividing the total distance driven by vehicles by the sum of direct trip lengths. Consequently, it describes how efficiently the vehicles are utilized. 
 
+\begin{table}
+\centering
+{\scriptsize
+\begin{tabular}{|lrrrrrrrr|}
+\hline
+Mechanism & Number of &	Price/ & Surplus	& Profit	& Social & Served & Travel time& Relative \\
+& vehicles $K$ &  km $p$ & & & welf. & cust. & ratio & dist. \\
+\hline
+1) Monopoly	                & 210	& 1.65	& 417	  & 94535	& 95429 & 21213	& 1.688	& 0.613 \\
+3) Competitive market 	    & 700	& 1.70	& 47040	&  985	& 48025	& 26041	& 1.268	& 1.024 \\
+\hline
+\end{tabular}
+}
+\caption{Simulation results. The first columns of the upper table show the 
+optimal number of vehicles $K$ and price per kilometer $p$ for the studied mechanisms. The remaining
+columns show the corresponding daily surplus, profit, social welfare, 
+number of served customers, realized travel time ratio and relative driven distance.}
+\label{tulokset}
+\end{table}
 
+From table \ref{tulokset}, one can observe that while the monopoly mechanism yields more profits than the competitive market, focusing only on profit will wither the total customer surplus. The distance driven by the vehicles is 39\% lower compared to
+the sum of direct trip lengths, which suggests that the vehicles are utilized efficiently.
+
+In the competing market mechanism, the number of vehicles that are allowed to enter the market is not limited. The market attracts new vehicles as long as there are excess profits available. The profit of the competitive market would thus finally approach zero. However, the large number of vehicles could provide a relatively good level of service for customers, as can be seen from the total surplus and average travel time index. 
+The travel time of customers is increased only by 27\% compared to the direct trips. Thus, the competitive market is seen to
+provide a service comparable to conventional taxi.
+
+The results presented in \ref{cmonop_ecotran} suggest that the social welfare can be further increased by 
+regulating the monopoly mechanism in real time. This means that instead of expected profit, trip offers are generated by maximizing 
+the sum of expected profit and customer surplus. 
+%In addition, the number of vehicles and price are
+%regulated in a way that the social welfare is maximized.
 
 
 \chapter{Conclusions}
@@ -3700,7 +3761,7 @@ include freight transportation, courier and food delivery services, military log
 % In chapter \ref{simutools}, an immediate request dynamic vehicle routing problem with pick-ups and deliveries is studied.
 % The focus is on systems where a large number of vehicles are needed to support
 % the transportation demand. As a particular feature of the system, a vehicle is assigned to
-% each passenger immediately upon the trip request. Simulation experiments are used to show that 
+% each customer immediately upon the trip request. Simulation experiments are used to show that 
 % that in this context it is typically sufficient, without any significant loss in performance, to consider
 % the insertion approach for route enumeration, where the relative order
 % of the earlier waypoints is always kept the same. 
@@ -3711,7 +3772,7 @@ include freight transportation, courier and food delivery services, military log
 % of transportation system is demonstrated by means of simulation experiments. In general, there is a well-known
 % trade-off between the work conducted (driven kilometers)
 % and the level of the service (e.g., mean waiting times).
-% However, the experiments suggest that if the passengers are
+% However, the experiments suggest that if the customers are
 % willing to accept even a small average delay for their trips,
 % in form of waiting time and/or a longer route, then
 % the amount of work can be reduced considerably. That is, the
