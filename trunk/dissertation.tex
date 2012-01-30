@@ -334,7 +334,7 @@ Using a fleet of vehicles, what is the best way to satisfy the demand?
 In Chapter \ref{journeyplanning}: \emph{Journey planning}, the schedules and routes of transport services are assumed to be known during a specific time horizon.
 Using the scheduled transport services, what is the best way for a commuter to travel from a given origin to a given destination?
 
-In Chapter \ref{economicmodels}: \emph{Economic equilibrium}, we define the demand model by assuming that customers seek trips with
+In Chapter \ref{economicmodels}: \emph{Economic models}, we define the demand model by assuming that customers seek trips with
 small travel times and the supply model by assuming that transport service providers aim to maximize profit. Given these models,
 at which point does the demand for transportation meet the supply and how do regulation policies affect the economic equilibrium?
 
@@ -509,12 +509,12 @@ The above parameters are illustrated in Figure \ref{timeline01}.
 \begin{center}
 \includegraphics[width=0.9 \columnwidth]{timeline01}
 \caption{Time pick-up and drop-off time windows. The pick-up point of
-customer $i$ is denoted by $i^{+}$ and the drop-off point is denoted by $i^{-}$.
-The customer should be picked up at $i^{+}$ within the time window $[E_{i^+},L_{i^+}]$
-and the customer should be dropped off at $i^{-}$ within the time window $[E_{i^{-}},L_{i^{-}}]$.
+customer $i$ is denoted by $i^{\uparrow}$ and the drop-off point is denoted by $i^{\downarrow}$.
+The customer should be picked up at $i^{\uparrow}$ within the time window $[E_{i^{\uparrow}},L_{i^{\uparrow}}]$
+and the customer should be dropped off at $i^{\downarrow}$ within the time window $[E_{i^{\downarrow}},L_{i^{\downarrow}}]$.
 The service times needed for the customer to get on the vehicle
-and get off the vehicle are denoted by $D_{i^+}$ and $D_{i^-}$. The time between
-the drop-off and the pick-up (excluding $D_{i^+}$) should not exceed the maximum ride time $T^{\max}$.
+and get off the vehicle are denoted by $D_{i^{\uparrow}}$ and $D_{i^{\downarrow}}$. The time between
+the drop-off and the pick-up (excluding $D_{i^{\uparrow}}$) should not exceed the maximum ride time $T^{\max}$.
 }
 \label{timeline01}
 \end{center}
@@ -1161,7 +1161,7 @@ repeated for the remaining nodes $P \setminus \{p^{*}\}$.
 
 Formally, the search is executed by means of the recursion 
 REC($S,R_S$) shown in Algorithm \ref{rralg}, where $S$ denotes a sequence of nodes (initially $S=(0)$), $R_S$ denotes %based on a two-step feasibility check 
-the set of remaining nodes at $S$ (initially $R_S=\{1^{+},1^{-}, \ldots, n^{+},n^{-}\}$) and $S_{\max}$ denotes the sequence that maximizes the number 
+the set of remaining nodes at $S$ (initially $R_S=\{1^{\uparrow},1^{\downarrow}, \ldots, n^{\uparrow},n^{\downarrow}\}$) and $S_{\max}$ denotes the sequence that maximizes the number 
 of served customers (initially $S_{\max} = (0)$). $C(S)$ denotes the number of served customers in sequence $S$, which is equal to the 
 number of drop-off points in $S$.
 \begin{algorithm}
@@ -1189,7 +1189,7 @@ number of drop-off points in $S$.
 \end{algorithmic}
 \caption{\footnotesize A recursive solution REC($S,R_S$) to the single-vehicle DARP. $S$ denotes a sequence of 
 nodes (initially $S=(0)$), $R_S$ denotes %based on a two-step feasibility check 
-the set of remaining nodes (initially $R_S=\{1^{+},1^{-}, \ldots, n^{+},n^{-}\}$) and $S_{\max}$ denotes the sequence that maximizes the number 
+the set of remaining nodes (initially $R_S=\{1^{\uparrow},1^{\downarrow}, \ldots, n^{\uparrow},n^{\downarrow}\}$) and $S_{\max}$ denotes the sequence that maximizes the number 
 of served customers (initially $S_{\max} = (0)$). $C(S)$ denotes the number of served customers in sequence $S$, which is equal to the 
 number of drop-off points in $S$.}
 \label{rralg}
@@ -1337,8 +1337,7 @@ At step $k \in \{1,\ldots,2n\}$, the number of remaining nodes is $2n+1-k$
 and thus the complexity is of order $\mathcal{O} (\sum_{k=1}^{2n} (2n+1-k)^2) =\mathcal{O}(n^3)$.
 Roughly, the computational work is linearly increased with the 
 number of dead ends $M$ encountered during the recursion.
-The overall complexity of the single vehicle algorithm is thus $\mathcal{O}(n^3 + M)$.
-
+The overall complexity of the single vehicle algorithm is thus $\mathcal{O}(Mn^3)$.
 
 
 \subsection{Numerical experiments}
@@ -1688,7 +1687,7 @@ the number of a priori feasible partitions is given by $|\mathcal{P}'| = \prod_{
 
 \begin{theorem}
 \label{partitions}
-The number of a priori feasible partitions satisfies $|\mathcal{P}| \leq m^{n-|C|}$.
+The number of a priori feasible partitions satisfies $|\mathcal{P}'| \leq m^{n-|C|}$.
 \end{theorem}
 
 The set of a priori feasible partitions is represented by the set $V_1 \times \ldots \times V_n$ and each a 
@@ -1707,7 +1706,7 @@ This way, the iteration described in Section \ref{iteration} goes through all fe
 \subsection{Structure and complexity}
 \label{mvstructure}
 The multi-vehicle algorithm involves solving the single-vehicle case
-for each vehicle in $r$ iterations. Thus the complexity is bounded above by $\mathcal{O}\left(rm(n^3+A(n))\right)$, 
+for each vehicle in $r$ iterations. Thus the complexity is bounded above by $\mathcal{O}\left(rmA(n)n^3\right)$, 
 where $A(N) \leq (2N)!/2^N$.                                                                                                                  
 
 Note that the complexity is in general lower since the size of the set of customers is
