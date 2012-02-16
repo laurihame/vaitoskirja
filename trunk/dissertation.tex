@@ -2698,7 +2698,7 @@ the choices of transport operators
 do not change if the demand remains constant and the choices of customers
 do not change if the supply of trips remains constant. 
 
-In Section \ref{networkmodel}, a stochastic model for studying a demand-responsive transport service is presented.
+In Section \ref{networkmodel}, a stochastic model for studying demand-responsive transport services is presented.
 Section \ref{simulationmodel} presents a more detailed model based on microsimulation.
 
 \section{Stochastic model [\ref{ccompejor}]}
@@ -2707,9 +2707,9 @@ Section \ref{simulationmodel} presents a more detailed model based on microsimul
 behavior of customers and transport operators in a demand-responsive transport market.
 The transport operators seek to maximize profit by serving as many customers per unit time as possible, 
 and customers seek rides to minimize subjective trip price, defined as a combination of ticket price and travel time. 
-Given these vehicle-customer behavior models,
-the \emph{network equilibrium}, defined as a state in which the demand matches the supply
-of trips in each part of the network, is determined. 
+Given these behavior models,
+we calculate the \emph{network equilibrium}, defined as a state in which the demand matches the supply
+of trips in each part of the network. 
 
 This approach is somewhat similar to the taxi model proposed by \cite{yang2010}. The main difference is that in a taxi service, 
 customers are delivered to their destinations directly, whereas in a demand-responsive transport service, a vehicle can serve several customers 
@@ -3251,8 +3251,8 @@ vehicles at states $s \in \mathcal{S}$.
 evenly among all states $s \in \mathcal{S}$, $T_{s} = \frac {N}{d_s |\mathcal{S}|}$; 
 \REPEAT
 \STATE \textbf{Customer demand updating:} Calculate $E[Q_{r}^{\rm DRT}]$ for all 
-$r \in \mathcal{R}$ given by equation \eqref{drtkysynta};
-\STATE \textbf{Vehicle movements:} Solve $T_s$ for all $s \in \mathcal{S}$ by equation \eqref{saapumisnopeus};
+$r \in \mathcal{R}$ given by Equation \eqref{drtkysynta};
+\STATE \textbf{Vehicle movements:} Solve $T_s$ for all $s \in \mathcal{S}$ by Equation \eqref{saapumisnopeus};
 \UNTIL{convergence}
 \end{algorithmic}
 \caption{Equilibration of DRT.}
@@ -3332,25 +3332,18 @@ for $K \in \mathbb{N}$.
 \subsection{Monopoly}
 In a demand-responsive transport monopoly, a single transport operator controls the transition probabilities of vehicles
 between states, in contrast to the competitive market in which the routing decisions are made by individual drivers.
-In this case, the matrix $P$ containing the transition probabilities is referred to as a \emph{routing strategy}.
-Each routing strategy produces an arrival rate vector $T$ that contains the arrival rates of
+In this case, the matrix $P$ containing the transition probabilities $P_{s,s'}$ is referred to as a \emph{routing strategy}.
+By Equation \eqref{saapumisnopeus},
+each routing strategy produces an arrival rate vector $T$ (the dominant eigenvector of $P$) that contains the arrival rates $T_s$ of
 vehicles at states.
-The arrival rate of vehicles 
-at state $s \in \mathcal{S}$ satisfies
-\begin{align}
-\label{saapumisnopeusb}
-T_s = \sum_{s' \in \mathcal{S}} T_{s'} P_{s',s}.
-\end{align}
-that is, the arrival rate vector $T$ satisfying Equation \eqref{saapumisnopeus} 
-is an eigenvector of the matrix $P$ corresponding to eigenvalue $1$.
 
 \subsubsection{Optimal routing strategies}
-Let us consider three different objective functions \eqref{profitrate}, \eqref{surplus} and \eqref{welfare}.
+Let us consider three different objective functions \eqref{monopprofitrate}, \eqref{monopsurplus} and \eqref{monopwelfare}.
 
-In an unregulated demand-responsive market with a single transport operator, 
+In an unregulated demand-responsive service operated by a single transport operator, 
 the goal is to find a routing strategy $P$ that maximizes the profit rate
 \begin{align}
-\label{profitrate}
+\label{monopprofitrate}
 U = \sum_{r \in \mathcal{R}}  Q_r^{\rm DRT} p_r - \sum_{s \in \mathcal{S}} T_s c_{s},
 \end{align}
 where $\sum_{r \in \mathcal{R}}  Q_r^{\rm DRT} p_r$ is \emph{total revenue rate} 
@@ -3358,12 +3351,12 @@ and $\sum_{s \in \mathcal{S}} T_s c_{s}$ is
 the corresponding \emph{total cost rate}. 
 
 Regulating the service in real-time, as described in \ref{cmonop_ecotran}, could improve the service
-from the social point of view. We define the \emph{customer surplus}
+from the social point of view. In order to be able to study social welfare, we first define the \emph{customer surplus}
 as the difference between the subjective price of the virtual mode and 
 the subjective price of DRT by
 \begin{align}
-\label{surplus}
-S = \sum_{(i,j) \in I \times I} \sum_{r \in \mathcal{R}_{ij}} Q^{DRT}_r  (\bar{g}_{ij}-g_r),
+\label{monopsurplus}
+V = \sum_{(i,j) \in I \times I} \sum_{r \in \mathcal{R}_{ij}} Q^{DRT}_r  (\bar{g}_{ij}-g_r),
 \end{align}
 where $Q^{DRT}_{ij}$ is the total demand for DRT trips from $i$ to $j$, $\mathcal{R}_{ij}$
 is the set of DRT trips from $i$ to $j$, $g_r$ is the subjective price
@@ -3371,34 +3364,69 @@ of trip $r$ and $\bar{g}_{ij}$ is the subjective price of the virtual mode from 
 
 Social welfare is defined as the sum of profit rate and surplus, that is, 
 \begin{align}
-\label{welfare}
- W=U+S.
+\label{monopwelfare}
+ W=U+V.
 \end{align}
 
 \subsubsection{Algorithm}
+The idea for finding an optimal routing strategy is as follows.
+First, the routing strategy $P$ is initialized and the objective function 
+(for example, profit rate) is evaluated. Second, a routing strategy candidate $P'$ 
+is produced by randomly perturbing $P$ and the objective function is evaluated again. 
+If the value of the objective function is increased, $P'$ becomes the new routing strategy, that is, $P \leftarrow P'$. 
+The second step is repeated until convergence.
+The outline of the procedure is presented in Algorithm \ref{monopalg}.
+
+\begin{algorithm}[H]
+\begin{algorithmic}
+\STATE \emph{Input}: Set $I$ of nodes, direct ride time $t_{ij}$, cost $c_{ij}$, demand $Q_{ij}$,
+ticket price $p_{r}$, cost of virtual mode $\bar{g}_{ij}$ 
+for all pairs $i,j \in I$ of nodes, number of vehicles $N$, 
+customers' monetary value for unit time $\beta$
+and the uncertainty parameter $\theta$.
+\STATE \emph{Output}: Optimal routing strategy $P$ and the corresponding arrival rates $T_s$ of 
+vehicles at states $s \in \mathcal{S}$.
+\STATE Initialize the routing strategy $P$; \hfill (Transition probabilities between states) 
+\REPEAT
+\STATE \textbf{Arrival rates:} Solve $T_s$ for all $s \in \mathcal{S}$ by Equation \eqref{saapumisnopeus};
+\STATE \textbf{Customer demand:} Calculate $E[Q_{r}^{\rm DRT}]$ for all 
+$r \in \mathcal{R}$ given by Equation \eqref{drtkysynta};
+\STATE Evaluate the objective function;
+\IF{the value of the objective function is improved}
+\STATE $P^* \leftarrow P$; \hfill (Store the current solution)
+\ENDIF
+\STATE Set $P \leftarrow P^* * \epsilon$ and normalize $P$, 
+where $\epsilon$ is a random matrix; 
+\UNTIL{convergence}
+\end{algorithmic}
+\caption{Equilibration of DRT.}
+\label{monopalg}
+\end{algorithm}
 
 
 
 \subsection{Long-run market equilibria}
 \label{longrun}
+In an unregulated demand-responsive transport service operated by a single operator, 
+we expect that the number of vehicles and ticket price are chosen in a way that
+the total profit rate is maximized in the long run.
 In a competitive demand responsive market with no entry limits, 
 we expect that the number of vehicles increases as long as the profit
 rate of vehicles is positive. 
 Regulating the number of vehicles and ticket price could improve the service
-from the customers' point of view as well as from the perspective of drivers.
+from the customers' point of view as well as from the perspective of transport operators.
 In the following, we study different characteristics of demand-responsive transport
 as a function of the number of vehicles $N$ and average price per kilometer $p$.
-We identify four \emph{long-run market equilibria} \eqref{freeentry}, \eqref{welfare},
-\eqref{pervehicle}, \eqref{totalprofit}, defined by combinations of $N$ and $p$.
+We identify the following \emph{long-run market equilibria}, defined by combinations of $N$ and $p$.
 
 \subsubsection{Free entry equilibrium}
 In the absence of entry limits in a competitive market, new vehicles arrive as long as 
-the total profit rate $\Pi(N,p)$ of vehicles is positive\footnote{We assume that the profits are 
+the total profit rate $U(N,p)$ of vehicles is positive\footnote{We assume that the profits are 
 divided equally among vehicles on average.}. 
 %At some point, we expect that entry is no longer profitable. 
 Thus, the feasible set for the free entry equilibrium is given by
 \begin{align}
-\mathcal{F} = \{(N,p) \ | \ \Pi(N,p) \geq 0 \}.
+\mathcal{F} = \{(N,p) \ | \ U(N,p) \geq 0 \}.
 \end{align}
 In the free entry market, we assume that the drivers may agree to modify the ticket price of the service.
 Thus, when the number of vehicles increases and the total profit rate approaches zero with a given 
@@ -3412,52 +3440,46 @@ Thus, we define the free entry equilibrium by means of the condition
 That is, both the number of vehicles and price per kilometer are chosen in a way that the 
 number of vehicles is maximized.
 
-\subsubsection{Customer welfare equilibrium}
-Public authorities might consider regulating the DRT service in a way that it would
-improve the service provided to customers as much as possible, compared
-to existing transport services. We define the \emph{customer welfare effect}
-as the difference between the subjective price of the virtual mode and 
-the subjective price of DRT. Formally, the customer welfare effect is given by
-\begin{align}
-W(N,p) = \sum_{(i,j) \in I \times I} \left(Q_{ij} - Q^{DRT}_{ij}\right) \bar{g}_{ij} 
-+ \sum_{(i,j) \in I \times I} \sum_{r \in \mathcal{R}_{ij}} Q^{DRT}_r  g_r = 
-\sum_{(i,j) \in I \times I} \sum_{r \in \mathcal{R}_{ij}} Q^{DRT}_r  (\bar{g}_{ij}-g_r),
-\end{align}
-where $Q^{DRT}_{ij}$ is the total demand for DRT trips from $i$ to $j$ defined by Equation \eqref{drtkysynta},
-$Q_{ij} - Q^{DRT}_{ij}$ is the demand for the virtual mode from $i$ to $j$, $\mathcal{R}_{ij}$
-is the set of DRT trips from $i$ to $j$, $g_r$ is the subjective price
-of trip $r$ and $\bar{g}_{ij}$ is the subjective price of the virtual mode from $i$ to $j$.
-
-Similarly as in the free entry equilibrium, we require that the total profit rate of
-vehicles is positive. Thus, the customer welfare equilibrium is defined by 
-\begin{align}
-\label{welfare}
-(N^{\rm W},p^{\rm W}) = \arg \max_{(N,p) \in \mathcal{F}} W(N,p). 
-\end{align}
-In this case, the number of vehicles and price are regulated in a way that the 
-customer welfare effect is maximized.
-
 \subsubsection{Maximum profit rate}
 Maximizing the \emph{total profit rate} of vehicles results in the equilibrium
 \begin{align}
 \label{totalprofit}
-(N^{\rm tot},p^{\rm tot}) = \arg \max_{(N,p) \in \mathcal{F}} \Pi(N,p). 
+(N^{\rm tot},p^{\rm tot}) = \arg \max_{(N,p) \in \mathcal{F}} U(N,p). 
 \end{align}
 From the perspective of individual drivers, the optimal combination of the
 number of vehicles and price is such that the \emph{profit rate per vehicle}
 is maximized, that is 
 \begin{align}
 \label{pervehicle}
-(N^{\rm 1},p^{\rm 1}) = \arg \max_{(N,p) \in \mathcal{F}} \frac{\Pi(N,p)}{N}. 
+(N^{\rm 1},p^{\rm 1}) = \arg \max_{(N,p) \in \mathcal{F}} \frac{U(N,p)}{N}. 
 \end{align}
  
+\subsubsection{Social welfare}
+Public authorities might consider regulating the DRT service in a way that it would
+improve the service provided to customers as much as possible, compared
+to existing transport services. The customer surplus $V$ is defined in Equation \eqref{monopsurplus}.
+Similarly as in the free entry equilibrium, we require that the total profit rate of
+vehicles is positive. Thus, the customer surplus equilibrium is defined by 
+\begin{align}
+\label{surplus}
+(N^{\rm V},p^{\rm V}) = \arg \max_{(N,p) \in \mathcal{F}} V(N,p). 
+\end{align}
+In this case, the number of vehicles $N$ and price $p$ are regulated in a way that the 
+customer surplus is maximized.
+
+In the social welfare equilibrium, $N$ and $p$ are chosen such that the sum of profit and surplus is maximized, that is, 
+\begin{align}
+\label{welfare}
+(N^{\rm W},p^{\rm W}) = \arg \max_{(N,p) \in \mathcal{F}} U(N,p) + V(N,p). 
+\end{align}
+
 
 \subsubsection{Long-run example}
 The long-run market equilibria described above was determined for the three node example case introduced
 in Section \ref{networkequilibrium}. The network equilibrium was calculated for different numbers
 of vehicles $N$ and prices per kilometer $p$ by means of Algorithm \ref{compalg}.
 For each combination of $N$ and $p$, the total profit rate, profit 
-rate per vehicle and customer welfare effect were calculated. The results are shown in Figure \ref{a-equilibria01}.
+rate per vehicle and customer surplus were calculated. The results are shown in Figure \ref{a-equilibria01}.
 
 \begin{figure}[ht]
 \begin{center}
@@ -3468,9 +3490,9 @@ rate per vehicle and customer welfare effect were calculated. The results are sh
 \multicolumn{8}{c}{} \\
 \hline
 Equilibrium & Number of vehicles & price per kilometer & Demand for DRT (customers/min) & 
-Tot. profit rate / per vehicle (EUR/min) & Welfare effect (EUR/min) & Travel time ratio & Average occupancy \\
+Tot. profit rate / per vehicle (EUR/min) & Surplus (EUR/min) & Travel time ratio & Average occupancy \\
 \hline
-Max. customer welfare effect & 28 & 0.22 & 16.1 & 0.13 / 0.005 & 35.9 & 1.24 & 2.4 \\
+Max. customer surplus & 28 & 0.22 & 16.1 & 0.13 / 0.005 & 35.9 & 1.24 & 2.4 \\
 \hline
 Maximum total profit rate & 23 & 0.64 & 10.8 & 16.5 / 0.7 & 3.9 & 1.28 & 1.9 \\
 \hline
@@ -3484,25 +3506,25 @@ Free entry equilibrium & 71 & 0.72 & 12.4 & 0.1 / 0.001 & 8.7 & 1.11 & 0.7 \\
 four studied equilibrium points. The second and third columns show the 
 number of vehicles and price per kilometer with which the equilibrium is achieved.
 The remainder of the columns show the total demand for DRT, total profit rate and profit rate
-per vehicle, customer welfare effect, the average ratio of travel time to direct travel time
+per vehicle, customer surplus, the average ratio of travel time to direct travel time
 and the average number of customers in a single vehicle.}
 \label{a-equilibria01}
 \end{center}
 \end{figure}
 
-The solid curves represent contour lines in which the total profit rate $\Pi(N,p)$ of vehicles is equal ($=0,10,20$).
-In particular, the outermost contour line corresponding to $\Pi(N,p)=0$ encloses the 
+The solid curves represent contour lines in which the total profit rate $U(N,p)$ of vehicles is equal ($=0,10,20$).
+In particular, the outermost contour line corresponding to $U(N,p)=0$ encloses the 
 \emph{feasible region}, that is, the area in which the service is profitable for drivers.
 The dashed curve shows the number of vehicles for different prices for which
-the total profit rate is maximized. The four points represent the long-run market equilibria
+the total profit rate is maximized. The points represent the long-run market equilibria
 defined in the previous section.
 
 The table in Figure \ref{a-equilibria01} shows the demand for DRT, total profit rate, profit rate per vehicle, 
-customer welfare effect, the average ratio of travel time to direct travel time
+customer surplus, the average ratio of travel time to direct travel time
 and the average number of customers in a single vehicle in the four equilibrium points.
 
 By looking at the figure, we note that there is a significant difference between the
-four equilibria. In the free entry equilibrium, the number of vehicles is significantly
+equilibria. In the free entry equilibrium, the number of vehicles is significantly
 higher than in the other points. The average travel time ratio 
 and the average occupancy are extremely low. This indicates that with no regulation, the
 DRT service would approach a taxi-type service, in which all customers are 
@@ -3513,16 +3535,16 @@ the point in which the total profit rate is maximized is small.
 In addition, the number of served customers (demand for DRT)
 is only slightly smaller in the maximum profit rate case compared to the free entry case.
 However, maximizing the profit rate of vehicles would decrease the 
-customer welfare effect and decrease the average level of service,
+customer surplus and decrease the average level of service,
 as can be seen by looking at the average travel time ratio and average occupancy.
 
 The profit rate per vehicle is maximized with an extremely small number of vehicles.
 In this case, only a small number of customers could be served and the level of service
 would be poor.
 
-The customer welfare effect is maximized by using a significantly
+The customer surplus is maximized by using a significantly
 lower ticket price than would be optimal from the perspective of drivers. This is mainly due to the 
-fact that the low price results in a high demand for DRT. Moreover, we note that the customer welfare
+fact that the low price results in a high demand for DRT. Moreover, we note that the customer surplus
 equilibrium is achieved by using price regulation exclusively. That is, the results suggest that 
 the optimal solution from the customers' point of view would be to regulate price and allow free 
 entry.
@@ -3533,9 +3555,9 @@ entry.
 
 \section{Simulation model [\ref{cmonop_ecotran}]}
 \label{simulationmodel}
-Publications \cp{csimutools} and \cp{cmonop_ecotran} describe a microsimulation approach to study and compare different market mechanisms and regulation policies for
-an instant-response demand-responsive transport service.
-An advantage of microsimulation is that 
+Publications \cp{csimutools} and \cp{cmonop_ecotran} describe a microsimulation approach to 
+study and compare different market mechanisms and regulation policies for
+an instant-response demand-responsive transport service. An advantage of microsimulation is that 
 it enables the comparison of different market mechanisms and regulation policies on a detailed level:
 For example, the model can be used to study scenarios involving multiple competing vehicle operators,
 each of which seeks to maximize its total profit (typical structure of conventional taxi-markets), as well as
