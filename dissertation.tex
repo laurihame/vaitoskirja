@@ -1490,7 +1490,7 @@ the heuristic coincides with the exact algorithm regardeless of the studied prob
 % static and dynamic versions of the single vehicle dial-a-ride problem with time 
 % windows. Using complete enumeration to solve the problem with respect
 % to a generalized objective function is motivated by the dynamic nature of 
-% online demand responsive transport services,
+% online demand-responsive transport services,
 % in which looking only at the tentative route duration, as in existing algorithms for the problem,
 % may decrease the possibilities of serving future customers.
 % 
@@ -2698,7 +2698,7 @@ the choices of transport operators
 do not change if the demand remains constant and the choices of customers
 do not change if the supply of trips remains constant. 
 
-In Section \ref{networkmodel}, a stochastic model for studying demand-responsive transport services is presented.
+In Section \ref{networkmodel}, a stochastic Markov chain model for studying demand-responsive transport is presented.
 Section \ref{simulationmodel} presents a more detailed model based on microsimulation.
 
 \section{Stochastic model [\ref{ccompejor}]}
@@ -2732,8 +2732,10 @@ Customers are assigned to vehicles by means of an electronic booking service.
 For analysis, we assume that the DRT customers that 
 choose trip $r$ are divided equally among vehicles that produce trip $r$. 
 \end{enumerate} 
-In the following, the behavior of customers (Section \ref{demand}) and transport operators providing service 
-(Section \ref{vehiclemovements}) is studied in more detail.
+
+%The following sections present a Markov
+%Sections \ref{demand} and \ref{vehiclemovements} discuss the demand and supply models in more detail.
+%Sections \ref{compdescription} and \ref{monopdescription} present two different market models for demand-responsive transport.
 
 \subsection{Demand}
 \label{demand}
@@ -2764,7 +2766,7 @@ q_{(i_0,\ldots,i_d)}^{\rm DRT} = \sum_{k=1}^{d} t_{i_{k-1}i_{k}}.
 The ride time from $i_0$ to $i_d$ is minimized in the direct trip $(i_0,i_d)$. 
 
 For any pair of nodes $i,j \in I$,
-the demand responsive transport service produces different trips from $i$ to $j$ at different intervals.
+the demand-responsive transport service produces different trips from $i$ to $j$ at different intervals.
 That is, there may be different \emph{waiting times} for different trips
 (see Section \ref{averagetraveltime} for a more detailed discussion on waiting times).
 
@@ -3074,6 +3076,7 @@ see Equation \eqref{kysyntatn}.
 
 
 \subsection{Competitive market}
+\label{compdescription}
 Most existing demand-responsive transport services provide door-to-door transportation for elderly or handicapped people
 and require customers to book trips at least one hour in advance \citep{cordeau05,jouko}.
 Conventionally, the trips are organized centrally via \emph{travel dispatch centers}, which have the capability of
@@ -3318,18 +3321,21 @@ at state $(2,1,3)$ and lowest at state $(2,1)$.
 
 Referring to the dashed lines, which are roughly straight lines on a logarithmic scale, 
 we see that the norms of the arrival rate and demand vectors converge exponentially
-with respect to the number of iterations. Decreasing the difference $\|T^k -T^{k-1}\|$ by a factor of $F \in \mathbb{R}$
-requires $G \in \mathbb{N}$ iterations. That is, $\|T^k -T^{k-1}\| = \frac{1}{F^K} \|T^{k-GK} -T^{k-1-GK}\|$
-for $K \in \mathbb{N}$.
-By looking at the slope of the dark dashed line, we see that the 
-difference $\|T^k -T^{k-1}\|$ decreases 
-by a factor of $10$ in approximately $10$ iterations, that is, $\|T^k -T^{k-1}\| = \frac {1}{10^K} \|T^{k-10K} -T^{k-1-10K}\|$
-for $K \in \mathbb{N}$.
+with respect to the number of iterations. 
+
+% Decreasing the difference $\|T^k -T^{k-1}\|$ by a factor of $F \in \mathbb{R}$
+% requires $G \in \mathbb{N}$ iterations. That is, $\|T^k -T^{k-1}\| = \frac{1}{F^K} \|T^{k-GK} -T^{k-1-GK}\|$
+% for $K \in \mathbb{N}$.
+% By looking at the slope of the dark dashed line, we see that the 
+% difference $\|T^k -T^{k-1}\|$ decreases 
+% by a factor of $10$ in approximately $10$ iterations, that is, $\|T^k -T^{k-1}\| = \frac {1}{10^K} \|T^{k-10K} -T^{k-1-10K}\|$
+% for $K \in \mathbb{N}$.
 
 
 
 
 \subsection{Monopoly}
+\label{monopdescription}
 In a demand-responsive transport monopoly, a single transport operator controls the transition probabilities of vehicles
 between states, in contrast to the competitive market in which the routing decisions are made by individual drivers.
 In this case, the matrix $P$ containing the transition probabilities $P_{s,s'}$ is referred to as a \emph{routing strategy}.
@@ -3370,11 +3376,13 @@ Social welfare is defined as the sum of profit rate and surplus, that is,
 
 \subsubsection{Algorithm}
 The idea for finding an optimal routing strategy is as follows.
-First, the routing strategy $P$ is initialized and the objective function 
-(for example, profit rate) is evaluated. Second, a routing strategy candidate $P'$ 
-is produced by randomly perturbing $P$ and the objective function is evaluated again. 
-If the value of the objective function is increased, $P'$ becomes the new routing strategy, that is, $P \leftarrow P'$. 
-The second step is repeated until convergence.
+1) The routing strategy $P$ is initialized. 
+%Second, a routing strategy candidate $P'$ 
+%is produced by randomly perturbing $P$ and the objective function is evaluated again. 
+2) The objective function (for example, profit rate) is evaluated. 
+If the value of the objective function is improved, $P$ becomes the new optimal routing strategy, that is, $P^* \leftarrow P$.
+3) A new routing strategy $P$ is produced by randomly perturbing $P^*$.
+Steps 2 and 3 are repeated until convergence.
 The outline of the procedure is presented in Algorithm \ref{monopalg}.
 
 \begin{algorithm}[H]
@@ -3399,7 +3407,7 @@ $r \in \mathcal{R}$ given by Equation \eqref{drtkysynta};
 where $\epsilon$ is a random matrix; 
 \UNTIL{convergence}
 \end{algorithmic}
-\caption{Equilibration of DRT.}
+\caption{Finding an optimal routing strategy.}
 \label{monopalg}
 \end{algorithm}
 
@@ -3425,11 +3433,11 @@ Maximum profit & 5.8 & 15.6 & 35.6 \\
 \end{center}
 \end{table}
 
-The results suggest that centralized routing strategies can be used to improve the efficiency of demand responsive transport:
+The results suggest that centralized routing strategies can be used to improve the efficiency of demand-responsive transport:
 By maximizing profit by means of a centralized strategy, the total profit rate, demand and social welfare are increased from
 the competitive equilibrium. The difference between the mechanisms is explained by the fact that in the competitive market, 
 the routing decisions are based on the drivers' incomplete market information whereas in the case of a single transport operator,
-the routes are generated by using information on the state of the entire network.
+the routing strategy is optimized by using information on the state of the entire network.
 
 
 
@@ -3438,7 +3446,7 @@ the routes are generated by using information on the state of the entire network
 In an unregulated demand-responsive transport service operated by a single operator, 
 we expect that the number of vehicles and ticket price are chosen in a way that
 the total profit rate is maximized in the long run.
-In a competitive demand responsive market with no entry limits, 
+In a competitive demand-responsive market with no entry limits, 
 we expect that the number of vehicles increases as long as the profit
 rate of vehicles is positive. 
 Regulating the number of vehicles and ticket price could improve the service
@@ -3449,7 +3457,7 @@ We identify the following \emph{long-run market equilibria}, defined by combinat
 
 \subsubsection{Free entry equilibrium}
 In the absence of entry limits in a competitive market, new vehicles arrive as long as 
-the total profit rate $U(N,p)$ of vehicles is positive\footnote{We assume that the profits are 
+the total profit rate $U(N,p)$ is positive\footnote{We assume that the profits are 
 divided equally among vehicles on average.}. 
 %At some point, we expect that entry is no longer profitable. 
 Thus, the feasible set for the free entry equilibrium is given by
@@ -3469,7 +3477,7 @@ That is, both the number of vehicles and price per kilometer are chosen in a way
 number of vehicles is maximized.
 
 \subsubsection{Maximum profit rate}
-Maximizing the \emph{total profit rate} of vehicles results in the equilibrium
+Maximizing the \emph{total profit rate} results in the equilibrium
 \begin{align}
 \label{totalprofit}
 (N^{\rm tot},p^{\rm tot}) = \arg \max_{(N,p) \in \mathcal{F}} U(N,p). 
@@ -3503,7 +3511,7 @@ In the social welfare equilibrium, $N$ and $p$ are chosen such that the sum of p
 
 
 \subsubsection{Long-run example}
-The long-run market equilibria described above was determined for the three node example case introduced
+The long-run market equilibria described above were determined for the three node example case introduced
 in Section \ref{networkequilibrium}. The network equilibrium was calculated for different numbers
 of vehicles $N$ and prices per kilometer $p$ by means of Algorithm \ref{compalg}.
 For each combination of $N$ and $p$, the total profit rate, profit 
@@ -3796,11 +3804,11 @@ regarding, for example, regulation and investments.
 In addition to public transport, potential applications of the proposed methods for solving vehicle routing and journey planning problems
 include freight transportation, courier and food delivery services, military logistics and air traffic.
 
-%This work is focused on combinatorial problems arising from the planning of demand responsive transport.
+%This work is focused on combinatorial problems arising from the planning of demand-responsive transport.
 %Particularly, the single vehicle dial-a-ride problem and related problems are studied.
 
 % In chapter \ref{irdarp}, a decentralized algorithm for
-% real-time demand responsive transport is described.
+% real-time demand-responsive transport is described.
 % The proposed solution makes use of communication between
 % customers requesting service and vehicles providing service in a way
 % particularly suitable for a highly dynamic service, in which
@@ -3817,7 +3825,7 @@ include freight transportation, courier and food delivery services, military log
 % static and dynamic versions of the single vehicle dial-a-ride problem with time 
 % windows. Using complete enumeration to solve the problem with respect
 % to a generalized objective function is motivated by the dynamic nature of 
-% online demand responsive transport services,
+% online demand-responsive transport services,
 % in which looking only at the tentative route duration, as in existing algorithms for the problem,
 % may decrease the possibilities of serving future customers.
 % In addition, an adjustable heuristic extension to the algorithm
@@ -3829,7 +3837,7 @@ include freight transportation, courier and food delivery services, military log
 % making the algorithm applicable to any static or dynamic dial-a-ride problem.
 % 
 % Chapter \ref{tspdn} focuses on the effect of walking on the performance of
-% demand responsive transport. The problem of redirecting customers is modeled by means of the traveling salesman
+% demand-responsive transport. The problem of redirecting customers is modeled by means of the traveling salesman
 % problem with disk neighborhoods, in which each node can be redirected
 % to another location within a certain maximum walking distance from the original location. 
 % By means of differential analysis, an upper bound for the decrease 
