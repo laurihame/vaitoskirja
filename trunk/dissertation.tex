@@ -1336,8 +1336,8 @@ In the best case, no infeasible states are encountered and thus there are $2n$ r
 At step $k \in \{1,\ldots,2n\}$, the number of remaining nodes is $2n+1-k$
 and thus the complexity is of order $\mathcal{O} (\sum_{k=1}^{2n} (2n+1-k)^2) =\mathcal{O}(n^3)$.
 Roughly, the computational work is linearly increased with the 
-number of dead ends $M$ encountered during the recursion.
-The overall complexity of the single vehicle algorithm is thus $\mathcal{O}(Mn^3)$.
+number of dead ends $D(n)$ encountered during the recursion.
+The overall complexity of the single vehicle algorithm is thus $\mathcal{O}(D(n)n^3)$.
 
 
 \subsection{Numerical experiments}
@@ -1706,8 +1706,8 @@ This way, the iteration described in Section \ref{iteration} goes through all fe
 \subsection{Structure and complexity}
 \label{mvstructure}
 The multi-vehicle algorithm involves solving the single-vehicle case
-for each vehicle in $r$ iterations. Thus the complexity is bounded above by $\mathcal{O}\left(rmA(n)n^3\right)$, 
-where $A(N) \leq (2N)!/2^N$.                                                                                                                  
+for each vehicle in $r$ iterations. Thus the complexity is bounded above by $\mathcal{O}\left(rmD(n)n^3\right)$, 
+where the number of dead ends satisfies $D(n) \leq (2n)!/2^n$.                                                                                                                  
 
 Note that the complexity is in general lower since the size of the set of customers is
 $n$ only for the first vehicle in the first iteration. For the other vehicles, the number of customers is
