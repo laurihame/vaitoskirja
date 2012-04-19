@@ -4,7 +4,7 @@
 \documentclass[dissertation,draft*]{aaltoseries}
 \usepackage[utf8]{inputenc}
 % Lipsum package generates bullshit
-\usepackage{multirow, amsthm, amssymb, amsmath,natbib, algorithm, algorithmic, amsxtra, txfonts}
+\usepackage{multirow, amsthm, amssymb, amsmath,natbib, algorithm, algorithmic, amsxtra, txfonts,cancel}
 % Set the document languages
 \usepackage[finnish,swedish,english]{babel}
 
@@ -1892,8 +1892,11 @@ In contrast to existing itinerary planning algorithms designed for scheduled pub
 where the path is a priori optimized with respect to an objective, for example,
 \cite{androutsopoulos}, the realized journey may differ from the original plan. 
 
-Real-time information on the status of transport services is available via mobile devices 
-with location-based capabilities. This makes it possible for a commuter to
+Passenger information systems provide real-time information on the status of transport services 
+(buses, trams, trains, ferries, \ldots) via 
+mobile devices %with location-based capabilities 
+and displays at public transport stops. 
+This makes it possible for a commuter to
 dynamically modify the planned journey in case of a delay or cancellation.
 For example, if a transfer from a transport service
 to another is unsuccessful due to a delay, the commuter may reconsider the 
@@ -1975,7 +1978,9 @@ Let $\mathcal{V}$ denote a set of \emph{nodes} representing public transport sto
 in a specific area and let $\mathcal{K} \subset \mathbb{N}$ denote a set of public 
 transport \emph{services} operating in this area, indexed by natural numbers. 
 
-Each service $k \in \mathcal{K}$ follows a \emph{route}, represented as a sequence of nodes $(v_1^k,\ldots,v_m^k)$ in $\mathcal{V}$. 
+Let us consider the transport network during a time horizon $[0,T] \subset \mathbb{R}$.
+During this period of time, each service $k \in \mathcal{K}$ follows a \emph{route}, represented as a 
+sequence of nodes $(v_1^k,\ldots,v_m^k)$ in $\mathcal{V}$. 
 Each service departs at node $v_1^k$ at a specific time and proceeds to nodes $v_2^k, \ldots,v_m^k$ in the order determined by the route.
 Due to uncertainty in departure and travel times, we define the arrival times of services at nodes
 as real-valued random variables. Letting $\tau_j^k$ denote the \emph{random arrival time} of 
@@ -2023,6 +2028,7 @@ is determined by
 = \left((v_{h}^k, \tau_{h}^k),(v_{h+1}^k, \tau_{h+1}^k),k \right)
 \end{align}
 for $h \in \{1,\ldots , m-1\}$. 
+
 Note that the end time $\tau_{i_h^k}'$ of leg $i_h^k$ refers to 
 the same specific random variable as the start time $\tau_{i_{h+1}^k}$ of leg $i_{h+1}^k$, that is, 
 $\tau_{i_h^k}' = \tau_{i_{h+1}^k} = \tau_{h+1}^k$. 
@@ -2133,6 +2139,9 @@ let $v_1$ denote the origin node and $v_d$ denote the destination node.
 The \emph{origin leg} is defined by $((v_1,\tau_1),(v_1,\tau_1),0)$, where $P(\tau_1=0)=1$, 
 and the \emph{destination leg} 
 is defined by $((v_{d},\tau_{d}),(v_{d},\tau_{d}),0)$, where $P(\tau_d=T)=1$.
+For analysis, the start and end times of the origin and destination legs are
+defined by Dirac delta distributions located at $0$ and $T$, that is, $\tau_1 \sim \delta_0$ and $\tau_d \sim \delta_T$.
+
 Although it is possible to reach the destination node before $T$, the start time of the 
 destination leg equals $T$ with probability $1$. By this definition, we can represent the entire journey 
 as legs, including the origin and the destination. If a journey ends at a successful transfer 
@@ -2150,6 +2159,52 @@ The cropped set of legs is defined by
 For clarity, we define $n:=|\mathcal{L}_{[0,T]}|$ and the legs in $\mathcal{L}_{[0,T]}$ 
 are numbered from $1$ to $n$, where the origin leg is indexed by $1$ and the destination leg is indexed by $n$.
 
+The goal is to determine an optimal journeying \emph{policy} in terms of the probability of reaching the destination 
+leg $n$. Basically, a policy defines for each leg $i \in \{1,\ldots,n-1\}$ a \emph{ranking} of successor 
+legs $i' \in S_i$. An optimal policy ranks the successor legs $i' \in S_i$ 
+by the probability of reaching the destination from $i'$, see Figure \ref{rankingexample}.
+Due to the complexity of the problem, the policy is determined a priori, that is, before the beginning of the journey, by using 
+the \emph{start and end time distributions} of legs and 
+is independent of the realizations of the start and end times. 
+
+The pre-determined policy is used to choose the best transfer options during the journey as follows:
+At the end of each leg $i \in \{1,\ldots,n-1\}$, the transfer options to successor legs $i' \in S_i$ are revealed. 
+After the transfer options are revealed, letting $X \subset S_i$ denote the 
+set of successor legs to which a transfer is possible, the commuter transfers to the 
+leg $x \in X$ with the highest ranking, see Figure \ref{rankingexample}.
+
+By ranking the transfer options a priori as described above, we may use continuous travel time distributions without having an 
+infinite number of states in the model. In addition, this approach produces relatively easy to follow travel information, since 
+the commuter knows the ranking of successor legs before the transfer.
+
+
+ \begin{figure}[ht] 
+\scriptsize
+\begin{tabular}{p{4cm}c|p{3.5cm}|p{3.5cm}|}
+\cline{3-4}
+\multirow{5}{*}{} 
+\multirow{5}{*}{
+\includegraphics[width=0.3\columnwidth]{rankingexample} 
+} 
+& & Ranking of successors of leg $42$ & End of leg $42$: transfer options are revealed \\
+\cline{3-4}
+& & \ \ \ \ \ \ \ \ $1: 32$ & \ \ \ \ \ \ \ \ $\cancel{1: \ 32 }$  \\
+& & \ \ \ \ \ \ \ \ $2: 65$ & \ \ \ \ \ \ \ \ $\cancel{2: \ 65 }$  \\
+& & \ \ \ \ \ \ \ \ $3: 12$ & \ \ \ \ \ \ \ \ $3: 12 \leftarrow$ \\
+& & \ \ \ \ \ \ \ \ $4: 54$ & \ \ \ \ \ \ \ \ $\cancel{4: \ 54 }$  \\
+& & \ \ \ \ \ \ \ \ $5: 24$ & \ \ \ \ \ \ \ \ $5: 24$  \\
+\cline{3-4}
+\end{tabular}
+ \caption{A ranking example. %The commuter is executing leg $42$, whose successor legs are $54,24,65,32$ and $12$.
+The left column of the table shows the a priori ranking of successors of leg $42$. When the commuter is at the end of leg $42$, the available transfer options
+($12$ and $24$) are revealed. The commuter then transfers to leg $12$, which has the highest ranking among the possible transfer options.}
+\label{rankingexample}
+\end{figure}
+
+More formally, the problem is modeled as a finite-state Markov decision process $(S,A,P_{\cdot}(\cdot,\cdot),R_{\cdot}(\cdot,\cdot))$, 
+where the parameters are defined as follows.
+
+
 \subsection{Markov decision process}
 The problem is modeled as a finite-state Markov decision process $(S,A,P_{\cdot}(\cdot,\cdot),R_{\cdot}(\cdot,\cdot))$, 
 where the parameters are defined as follows.
@@ -2157,7 +2212,11 @@ where the parameters are defined as follows.
 \subsubsection{States}
 \label{statesdef}
 The set of \emph{states} $S$ consists of paths $(1,i_1,\ldots,i_m)$ of legs, where $i_h \in \{1,\ldots,n\}$ for $h \in \{0,\ldots,m\}$,
-beginning from the origin leg $1$. The state $(1)$ is referred to as the \emph{origin state}.
+beginning from the origin leg $1$. The process being at state $s = (i_0,i_1,\ldots,i_m)$, where $i_0=1$, means that 
+the commuter has successfully transferred from leg $i_h$ to leg $i_{h+1}$ for $h \in \{0,\ldots,m-1\}$ and is currently
+executing leg $i_m$. Generally, the last leg (=the leg currently being executed) of a state $s$ is denoted by $i(s)$.
+
+The state $(1)$ is referred to as the \emph{origin state}.
 Each state $s=(i_0,i_1,\ldots,i_m) \in S$, where $i_0=1$, is associated with a set of successor states
 $S_{s} = \{(i_0,i_1,\ldots,i_m,j)\in S \mid j \in S_{i_m} \}$, where $S_{i_m}$ is the successor set of leg $i_m$.
 Similarly, the set of immediate successors of state $s$ is defined by
@@ -2172,7 +2231,7 @@ The history of performed actions is not taken into account in the model.
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.9\textwidth]{treemodel01}
+\includegraphics[width=0.7\textwidth]{treemodel01}
 \end{center}
 \caption{
 States of the markov decision process. A state is defined as a path consisting of legs, beginning from the origin leg $1$.
@@ -2189,26 +2248,40 @@ is the destination leg, is defined by $\mathcal{D} = \left\{(1,\ldots,i_m) \in S
 Since legs beginning from the destination node are not included in the problem, we have $S_s = I_s = \emptyset$ for all $s \in \mathcal{D}$.
 
 The start and end times of state $s$ are denoted by the random variables $\tau_s$ and $\tau_s'$, respectively.
-The distributions of $\tau_s$ and $\tau_s'$, where $s=(i_0,i_1,\ldots,i_m)$ and $i_0=1$, are defined by
+Given that the process is at state $s=(i_0,i_1,\ldots,i_m)$, where $i_0=1$,
+the conditional start and end time of leg $i \in \{1,\ldots,n\}$ are denoted by $\tau_{i|s}$ and $\tau_{i|s}'$ and their 
+distributions are defined by
 \begin{align}
 \label{ehdollinen1}
-f_{\tau_s }(x) &= f_{\tau_{i_m}} (x  \mid \cap_{h=0}^{m-1} \tau_{i_h}' \leq \tau_{i_{h+1}} ), \\
+f_{\tau_{i|s} }(x) &= f_{\tau_{i}} (x  \mid \cap_{h=0}^{m-1} \tau_{i_h}' \leq \tau_{i_{h+1}} ), \\
 \label{ehdollinen2}
-f_{\tau_s'}(x) &= f_{\tau_{i_m}'}(x \mid  \cap_{h=0}^{m-1} \tau_{i_h}' \leq \tau_{i_{h+1}} ),
+f_{\tau_{i|s}'}(x) &= f_{\tau_{i}'}(x \mid  \cap_{h=0}^{m-1} \tau_{i_h}' \leq \tau_{i_{h+1}} ),
 \end{align}
 for $x \in \mathbb{R}$.
+Note that 
+%if state $s'$ is an immediate successor of state $s$, that is, $s' \in I_s$, the end time of state
+%$s$ and the start time of state $s'$ refer to the same specific random variable $\tau_s' = \tau_{s'}$. In addition, 
+if the service number $k_i$ of leg $i$ differs from all previous service numbers, that is, 
+$k_{i} \neq k_{i_h}$ for all $h \in \{0,\ldots,m\}$, we have $f_{\tau_{i|s} }(x) = f_{\tau_{i}}(x)$
+due to the fact that the arrival times of different services are assumed to be independent.
 The service number of state $s=(i_0,i_1,\ldots,i_m)$ is defined by $k_s = k_{i_m}$.
 
 \subsubsection{Actions}
 \label{actionsdef}
 The set of \emph{actions} $A$ consists of sets $A_s$ of actions available at states $s \in S$.
-An action $a \in A_s$ is defined as a \emph{preference order} of the successor states $s' \in S_s$, 
-that is, a bijection $a:S_s \to \{1,\ldots,|S_s|\}$, where $a(s')$ denotes the ranking of the successor state $s' \in S_s$
-in the preference order. The successor states of $s$ ranked by the preference order $a$ are denoted by $s^{a,a(s')}$.
-Given the the sorted successor states $s^{a,1}, \ldots, s^{a,|S_s|} \in S_{s}$ of $s$, 
-the commuter transfers to state $s^{a,k}$ if 
-(i) the transfer to $s^{a,g}$ is unsuccessful for $1 \leq g < k$ and 
-(ii) the transfer to $s^{a,k}$ is successful.
+Letting $i(s)$ denote the last leg of state $s$ and $S_{i(s)}$ denote the successor set of $i(s)$, 
+an action $a \in A_s$ is defined as a \emph{preference order} of the successor legs $i' \in S_{i(s)}$ of $i(s)$. 
+An action is a bijection $a:S_{i(s)} \to \{1,\ldots,|S_{i(s)}|\}$, where $a(i')$ denotes the ranking of the successor leg $i' \in S_{i(s)}$
+in the preference order. 
+
+Each successor leg $i' \in S_{i(s)}$ corresponds to a successor state $(s,i') \in S_s$ of $s$.
+Thus, an action also ranks the successor states $(s,i')$ of $s$. The successor states $(s,i') \in S_s$ ranked by 
+action $a \in A_s$ are denoted by $s^{a,a(i')}$ and the corresponding legs are denoted by $i(s^{a,a(i')})$.
+
+Given the sorted successor states $s^{a,1}, \ldots, s^{a,|S_{i(s)}|} \in S_{s}$ of state $s$, 
+the next state is $s^{a,k}$ if 
+(i) the transfer to leg $i(s^{a,g})$ is unsuccessful for $1 \leq g < k$ and 
+(ii) the transfer to leg $i(s^{a,k})$ is successful (see Figure \ref{rankingexample}).
 
 \subsubsection{Transition probabilities}
 \label{transitiondef}
@@ -2220,18 +2293,17 @@ we have
 \label{ekakaava}
 P_a(s,s^{a,k}) 
 = 
-P\left(\tau_{s}' \leq \tau_{s^{a,k}} \cap \bigcap_{g=1}^{k-1} \tau_{s}' > \tau_{s^{a,g}} \right).
+P\left(\tau_{i(s)|s}' \leq \tau_{i(s^{a,k})|s} \cap \bigcap_{g=1}^{k-1} \tau_{i(s)|s}' > \tau_{i(s^{a,g})|s} \right).
 \end{align}
+%For the case in which the start times of successor states are independent, we state the following.
 If the service numbers of all pairs of distinct successor states $s',s'' \in S_s$ of state $s$ satisfy $k_{s'} \neq k_{s''}$,
-we have 
-\begin{align*}
-P_a(s,s^{a,k}) = \int_{-\infty}^{\infty} f_{\tau_{s}'}(x) P\left(x \leq \tau_{s^{a,k}} \right) 
-\prod_{g=1}^{k-1} P\left(x > \tau_{s^{a,g}} \right) \ dx,
-\end{align*}
-since the start times of legs with different service numbers 
+we have %If the start times $\tau_{s^{a,k}}$ of successor states $s^{a,k} \in S_s$ are independent (different service numbers), we have 
+$P_a(s,s^{a,k}) = \int_{-\infty}^{\infty} f_{\tau_{i(s)|s}'}(x) P\left(x \leq \tau_{i(s^{a,k})|s} \right) 
+\prod_{g=1}^{k-1} P\left(x > \tau_{i(s^{a,g})|s} \right) \ dx$, since the start times of legs with different service numbers %executed by different services
 are independent.
-Note that since the end time $\tau_s'$ of state $s$ and the start time of an immediate successor state $s' \in I_s$ refer to the same
-random variable, that is, $\tau_s' = \tau_{s'}$ for all $s' \in I_s$, the transfer probability \eqref{ekakaava}
+Note that since the conditional end time $\tau_{i(s)|s}'$ of leg $i(s)$ and the conditional start time of an immediate successor leg 
+$i' \in I_{i(s)}$ refer to the same
+random variable, that is, $\tau_{i(s)|s}' = \tau_{i'|s}$ for all $i' \in I_{i(s)}$, the transfer probability \eqref{ekakaava}
 satisfies
 \begin{align}
 \label{ekakaava2}
@@ -2239,14 +2311,17 @@ P_a(s,s^{a,k}) =
 \left\{
 \begin{array}{ll}
 0, &  \mbox{if $\{s^{a,1},\ldots,s^{a,k-1}\} \cap I_s \neq \emptyset$ },\\ 
-P\left(\bigcap_{g=1}^{k-1} \tau_{s}' > \tau_{s^{a,g}} \right), &  \mbox{if $\{s^{a,1},\ldots,s^{a,k-1}\} \cap I_s = \emptyset$ and $s^{a,k} \in I_{s}$ },\\ 
-P\left(\tau_{s}' \leq \tau_{s^{a,k}} \cap \bigcap_{g=1}^{k-1} \tau_{s}' > \tau_{s^{a,g}} \right), & \mbox{otherwise.}
+P\left(\bigcap_{g=1}^{k-1} \tau_{i(s)|s}' > \tau_{i(s^{a,g})|s} \right), &  \mbox{if $\{s^{a,1},\ldots,s^{a,k-1}\} \cap I_{s} = \emptyset$ and $s^{a,k} \in I_{s}$ },\\ 
+P\left(\tau_{i(s)|s}' \leq \tau_{i(s^{a,k})|s} \cap \bigcap_{g=1}^{k-1} \tau_{i(s)|s}' > \tau_{i(s^{a,g})|s} \right), & \mbox{otherwise.}
 \end{array}
 \right.
+%= \int_{-\infty}^{\infty} f_{\tau_{s}'}(x) P\left(x \leq \tau_{s^{a,k}} \right) \prod_{g=1}^{k-1} P\left(x > \tau_{s^{a,g}} \right) \ dx. 
 \end{align}
+%where $\tau_{(0,i_1,\ldots,i_m)} = $ and $\tau_{()}'$ denote the end times
+
 For example, let $s^{a,1},s^{a,2},s^{a,3}$ denote three successor states of state $s$, sorted in the preference
 order defined by action $a$. If $s^{a,2}$ is an immediate successor of $s$, that is, $s^{a,2} \in I_s$, and $s^{a,1} \notin I_s$, 
-we have $P_a(s,s^{a,1}) = P\left(\tau_{s}' \leq \tau_{s^{a,1}} \right)$, $P_a(s,s^{a,2}) = P\left( \tau_{s}' > \tau_{s^{a,1}} \right)$
+we have $P_a(s,s^{a,1}) = P\left(\tau_{i(s)|s}' \leq \tau_{i(s^{a,1})|s} \right)$, $P_a(s,s^{a,2}) = P\left( \tau_{i(s)|s}' > \tau_{i(s^{a,1})|s} \right)$
 and $P_a(s,s^{a,3}) = 0$.
 
 \subsubsection{Rewards}
@@ -2513,7 +2588,7 @@ Since transfers between legs are assumed to be independent events, the transitio
 \label{ylaraja01}
 P_a(s,s^{a,k}) 
 = 
-P\left(\tau_{s}' \leq \tau_{s^{a,k}} \cap \bigcap_{g=1}^{k-1} \tau_{s}' > \tau_{s^{a,g}} \right)
+P\left(\tau_{i(s)|s}' \leq \tau_{i(s^{a,k})|s} \cap \bigcap_{g=1}^{k-1} \tau_{i(s)|s}' > \tau_{i(s^{a,g})|s} \right)
 = \sum_{k=1}^h p_{ss^{a,k}} \prod_{g = 1}^{k-1}(1-p_{ss^{a,g}}),
 \end{align}
 where $p_{ss^{a,k}}$ denotes the prior transfer probability from $s$ to $s^{a,k}$, as defined in Equation \eqref{transferprob}.
@@ -2522,7 +2597,7 @@ where $p_{ss^{a,k}}$ denotes the prior transfer probability from $s$ to $s^{a,k}
 The history independent value $V_H(s)$ defined by model \eqref{rekursio02} and the unconditional value $V_U(s)$ 
 defined by \eqref{ylaraja01} satisfy $V_H(s) \leq V_U(s)$ for all $s \in \{1,\ldots,n\}$.
 \end{theorem} 
-Note in particular that if the transfer probabilities satisfy $P(\tau_{s}' \leq \tau_{s^{a,k}}) \in \{0,1\}$
+Note in particular that if the transfer probabilities satisfy $P(\tau_{i(s)|s}' \leq \tau_{i(s^{a,k})|s}) \in \{0,1\}$
 for all successor states $s^{a,k} \in S_{s}$, we have $V_H(s) = V_U(s) = V_U(s^{a,k^*})$, where $k^*$ is the smallest index 
 for which $P(\tau_{s}' \leq \tau_{s^{a,k}}) = 1$. In this case, the history independent and unconditional
 coincide. In other words, the approximation given by \eqref{ylaraja01} is seen to be most accurate when 
@@ -2530,7 +2605,7 @@ the variances of the arrival times are small, which means that the transfer prob
 to be close to zero or one. 
 
 Furthermore, if each state has a single successor state, the history independent and unconditional models yield the same result.
-We suggest that the accuracy of the unconditional model is greatest when the average number of successor states is small.
+We suggest that the accuracy of\\ the unconditional model is greatest when the average number of successor states is small.
 
 \subsection{Expected number of successful paths [\ref{jtoits}]}
 \label{enumber}
@@ -3944,7 +4019,7 @@ Transport}{Annual Meeting of the Transportation Research Board}{Washington, D.C.
 % Set the publication information, detailed information is not printed
 \addpublication[submitted]{Lauri H\"ame, Harri Hakula}{Dynamic journeying under uncertainty}{European Journal of Operational Research}{}{20.12.2011}{}{No copyright holder at this moment}{jdjuejor}
 \addcontribution{The author was the main author of this article.}
-\addpublicationpdf{articles/djuejor2.pdf}
+\addpublicationpdf{articles/djuejor3.pdf}
 
 \addpublication[submitted]{Lauri H\"ame, Harri Hakula}{Dynamic journeying in scheduled networks}{IEEE Transactions on Intelligent Transportation Systems}{}{16.3.2012}{}{No copyright holder at this moment}{jtoits}
 \addcontribution{The author was the main author of this article.}
