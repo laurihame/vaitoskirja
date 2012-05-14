@@ -2175,7 +2175,9 @@ leg $x \in X$ with the highest ranking, see Figure \ref{rankingexample}.
 
 By ranking the transfer options a priori as described above, we may use continuous travel time distributions without having an 
 infinite number of states in the model. In addition, this approach produces relatively easy to follow travel information, since 
-the commuter knows the ranking of successor legs before the transfer.
+the commuter knows the ranking of successor legs before the transfer. Note that the policy can be reoptimized during the journey 
+if the arrival time distributions of services are updated by using real-time traffic information. That is, a new optimal policy for the 
+remaining part of the journey can be calculated at $t \in [0,T]$ by using the updated distributions available at $t$. 
 
 
  \begin{figure}[ht] 
