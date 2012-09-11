@@ -769,36 +769,36 @@ find a feasible solution when one exists.
 In other words, the function should favor service sequences with enough 
 \emph{time slack} for those customers, that have not been inserted into the sequences.
 \ref{jeadarp} suggests the following heuristic objectives.
-Given the service sequence $s = (p_1, \ldots, p_{m})$, we wish to optimize one 
-of the functions 
-\begin{align}
-\label{rl}
-f_{rl}(s) &= t_m, & \mbox{(Route duration)} \\
-\label{ts}
-f_{ts}(s) & = \sum_{j=1}^{m} L_j -t_j ,  & \mbox{(Total time slack)} \\
-\label{maxmin}
-f_{min}(s) &= \min_{j \in \{1, \ldots, m\}}  L_j - t_j, & \mbox{(Max-min time slack)} 
-%\label{lastnode}
-%f_{LN}(s) &= L_m - t_m, & \mbox{(Last node time slack)} 
-\end{align}
-where $[E_j,L_j]$ is the time window and $t_j$ is the calculated time of arrival at node $p_j$.
-
-In general, each of the above objective functions aim to 
-maximize the temporal flexibility of service sequences in different ways.
+% Given the service sequence $s = (p_1, \ldots, p_{m})$, we wish to optimize one 
+% of the functions 
+% \begin{align}
+% \label{rl}
+% f_{rl}(s) &= t_m, & \mbox{(Route duration)} \\
+% \label{ts}
+% f_{ts}(s) & = \sum_{j=1}^{m} L_j -t_j ,  & \mbox{(Total time slack)} \\
+% \label{maxmin}
+% f_{min}(s) &= \min_{j \in \{1, \ldots, m\}}  L_j - t_j, & \mbox{(Max-min time slack)} 
+% %\label{lastnode}
+% %f_{LN}(s) &= L_m - t_m, & \mbox{(Last node time slack)} 
+% \end{align}
+% where $[E_j,L_j]$ is the time window and $t_j$ is the calculated time of arrival at node $p_j$.
+% 
+% In general, each of the above objective functions aim to 
+% maximize the temporal flexibility of service sequences in different ways.
 \begin{description}
 \item[Route duration]
 %The route duration objective function 
-\eqref{rl} favors service sequences in
+favors service sequences in
 which the time to serve all customers is as small as possible. 
 This objective can be justified by the fact that 
 it is likely that new customers may be inserted at the rear of 
 a route that is executed quickly.
 \item[Total time slack] 
-\eqref{ts} stores sequences in which
+stores sequences in which
 the sum of excess times (or the average excess time) at the nodes is maximized, that
 is, sequences which are likely to allow the insertion of a new customer %can be inserted
 before the last node.
-\item[Max-min] \eqref{maxmin} seeks sequences in which the 
+\item[Max-min time slack] seeks sequences in which the 
 minimum excess time at the nodes of the route is maximized. In other words,
 the sequences in which there is at least some time slack at each node
 are considered potential.
@@ -963,44 +963,7 @@ The search begins from node $0$ by ranking the pick-up and drop-off nodes $P$ of
 Then, the node $p^{*}$ with the highest ranking is added to the sequence and the ranking procedure is
 repeated for the remaining nodes $P \setminus \{p^{*}\}$.
 
-Formally, the search is executed by means of the recursion 
-REC($S,R_S$) shown in Algorithm \ref{rralg}, where $S$ denotes a sequence of nodes (initially $S=(0)$), $R_S$ denotes %based on a two-step feasibility check 
-the set of remaining nodes at $S$ (initially $R_S=\{1^{+},1^{-}, \ldots, n^{+},n^{-}\}$) and $S_{\max}$ denotes the sequence that maximizes the number 
-of served customers (initially $S_{\max} = (0)$). $C(S)$ denotes the number of served customers in sequence $S$, which is equal to the 
-number of drop-off points in $S$.
-\begin{algorithm}
-{\footnotesize
-\begin{algorithmic}
-\STATE Check time, capacity and precedence constraints;
-\IF {$S$ is infeasible} 
-\STATE \ \ Return;
-\ENDIF
- \IF {$C(S) > C(S_{\max})$}
- \STATE \ \ $S_{\max} \leftarrow S$;   \hfill (Store the current sequence $S$.) %$C(S) = $ The set of served customers in sequence $S$)
- \STATE \ \ \textbf{if} $C(S) = n$
- \STATE \ \ \ \ Terminate recursion; \hfill (Feasible route.)
- \STATE \ \ \textbf{end if}
- \ENDIF
-%\IF {$C(S) = n$}
-%\STATE \ \ Terminate recursion; \hfill (Feasible route.)
-%\ENDIF
-\STATE Rank the remaining nodes $i \in R_S$ and remove infeasible nodes from $R_S$; 
-\FOR{all $i \in R_S$ (in ranked order)}
-\STATE \ \ REC$((S,i) , R_S \setminus \{i\})$; %\hfill ($R_{(S,i)}$ = the set of remaining nodes at $(S,i)$.) 
-%\ELSE 
-%\STATE \ \ \ \ $R = R \setminus \{i\}$; 
-\ENDFOR
-\end{algorithmic}
-\caption{\footnotesize A recursive solution REC($S,R_S$) to the single-vehicle DARP. $S$ denotes a sequence of 
-nodes (initially $S=(0)$), $R_S$ denotes %based on a two-step feasibility check 
-the set of remaining nodes (initially $R_S=\{1^{+},1^{-}, \ldots, n^{+},n^{-}\}$) and $S_{\max}$ denotes the sequence that maximizes the number 
-of served customers (initially $S_{\max} = (0)$). $C(S)$ denotes the number of served customers in sequence $S$, which is equal to the 
-number of drop-off points in $S$.}
-\label{rralg}
-}
-\end{algorithm}
-
-The main idea of the recursion is that at each step, we have the current sequence $S$ 
+The main idea of the algorithm is that at each recursion step, we have the current sequence $S$ 
 and the set of remaining nodes $R_S$ (nodes that can possibly be added to the sequence). 
 At first, we check the time, capacity and precedence constraints of $S$.
 If $S$ is feasible and all customers have been served, that is, if $C(S) = n$, a feasible solution is found and 
@@ -1008,8 +971,7 @@ the recursion is terminated.
 Otherwise,
 the remaining nodes $R_S$ are ranked by hub scores and the infeasible nodes 
 are removed from $R_S$.
-Then, the recursive function REC($(S,i),R \setminus \{i\}$) is called
-for all sequences $(S,i)$ in ranked order.
+Then, the recursion continues for all sequences $(S,i)$ in ranked order.
 In the following, we describe the ranking of remaining nodes in more detail.
 
 
@@ -1023,26 +985,7 @@ Then, the hub vector is calculated by means of Equation \eqref{modhub}.
 Given that the vehicle is at the last node $s$ of sequence $S$, we study which sequences $(S,i,j)$, where 
 $i,j \in R_S$, are feasible with respect to the time and precedence constraints. %, capacity and precedence constraints. 
 Let $t_s$ denote the departure time and $Q_s$ denote the load of the vehicle at $s$, 
-and $t_i = t_s + T_{si}$ denote the arrival time at $i \in R_S$. For clarity, service times are 
-assumed equal to zero. However, the modification
-of the following equations for non-zero service times is straightforward.
-In addition, we consider %The above definition of feasible transitions %\ref{feasibletransitions} 
-fixed time windows $[E_i,L_i]$ for each node.
-However, maximum ride time constraints \cite{hunsaker} are taken into account by updating the 
-upper bounds $L_i$ of the time windows during run-time as described in \ref{jhitsdarpts}.
-
-First, all nodes that are seen to be non-reachable from $S$ are removed from the set $R_S$ of remaining nodes.
-\begin{definition}
- \label{linkki02}
-A node $i \in R_S$ is said to be infeasible if
-there does not exist a feasible sequence $(S,\ldots,i)$ ending at $i$.
-\end{definition}
-Clearly, if the time of arrival $t_i$ staisfies $t_i > L_i$, the node $i$ is infeasible.
-The nodes $i \in I$ for which $t_i > L_i$ are removed from $R_S$, 
-that is, $R_S \leftarrow R_S \setminus I$. This elimination criteria is similar to 
-the one presented in \cite{desrosiers01}.
-
-For nodes that are not seen to be infeasible, we define feasible transitions as follows.
+and $t_i = t_s + T_{si}$ denote the arrival time at $i \in R_S$. 
 \begin{definition}
 \label{feasibletransitions}
 The transition 
@@ -1090,25 +1033,10 @@ $h_{i_1} \geq h_{i_2} \geq \ldots \geq h_{i_{|R_S|}}$.
 % bad authorities are evaluated first.
 The hub scores are used to give guidance to the algorithm regarding the order in which the 
 depth-first search visits the nodes. 
-Since the goal is to maximize the number of served customers, the sequences that can not improve the maximum 
-number of served customers, can be discarded by studying the neighborhoods of the remaining nodes. 
-\begin{definition}
- The neighborhood of node $i \in R_S$ is defined by $N(i) = \{i\} \cup \{j \in R_S \mid L_{ij} = 1\}$.
-\end{definition}
-\begin{theorem}
-Let $S_{\max}$ denote the best found solution.
-The sequence $S$ is suboptimal if 
-\begin{align*}
-C(S) + \max_{i \in R_S} C(N(i)) \leq C(S_{\max}),
-\end{align*}
-where $C(S), C(N(i))$ and $C(S_{\max})$ denote the number of drop-off points in $S,N(i)$ and $S_{\max}$,
-respectively. 
-\end{theorem}
-
 
 \subsubsection{A heuristic extension}
 \label{rrheuristic}
-Algorithm \ref{rralg} describes an exact procedure for maximizing the number of served customers
+Section ??? describes an exact procedure for maximizing the number of served customers
 in a single route. In order to find the exact solution, the algorithm goes through all
 branches until no further nodes can be added to the current sequence or the sequence is seen to be suboptimal.
 
@@ -1147,7 +1075,7 @@ The overall complexity of the single vehicle algorithm is thus $\mathcal{O}(D(n)
 \subsection{Numerical experiments}
 \label{svexperience}
 The following paragraphs present a summary of the computational results reported in \ref{jeadarp}. 
-The exact and heuristic versions of the single-vehicle algorithm
+The exact and heuristic versions of the single-vehicle advanced insertion algorithm
 were tested on a set of problems involving different numbers of customers and different time
 window widths determined by a travel time ratio $R$ describing the maximum allowed ratio of travel time
 to direct ride time. The pick-up and drop-off points of customers were chosen randomly from a
@@ -1155,7 +1083,7 @@ square-shaped service area and the ride times between the points were modeled by
 
 At first, the complexity of the problem was studied with respect to three parameters, namely
 i) the number of customers $N$, ii) travel time ratio $R$ and iii) the average time interval $\mu$
-between customer requests. The complexity of the exact algorithm was measured in terms of the
+between customer requests. The complexity was measured in terms of the
 average number of feasible sequences
 in \emph{feasible problem instances}, that is, randomized
 problems for which at least one feasible solution was found. 
@@ -1271,7 +1199,7 @@ the earliest pick-up times of customers assigned to a single vehicle.
 
 
 \subsubsection{Experiment 4: Objective functions}
-Let us study the performance of the three different heuristic cost functions \eqref{rl}, \eqref{ts} and \eqref{maxmin}
+Let us study the performance of three different heuristic cost functions %\eqref{rl}, \eqref{ts} and \eqref{maxmin}
 as a function of the degree $L$ of the heuristic.
 Figure \ref{objvertailu01} shows the fraction of problem instances for which a feasible solution was 
 % in feasible problem instances obtained 
@@ -1280,9 +1208,9 @@ randomized instances.
 The number of customers was set to $N=20$, the travel time ratio
 was $3$ and the average time interval $\mu = 1800$s was used.
 
-Referring to the figure, it can be seen that the total time slack cost function \eqref{ts} is capable of finding
+Referring to the figure, it can be seen that the total time slack cost function is capable of finding
 a feasible solution to randomized problems most often, while the performance of the route duration cost
-function \eqref{rl} is worst of the three algorithms. Note that as the degree $L$ is increased, 
+function is worst of the three algorithms. Note that as the degree $L$ is increased, 
 the fraction of feasible solutions converges to 1 for any heuristic cost function, since whenever $L \geq \frac{(2N)!}{2^N}$,
 the heuristic coincides with the exact algorithm regardeless of the studied problem.
 
@@ -1302,14 +1230,14 @@ an algorithm for checking the feasibility of a DARP instance has two main applic
 optimization algorithm in a \emph{static} setting, where all trip requests are known, for example, one day in advance. 
 2) In \emph{dynamic} services, a constraint satisfaction algorithm can be used 
 for deciding whether to accept or reject incoming user requests. 
+% 
+% In addition to passenger transportation, we note that a time-constrained problem similar to the DARP arises in 
+% food delivery services. Instead of passengers with pick-up and drop-off time windows, the goal is to transport 
+% \emph{meals} from restaurants to specified delivery points within guaranteed time limits.
+% Similarly as in the dynamic DARP, the food delivery service provider needs to decide quickly whether to take an incoming order or not,
+% if there is a guaranteed maximum delivery time, for example, one hour.
 
-In addition to passenger transportation, we note that a time-constrained problem similar to the DARP arises in 
-food delivery services. Instead of passengers with pick-up and drop-off time windows, the goal is to transport 
-\emph{meals} from restaurants to specified delivery points within guaranteed time limits.
-Similarly as in the dynamic DARP, the food delivery service provider needs to decide quickly whether to take an incoming order or not,
-if there is a guaranteed maximum delivery time, for example, one hour.
-
-In both contexts (passenger transportation and food service), a good level of service means that the problem is highly constrained \cite{jokinen-fists-2011}. 
+In the context of passenger transportation, a good level of service means that the problem is highly constrained \cite{jokinen-fists-2011}. 
 In such problems, the number of feasible solutions becomes so limited that often
 any feasible solution will be relatively close to the optimal solution with respect to the
 objective function \cite{psaraftis02}.
@@ -1330,7 +1258,7 @@ by studying the feasiblility of routes involving two customers.
 \subsection{The maximum cluster algorithm [\ref{jhitsdarpts}]}
 \label{mvsolution}
 \ref{jhitsdarpts} presents the following exact approach to the multi-vehicle DARP as a constraint satisfaction problem.
-By using the ranking algorithm (Algortithm \ref{rralg}) described in Section \ref{routingbyranking} as a subroutine,
+By using the ranking algorithm  described in Section \ref{routingbyranking} as a subroutine,
  the method produces a feasible solution to 
 any instance or proves that the instance is infeasible. The main idea is that the vehicle routes are constructed
 one by one, each maximizing the number of served customers in the set of remaining customers.
@@ -1340,7 +1268,7 @@ First, a route is constructed for vehicle $1$, serving as many
 customers as possible. Then, the process is repeated with vehicle $2$ for the set of customers
 that were not served by vehicle $1$ and so forth (see Figure \ref{greedyidea}). 
 Letting $X$ denote a
-set of customers, we denote by RR($X$) the single-vehicle ranking algorithm (Algorithm \ref{rralg}) that returns a route 
+set of customers, we denote by RR($X$) the single-vehicle ranking algorithm that returns a route 
 that maximizes number of served customers in set $X$ and the corresponding set of served customers.
 This set will be referred to as a maximum cluster of $X$, which is formally defined as follows.
 \begin{definition}
@@ -1360,7 +1288,7 @@ The solution to the multi-vehicle case is outlined in Algorithm \ref{alg03}.
 \end{algorithmic}
 \caption{Outline of the multi-vehicle algorithm. $X_k$ denotes the set of customers assigned 
 to vehicle $k$ and RR($X_k$) denotes the single-vehicle 
-subroutine presented in Algorithm \ref{rralg} that returns
+subroutine presented in Section ??? that returns
 a maximum cluster $X_k'$ of $X_k$ and the corresponding route $S_k$. 
 Initially, all customers are assigned to the first vehicle, that is, $X_1 = \{1,\ldots,n\}$ and $X_k = \emptyset$ for all $k \in \{2,\ldots,m\}$.}
 \label{alg03}
@@ -1497,7 +1425,7 @@ and thus also the complexity of the algorithm.
 \subsection{Numerical experiments}
 \label{mvexperience}
 In the following, we present a summary of the results of computational tests reported in \ref{jhitsdarpts}.
-An algorithm using the ranking idea (Algorithm \ref{rralg}) is compared with two existing solution methods,
+An algorithm using the ranking idea is compared with two existing solution methods,
 namely, a tabu search algorithm \citep{cordeau02} and
 a constraint programming (CP) algorithm \citep{berbegliafeas}. 
 
