@@ -2111,28 +2111,7 @@ In the following, we present an algorithm for calculating the values for all sta
 \subsection{Backward induction algorithm}
 \label{balg}
 The values $V(s)$ of states can be determined
-by means of backward induction, as shown in Algorithm \ref{alg01}.
-
-\begin{algorithm}
-{\footnotesize
-\begin{algorithmic}
-\IF{$V(s) \neq \emptyset$ \ \ ($V(s)$ has already been determined )}
-\RETURN $V(s)$\;
-\ENDIF
-\FORALL{$s' \in S_{s}$ (successor set of $s$)}
-\STATE $V(s') \leftarrow $ Rec($s'$)\; 
-\ENDFOR
-\STATE Determine an optimal action $a$ by sorting the states $s' \in S_{s}$ in descending order of $R(s,s') + V(s')$\;
-\STATE $V(s) \leftarrow \sum_{k=1}^{|S_s|} P_{a}(s,s^{a,k}) \left( R(s,s^{a,k}) +V(s^{a,k}) \right)$\;
-\RETURN $V(s)$\;
-\end{algorithmic}
-}
-\caption{A recursive function Rec($s$) for calculating an optimal policy. 
-Initially, set $V(s) \leftarrow \emptyset$ for all $s \in \{1,\ldots,n-1\}$ and $V(n) \leftarrow 0$.}
-\label{alg01}
-\end{algorithm}
-
-In other words, the recursive function Rec($s$) executes the following procedures at each recursion step:
+by means of backward induction. The recursive function Rec($s$) executes the following procedures at each recursion step:
 \begin{enumerate}
  \item 
 Check if the value of the current state $s$ has been determined. If yes, return the value.
@@ -2241,19 +2220,6 @@ Let $P$ denote the adjacency matrix of a sink graph $G_k=(X,A)$, where $X=\{1,\l
 let $h_s$ denote the expected number of successful paths from $s$ to $n$ for $s \in X \setminus \{k\}$ and let $h_k=1$. 
 Then, $h=(h_1,\ldots,h_{|X|})^T$ is a unique dominant eigenvector of $L$.
 \end{theorem}
-\begin{proof}
- Since the adjacency matrix of a directed acyclic graph is an upper triangular matrix with zeros on the diagonal,
-the adjacency matrix $P$ of a sink graph is an upper triangular matrix with diagonal elements $p_{ss}=0$ except 
-for the sink node $k$, for which we have $p_{kk} = 1$. The eigenvalues of an upper triangular matrix are equal to the
-diagonal elements \cite{axler} and thus there exists a unique dominant eigenvalue $1$. Let us show that $h=(h_1,\ldots,h_{|X|})^T$ 
-is the corresponding eigenvector of $P$.  
-
-Since all paths in a directed acyclic graph are acyclic and by definition we have $h_k=1$, 
-the expected number of paths $h_s$ from node $s$ to the sink node $k$ in the sink graph $G_k$ satisfies
-$h_s = \sum_{s' \in X} p_{ss'} h_{s'}$
-for $s \in X \setminus \{k\}$ and $h_k$ satisfies $h_k= 1 = p_{kk} h_k = \sum_{s \in X} p_{ks} h_s$.
-In matrix form, we have $h = Ph$ and thus $h$ is the unique eigenvector corresponding to eigenvalue $1$.
-\end{proof}
 
 Theorem \ref{polut2} states that by constructing a sink graph, the expected number of successful paths $h_s$ from state 
 $s$ to the destination state $n$
@@ -2507,7 +2473,7 @@ the choices of transport operators
 do not change if the demand remains constant and the choices of customers
 do not change if the supply of trips remains constant. 
 
-This approach is somewhat similar to the taxi model proposed by \cite{yang2010}. The main difference is that in a taxi service, 
+This approach is somewhat similar to the taxi model proposed in \cite{yang2010}. The main difference is that in a taxi service, 
 customers are delivered to their destinations directly, whereas in a demand-responsive transport service, a vehicle can serve several customers 
 simultaneously and therefore a customer's trip from an origin to a destination is not necessarily a direct one. 
 
@@ -2523,10 +2489,6 @@ The subjective price of a trip is defined as a combination of ticket price and t
 Customers choose between trips provided by 
 DRT and a virtual mode by comparing the subjective 
 prices of different trips.
-\item
-Customers are assigned to vehicles by means of an electronic booking service.
-For analysis, we assume that the DRT customers that 
-choose trip $r$ are divided equally among vehicles that produce trip $r$. 
 \end{enumerate} 
 
 %The following sections present a Markov
@@ -2545,20 +2507,17 @@ visits the nodes $i_1,\ldots,i_{d-1}$ before the drop-off of the customer at $i_
 trip denotes the path of the vehicle that transports the customer from $i_0$ to $i_d$.
 For example, a \emph{direct} trip from $i_0 \in I$ to $i_d \in I$, denoted by $(i_0,i_d)$, describes a trip in which a customer enters 
 a vehicle at $i_0$ and the vehicle drives directly to $i_d$ without stopping between $i_0$ and $i_d$. 
-The set of all trips in $I$ is denoted by $\mathcal{R}$ and the set of trips from $i\in I$ to $j \in I$ is denoted by $\mathcal{R}_{ij}$.
 
-\subsection{Subjective price}
-Each trip $r \in \mathcal{R}$ has a specific ticket price $p_r$. 
+Each trip $r$ has a specific ticket price $p_r$. 
 Note that the prices of trips with the same origin and destination may be different.
-Similarly as in \citep{yang2010}, each customer seeks a trip to minimize the \emph{subjective price}, 
+Similarly as in \citep{yang2010}, each customer seeks a trip to minimize the \emph{subjective price} $g_r^{\rm DRT}$, 
 defined as a combination of $p_r$ and \emph{travel time}. 
 
-%For analysis, we use the notation $p_r = p_{ij}$ for all $r \in \mathcal{R}_{ij}$.
-\subsection{Demand for DRT}
 The choices of customers are determined by a logit model, similar to the one in \citep{yang2010}, as follows.
 The subjective trip price of a trip from $i$ to $j$ provided by the \emph{virtual mode}\footnote{The virtual mode 
 represents alternatives for the DRT service.} is denoted by $\bar{g}_{ij}$.
-The probability that a customer traveling from $i$ to $j$ chooses a DRT trip $r \in \mathcal{R}_{ij}$ is defined by
+The probability that a customer traveling from $i$ to $j$ chooses a DRT trip $r \in \mathcal{R}_{ij}$, where $\mathcal{R}_{ij}$ denotes the 
+set of trips from $i$ to $j$, is defined by
 \begin{align}
 \label{kysyntatn}
 P_{r}^{\rm DRT} = 
@@ -2574,22 +2533,26 @@ not on the subjective prices of other trips \citep{small2007}.
 \section{Supply}
 \label{vehiclemovements}
 We assume that there are $N$ vehicles available for transporting customers. 
-At any point in time, each vehicle follows a specific \emph{route} $(i_0,i_1,\ldots,i_m)$ 
+At any point in time, each vehicle follows a specific route $(i_0,i_1,\ldots,i_m)$ 
 determined by a sequence of nodes in the transportation network.
 The vehicle starts at the first node $i_0$ and proceeds by visiting the other nodes $i_k$
 for $k=1,\ldots,m$ in the order determined by the route.
 Each node corresponds to a stop during which customers may enter or exit the vehicle.
-We assume that each route is acyclic and consists of a minimum of two nodes, that is, none of the
-vehicles are idle at any time. Since the routes are acyclic, each route consists of
-a maximum of $|I|$ nodes.
 
+During the execution of the route $(i_0,i_1,\ldots,i_m)$, the vehicle produces
+trips that are subsequences of $(i_0,\ldots, i_m)$. This idea of producing trips 
+is in fact similar as in traditional public transport: a bus with a given route 
+produces trips that are subsequences of the route.
 
-
-\subsection{Route modifications}
-\label{routemodifications}
-The most distinguishing feature of demand-responsive transport, which differentiates it from 
-traditional public transport, is that the vehicle routes may be modified in
-real time in order to meet the demand for transportation efficiently.
+The \emph{state} of a vehicle describes which part of the route the vehicle is currently executing.
+Each time a vehicle following a route $(i_0,\ldots,i_m)$ arrives at stop $i_k$, 
+we say that the vehicle \emph{transfers} to a new state.
+Similarly as routes, the states are defined as sequences of nodes.
+The difference between states and routes
+is that the state of a vehicle corresponds to the \emph{remaining part} of its current route. 
+That is, the vehicle transfers to a new state each time it arrives at a stop, even if the route remains unchanged.
+During the execution of a route $(i_0,\ldots,i_m)$, the vehicle successively transfers to states 
+$(i_0,\ldots,i_m),(i_1,\ldots,i_m),(i_2,\ldots,i_m),\ldots,(i_{m-1},i_m)$.
 
 
 \section{Competitive market}
@@ -2606,8 +2569,7 @@ This market structure is in fact similar to conventional taxi-markets, which hav
 \citep{hackner1995,arnott1996,cairns1996,flores-guri2003,lagos2003,wong2005,matsushima2006,fernandez2006,moore2006,yang2002,yang2005,yang2010}.
 
 In a competitive market, the drivers attempt to transfer to
-states at which the \emph{expected profit rate} is maximized. By using the expected profit rate as a 
-utility measure we can compare the profitability of routes of different lengths.
+states at which the \emph{expected profit rate} is maximized. 
 
 By assuming a logit model similar to the one in Equation \eqref{kysyntatn},
 the probability that a vehicle at state $s$ transfers to state $s' \in \mathcal{S}$
@@ -2625,7 +2587,8 @@ P_{s,s'} =
 \end{align}
 where $\theta^d$ is a 
 nonnegative parameter reflecting the uncertainty on
-demand and DRT services from the perspective of drivers.
+demand and DRT services from the perspective of drivers, $U(s)$ is the expected profit rate at state $s$ and 
+$\mathcal{S}_s$ is the set of states to which a transfer from state $s$ is possible. 
 
 
 \subsection{Network equilibrium}
@@ -2759,116 +2722,7 @@ with respect to the number of iterations.
 % by a factor of $10$ in approximately $10$ iterations, that is, $\|T^k -T^{k-1}\| = \frac {1}{10^K} \|T^{k-10K} -T^{k-1-10K}\|$
 % for $K \in \mathbb{N}$.
 
-
-
-
-\section{Monopoly}
-\label{monopdescription}
-In a demand-responsive transport monopoly, a single transport operator controls the transition probabilities of vehicles
-between states, in contrast to the competitive market in which the routing decisions are made by individual drivers.
-In this case, the matrix $P$ containing the transition probabilities $P_{s,s'}$ is referred to as a \emph{routing strategy}.
-Each routing strategy produces an arrival rate vector $T$ (the dominant eigenvector of $P$) that contains the arrival rates $T_s$ of
-vehicles at states.
-
-\subsection{Optimal routing strategies}
-Let us consider three different objective functions \eqref{monopprofitrate}, \eqref{monopsurplus} and \eqref{monopwelfare}.
-
-In an unregulated demand-responsive service operated by a single transport operator, 
-the goal is to find a routing strategy $P$ that maximizes the profit rate
-\begin{align}
-\label{monopprofitrate}
-U = \sum_{r \in \mathcal{R}}  Q_r^{\rm DRT} p_r - \sum_{s \in \mathcal{S}} T_s c_{s},
-\end{align}
-where $\sum_{r \in \mathcal{R}}  Q_r^{\rm DRT} p_r$ is \emph{total revenue rate} 
-and $\sum_{s \in \mathcal{S}} T_s c_{s}$ is
-the corresponding \emph{total cost rate}. 
-
-Regulating the service in real-time, as described in ???, could improve the service
-from the social point of view. In order to be able to study social welfare, we first define the \emph{customer surplus}
-as the difference between the subjective price of the virtual mode and 
-the subjective price of DRT by
-\begin{align}
-\label{monopsurplus}
-V = \sum_{(i,j) \in I \times I} \sum_{r \in \mathcal{R}_{ij}} Q^{DRT}_r  (\bar{g}_{ij}-g_r),
-\end{align}
-where $Q^{DRT}_{ij}$ is the total demand for DRT trips from $i$ to $j$, $\mathcal{R}_{ij}$
-is the set of DRT trips from $i$ to $j$, $g_r$ is the subjective price
-of trip $r$ and $\bar{g}_{ij}$ is the subjective price of the virtual mode from $i$ to $j$.
-
-Social welfare is defined as the sum of profit rate and surplus, that is, 
-\begin{align}
-\label{monopwelfare}
- W=U+V.
-\end{align}
-
-\subsection{Algorithm}
-The idea for finding an optimal routing strategy is as follows.
-1) The routing strategy $P$ is initialized. 
-%Second, a routing strategy candidate $P'$ 
-%is produced by randomly perturbing $P$ and the objective function is evaluated again. 
-2) The objective function (for example, profit rate) is evaluated. 
-If the value of the objective function is improved, $P$ becomes the new optimal routing strategy, that is, $P^* \leftarrow P$.
-3) A new routing strategy $P$ is produced by randomly perturbing $P^*$.
-Steps 2 and 3 are repeated until convergence.
-The outline of the procedure is presented in Algorithm \ref{monopalg}.
-
-\begin{algorithm}[H]
-\begin{algorithmic}
-\STATE \emph{Input}: Set $I$ of nodes, direct ride time $t_{ij}$, cost $c_{ij}$, demand $Q_{ij}$,
-ticket price $p_{r}$, cost of virtual mode $\bar{g}_{ij}$ 
-for all pairs $i,j \in I$ of nodes, number of vehicles $N$, 
-customers' monetary value for unit time $\beta$
-and the uncertainty parameter $\theta$.
-\STATE \emph{Output}: Optimal routing strategy $P$ and the corresponding arrival rates $T_s$ of 
-vehicles at states $s \in \mathcal{S}$.
-\STATE Initialize the routing strategy $P$; \hfill (Transition probabilities between states) 
-\REPEAT
-\STATE \textbf{Arrival rates:} Solve $T_s$ for all $s \in \mathcal{S}$;
-\STATE \textbf{Customer demand:} Calculate $E[Q_{r}^{\rm DRT}]$ for all 
-$r \in \mathcal{R}$;
-\STATE Evaluate the objective function;
-\IF{the value of the objective function is improved}
-\STATE $P^* \leftarrow P$; \hfill (Store the current solution)
-\ENDIF
-\STATE Set $P \leftarrow P^* * \epsilon$ and normalize $P$, 
-where $\epsilon$ is a random matrix; 
-\UNTIL{convergence}
-\end{algorithmic}
-\caption{Finding an optimal routing strategy.}
-\label{monopalg}
-\end{algorithm}
-
-\subsection{A three-node example}
-The three-node example described in \ref{compexample} was repeated with the maximum profit routing strategy and 
-the results were compared. Table \ref{verkkovertailu} shows the total profit rate, demand and social welfare for 
-the competitive market equilibrium and the profit-maximizing strategy.
-
-\begin{table}[ht]
-\begin{center}
-{\footnotesize
-\begin{tabular}{|c|p{2.4cm}p{2.4cm}p{2.4cm}|}
-\hline
-Market mechanism & Profit rate (EUR / minute) & Demand (Customers / minute) & Social welfare (EUR / minute)\\
-\hline
-Competitive equilibrium & 3.7 & 12.0 & 23.5 \\
-Maximum profit & 5.8 & 15.6 & 35.6 \\
-\hline 
-\end{tabular}
-\caption{Total profit rate, demand and social welfare for the competitive market equilibrium and maximum profit routing strategy.}
-\label{verkkovertailu}
-}
-\end{center}
-\end{table}
-
-The results suggest that centralized routing strategies can be used to improve the efficiency of demand-responsive transport:
-By maximizing profit by means of a centralized strategy, the total profit rate, demand and social welfare are increased from
-the competitive equilibrium. The difference between the mechanisms is explained by the fact that in the competitive market, 
-the routing decisions are based on the drivers' incomplete market information whereas in the case of a single transport operator,
-the routing strategy is optimized by using information on the state of the entire network.
-
-
-
-\section{Long-run example}
+\subsection{Long-run example}
 \label{longrun}
 In an unregulated demand-responsive transport service operated by a single operator, 
 we expect that the number of vehicles and ticket price are chosen in a way that
@@ -2952,6 +2806,80 @@ fact that the low price results in a high demand for DRT. Moreover, we note that
 equilibrium is achieved by using price regulation exclusively. That is, the results suggest that 
 the optimal solution from the customers' point of view would be to regulate price and allow free 
 entry.
+
+
+\section{Monopoly \cite{kuhmostok}}
+\label{monopdescription}
+In a demand-responsive transport monopoly, a single transport operator controls the transition probabilities of vehicles
+between states, in contrast to the competitive market in which the routing decisions are made by individual drivers.
+In this case, the matrix $P$ containing the transition probabilities $P_{s,s'}$ is referred to as a \emph{routing strategy}.
+Each routing strategy produces an arrival rate vector $T$ (the dominant eigenvector of $P$) that contains the arrival rates $T_s$ of
+vehicles at states.
+
+\subsection{Algorithm}
+The idea for finding an optimal routing strategy is as follows.
+1) The routing strategy $P$ is initialized. 
+%Second, a routing strategy candidate $P'$ 
+%is produced by randomly perturbing $P$ and the objective function is evaluated again. 
+2) The objective function (for example, profit rate) is evaluated. 
+If the value of the objective function is improved, $P$ becomes the new optimal routing strategy, that is, $P^* \leftarrow P$.
+3) A new routing strategy $P$ is produced by randomly perturbing $P^*$.
+Steps 2 and 3 are repeated until convergence.
+The outline of the procedure is presented in Algorithm \ref{monopalg}.
+
+\begin{algorithm}[H]
+\begin{algorithmic}
+\STATE \emph{Input}: Set $I$ of nodes, direct ride time $t_{ij}$, cost $c_{ij}$, demand $Q_{ij}$,
+ticket price $p_{r}$, cost of virtual mode $\bar{g}_{ij}$ 
+for all pairs $i,j \in I$ of nodes, number of vehicles $N$, 
+customers' monetary value for unit time $\beta$
+and the uncertainty parameter $\theta$.
+\STATE \emph{Output}: Optimal routing strategy $P$ and the corresponding arrival rates $T_s$ of 
+vehicles at states $s \in \mathcal{S}$.
+\STATE Initialize the routing strategy $P$; \hfill (Transition probabilities between states) 
+\REPEAT
+\STATE \textbf{Arrival rates:} Calculate the arrival rate for all states $s \in \mathcal{S}$;
+\STATE \textbf{Customer demand:} Calculate the demand for for all trips
+$r \in \mathcal{R}$;
+\STATE Evaluate the objective function;
+\IF{the value of the objective function is improved}
+\STATE $P^* \leftarrow P$; \hfill (Store the current solution)
+\ENDIF
+\STATE Set $P \leftarrow P^* * \epsilon$ and normalize $P$, 
+where $\epsilon$ is a random matrix; 
+\UNTIL{convergence}
+\end{algorithmic}
+\caption{Finding an optimal routing strategy.}
+\label{monopalg}
+\end{algorithm}
+
+\subsection{A three-node example}
+The three-node example described in \ref{compexample} was repeated with the maximum profit routing strategy and 
+the results were compared. Table \ref{verkkovertailu} shows the total profit rate, demand and social welfare for 
+the competitive market equilibrium and the profit-maximizing strategy.
+
+\begin{table}[ht]
+\begin{center}
+{\footnotesize
+\begin{tabular}{|c|p{2.4cm}p{2.4cm}p{2.4cm}|}
+\hline
+Market mechanism & Profit rate (EUR / minute) & Demand (Customers / minute) & Social welfare (EUR / minute)\\
+\hline
+Competitive equilibrium & 3.7 & 12.0 & 23.5 \\
+Maximum profit & 5.8 & 15.6 & 35.6 \\
+\hline 
+\end{tabular}
+\caption{Total profit rate, demand and social welfare for the competitive market equilibrium and maximum profit routing strategy.}
+\label{verkkovertailu}
+}
+\end{center}
+\end{table}
+
+The results suggest that centralized routing strategies can be used to improve the efficiency of demand-responsive transport:
+By maximizing profit by means of a centralized strategy, the total profit rate, demand and social welfare are increased from
+the competitive equilibrium. The difference between the mechanisms is explained by the fact that in the competitive market, 
+the routing decisions are based on the drivers' incomplete market information whereas in the case of a single transport operator,
+the routing strategy is optimized by using information on the state of the entire network.
 
 
 
