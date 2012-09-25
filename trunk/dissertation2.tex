@@ -477,54 +477,54 @@ Publications \cp{jhitsdarpts} and \cp{jrbrorl} discuss a single-vehicle algorith
 for maximizing the number of customers in a single vehicle route. The method is seen to
 be useful in determining the feasibility of multi-vehicle instances. 
 
-\subsection{Literature review}
-In the following paragraphs, a short review on the studies related to the single vehicle dial-a-ride problem is
-presented, based on \cite{cordeau03, cordeau05, cordeau07} and \cite{berbeglia}, to which the reader is referred 
-for more exhaustive summaries. 
-
-The first exact approach to the solution 
-of the dynamic dial-a-ride problem was presented by \cite{psaraftis01}. 
-In this work the single-vehicle, "immediate-request" case is studied, in which a set of customers should be served as soon
-as possible. In this first model no time windows are specified by the customers, but the
-vehicle operator incorporates \emph{maximum position shift} constraints limiting the difference between
-the position of a request in the chronological calling list and its position in the vehicle route. 
-The objective is to minimize a weighted combination of the time needed to serve all customers 
-and customer dissatisfaction.
-The complexity of this algorithm is $\mathcal{O} (n^2 3^n)$ and only small instances
-can thus be solved. However, the computational effort is decreased as more strict constraints
-are imposed. 
-
-The algorithm is first constructed for the static case of the problem and then 
-extended to solve the dynamic case, in which 
-new requests occur during the execution of the route but no information on future requests is available.
-In this version of the problem, the use of maximum position shift constraints is essential, in order 
-to prevent a request from being indefinitely deferred. 
-In a later study \cite{psaraftis02},
-the approach is extended to handle time windows on departure and arrival times.
-In this extension, only the route duration is considered in the objective
-function. 
-
-In \cite{sexton02, sexton03}, a heuristic approach to the single vehicle DARP
-with one-sided time windows was introduced. 
-In this problem formulation, the objective function is defined as a function of (i) the difference between the actual
-travel time and the direct travel time of a user and (ii) the difference
-between desired drop-off time and actual drop-off time. The algorithm was
-tested on real-life problems involving 7 to 20 customers. %data sets where the number of customers varies between 7 and 20.
-
-In \cite{desrosiers01}, an exact dynamic programming algorithm for the single vehicle DARP, formulated as an integer program, 
-was presented. The formulation includes time windows as well as vehicle capacity 
-and precedence constraints. Optimal solutions with respect to total route length were obtained for $n=40$.
-
-In \cite{bianco}, exact and heuristic procedures 
-for the traveling salesman problem with precedence constraints are introduced, based on
-a bounding procedure. Computational results of the algorithm are given for a number
-of randomly generated test problems, including the dial-a-ride problem with the classical
-TSP objective function.
-
-Psaraftis noted that \emph{although single-vehicle Dial-A-Ride systems do not exist in 
-practice, single-vehicle Dial-A-Ride algorithms can be used as subroutines in
-large scale multivehicle Dial-A-Ride environments. It is mainly for this reason
-that one's ability to solve the single-vehicle DARP is considered important.}
+% \subsection{Literature review}
+% In the following paragraphs, a short review on the studies related to the single vehicle dial-a-ride problem is
+% presented, based on \cite{cordeau03, cordeau05, cordeau07} and \cite{berbeglia}, to which the reader is referred 
+% for more exhaustive summaries. 
+% 
+% The first exact approach to the solution 
+% of the dynamic dial-a-ride problem was presented by \cite{psaraftis01}. 
+% In this work the single-vehicle, "immediate-request" case is studied, in which a set of customers should be served as soon
+% as possible. In this first model no time windows are specified by the customers, but the
+% vehicle operator incorporates \emph{maximum position shift} constraints limiting the difference between
+% the position of a request in the chronological calling list and its position in the vehicle route. 
+% The objective is to minimize a weighted combination of the time needed to serve all customers 
+% and customer dissatisfaction.
+% The complexity of this algorithm is $\mathcal{O} (n^2 3^n)$ and only small instances
+% can thus be solved. However, the computational effort is decreased as more strict constraints
+% are imposed. 
+% 
+% The algorithm is first constructed for the static case of the problem and then 
+% extended to solve the dynamic case, in which 
+% new requests occur during the execution of the route but no information on future requests is available.
+% In this version of the problem, the use of maximum position shift constraints is essential, in order 
+% to prevent a request from being indefinitely deferred. 
+% In a later study \cite{psaraftis02},
+% the approach is extended to handle time windows on departure and arrival times.
+% In this extension, only the route duration is considered in the objective
+% function. 
+% 
+% In \cite{sexton02, sexton03}, a heuristic approach to the single vehicle DARP
+% with one-sided time windows was introduced. 
+% In this problem formulation, the objective function is defined as a function of (i) the difference between the actual
+% travel time and the direct travel time of a user and (ii) the difference
+% between desired drop-off time and actual drop-off time. The algorithm was
+% tested on real-life problems involving 7 to 20 customers. %data sets where the number of customers varies between 7 and 20.
+% 
+% In \cite{desrosiers01}, an exact dynamic programming algorithm for the single vehicle DARP, formulated as an integer program, 
+% was presented. The formulation includes time windows as well as vehicle capacity 
+% and precedence constraints. Optimal solutions with respect to total route length were obtained for $n=40$.
+% 
+% In \cite{bianco}, exact and heuristic procedures 
+% for the traveling salesman problem with precedence constraints are introduced, based on
+% a bounding procedure. Computational results of the algorithm are given for a number
+% of randomly generated test problems, including the dial-a-ride problem with the classical
+% TSP objective function.
+% 
+% Psaraftis noted that \emph{although single-vehicle Dial-A-Ride systems do not exist in 
+% practice, single-vehicle Dial-A-Ride algorithms can be used as subroutines in
+% large scale multivehicle Dial-A-Ride environments. It is mainly for this reason
+% that one's ability to solve the single-vehicle DARP is considered important.}
 
 \subsection{Problem formulation}
 \label{staticnarrow}
@@ -550,7 +550,7 @@ vehicle route such that: (i) for every customer $i$, the pick-up node is visited
 
 Reference \cite{psaraftis01} defines the cost function as a linear combination of route duration and the 
 total dissatisfaction of customers. The adaptive insertion method described in \ref{jeadarp} is designed in a way 
-that several cost functions, that are thought to be suitable for dynamic settings, may be incorporated with minimal work.
+that several cost functions, that are thought to be suitable for dynamic settings \cite{Hyytia2010}, may be incorporated with minimal work.
 
 \begin{figure}[ht]
 \begin{center}
@@ -568,67 +568,67 @@ the drop-off and the pick-up (excluding $D_{i^+}$) should not exceed the maximum
 \end{figure}
 
 
-\subsection{The dynamic case}
-\label{dynamicdarp}
-Let us discuss the extension of the predescribed single-vehicle dial-a-ride problem to 
-the dynamic case, in which new customers are appended to the route in real time.
-Generally, it can be seen that there is no need to compute a new route
-except when a new customer request occurs, a customer does not show up at the agreed pick-up location,
-the vehicle is ahead or behind of schedule or the vehicle has lost its way. 
-
-A simple example, similar to the one presented in \cite{psaraftis01},
-on the real-time updating of a vehicle route %might operate 
-is shown in figure \ref{dynamicexample02}.
-Initially, customers $1$ and $2$ have been assigned 
-pick-up and delivery points and corresponding time windows. The vehicle located at $A$ follows the
-tentative optimal route $(1^{+},2^{+},1^{-},2^{-})$,
-where "$+$"-symbols denote pick-up nodes and "$-$"-symbols denote delivery nodes. 
-(see figure \ref{dynamicexample02}a).
-At the time the vehicle is at $B$, the vehicle route is updated with respect 
-to customers $1,2$ and $3$. At this instant %in time, %the procedure revises the
-% nonexecuted portion of the route and produces the 
-a new tentative optimal route shown in figure \ref{dynamicexample02}b is produced. 
-
-\begin{figure}[ht]
-\begin{center}
-\includegraphics[width=1.0\textwidth]{dynamicexample04.pdf}
-\caption{Modifications in the vehicle route. The route is updated when the vehicle is at $B$ and 
-a new tentative optimal route beginning at $B'$ is produced. 
-The figures on the right show the routes as so-called labeled Dyck 
-paths \cite{cori}, in which each pick-up $i^{+}$ precedes the correspoding drop-off $i^{-}$. 
-At the time a new customer is added to the route, a new path is formed. Clearly, the "height" of the path
-shows the number of customers aboard in different parts of the route.}
-\label{dynamicexample02}
-\end{center}
-\end{figure}
-
-Note that the new route does not have $B$ as origin, but
-a point $B'$, slightly ahead of $B$. This is due to two facts:
-i) It will take some time for the algorithm to process the new input and reoptimize, 
-ii) It will take some time for the driver
-of the vehicle to process the information regarding the new route. 
-The distance between $B$ and $B'$ depends in general on the particular 
-dial-a-ride service examined. For example, in a highly dynamic setting,
-in which the modification of the route is not
-allowed to take more than a few seconds, it may be assumed that
-the latter of the facts is more restrictive. 
-Any dynamic dial-a-ride
-service should make use of a mechanism to update the point $B'$
-and estimated time of arrival $T'$ at $B'$ at sufficient time intervals.
-The \emph{vehicle checkpoint} $(B',T')$ acts as the starting point for all service sequences.
-
-	In addition, for customers that have already been picked up, the pick-up point 
-	is not a part of the input of the problem. Thus, for such customers
-	only the delivery point is considered.
-
-	In dynamic models, the objective function
-	used to find the solution over a rolling horizon has often little to do with
-	the measures developed to evaluate the overall quality of a solution \cite{powell95}.
-	Generally, the choice of the objective function depends 
-	on the particular version of the dynamic routing problem and the performance
-	of different objective functions may be sensitive to, for example, constraints, demand intensity
-	or the number of vehicles. For a study related to choosing an objetive function
-	for the immediate-request DARP, the reader is referred to \cite{Hyytia2010}.
+% \subsection{The dynamic case}
+% \label{dynamicdarp}
+% Let us discuss the extension of the predescribed single-vehicle dial-a-ride problem to 
+% the dynamic case, in which new customers are appended to the route in real time.
+% Generally, it can be seen that there is no need to compute a new route
+% except when a new customer request occurs, a customer does not show up at the agreed pick-up location,
+% the vehicle is ahead or behind of schedule or the vehicle has lost its way. 
+% 
+% A simple example, similar to the one presented in \cite{psaraftis01},
+% on the real-time updating of a vehicle route %might operate 
+% is shown in figure \ref{dynamicexample02}.
+% Initially, customers $1$ and $2$ have been assigned 
+% pick-up and delivery points and corresponding time windows. The vehicle located at $A$ follows the
+% tentative optimal route $(1^{+},2^{+},1^{-},2^{-})$,
+% where "$+$"-symbols denote pick-up nodes and "$-$"-symbols denote delivery nodes. 
+% (see figure \ref{dynamicexample02}a).
+% At the time the vehicle is at $B$, the vehicle route is updated with respect 
+% to customers $1,2$ and $3$. At this instant %in time, %the procedure revises the
+% % nonexecuted portion of the route and produces the 
+% a new tentative optimal route shown in figure \ref{dynamicexample02}b is produced. 
+% 
+% \begin{figure}[ht]
+% \begin{center}
+% \includegraphics[width=1.0\textwidth]{dynamicexample04.pdf}
+% \caption{Modifications in the vehicle route. The route is updated when the vehicle is at $B$ and 
+% a new tentative optimal route beginning at $B'$ is produced. 
+% The figures on the right show the routes as so-called labeled Dyck 
+% paths \cite{cori}, in which each pick-up $i^{+}$ precedes the correspoding drop-off $i^{-}$. 
+% At the time a new customer is added to the route, a new path is formed. Clearly, the "height" of the path
+% shows the number of customers aboard in different parts of the route.}
+% \label{dynamicexample02}
+% \end{center}
+% \end{figure}
+% 
+% Note that the new route does not have $B$ as origin, but
+% a point $B'$, slightly ahead of $B$. This is due to two facts:
+% i) It will take some time for the algorithm to process the new input and reoptimize, 
+% ii) It will take some time for the driver
+% of the vehicle to process the information regarding the new route. 
+% The distance between $B$ and $B'$ depends in general on the particular 
+% dial-a-ride service examined. For example, in a highly dynamic setting,
+% in which the modification of the route is not
+% allowed to take more than a few seconds, it may be assumed that
+% the latter of the facts is more restrictive. 
+% Any dynamic dial-a-ride
+% service should make use of a mechanism to update the point $B'$
+% and estimated time of arrival $T'$ at $B'$ at sufficient time intervals.
+% The \emph{vehicle checkpoint} $(B',T')$ acts as the starting point for all service sequences.
+% 
+% 	In addition, for customers that have already been picked up, the pick-up point 
+% 	is not a part of the input of the problem. Thus, for such customers
+% 	only the delivery point is considered.
+% 
+% 	In dynamic models, the objective function
+% 	used to find the solution over a rolling horizon has often little to do with
+% 	the measures developed to evaluate the overall quality of a solution \cite{powell95}.
+% 	Generally, the choice of the objective function depends 
+% 	on the particular version of the dynamic routing problem and the performance
+% 	of different objective functions may be sensitive to, for example, constraints, demand intensity
+% 	or the number of vehicles. For a study related to choosing an objetive function
+% 	for the immediate-request DARP, the reader is referred to \cite{Hyytia2010}.
 
 
 \subsection{Adaptive insertion algorithm [\citepub{jeadarp}]}
@@ -1330,50 +1330,54 @@ last remaining customer $3$ (Figure d).
 First, a route is constructed for vehicle $1$, serving as many 
 customers as possible. Then, the process is repeated with vehicle $2$ for the set of customers
 that were not served by vehicle $1$ and so forth (see Figure \ref{greedyidea}). 
-Letting $X$ denote a
-set of customers, we denote by SV($X$) a single-vehicle subroutine
-that returns a route 
-that maximizes the number of served customers in set $X$ and the corresponding set of served customers.
-Formally, a \emph{maximum cluster} of a set $X$ of customers is defined as follows.
-
-\begin{definition}
-\label{maxdef}
-Let $X$ be a set of customers and $M \subset X$ be a subset of $X$, for which there exists a feasible 
-route serving all customers in $M$. If $|M| \geq |Y|$ for all sets $Y \subset X$
-for which there exists a feasible route serving all customers in $Y$, then $M$ is a \emph{maximum cluster} of $X$.
-\end{definition}
-Note that if there exists a feasible route serving all customers in $X$, we have $M(X) = X$.
+If a feasible solution is not found directly, % by using the above procedure, %described in Algorithm \ref{alg02}, 
+the process is repeated. 
+% Letting $X$ denote a
+% set of customers, we denote by SV($X$) a single-vehicle subroutine
+% that returns a route 
+% that maximizes the number of served customers in set $X$ and the corresponding set of served customers.
+% Formally, a \emph{maximum cluster} of a set $X$ of customers is defined as follows.
+% 
+% \begin{definition}
+% \label{maxdef}
+% Let $X$ be a set of customers and $M \subset X$ be a subset of $X$, for which there exists a feasible 
+% route serving all customers in $M$. If $|M| \geq |Y|$ for all sets $Y \subset X$
+% for which there exists a feasible route serving all customers in $Y$, then $M$ is a \emph{maximum cluster} of $X$.
+% \end{definition}
+% Note that if there exists a feasible route serving all customers in $X$, we have $M(X) = X$.
 %Note that such a route always exists, since one can always construct a route in
 %which no customers are served. 
-The solution to the multi-vehicle case is outlined in Algorithm \ref{alg02}.
+%The solution to the multi-vehicle case is outlined in Algorithm \ref{alg02}.
 
-\begin{algorithm}
-\begin{algorithmic}
-{\footnotesize
-\FORALL {$v \in \{1,\ldots,m\}$}
-\STATE \ \ $[S_v,X_v'] \leftarrow $ SV($X_v$); \ \ \ \ \ ($S_v$ = route, $X_v'$ = set of served customers)
-\STATE \ \ $X_{k+1}  \leftarrow X_{k+1}' \cup (X_v \setminus X_v')$, where $X_{m+1} = X_1$ and $X_{m+1}'=X_1'$;
-\ENDFOR
-}
-\end{algorithmic}
-\caption{Outline of the multi-vehicle algorithm. $X_v$ denotes the set of customers assigned 
-to vehicle $v$ and SV($X_v$) denotes a single-vehicle 
-subroutine (for example Algorithm \ref{alg01}) that returns
-a maximum cluster $X_v'$ of $X_v$ and the corresponding route $S_v$. Initially, all customers are assigned to the first vehicle, 
-that is, $X_1 = \{1,\ldots,n\}$ and $X_v = X_v' = \emptyset$ for all $v \in \{2,\ldots,m\}$.}
-\label{alg02}
-\end{algorithm}
-If a feasible solution is not found directly by using the procedure described in Algorithm \ref{alg02}, 
-the process is repeated. More precisely, the first iteration starts with the candidate partition
-$(X_1,\ldots,X_m) = (\{1,\ldots,n\},\emptyset,\ldots,\emptyset)$, 
-and produces the sets \\ $X_1', X_2', \ldots, X_m'$ containing the customers that are successfully included in the feasible vehicle routes.
-The following iterations repeat the process for the candidate partition $(X_1,\ldots,X_m) = (X_1' \cup X_R,X_2',\ldots,X_m')$,
-%, the single-vehicle algorithm is first executed for $X_1' \cup X_R$, 
-where $X_R$ denotes the set of customers that were not served by any vehicle during the previous iteration.
-%Letting $X_R'$ denote the set of customers that were not served in $X_1' \cup X_R$, the algorithm proceeds by
-%executing the single-vehicle algorithm for $X_2' \cup X_R'$ and so forth.
-If an iteration results in a visited partition of customers, a non-visited candidate partition is generated.
-If all possible candidate partitions have been checked, the problem is infeasible.
+% \begin{algorithm}
+% \begin{algorithmic}
+% {\footnotesize
+% \FORALL {$v \in \{1,\ldots,m\}$}
+% \STATE \ \ $[S_v,X_v'] \leftarrow $ SV($X_v$); \ \ \ \ \ ($S_v$ = route, $X_v'$ = set of served customers)
+% \STATE \ \ $X_{k+1}  \leftarrow X_{k+1}' \cup (X_v \setminus X_v')$, where $X_{m+1} = X_1$ and $X_{m+1}'=X_1'$;
+% \ENDFOR
+% }
+% \end{algorithmic}
+% \caption{Outline of the multi-vehicle algorithm. $X_v$ denotes the set of customers assigned 
+% to vehicle $v$ and SV($X_v$) denotes a single-vehicle 
+% subroutine (for example Algorithm \ref{alg01}) that returns
+% a maximum cluster $X_v'$ of $X_v$ and the corresponding route $S_v$. Initially, all customers are assigned to the first vehicle, 
+% that is, $X_1 = \{1,\ldots,n\}$ and $X_v = X_v' = \emptyset$ for all $v \in \{2,\ldots,m\}$.}
+% \label{alg02}
+% \end{algorithm}
+
+% 
+% 
+% More precisely, the first iteration starts with the candidate partition
+% $(X_1,\ldots,X_m) = (\{1,\ldots,n\},\emptyset,\ldots,\emptyset)$, 
+% and produces the sets \\ $X_1', X_2', \ldots, X_m'$ containing the customers that are successfully included in the feasible vehicle routes.
+% The following iterations repeat the process for the candidate partition $(X_1,\ldots,X_m) = (X_1' \cup X_R,X_2',\ldots,X_m')$,
+% %, the single-vehicle algorithm is first executed for $X_1' \cup X_R$, 
+% where $X_R$ denotes the set of customers that were not served by any vehicle during the previous iteration.
+% %Letting $X_R'$ denote the set of customers that were not served in $X_1' \cup X_R$, the algorithm proceeds by
+% %executing the single-vehicle algorithm for $X_2' \cup X_R'$ and so forth.
+% If an iteration results in a visited partition of customers, a non-visited candidate partition is generated.
+% If all possible candidate partitions have been checked, the problem is infeasible.
 
 The iterative process is justified by the fact that a customer $x$ with relatively few out-links to all nodes may 
 be in a good position with respect to the customers assigned to a
@@ -1420,10 +1424,10 @@ The multi-vehicle algorithm involves solving the single-vehicle case
 for each vehicle in $r$ iterations. Thus the complexity is bounded above by $\mathcal{O}\left(rmD(n)n^3\right)$, 
 where the number of dead ends satisfies $D(n) \leq (2n)!/2^n$.                                                                                                                  
 
-Note that the complexity is in general lower since the size of the set of customers is
-$n$ only for the first vehicle in the first iteration. For the other vehicles, the number of customers is
-smaller since the customers that are already included in another vehicle route
-are not a part of the subproblem. 
+% Note that the complexity is in general lower since the size of the set of customers is
+% $n$ only for the first vehicle in the first iteration. For the other vehicles, the number of customers is
+% smaller since the customers that are already included in another vehicle route
+% are not a part of the subproblem. 
 Since the total number of possible partitions is 
 equal to the Stirling number of the second kind, the number of iterations $r$ needed to find a feasible solution
 or to prove infeasibility satisfies $r \leq S_2(n,m) = \frac {1}{m!} \sum_{i=0}^{m} (-1)^i {m \choose i} (m-i)^n$.
@@ -1707,35 +1711,29 @@ times of the service at the nodes.}
 \label{stokvsdet02}
 \end{figure}
 
-\subsection{Service legs}
+\subsection{Service legs and walking legs}
 Each service $k \in \mathcal{K}$ is decomposed as a set of scheduled \emph{legs} between subsequent stops.
 That is, each leg has a start node, end node, expected start time and expected end time.
 By this decomposition, any path in the transport network can be represented as a sequence 
-of legs indexed by natural numbers. For example, 
-the sequence $(1,2,7,10)$ defines a path involving three transfers in a transport network consisting of legs
-numbered from $1$ to $10$, see Figure \ref{etappiesim}. Each transfer between two legs has a specific probability of success.
-%Transfers between subsequent legs of the same service are assumed to be successful with 
-%probability $1$.
+of legs. 
+% For example, 
+% the sequence $(1,2,7,10)$ defines a path involving three transfers in a transport network consisting of legs
+% numbered from $1$ to $10$, see Figure \ref{etappiesim}. Each transfer between two legs has a specific probability of success.
+% %Transfers between subsequent legs of the same service are assumed to be successful with 
+% %probability $1$.
+% 
+% \begin{figure}[ht]
+% \begin{center}
+% \includegraphics[width=0.5\columnwidth]{etappiesim}
+% \end{center}
+% \caption{A sample transport network consisting of legs numbered from $1$ to $10$. 
+% The sequence $(1,2,7,10)$ defines a path involving three transfers denoted by arrows. 
+% Each transfer between two legs has a specific probability of success.}
+% \label{etappiesim}
+% \end{figure}
 
-\begin{figure}[ht]
-\begin{center}
-\includegraphics[width=0.5\columnwidth]{etappiesim}
-\end{center}
-\caption{A sample transport network consisting of legs numbered from $1$ to $10$. 
-The sequence $(1,2,7,10)$ defines a path involving three transfers denoted by arrows. 
-Each transfer between two legs has a specific probability of success.}
-\label{etappiesim}
-\end{figure}
-
-
-\subsection{Walking legs}
 After each service leg, the commuter may choose to continue the journey by foot. 
-Similarly as the service legs defined above, each \emph{walking leg} $i \in \mathcal{L}$ 
-is determined by a start node $v_i$, end node $v_i'$, expected start time $t_i$, expected end time $t_i'$ 
-and service number $k_i$. For all walking legs, we choose $k_i < 0$ in order to have a distinction 
-between walking legs and service legs.
-
-Walking legs are added by associating with each service leg a set of walking legs beginning at the end of the service leg, 
+Thus, with each service leg is associated leg a set of walking legs beginning at the end of the service leg, 
 see Figure \ref{walking01}a. 
 
 \begin{figure}[ht]
@@ -1785,15 +1783,15 @@ Moreover, in the determination of transfer probabilities,
 one should take into the account the fact that the breakdown of a vehicle running on rail tracks blocks the way for
 other vehicles using the same tracks.
 
-Finally, we note that the transition probabilities $p_{ij}$, where $j$ is a service leg, depend on crowding (``fail-to-sit'' probabilities)
-as in \cite{hamdouch} and \cite{schmocker}. For clarity, in the numerical experiments 
-discussed in Section \ref{experiments}, the effect of crowding is not taken into account.
+% Finally, we note that the transition probabilities $p_{ij}$, where $j$ is a service leg, depend on crowding (``fail-to-sit'' probabilities)
+% as in \cite{hamdouch} and \cite{schmocker}. For clarity, in the numerical experiments 
+% discussed in Section \ref{experiments}, the effect of crowding is not taken into account.
 
 \subsection{Paths}
 A path can be represented as a sequence of legs $(i_1,\ldots,i_m)$ satisfying
 $i_{h+1} \in S_{i_h}$ for all $h \in \{1,\ldots,m-1\}$, see Figure \ref{journey01}. 
 The path is \emph{successful} with probability $\prod_{h=1}^{m-1}p_{i_hi_{h+1}}$ and the \emph{subjective price} $C \left( (i_1,i_2,\ldots,i_m) \right)$  of
-the path is defined as a linear combination of expected waiting time, number of transfers, expected ride time and expected walking time. 
+the path is defined as a linear combination of expected waiting time, number of transfers, expected ride time, expected walking time and reliability. 
 
 \begin{figure*}[ht]
 \begin{center}
@@ -1814,24 +1812,25 @@ with probability $p_{12}p_{23}$.
 %for walking legs $l_j$ for which $j > 1$ it is required that $\tau_{l_j} = \tau_{l_{j-1}'}$.
 %In other words, each walking leg begins as soon as the preceding leg is completed.
 
-\subsection{Time horizon}
-\label{problem}
-%The dynamic journeying problem is defined as follows.
-Let $[0,T] \subset \mathbb{R}$ be the time horizon of the problem,
-let $v_1$ denote the origin node and $v_d$ denote the destination node. 
-The \emph{origin leg} is defined by $((v_1,0),(v_1,0),0)$, 
-and the \emph{destination leg} 
-is defined by $((v_{d},T),(v_{d},T),0)$.
-By the above definitions, we can represent the entire journey 
-as legs, including the origin and the destination. 
-
-With no loss of generality, all legs for
-which the expected start or end time is outside the time horizon $[0,T]$ and 
-all legs for which the start node is the destination node (except the destination leg)
-are excluded from the problem.
-The cropped set of legs is denoted by $\mathcal{L}_{[0,T]}$.
-For clarity, we define $n:=|\mathcal{L}_{[0,T]}|$ and the legs in $\mathcal{L}_{[0,T]}$ 
-are numbered from $1$ to $n$, where the origin leg is indexed by $1$ and the destination leg is indexed by $n$.
+% \subsection{Time horizon}
+% \label{problem}
+% %The dynamic journeying problem is defined as follows.
+% Let $[0,T] \subset \mathbb{R}$ be the time horizon of the problem.
+% % let $v_1$ denote the origin node and $v_d$ denote the destination node. 
+% % The \emph{origin leg} is defined by $((v_1,0),(v_1,0),0)$, 
+% % and the \emph{destination leg} 
+% % is defined by $((v_{d},T),(v_{d},T),0)$.
+% % By the above definitions, we can represent the entire journey 
+% % as legs, including the origin and the destination. 
+% % 
+% % With no loss of generality, 
+% All legs for
+% which the expected start or end time is outside the time horizon $[0,T]$ and 
+% all legs for which the start node is the destination node (except the destination leg)
+% are excluded from the problem.
+% The cropped set of legs is denoted by $\mathcal{L}_{[0,T]}$.
+% For clarity, we define $n:=|\mathcal{L}_{[0,T]}|$ and the legs in $\mathcal{L}_{[0,T]}$ 
+% are numbered from $1$ to $n$, where the origin leg is indexed by $1$ and the destination leg is indexed by $n$.
 
 \section{Problem solution}
 In Section \ref{mdp}, we model the journeying problem as a Markov Decision Process and propose an algorithm 
@@ -1891,7 +1890,7 @@ Formally, the parameters of the Markov decision process $(S,A,P_{\cdot}(\cdot,\c
 \subsubsection{States $=$ Legs}
 \label{statesdef}
 The set of \emph{states} $S$ is equal to the set of 
-legs\footnote{A more detailed model described in \ref{jdjuejor} defines states as sequences of legs.}, that is, $S=\mathcal{L}_{[0,T]} = \{1,\ldots,n\}$.
+legs\footnote{A more detailed model described in \ref{jdjuejor} defines states as sequences of legs.} numbered from $1$ to $n$, that is, $S= \{1,\ldots,n\}$.
 State $1$ is referred to as the \emph{origin state} and state $n$ is referred to as the \emph{destination state}.
 %Since legs beginning from the destination node are not included in the problem, we have $S_n = I_n = \emptyset$.
 
@@ -1934,38 +1933,40 @@ where $p_{ss^{a,k}}$ denotes the transfer probability from $s$ to $s^{a,k}$, as 
 
 \subsubsection{Rewards}
 \label{rewardsdef}
-$R_a(s,s')$ is the expected immediate reward received after transition from state $s \in S$ to state $s' \in S$ 
-with transition probability $P_a(s,s')$. 
+$R(s,s')$ is the expected immediate reward received after transition from state $s \in S$ to state $s' \in S$ 
+with transition probability $P_a(s,s')$. Since the objective is to minimize the subjective price of the trip, $R(s,s')$ is defined 
+as the difference in subjective price due to the transition from $s$ to $s'$.
 
-The expected profit of a path $(1,s_1,\ldots,s_{m},n)$ from the origin state $1$ to the destination state $n$
-is given by 
-\begin{align}
-\label{expectedprofit}
- &\pi \left((s_0,\ldots, s_m) \right) 
-= p_{s_{m}n} u - C \left((s_0,\ldots, s_m) \right),  
-\end{align}
-where $u$ is the utility of arriving at the destination before the deadline $T$ (or at $T$) 
-and $C \left((s_0,s_1,\ldots,s_{m-1}, s_m) \right)$
-is the subjective price of the path.
-
-Since the objective is to maximize \eqref{expectedprofit}, we define $R_a(s,s')$ by
-\begin{align}
-\label{rewards}
- R_a(s,s')= 
-\left\{
-\begin{array}{ll}
-u, &  \mbox{if $s' = n$ },\\ 
-- \Delta C(s,s'), & \mbox{otherwise,}
-\end{array}
-\right.
-\end{align}
-where $\Delta C(s,s')$ denotes the increase in the subjective price.
-Note that $R_a(s,s')$ is independent of the action $a$. Thus, for the remainder of this chapter, we will use
-the notation $R(s,s') = R_a(s,s')$.
-
-Clearly, the above model can be used to maximize the probability of arriving at the destination in
-time by defining $u=1$ and $\Delta C(s,s') = 0$. That is, the commuter receives reward $1$ upon arrival at the 
-destination state and the rewards of transitions to other states are equal to zero.
+ 
+% The expected profit of a path $(1,s_1,\ldots,s_{m},n)$ from the origin state $1$ to the destination state $n$
+% is given by 
+% \begin{align}
+% \label{expectedprofit}
+%  &\pi \left((s_0,\ldots, s_m) \right) 
+% = p_{s_{m}n} u - C \left((s_0,\ldots, s_m) \right),  
+% \end{align}
+% where $u$ is the utility of arriving at the destination before the deadline $T$ (or at $T$) 
+% and $C \left((s_0,s_1,\ldots,s_{m-1}, s_m) \right)$
+% is the subjective price of the path.
+% 
+% Since the objective is to maximize \eqref{expectedprofit}, we define $R_a(s,s')$ by
+% \begin{align}
+% \label{rewards}
+%  R_a(s,s')= 
+% \left\{
+% \begin{array}{ll}
+% u, &  \mbox{if $s' = n$ },\\ 
+% - \Delta C(s,s'), & \mbox{otherwise,}
+% \end{array}
+% \right.
+% \end{align}
+% where $\Delta C(s,s')$ denotes the increase in the subjective price.
+% Note that $R_a(s,s')$ is independent of the action $a$. Thus, for the remainder of this chapter, we will use
+% the notation $R(s,s') = R_a(s,s')$.
+% 
+% Clearly, the above model can be used to maximize the probability of arriving at the destination in
+% time by defining $u=1$ and $\Delta C(s,s') = 0$. That is, the commuter receives reward $1$ upon arrival at the 
+% destination state and the rewards of transitions to other states are equal to zero.
 
 \subsection{Optimal policy}
 \label{solution}
@@ -2064,48 +2065,47 @@ Initially, we only know the value of the destination state, that is, $V(n)=0$.
 Thus, the first states for which the value can be calculated
 are the ones that precede the destination state. 
 The algorithm then proceeds backwards until the value $V(1)$ of the origin state is calculated.
-An example of determining the optimal policy is depicted in Figure \ref{toyexample}.
-
+%An example of determining the optimal policy is depicted in Figure \ref{toyexample}.
 
 Since the algorithm involves sorting, the complexity is bounded above by $\mathcal{O}(n m \log m + nm) = \mathcal{O}(n m (1+\log m))$,
 where $m = \max_{s \in \{1,\ldots,n-1\}}|S_s|$ is the size of the largest successor set. 
 
-\begin{figure}
-\centering{
-\includegraphics[width=0.7\columnwidth]{toyexample2.pdf}
-}
-\\
-\ \ \ \ \ \ \ \ \ \ \ \
-\\
-{\footnotesize
-\begin{tabular}{|p{1cm}|p{1.0cm}|p{5.5cm}|}
-\hline
-State & Optimal action & Value \\
-\hline
-5 & - & 0 \\
-3 & 5 & $p_{35} \cdot 1 = 0.9$ \\
-4 & 5 & $p_{45} \cdot 1 = 0.2$ \\
-2 & 3,4 & $p_{23} \cdot 0.9 + (1-p_{23}) p_{24} \cdot 0.2 = 0.42$\\
-1 & 2 & $p_{12} \cdot 0.42 =0.21$ \\
-\hline
-\end{tabular}
-}
-\caption{Calculating the optimal policy with respect to the probability of reaching the destination state. 
-The top figure a) shows the states $1,\ldots,5$, where $1$ is the origin and $5$ is the destination state, and the 
-transfer probabilities $p_{ss'}$ between the states. 
-The table shows the states of the problem in the order in which their values are
-calculated by backward induction, and the corresponding optimal action and value for each state.
-The optimal transition probabilities $P_a(s,s')$ are shown in next to the arrows in figure b). 
-Note that the commuter transfers from state $2$ to state $4$ only if the transfer to state $3$ is unsuccessful, thus we have
-$P_a(2,4) = 0.3$. 
-%Once the transition probabilities have been determined, 
-%the probability of reaching the destination from state $1$ is given by the path diagram (b): 
-%$0.5 \cdot (0.4 \cdot 0.9 + 0.3 \cdot 0.2) = 0.21$. 
-}
-\label{toyexample}
-\end{figure}
-
-
+% \begin{figure}
+% \centering{
+% \includegraphics[width=0.7\columnwidth]{toyexample2.pdf}
+% }
+% \\
+% \ \ \ \ \ \ \ \ \ \ \ \
+% \\
+% {\footnotesize
+% \begin{tabular}{|p{1cm}|p{1.0cm}|p{5.5cm}|}
+% \hline
+% State & Optimal action & Value \\
+% \hline
+% 5 & - & 0 \\
+% 3 & 5 & $p_{35} \cdot 1 = 0.9$ \\
+% 4 & 5 & $p_{45} \cdot 1 = 0.2$ \\
+% 2 & 3,4 & $p_{23} \cdot 0.9 + (1-p_{23}) p_{24} \cdot 0.2 = 0.42$\\
+% 1 & 2 & $p_{12} \cdot 0.42 =0.21$ \\
+% \hline
+% \end{tabular}
+% }
+% \caption{Calculating the optimal policy with respect to the probability of reaching the destination state. 
+% The top figure a) shows the states $1,\ldots,5$, where $1$ is the origin and $5$ is the destination state, and the 
+% transfer probabilities $p_{ss'}$ between the states. 
+% The table shows the states of the problem in the order in which their values are
+% calculated by backward induction, and the corresponding optimal action and value for each state.
+% The optimal transition probabilities $P_a(s,s')$ are shown in next to the arrows in figure b). 
+% Note that the commuter transfers from state $2$ to state $4$ only if the transfer to state $3$ is unsuccessful, thus we have
+% $P_a(2,4) = 0.3$. 
+% %Once the transition probabilities have been determined, 
+% %the probability of reaching the destination from state $1$ is given by the path diagram (b): 
+% %$0.5 \cdot (0.4 \cdot 0.9 + 0.3 \cdot 0.2) = 0.21$. 
+% }
+% \label{toyexample}
+% \end{figure}
+% 
+% 
 
 
 
@@ -2118,11 +2118,10 @@ $P_a(2,4) = 0.3$.
 
 \subsection{Expected number of paths}
 \label{expected}
-The algorithm described in Section \ref{alg01} produces the values $V(s)$ for states that are reachable from the origin state $1$.
-After the values have been calculated, the decision of a commuter at state $s$ is simple:
-The set of available transfer options $F$ is revealed and the commuter transfers to state 
-$s' \in F$ for which $R(s,s')+V(s')$ is maximized.
-
+% The algorithm described in Section \ref{alg01} produces the values $V(s)$ for states that are reachable from the origin state $1$.
+% After the values have been calculated, the decision of a commuter at state $s$ is simple:
+% The set of available transfer options $F$ is revealed and the commuter transfers to state 
+% $s' \in F$ for which $R(s,s')+V(s')$ is maximized.
 In the following we present a straightforward method for maximizing the reliability of a journey
 by redefining the value of a state. 
 Namely, the value of state $s \in \{1,\ldots,n-1\}$ is defined as the \emph{expected number 
@@ -2163,23 +2162,23 @@ $s$ to the destination state $n$
 is given by the dominant eigenvector of the adjacency matrix $P$ consisting of the transfer probabilities $p_{ss'}$
 between states (and $p_{nn}=1$). 
 
-For example, the adjacency matrix of the sink graph of Figure \ref{toyexample}a is defined by
- \begin{align*}
-P=
-\left(
-\begin{array}{ccccc}
- 0 & 0.5 & 0 & 0 & 0 \\
- 0 & 0 & 0.4 & 0.5 & 0 \\
- 0 & 0 & 0 & 0 & 0.9 \\
- 0 & 0 & 0 & 0 & 0.2 \\
- 0 & 0 & 0 & 0 & 1
-\end{array}
-\right).
-\end{align*}
-The expected numbers $h_s$ of successful paths to the destination are given by the dominant eigenvector of $P$, that is,
-\begin{align*}
- h= (h_1 \ \ h_2 \ \ h_3 \ \ h_4 \ \ h_5)^T = (0.23 \ \ 0.46 \ \ 0.9 \ \ 0.2 \ \ 1 )^T.
-\end{align*}
+% For example, the adjacency matrix of the sink graph of Figure \ref{toyexample}a is defined by
+%  \begin{align*}
+% P=
+% \left(
+% \begin{array}{ccccc}
+%  0 & 0.5 & 0 & 0 & 0 \\
+%  0 & 0 & 0.4 & 0.5 & 0 \\
+%  0 & 0 & 0 & 0 & 0.9 \\
+%  0 & 0 & 0 & 0 & 0.2 \\
+%  0 & 0 & 0 & 0 & 1
+% \end{array}
+% \right).
+% \end{align*}
+% The expected numbers $h_s$ of successful paths to the destination are given by the dominant eigenvector of $P$, that is,
+% \begin{align*}
+%  h= (h_1 \ \ h_2 \ \ h_3 \ \ h_4 \ \ h_5)^T = (0.23 \ \ 0.46 \ \ 0.9 \ \ 0.2 \ \ 1 )^T.
+% \end{align*}
 
 The expected number of successful paths can also be calculated for all states that are reachable from the 
 origin state by means of a procedure similar to the one described in Section \ref{alg01}.
@@ -2190,57 +2189,57 @@ is bounded above by $\mathcal{O}(n(m+1))$.
 %The maximum number of non-zero elements in a $n \times n$ upper triangular matrix equals $\frac 12 n(n-1)$ and thus 
 %the worst-case complexity is of order $\mathcal{O}(n^2)$.
 
-Note that the method discussed in this section considers all paths from each node to the destination, 
-some of which may be overlapping, and that a single unsuccessful transfer between states may render
-several paths infeasible. However, calculating the expected number of successful paths gives a  
-heuristic approximation of the possibilities of reaching the destination state. For more accurately maximizing the probability
-of reaching the destination in time, one should use the method described in Section \ref{alg01}. 
-The difference between the 
-expected number of successful paths and the probability of reaching the destination is
-clarified in Figures \ref{aariesimerkki} and \ref{regularesimerkki} by two examples.
-
-
-\begin{figure}
-\centering{
-\includegraphics[width=0.5\columnwidth]{extremeexample.pdf}
-}
-\caption{An extreme example on the difference between the expected number of successful paths and the probability of reaching the destination.
-Figure a) shows a network consisting of $N+1$ states, where all transfer probabilities are equal to one except $p_{12} = 0.5$.
-The expected number of successful paths from state $1$ to state $N+1$ is given by $h_1 = 0.5(N-2)$ and the 
-probability of reaching state $N+1$ from state $1$ equals $0.5$. That is, while $h_1$ increases linearly with $N$,
-the probability is independent of $N$.
-This difference is explained by the fact that all paths from $1$ to $N+1$ are overlapping and 
-their success depends only on the success of the transfer from $1$ to $2$. 
-Figure b) shows a simple network in which $h_1=1$. Thus, if $N > 4$, the expected number of successful paths
-in case a) is greater than in case b), even though the probability of reaching the destination is greater in b).
-}
-\label{aariesimerkki}
-\end{figure}
-
-In Figure \ref{aariesimerkki}, an extreme example on the differences between the two studied reliability measures is presented.
-Calculating the expected number of successful paths in the network shown in Figure \ref{aariesimerkki}a produces an overoptimistic estimate of 
-the reliability of the path. The difference is explained by overlapping, that is, the success of the journey depends only on the success of a single bottleneck.
-
-\begin{figure*}
-\centering{
-\includegraphics[width=0.8\columnwidth]{numerical01c.pdf}
-}
-\caption{An example on the difference between the expected number of successful paths and the probability of reaching the destination in
-regular networks.
-The figure shows the structure of the regular network consisting of $N$ levels, each of which consists of $q=3$ states. 
-The transition probability from each state on level $L$ to each state on level $L+1$ equals $p$. The probability of a successful journey from level $1$ to level $N$
-equals $(1-(1-p)^q)^{N-1}$. The expected number of successful paths from level $1$ to level $N$ is given by $(qp)^{N-1}$.
-}
-\label{regularesimerkki}
-\end{figure*}
-
-Figure \ref{regularesimerkki} shows an example of a regular network consisting of $N$ levels, each of which consists of $q$ states. 
-The transition probability from each state on level $L$ to each state on level $L+1$ equals $p$. Clearly, the probability of 
-a successful transfer to the next level is given by $1-(1-p)^q$ and thus, the probability of a successful journey from level $1$ to level $N$
-equals ${(1-(1-p)^q)^{N-1}}$. The expected number of successful paths from each state on level $N-1$ to a state on level $N$ equals $qp$.
-Moreover, since the expected number of successful paths $h_L$ from a state on level $L$ to a state on level $N$ satisfies 
-$h_L = qp h_{L+1}$, we have $h_1 = (qp)^{N-1}$. Note that if $qp < 1$, both measures decrease exponentially with respect to the 
-number of transfers $N-1$, and if $q=1$, the two measures coincide.
+% Note that the method discussed in this section considers all paths from each node to the destination, 
+% some of which may be overlapping, and that a single unsuccessful transfer between states may render
+% several paths infeasible. However, calculating the expected number of successful paths gives a  
+% heuristic approximation of the possibilities of reaching the destination state. For more accurately maximizing the probability
+% of reaching the destination in time, one should use the method described in Section \ref{alg01}. 
+% The difference between the 
+% expected number of successful paths and the probability of reaching the destination is
+% clarified in Figures \ref{aariesimerkki} and \ref{regularesimerkki} by two examples.
+% 
+% 
+% \begin{figure}
+% \centering{
+% \includegraphics[width=0.5\columnwidth]{extremeexample.pdf}
+% }
+% \caption{An extreme example on the difference between the expected number of successful paths and the probability of reaching the destination.
+% Figure a) shows a network consisting of $N+1$ states, where all transfer probabilities are equal to one except $p_{12} = 0.5$.
+% The expected number of successful paths from state $1$ to state $N+1$ is given by $h_1 = 0.5(N-2)$ and the 
+% probability of reaching state $N+1$ from state $1$ equals $0.5$. That is, while $h_1$ increases linearly with $N$,
+% the probability is independent of $N$.
+% This difference is explained by the fact that all paths from $1$ to $N+1$ are overlapping and 
+% their success depends only on the success of the transfer from $1$ to $2$. 
+% Figure b) shows a simple network in which $h_1=1$. Thus, if $N > 4$, the expected number of successful paths
+% in case a) is greater than in case b), even though the probability of reaching the destination is greater in b).
+% }
+% \label{aariesimerkki}
+% \end{figure}
+% 
+% In Figure \ref{aariesimerkki}, an extreme example on the differences between the two studied reliability measures is presented.
+% Calculating the expected number of successful paths in the network shown in Figure \ref{aariesimerkki}a produces an overoptimistic estimate of 
+% the reliability of the path. The difference is explained by overlapping, that is, the success of the journey depends only on the success of a single bottleneck.
+% 
+% \begin{figure*}
+% \centering{
+% \includegraphics[width=0.8\columnwidth]{numerical01c.pdf}
+% }
+% \caption{An example on the difference between the expected number of successful paths and the probability of reaching the destination in
+% regular networks.
+% The figure shows the structure of the regular network consisting of $N$ levels, each of which consists of $q=3$ states. 
+% The transition probability from each state on level $L$ to each state on level $L+1$ equals $p$. The probability of a successful journey from level $1$ to level $N$
+% equals $(1-(1-p)^q)^{N-1}$. The expected number of successful paths from level $1$ to level $N$ is given by $(qp)^{N-1}$.
+% }
+% \label{regularesimerkki}
+% \end{figure*}
+% 
+% Figure \ref{regularesimerkki} shows an example of a regular network consisting of $N$ levels, each of which consists of $q$ states. 
+% The transition probability from each state on level $L$ to each state on level $L+1$ equals $p$. Clearly, the probability of 
+% a successful transfer to the next level is given by $1-(1-p)^q$ and thus, the probability of a successful journey from level $1$ to level $N$
+% equals ${(1-(1-p)^q)^{N-1}}$. The expected number of successful paths from each state on level $N-1$ to a state on level $N$ equals $qp$.
+% Moreover, since the expected number of successful paths $h_L$ from a state on level $L$ to a state on level $N$ satisfies 
+% $h_L = qp h_{L+1}$, we have $h_1 = (qp)^{N-1}$. Note that if $qp < 1$, both measures decrease exponentially with respect to the 
+% number of transfers $N-1$, and if $q=1$, the two measures coincide.
  
 
 
@@ -2270,10 +2269,10 @@ The tram schedules of Helsinki Region Transport are available at \cite{reittiopa
 the instances are available at \verb=http://math.tkk.fi/%7elehame/dju=.
 
 In each instance, the origin and destination nodes $v_o$ and $v_d$ are chosen randomly from the 
-set of $154$ tram stops, see Figure \ref{verkot01}. The departure time is set equal to 9:00 and the length of the time horizon
-is defined by $T = 1.6 d(v_o,v_d)$, where $d(v_o,v_d)$ is the expected duration of the shortest path from $v_o$ to $v_d$ 
-in the tram network.
-
+set of $154$ tram stops, see Figure \ref{verkot01}. 
+% The departure time is set equal to 9:00 and the length of the time horizon
+% is defined by $T = 1.6 d(v_o,v_d)$, where $d(v_o,v_d)$ is the expected duration of the shortest path from $v_o$ to $v_d$ 
+% in the tram network.
 Each (tram) service $k$ operating within the time horizon is determined by a \emph{scheduled route} extracted from the timetables, that is, 
 a sequence $((v_0^k,t_0^k),\ldots,(v_p^k,t_p^k))$ of 
 nodes, where $t_i^k$ is the expected passing time at node $v_i^k$ 
@@ -2289,11 +2288,11 @@ decomposed as a set of legs.
 \label{verkot01}
 \end{figure}
 
-By means of the above procedure, ten instances were generated. 
-The file names of the instances are of the form 'b$x$.dat', where $x \in \{1,\ldots,10\}$.
-Each row in the files corresponds to a leg. The first and last row in each file correspond to the origin and destination leg, respectively 
-(see Section \ref{problem}). The five columns denote the expected start and end time (in minutes), 
-the start and end node and the service number, respectively. 
+% By means of the above procedure, ten instances were generated. 
+% The file names of the instances are of the form 'b$x$.dat', where $x \in \{1,\ldots,10\}$.
+% Each row in the files corresponds to a leg. The first and last row in each file correspond to the origin and destination leg, respectively 
+% (see Section \ref{problem}). The five columns denote the expected start and end time (in minutes), 
+% the start and end node and the service number, respectively. 
 
 \subsection{Results}
 
@@ -2303,7 +2302,7 @@ leg $n$ from
 the origin leg $1$, the expected number of successful paths $h_1$ from $1$ to $n$ and the corresponding 
 computation times in seconds.}
 \centering     
-{\footnotesize
+{\scriptsize
 \begin{tabular}{|c|cc|cc|}
 \hline 
 \multirow{2}{*}{Instance} & \multicolumn{2}{|c|}{Probability} & \multicolumn{2}{|c|}{Exp. number of paths} \\
@@ -2414,10 +2413,10 @@ the ratio $P_{r}/P_{r'}$ depends on the subjective prices of trips $r$ and $r'$ 
 not on the subjective prices of other trips \citep{small2007}.
 
 The expected demand for a trip $r \in \mathcal{R}_{ij}$ is given by
-\begin{align}
-\label{matkakysynta}
-Q_{r}^{\rm DRT} = Q_{ij} P_{r}^{\rm DRT},
-\end{align}
+%\begin{align}
+%\label{matkakysynta}
+$Q_{r}^{\rm DRT} = Q_{ij} P_{r}^{\rm DRT},$
+%\end{align}
 where $Q_{ij}$ denotes the total demand from $i$ to $j$.
 
 \section{Supply}
@@ -2494,26 +2493,26 @@ However, if many vehicles produce non-direct trips,
 the travel times in non-direct trips may be smaller than in direct trips due 
 to small waiting times.
 
-The movement of vehicles is described by means of the \emph{arrival rates} $T_s$ 
-of vehicles at different states $s \in \mathcal{S}$ and
-the movement of customers is described by means of the demands $Q^{\rm DRT}_r$ 
-for different DRT trips $r \in \mathcal{R}$. 
-
-A \emph{network equilibrium} denotes the following combination of
-arrival rates $T_s^*$ at states $s \in \mathcal{S}$ and demands $Q_r^{{\rm DRT}*}$ for trips $r \in \mathcal{R}$: 
-\begin{itemize}
-\item
-The set of arrival rates $\{T_{s_1}^*,\ldots,T_{s_{|\mathcal{S}|}}^*\}$ of vehicles at states $s_i \in \mathcal{S}$ 
-generates the set of demands $\{Q_{r_1}^{{\rm DRT}*},\ldots,Q_{r_{|\mathcal{R}|}}^{{\rm DRT}*}\}$ for trips $r_i \in \mathcal{R}$.
-\item
-The set of demands $\{Q_{r_1}^{{\rm DRT}*},\ldots,Q_{r_{|\mathcal{R}|}}^{{\rm DRT}*}\}$ for trips $r_i \in \mathcal{R}$
-generates the set of arrival rates $\{T_{s_1}^*,\ldots,T_{s_{|\mathcal{S}|}}^*\}$ of vehicles at states $s_i \in \mathcal{S}$. 
-\end{itemize}
-
-By using Brouwer's fixed point theorem, we get the following result.
+The movement of vehicles is described by means of the \emph{arrival rates}
+of vehicles at different states and
+the movement of customers is described by means of the demands 
+for different DRT trips. 
+A \emph{network equilibrium} denotes a situation in which the arrival rates at states and demands for different trips meet.
+% 
+% the following combination of
+% arrival rates $T_s^*$ at states $s \in \mathcal{S}$ and demands $Q_r^{{\rm DRT}*}$ for trips $r \in \mathcal{R}$: 
+% \begin{itemize}
+% \item
+% The set of arrival rates $\{T_{s_1}^*,\ldots,T_{s_{|\mathcal{S}|}}^*\}$ of vehicles at states $s_i \in \mathcal{S}$ 
+% generates the set of demands $\{Q_{r_1}^{{\rm DRT}*},\ldots,Q_{r_{|\mathcal{R}|}}^{{\rm DRT}*}\}$ for trips $r_i \in \mathcal{R}$.
+% \item
+% The set of demands $\{Q_{r_1}^{{\rm DRT}*},\ldots,Q_{r_{|\mathcal{R}|}}^{{\rm DRT}*}\}$ for trips $r_i \in \mathcal{R}$
+% generates the set of arrival rates $\{T_{s_1}^*,\ldots,T_{s_{|\mathcal{S}|}}^*\}$ of vehicles at states $s_i \in \mathcal{S}$. 
+% \end{itemize}
+By using Brouwer's fixed point theorem, the following result is obtained.
 
 \begin{theorem}
-For any finite transportation network $I$, there exists a network equilibrium $T^*$.
+For any finite transportation network, there exists a network equilibrium.
 \end{theorem}
 
 
@@ -2522,28 +2521,28 @@ For any finite transportation network $I$, there exists a network equilibrium $T
 The idea for finding a steady-state equilibrium is to solve 
 both the customer choice subproblem and the vehicle movement subproblem iteratively 
 until a convergence criterion is met, similarly as in \citep{yang2010}. 
-The outline of the procedure is presented in Algorithm \ref{compalg}.
-
-\begin{algorithm}[H]
-\begin{algorithmic}
-\STATE \emph{Input}: Set $I$ of nodes, direct ride time $t_{ij}$, cost $c_{ij}$, demand $Q_{ij}$,
-ticket price $p_{r}$, cost of virtual mode $\bar{g}_{ij}$ 
-for all pairs $i,j \in I$ of nodes, number of vehicles $N$, 
-customers' monetary value for unit time $\beta$
-and the uncertainty parameters $\theta,\theta^d$.
-\STATE \emph{Output}: Equilibrium arrival rates $T_s$ of 
-vehicles at states $s \in \mathcal{S}$.
-\STATE Initialize the arrival rates $T_s$ of vehicles by dividing the vehicles
-evenly among all states $s \in \mathcal{S}$, $T_{s} = \frac {N}{d_s |\mathcal{S}|}$; 
-\REPEAT
-\STATE \textbf{Customer demand updating:} Calculate $Q_{r}^{\rm DRT}$ for all 
-$r \in \mathcal{R}$;
-\STATE \textbf{Vehicle movements:} Solve $T_s$ for all $s \in \mathcal{S}$;
-\UNTIL{convergence}
-\end{algorithmic}
-\caption{Equilibration of DRT.}
-\label{compalg}
-\end{algorithm}
+% The outline of the procedure is presented in Algorithm \ref{compalg}.
+% 
+% \begin{algorithm}[H]
+% \begin{algorithmic}
+% \STATE \emph{Input}: Set $I$ of nodes, direct ride time $t_{ij}$, cost $c_{ij}$, demand $Q_{ij}$,
+% ticket price $p_{r}$, cost of virtual mode $\bar{g}_{ij}$ 
+% for all pairs $i,j \in I$ of nodes, number of vehicles $N$, 
+% customers' monetary value for unit time $\beta$
+% and the uncertainty parameters $\theta,\theta^d$.
+% \STATE \emph{Output}: Equilibrium arrival rates $T_s$ of 
+% vehicles at states $s \in \mathcal{S}$.
+% \STATE Initialize the arrival rates $T_s$ of vehicles by dividing the vehicles
+% evenly among all states $s \in \mathcal{S}$, $T_{s} = \frac {N}{d_s |\mathcal{S}|}$; 
+% \REPEAT
+% \STATE \textbf{Customer demand updating:} Calculate $Q_{r}^{\rm DRT}$ for all 
+% $r \in \mathcal{R}$;
+% \STATE \textbf{Vehicle movements:} Solve $T_s$ for all $s \in \mathcal{S}$;
+% \UNTIL{convergence}
+% \end{algorithmic}
+% \caption{Equilibration of DRT.}
+% \label{compalg}
+% \end{algorithm}
 
 %\section{Numerical examples}
 \subsection{A three node example}
@@ -2561,7 +2560,7 @@ in which the network consists of three nodes denoted by $1,2,3$, as shown in Fig
 \end{figure}
 
 The solid lines in Figure \ref{convergence01} show the
-arrival rates $T_s$ of vehicles at different states $s \in \mathcal{S}$ after each step of Algorithm \ref{compalg}. 
+arrival rates $T_s$ of vehicles at different states $s \in \mathcal{S}$ after each step of the equilibration algorithm. 
 The black and grey dashed lines show on a logarithmic scale 
 the convergence of the arrival rate vector $T$ and the demand vector $Q^{\rm DRT}$, respectively.
 
@@ -2580,7 +2579,7 @@ Arrival rate $T_s$ & 0.603 & 0.627 & 0.590 & 0.628 & 0.619 & 0.632 & 0.631 & 0.6
 \hline
 \end{tabular}
 }
-\caption{Convergence of Algorithm \ref{compalg} in the three node example. The solid lines in show the
+\caption{Convergence of the equilibration algorithm in the three node example. The solid lines in show the
 arrival rates $T_s$ of vehicles at different states $s \in \mathcal{S}$ after each step of the algorithm. 
 The black and grey dashed lines show on a logarithmic scale 
 the convergence of the arrival rate vector $T$ and the demand vector $Q^{\rm DRT}$, respectively.
@@ -2623,7 +2622,7 @@ from the customers' point of view as well as from the perspective of transport o
 In the following, we study different characteristics of demand-responsive transport
 as a function of the number of vehicles $N$ and average price per kilometer $p$.
 The network equilibrium was calculated for different numbers
-of vehicles $N$ and prices per kilometer $p$ by means of Algorithm \ref{compalg}.
+of vehicles $N$ and prices per kilometer $p$.
 For each combination of $N$ and $p$, the total profit rate, profit 
 rate per vehicle and customer surplus were calculated. The results are shown in Figure \ref{a-equilibria01}.
 
@@ -2713,33 +2712,33 @@ The idea for finding an optimal routing strategy is as follows.
 If the value of the objective function is improved, $P$ becomes the new optimal routing strategy, that is, $P^* \leftarrow P$.
 3) A new routing strategy $P$ is produced by randomly perturbing $P^*$.
 Steps 2 and 3 are repeated until convergence.
-The outline of the procedure is presented in Algorithm \ref{monopalg}.
-
-\begin{algorithm}[H]
-\begin{algorithmic}
-\STATE \emph{Input}: Set $I$ of nodes, direct ride time $t_{ij}$, cost $c_{ij}$, demand $Q_{ij}$,
-ticket price $p_{r}$, cost of virtual mode $\bar{g}_{ij}$ 
-for all pairs $i,j \in I$ of nodes, number of vehicles $N$, 
-customers' monetary value for unit time $\beta$
-and the uncertainty parameter $\theta$.
-\STATE \emph{Output}: Optimal routing strategy $P$ and the corresponding arrival rates $T_s$ of 
-vehicles at states $s \in \mathcal{S}$.
-\STATE Initialize the routing strategy $P$; \hfill (Transition probabilities between states) 
-\REPEAT
-\STATE \textbf{Arrival rates:} Calculate the arrival rate $T_s$ for all states $s \in \mathcal{S}$;
-\STATE \textbf{Customer demand:} Calculate the demand $Q_r^{\rm DRT}$ for all trips
-$r \in \mathcal{R}$;
-\STATE Evaluate the objective function;
-\IF{the value of the objective function is improved}
-\STATE $P^* \leftarrow P$; \hfill (Store the current solution)
-\ENDIF
-\STATE Set $P \leftarrow P^* * \epsilon$ and normalize $P$, 
-where $\epsilon$ is a random matrix; 
-\UNTIL{convergence}
-\end{algorithmic}
-\caption{Finding an optimal routing strategy.}
-\label{monopalg}
-\end{algorithm}
+% The outline of the procedure is presented in Algorithm \ref{monopalg}.
+% 
+% \begin{algorithm}[H]
+% \begin{algorithmic}
+% \STATE \emph{Input}: Set $I$ of nodes, direct ride time $t_{ij}$, cost $c_{ij}$, demand $Q_{ij}$,
+% ticket price $p_{r}$, cost of virtual mode $\bar{g}_{ij}$ 
+% for all pairs $i,j \in I$ of nodes, number of vehicles $N$, 
+% customers' monetary value for unit time $\beta$
+% and the uncertainty parameter $\theta$.
+% \STATE \emph{Output}: Optimal routing strategy $P$ and the corresponding arrival rates $T_s$ of 
+% vehicles at states $s \in \mathcal{S}$.
+% \STATE Initialize the routing strategy $P$; \hfill (Transition probabilities between states) 
+% \REPEAT
+% \STATE \textbf{Arrival rates:} Calculate the arrival rate $T_s$ for all states $s \in \mathcal{S}$;
+% \STATE \textbf{Customer demand:} Calculate the demand $Q_r^{\rm DRT}$ for all trips
+% $r \in \mathcal{R}$;
+% \STATE Evaluate the objective function;
+% \IF{the value of the objective function is improved}
+% \STATE $P^* \leftarrow P$; \hfill (Store the current solution)
+% \ENDIF
+% \STATE Set $P \leftarrow P^* * \epsilon$ and normalize $P$, 
+% where $\epsilon$ is a random matrix; 
+% \UNTIL{convergence}
+% \end{algorithmic}
+% \caption{Finding an optimal routing strategy.}
+% \label{monopalg}
+% \end{algorithm}
 
 \subsection{A three-node example}
 The three-node example described in \ref{compexample} was repeated with the maximum profit routing strategy and 
