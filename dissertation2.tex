@@ -176,14 +176,14 @@ services operating in urban areas have been recently presented, see for example 
 These ideas are often motivated by problems arising from the congestion of urban 
 areas caused by the increasing number of private cars.
 Thus, one of the main present goals of planning demand-responsive transport is seen
-to be the developing of \emph{functional public transport services able to compete
+to be the development of \emph{functional public transport services able to compete
 with private car and taxicab traffic}.
 
 
 The popularity of the private car as a means of transport is partly based on
 a direct connection between the origin and destination of a trip and
 a short total travel time. In order to compete with private cars, public transport 
-should thus offer connections as direct and fast as possible, in which 
+should thus offer connections as direct and fast as possible, in which also
 the walking and waiting time are minimized. 
 Another major advantage of the private car is seen to be the availability
 of the car at any time, even without planning beforehand. The study of large scale 
@@ -223,7 +223,7 @@ in implementing such a service.
 The fact that demand-responsive transport is "there for you when you want
 and where you want" is thought to be a major advantage compared to conventional 
 public transport. While it may not be feasible to think that DRT could provide
-a level of service substantially better than that offered by taxi cabs, a system that could combine customers'
+a level of service substantially better than that offered by taxicabs, a system that could combine customers'
 trips efficiently could be more cost-efficient than a conventional taxi organization.
 This would make it possible to provide more inexpensive service without compromising
 too much on the level of service experienced by customers.
@@ -236,7 +236,7 @@ Compared to private cars, demand-responsive transport is thought to have several
 For a model of a hypothetical large-scale demand-responsive public transport system for the Helsinki 
 metropolitan area, simulation results published in 2005 demonstrated that "in an urban area with one 
 million inhabitants, trip aggregation could reduce the health, environmental, and other detrimental 
-impacts of car traffic typically by 50 - 70\%, and if implemented could attract about half of the car 
+impacts of car traffic typically by 50 - 70\%, and could attract about half of the car 
 passengers, and within a broad operational range would require no public subsidies" \cite{tuomisto}. 
 In addition to providing affordable transportation without the additional expenses related 
 to maintenance, taxes and parking fees, 
@@ -250,7 +250,7 @@ compared to the alternatives, why has it not been implemented in practice?
 \subsection{Possible issues} %Possible issues
 %As previously stated, current demand-responsive transport services are often fully or partially funded by local 
 %authorities. This is also true for public transport in general. Thus, 
-While it is clear is that implementing a large-scale demand-responsive transport system 
+While it is clear that implementing a large-scale demand-responsive transport system 
 would require significant investments, it is not clear 
 whether there would be enough demand for such a service were it implemented. 
 
@@ -271,9 +271,9 @@ A normal taxi can wait for some time for the customer, for example, if the custo
 when the taxi arrives, but it might not be reasonable that a demand-responsive minibus with 
 customers on board would wait many minutes for one customer with the expense of other customers.
 
-While demand-responsive transport has many rewards compared to the private car as argued above,
+While demand-responsive transport has many advantages when compared to the private car as argued above,
 the car has many characteristics that are hard to compensate with public services. 
-Firstly, a person who has already invested in a car and thus settles yearly taxes and
+Firstly, a person who has already invested in a car and thus settles with yearly taxes and
 maintenance costs, is often not willing to use other transportation services since it would
 cost more than the marginal cost of using the car.
 Secondly, the car is unbeatable in many cases when speaking of flexibility: 
@@ -328,8 +328,8 @@ More precisely, the three main research questions considered in this work are st
 %First, we assume that the demand is fixed and optimize the supply. Second, for a given supply,
 %More precisely, the main problems are stated as follows:
 
-In Chapter \ref{vehiclerouting}: \emph{Vehicle routing}, the demand for transportation is assumed to be known at the individual level. 
-Using a fleet of vehicles, what is the best way to satisfy the demand? 
+In Chapter \ref{vehiclerouting}: \emph{Vehicle routing}, the demand for transportation is assumed to be known at the passenger level. 
+The research question is: Using a given fleet of vehicles, what is the best way to satisfy the demand? 
 
 In Chapter \ref{journeyplanning}: \emph{Journey planning}, the schedules and routes of transport services are assumed to be known during a specific time horizon.
 Using the scheduled transport services, what is the best way for a commuter to travel from a given origin to a given destination?
@@ -420,7 +420,7 @@ A demand-responsive transport service operating in real time induces the followi
 In order to be able to compete with private cars, service
 should be available within a short period of time from the trip request.
 This calls for routing algorithms capable of adapting to high-demand situations, since the modifications 
-in vehicle routes have to be executed in real-time.
+in vehicle routes have to be executed in real-time, possibly in a distributed fashion.
 In order to ensure a sufficient level of service, the customers' waiting and ride times 
 should be relatively limited. Thus, the vehicle dispatching algorithms should be designed
 in a way that the constrained nature of the problem is taken into account.
@@ -470,8 +470,8 @@ In \ref{jeadarp}, both aspects of the problem (general objective function and ti
 are considered. The main contribution is a solution method designed in a way that (i) it is capable of
 handling practically any objective function suitable for dynamic routing and (ii) the computational
 effort of the algorithm can be controlled smoothly: If the problem size is reasonable, 
-the algorithm produces optimal solutions efficiently and as the problem size is increased,
-the search space may be narrowed in order to achieve locally optimal solutions.
+the algorithm produces optimal solutions efficiently and as the problem size increases,
+the search space may be narrowed down in order to achieve locally optimal solutions with a small computational effort.
 
 Publications \cp{jhitsdarpts} and \cp{jrbrorl} discuss a single-vehicle algorithm based on hyperlink-induced topic search \cite{kleinberg} 
 for maximizing the number of customers in a single vehicle route. The method is seen to
@@ -633,10 +633,10 @@ the drop-off and the pick-up (excluding $D_{i^+}$) should not exceed the maximum
 
 \subsection{Adaptive insertion algorithm [\citepub{jeadarp}]}
 In general, exact procedures for solving routing  
-problems are computationally very taxing, since the complexity is always more or 
+problems are computationally very demanding, since the complexity is always more or 
 less equal to the classical traveling salesman problem.
 In addition, exact optimization can be seen to be needless at run-time if routes are modified often. 
-Despite these facts, exact algorithms are useful in a way that the 
+Despite these facts, exact algorithms are useful in the sense that the 
 performance of different heuristics may be compared to the optimal solution. 
 
 The main idea in the algorithm presented in \citepub{jeadarp} is that customers are added to 
@@ -693,7 +693,7 @@ Since the pick-up $1^{+}$ of customer 1 has to be before the delivery, $1^{-}$,
 the only possible service sequence at this point is $( 1^{+},  1^{-})$. Thus, the 
 set of potential service sequences with respect to customer $1$ consists of this single service sequence. 
 By insertion of customer $2$ into the service sequence $( 1^{+}, 1^{-})$ we get the six 
-service sequences presented in table \ref{ykskakstaulukko01}.
+service sequences presented in Table \ref{ykskakstaulukko01}.
 \begin{table}[ht] 
 \caption{Potential service sequences with respect to customers 1 and 2. 
 No capacity or time constraints are taken into account. 
@@ -727,10 +727,11 @@ shown that all feasible service sequences including customer $3$ are included in
 the sequences given by insertion to these two service sequences, which gives
 a maximum of $2(5+4+3+2+1) = 30$ new potential service sequences.
 
-Briefly, the structure of the advanced insertion algorithm may be sketched as follows.
-At first, the set of feasible service sequences $S_i$ is determined recursively
-for each customer $i \in \{1, \ldots, N\}$ by inserting the pick-up and delivery nodes of customer $i$ into each feasible
-service sequence with respect to customers $1,\ldots,i-1$. In this way the algorithm 
+%Briefly, the structure of the advanced insertion algorithm may be sketched as follows.
+%At first, the set of feasible service sequences $S_i$ is determined recursively
+%for each customer $i \in \{1, \ldots, N\}$ by inserting the pick-up and delivery nodes of customer $i$ into each feasible
+%service sequence with respect to customers $1,\ldots,i-1$. 
+In this way the algorithm 
 produces the set $S_N$ of all feasible routes with respect to customers $1,\ldots,N$. 
 Then the solution to the static problem is obtained by choosing the sequence $s \in S_N$ with
 minimal cost $C(s)$, where $C(\cdot)$ denotes the cost function, for example, route duration. 
@@ -1133,33 +1134,48 @@ A typical problem instance involving 20 customers could be solved up to optimali
 
 
 
-
-
-
-
-
-
-
-
 \subsubsection{Experiment 1: Number of customers}
 %At first we study the complexity of the exact algorithm with respect to the number of customers.
 In practice, the number of customers assigned to a single vehicle is governed by the
 pre-order time of the dial-a-ride service: If customers may request service in
 advance, the planned vehicle routes are expected to be longer than in immediate-request
-services. Figure \ref{nvertailu01} shows the average number of feasible sequences in feasible problem instances 
-on a logarithmic scale, computed over 10000
-randomized instances for $N=1\ldots 20$, $R = 2,2.5,3$ and $\mu = 1800$s.
+services. Figure \ref{nvertailu01} shows, as a function of the number of customers, the average number of feasible sequences in feasible problem instances 
+on a logarithmic scale.
+%, computed over 10000
+%randomized instances for $N=1\ldots 20$, $R = 2,2.5,3$ and $\mu = 1800$s.
 
-\begin{figure}[ht]
-\begin{center}
-\includegraphics[width=0.7\textwidth]{nvertailu01.pdf}
-\caption{Experiment 1. The complexity of the exact algorithm with respect to the number of customers on a logarithmic scale. 
+% \begin{figure}[ht]
+% \begin{center}
+% \includegraphics[width=0.7\textwidth]{nvertailu01.pdf}
+% \caption{Experiment 1. The complexity of the exact algorithm with respect to the number of customers on a logarithmic scale. 
+% The three curves represent, as a function of the number of customers, the average number of feasible sequences 
+% for $R=2,2.5,3$ and $\mu=1800$s. Clearly, the complexity increases exponentially with respect
+% to the number of customers.}
+% \label{nvertailu01}
+% \end{center}
+% \end{figure}
+
+\begin{figure}
+\centering
+\parbox{0.45\textwidth}{
+\includegraphics[width=0.47\textwidth]{nvertailu01.pdf}
+\caption{\tiny Experiment 1. The complexity of the exact algorithm with respect to the number of customers on a logarithmic scale. 
 The three curves represent, as a function of the number of customers, the average number of feasible sequences 
-for $R=2,2.5,3$ and $\mu=1800$s. Clearly, the complexity increases exponentially with respect
-to the number of customers.}
+for $R=2,2.5,3$ and $\mu=1800$s. }
 \label{nvertailu01}
-\end{center}
+}
+\qquad
+\begin{minipage}{0.45\textwidth}
+\includegraphics[width=1.0\textwidth]{ttivertailu01.pdf}
+\caption{\tiny  Experiment 2. The complexity of the exact algorithm with respect to travel time ratio on a logarithmic scale. 
+The three curves represent, as a function of the travel time ratio, the average number of feasible sequences
+for $N=5,10,20$ and $\mu = 1800$s.}
+\label{ttivertailu01}
+\end{minipage}
 \end{figure}
+
+
+
 
 
 Referring to the figure, it can be seen that the complexity of the problem increases exponentially
@@ -1170,19 +1186,20 @@ In addition, the complexity is increased with the travel time ratio.
 
 \subsubsection{Experiment 2: Travel time ratio}
 %Let us study the complexity of the exact algorithm as a function of travel time ratio.
-Figure \ref{ttivertailu01} shows the average number of feasible sequences in feasible problem instances 
-on a logarithmic scale, computed over 10000
-randomized instances for $R=1.5\ldots 3$, $N = 5,10,20$ and $\mu = 1800$s. 
+Figure \ref{ttivertailu01} shows, as a function of travel time ratio, the average number of feasible sequences in feasible problem instances 
+on a logarithmic scale.
+%, computed over 10000
+%randomized instances for $R=1.5\ldots 3$, $N = 5,10,20$ and $\mu = 1800$s. 
 
-\begin{figure}[ht]
-\begin{center}
-\includegraphics[width=0.7\textwidth]{ttivertailu01.pdf}
-\caption{Experiment 2. The complexity of the exact algorithm with respect to travel time ratio on a logarithmic scale. 
-The three curves represent, as a function of the travel time ratio, the average number of feasible sequences
-for $N=5,10,20$ and $\mu = 1800$s.}
-\label{ttivertailu01}
-\end{center}
-\end{figure}
+% \begin{figure}[ht]
+% \begin{center}
+% \includegraphics[width=0.7\textwidth]{ttivertailu01.pdf}
+% \caption{Experiment 2. The complexity of the exact algorithm with respect to travel time ratio on a logarithmic scale. 
+% The three curves represent, as a function of the travel time ratio, the average number of feasible sequences
+% for $N=5,10,20$ and $\mu = 1800$s.}
+% \label{ttivertailu01}
+% \end{center}
+% \end{figure}
 
 
 The figure shows that the effect of the travel time ratio on the complexity of the problem is significant.
@@ -1196,21 +1213,48 @@ between complexity and $R$ is super-exponential.
 
 \subsubsection{Experiment 3: Time interval}
 %Let us conclude the study of the exact algorithm by examining complexity with respect to the average time interval between customer requests. 
-The solid lines in Figure \ref{intvertailu01} represent the average number of feasible sequences in
-(i) feasible problem instances and (ii) all problem instances, on a logarithmic scale, computed over 10000
-randomized instances for $N=10$, $R=3$ and $\mu = 6 \ldots 40$ minutes. The dashed line corresponds to the fraction
+The solid lines in Figure \ref{intvertailu01} represent, as a function of average time interval 
+between requests, the average number of feasible sequences in
+(i) feasible problem instances and (ii) all problem instances, on a logarithmic scale.
+%, computed over 10000
+%randomized instances for $N=10$, $R=3$ and $\mu = 6 \ldots 40$ minutes. 
+The dashed line corresponds to the fraction
 of problem instances, for which at least one feasible solution was found.
 
-\begin{figure}[ht]
-\begin{center}
-\includegraphics[width=0.7\textwidth]{intvertailu01.pdf}
-\caption{Experiment 3. The complexity of the exact algorithm with respect to the average time 
+% \begin{figure}[ht]
+% \begin{center}
+% \includegraphics[width=0.7\textwidth]{intvertailu01-crop.pdf}
+% \caption{Experiment 3. The complexity of the exact algorithm with respect to the average time 
+% interval between customers. The solid lines represent the average number of feasible sequences in
+% feasible problem instances and all problem instances, on a logarithmic scale for $N=10$ and $R=3$.
+% The dashed line corresponds to the fraction
+% of problem instances, for which at least one feasible solution was found.}
+% \label{intvertailu01}
+% \end{center}
+% \end{figure}
+
+\begin{figure}
+\centering
+\parbox{0.45\textwidth}{
+\includegraphics[width=0.45\textwidth]{intvertailu01.pdf}
+\caption{\tiny Experiment 3. The complexity of the exact algorithm with respect to the average time 
 interval between customers. The solid lines represent the average number of feasible sequences in
 feasible problem instances and all problem instances, on a logarithmic scale for $N=10$ and $R=3$.
 The dashed line corresponds to the fraction
 of problem instances, for which at least one feasible solution was found.}
 \label{intvertailu01}
-\end{center}
+}
+\qquad
+\begin{minipage}{0.45\textwidth}
+\includegraphics[width=1.0\textwidth]{objvertailu01.pdf}
+\caption{\tiny Experiment 4. The performance of three different heuristic objective functions as functions of degree $L$.
+The curves represent the fractions of instances for which a feasible solution was found by the objective functions 
+(compared to the exact algorithm), 
+for $N=20$, $R=3$ and $\mu=1800$s. The total slack time objective function
+outperforms the other two in all studied cases.
+}
+\label{objvertailu01}
+\end{minipage}
 \end{figure}
 
 The figure indicates that the complexity of feasible problem instances decreases exponentially 
@@ -1220,27 +1264,27 @@ to the average complexity of all problem instances (including infeasible cases),
 complexity is maximized at a certain time interval ($\mu = 24$ minutes in this case), in which both the probability of
 finding a feasible solution and the number of feasible sequences in feasible cases are relatively large.
 
-At this point, it should be emphasized that the above results apply to randomized instances for the 
-single vehicle problem. In a dynamic multiple vehicle setting, an effort is made to 
-divide the customers among available vehicles optimally. Thus, it is suggested that a larger number of customers
-can be served by a single vehicle in less time than in the case in which the customers' pick-up
-and drop-off locations are completely random. However, the above results give us an insight on
-how the complexity of the single vehicle subroutine behaves with respect to the average time interval between
-the earliest pick-up times of customers assigned to a single vehicle.
+%At this point, it should be emphasized that the above results apply to randomized instances for the 
+%single vehicle problem. In a dynamic multiple vehicle setting, an effort is made to 
+%divide the customers among available vehicles optimally. Thus, it is suggested that a larger number of customers
+%can be served by a single vehicle in less time than in the case in which the customers' pick-up
+%and drop-off locations are completely random. However, the above results give us an insight on
+%how the complexity of the single vehicle subroutine behaves with respect to the average time interval between
+%the earliest pick-up times of customers assigned to a single vehicle.
 
 
-\begin{figure}[ht]
-\begin{center}
-\includegraphics[width=0.7\textwidth]{objvertailu01.pdf}
-\caption{Experiment 4. The performance of three different heuristic objective functions as functions of degree $L$.
-The curves represent the fractions of instances for which a feasible solution was found by the objective functions 
-(compared to the exact algorithm), 
-for $N=20$, $R=3$ and $\mu=1800$s. The total slack time objective function
-outperforms the other two in all studied cases.
-}
-\label{objvertailu01}
-\end{center}
-\end{figure}
+% \begin{figure}[ht]
+% \begin{center}
+% \includegraphics[width=0.7\textwidth]{objvertailu01.pdf}
+% \caption{Experiment 4. The performance of three different heuristic objective functions as functions of degree $L$.
+% The curves represent the fractions of instances for which a feasible solution was found by the objective functions 
+% (compared to the exact algorithm), 
+% for $N=20$, $R=3$ and $\mu=1800$s. The total slack time objective function
+% outperforms the other two in all studied cases.
+% }
+% \label{objvertailu01}
+% \end{center}
+% \end{figure}
 
 
 
@@ -1249,11 +1293,12 @@ Let us study the performance of three different heuristic cost functions %\eqref
 as a function of the degree $L$ of the heuristic.
 Figure \ref{objvertailu01} shows the fraction of problem instances for which a feasible solution was 
 % in feasible problem instances obtained 
-found by the heuristic (compared to the exact algorithm), computed over 10000
-randomized instances. 
-The number of customers was set to $N=20$, the travel time ratio
-was $3$ and the average time interval $\mu = 1800$s was used.
+found by the heuristic (compared to the exact algorithm). 
 
+%, computed over 10000
+%randomized instances. 
+%The number of customers was set to $N=20$, the travel time ratio
+%was $3$ and the average time interval $\mu = 1800$s was used.
 
 
 Referring to the figure, it can be seen that the total time slack cost function is capable of finding
