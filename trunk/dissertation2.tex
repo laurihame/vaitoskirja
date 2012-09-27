@@ -452,17 +452,19 @@ Time windows have been incorporated in many early and recent studies of the DARP
 \cite{psaraftis02, jaw, madsen, toth02,cordeau02,diana, wong, cordeau01, berbegliafeas}.
 In these studies it is noted that in dynamic settings, time windows eliminate the possibility of indefinite
 deferment of customers and strict time limits help provide reliable service.
-Maximum ride time constraints that limit the time spent by passengers in the vehicle
-between their pick-up and their delivery \cite{hunsaker}, 
-are considered as well.
+%Maximum ride time constraints that limit the time spent by passengers in the vehicle
+%between their pick-up and their delivery \cite{hunsaker}, 
+%are considered as well.
 
 In \cite{psaraftis01}, the objective function is defined as a
 generalization of the objective function of the Traveling Salesman Problem (TSP), 
 in which a weighted combination
 of the time needed to serve all customers and of the total degree of dissatisfaction
-they experience until their arrival to the destination of the trip is minimized. The dissatisfaction of
-customers is assumed to be a linear function of the time each customer waits to be picked up and the 
-time each customer spends riding in the vehicle until his/her delivery.
+%they experience until their arrival to the destination of the trip 
+is minimized.
+%The dissatisfaction of
+%customers is assumed to be a linear function of the time each customer waits to be picked up and the 
+%time each customer spends riding in the vehicle until his/her delivery.
 In \cite{psaraftis02}, the approach is extended to handle time windows on departure and arrival times,
 but only the route duration is minimized. 
 
@@ -473,7 +475,7 @@ effort of the algorithm can be controlled smoothly: If the problem size is reaso
 the algorithm produces optimal solutions efficiently and as the problem size increases,
 the search space may be narrowed down in order to achieve locally optimal solutions with a small computational effort.
 
-Publications \cp{jhitsdarpts} and \cp{jrbrorl} discuss a single-vehicle algorithm based on hyperlink-induced topic search \cite{kleinberg} 
+Publication \cp{jrbrorl} discusses a single-vehicle algorithm based on hyperlink-induced topic search \cite{kleinberg} 
 for maximizing the number of customers in a single vehicle route. The method is seen to
 be useful in determining the feasibility of multi-vehicle instances. 
 
@@ -532,8 +534,9 @@ The single-vehicle dial-a-ride problem is defined as follows \citep{berbegliafea
 Let $G = (V, A)$ be a complete and directed graph
 with node set $V = \{0\} \cup P$, where node $0$ represents the depot, and $P$ represents 
 the set of pick-up and drop-off nodes, where  $(|P| = 2n)$. The set $P$ is partitioned into sets $P^{+}$ (pick-up nodes) and
-$P^{-}$ (drop-off nodes). Each arc $(i, j) \in A$ has a non-negative travel time $T_{ij}$. The travel times
-satisfy the triangular inequality, that is, $T_{ij} + T_{jk} \geq T_{ik}$ for all $i,j,k \in V$. 
+$P^{-}$ (drop-off nodes). Each arc $(i, j) \in A$ has a non-negative travel time $T_{ij}$. 
+%The travel times
+%satisfy the triangular inequality, that is, $T_{ij} + T_{jk} \geq T_{ik}$ for all $i,j,k \in V$. 
 With each node $i \in V$ associate a time window $[E_i , L_i ]$,
 a service duration $D_i$ and a load $q_i$, where $D_0 = 0$ and $q_0 = 0$. Let $H = \{1, \ldots , n\}$ be
 the set of customers and let $T^{\max}$ be the maximum ride time for any customer. With each customer $i$ is associated
@@ -554,7 +557,7 @@ that several cost functions, that are thought to be suitable for dynamic setting
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.8 \columnwidth]{timeline01}
+\includegraphics[width=0.6 \columnwidth]{timeline01}
 \caption{Time pick-up and drop-off time windows. The pick-up point of
 customer $i$ is denoted by $i^{+}$ and the drop-off point is denoted by $i^{-}$.
 The customer should be picked up at $i^{+}$ within the time window $[E_{i^+},L_{i^+}]$
@@ -682,7 +685,7 @@ capable of handling any types of time windows.
 The idea of the advanced insertion method is 
 clarified by the following example, where no
 capacity or time constraints are taken into account. 
-Let $i^{+} = i$ denote the \emph{pick-up node} of customer $i$ and let $i^{-} = N + i$ denote 
+Let $i^{+}$ denote the \emph{pick-up node} of customer $i$ and let $i^{-}$ denote 
 the \emph{delivery node} of customer $i$.
 A \emph{service sequence} is defined as an ordered list consisting of pick-up and delivery nodes.
 For instance, the service sequence $( i^{+},  j^{+}, j^{-}, i^{-})$ indicates the order
@@ -701,14 +704,14 @@ $i^{+}$ denotes the pick-up node and $i^{-}$ denotes
 the delivery node of customer $i$.} 
 \centering     
 \begin{tabular}{|rrrrrr|rrrrrr|rrrrr|}  
-\hline  & & & & & & & & & & & &  & & & &  \\ [-0.7em]                
+\hline  %& & & & & & & & & & & &  & & & &  \\ %[-0.7em]                
 A: & $ 1^{+} $ & $  1^{-} $ & $  2^{+} $ & $  2^{-} $ & & 
 B: & $ 1^{+} $ & $  2^{+} $ & $  1^{-} $ & $  2^{-} $ & & 
-C: & $ 1^{+} $ & $  2^{+} $ & $  2^{-} $ & $  1^{-} $ \\ [1ex]
-\hline & & & & & & & & & & & &  & & & &  \\ [-0.7em]
+C: & $ 1^{+} $ & $  2^{+} $ & $  2^{-} $ & $  1^{-} $ \\ %[1ex]
+\hline  %& & & & & & & & & & & &  & & & &  \\ %[-0.7em]
 D: & $ 2^{+} $ & $  1^{+} $ & $  1^{-} $ & $  2^{-} $ & & 
 E: & $ 2^{+} $ & $  1^{+} $ & $ 2^{-} $ & $  1^{-} $ & & 
-F: & $ 2^{+} $ & $  2^{-} $ & $  1^{+} $ & $  1^{-} $ \\ [1ex] 
+F: & $ 2^{+} $ & $  2^{-} $ & $  1^{+} $ & $  1^{-} $ \\ %[1ex] 
 \hline                      
 \end{tabular} 
 \label{ykskakstaulukko01} 
@@ -719,13 +722,13 @@ By inserting the pick-up and delivery node of customer $3$ into all of these ser
 of $6(5+4+3+2+1) = 90$ new potential service sequences. However, if the time and capacity
 constraints are taken into account, not all service sequences described above are necessarily feasible.
 
-For example, if after the insertion of customer $2$ it can be seen that only the
-service sequences A and B in table \ref{ykskakstaulukko01}, namely 
-$( 1^{+}, 1^{-}, 2^{+}, 2^{-})$ and $( 1^{+}, 2^{+}, 1^{-}, 2^{-})$,
-are feasible with respect to time constraints, then it can be
-shown that all feasible service sequences including customer $3$ are included in
-the sequences given by insertion to these two service sequences, which gives
-a maximum of $2(5+4+3+2+1) = 30$ new potential service sequences.
+% For example, if after the insertion of customer $2$ it can be seen that only the
+% service sequences A and B in table \ref{ykskakstaulukko01}, namely 
+% $( 1^{+}, 1^{-}, 2^{+}, 2^{-})$ and $( 1^{+}, 2^{+}, 1^{-}, 2^{-})$,
+% are feasible with respect to time constraints, then it can be
+% shown that all feasible service sequences including customer $3$ are included in
+% the sequences given by insertion to these two service sequences, which gives
+% a maximum of $2(5+4+3+2+1) = 30$ new potential service sequences.
 
 %Briefly, the structure of the advanced insertion algorithm may be sketched as follows.
 %At first, the set of feasible service sequences $S_i$ is determined recursively
@@ -733,29 +736,29 @@ a maximum of $2(5+4+3+2+1) = 30$ new potential service sequences.
 %service sequence with respect to customers $1,\ldots,i-1$. 
 In this way the algorithm 
 produces the set $S_N$ of all feasible routes with respect to customers $1,\ldots,N$. 
-Then the solution to the static problem is obtained by choosing the sequence $s \in S_N$ with
+Then the solution to the problem is obtained by choosing the sequence $s \in S_N$ with
 minimal cost $C(s)$, where $C(\cdot)$ denotes the cost function, for example, route duration. 
 
-\subsubsection{Structure and complexity}
-The number of insertions that are tested for feasibility for customer $i$ is bounded above 
-by the formula
-\begin{align}
-n(i) \leq m_{i-1} \sum_{x=1}^{2i-1} x  = \frac{m_{i-1}(2i)(2i-1)}{2},
-\end{align}
-where $m_{i-1}$ is the number of feasible service sequences with respect to customers $1, \ldots,i-1$.
-The inequality can be justified by the fact that not all possible insertions  
-are checked for feasibility. 
-In the worst case, where capacity and time constraints are \emph{not restrictive},
-we get 
-\begin{align*}
-& m_1 = 1, \ \ \ \ \ \ \ m_2 = (4 \cdot 3)/2 = 6,  \ \ \ \ \ \ \ m_3 = 6(6 \cdot 5)/2 = 90, \\
-& m_i = \frac{(2i)(2i-1)}{2} \frac{(2(i-1))(2(i-2)-1)}{2} \cdots \frac{4 \cdot 3}{2} = \frac{(2i)!}{2^i}. 
-\end{align*}
-Thus the maximum number of insertions required in the solution of the static case is
-$\sum_{i=1}^{N}\frac{(2i)!}{2^i} \approx \sum_{i=1}^{N} {2^{1-i} i^{2i + \frac 12} \sqrt{\pi}}$.
-Thus, in the worst case, the number of feasible solutions is of order
-$\mathcal{O}(\sqrt{N} (N^2/2)^N)$.
-
+% \subsubsection{Structure and complexity}
+% The number of insertions that are tested for feasibility for customer $i$ is bounded above 
+% by the formula
+% \begin{align}
+% n(i) \leq m_{i-1} \sum_{x=1}^{2i-1} x  = \frac{m_{i-1}(2i)(2i-1)}{2},
+% \end{align}
+% where $m_{i-1}$ is the number of feasible service sequences with respect to customers $1, \ldots,i-1$.
+% The inequality can be justified by the fact that not all possible insertions  
+% are checked for feasibility. 
+% In the worst case, where capacity and time constraints are \emph{not restrictive},
+% we get 
+% \begin{align*}
+% & m_1 = 1, \ \ \ \ \ \ \ m_2 = (4 \cdot 3)/2 = 6,  \ \ \ \ \ \ \ m_3 = 6(6 \cdot 5)/2 = 90, \\
+% & m_i = \frac{(2i)(2i-1)}{2} \frac{(2(i-1))(2(i-2)-1)}{2} \cdots \frac{4 \cdot 3}{2} = \frac{(2i)!}{2^i}. 
+% \end{align*}
+% Thus the maximum number of insertions required in the solution of the static case is
+% $\sum_{i=1}^{N}\frac{(2i)!}{2^i} \approx \sum_{i=1}^{N} {2^{1-i} i^{2i + \frac 12} \sqrt{\pi}}$.
+% Thus, in the worst case, the number of feasible solutions is of order
+% $\mathcal{O}(\sqrt{N} (N^2/2)^N)$.
+In the worst case, the number of feasible solutions is of order $\mathcal{O}(\sqrt{N} (N^2/2)^N)$.
 However, the 
 algorithm has a special property of being extendable to an adjustable heuristic,
 as described in the following section.
@@ -917,8 +920,8 @@ $(i,j)$ represent a link from page $i$ to page $j$, given that each page has bee
 assigned an initial authority score $a_i(0)$ and hub score $h_i(0)$, HITS successively
 refines these scores by computing
 \begin{align*}
-a_i(k) & = \sum_{(j,i) \in A} h_j(k-1) \\
-h_i(k) & = \sum_{(i,j) \in A} a_j(k-1)
+a_i(k)  = \sum_{(j,i) \in A} h_j(k-1), \ \ \ \ \ \ \ \ \ \ \  \ \ \ \ \ \ 
+h_i(k)  = \sum_{(i,j) \in A} a_j(k-1)
 \end{align*}
 for $k \in \{1,2,\ldots\}$. By using matrix notation, these equations can be written the form 
 $a(k) = L^T h(k-1)$ and $h(k) = L a(k-1)$,
@@ -976,9 +979,9 @@ Then, $h=(h_1,\ldots,h_{|V|})^T$ is a unique dominant eigenvector of $L$.
 
 Note that since $h_i \geq h_j$ for all $i,j \in V$ for which $L_{ij} = 1$, the vector $h$ defines a \emph{topological
 ordering} \cite{cormen} of the nodes for which $h_i > 0$.
-Although Theorem \ref{polut} considers a special class of 
-graphs\footnote{The calculation of self-avoiding paths in graphs with cycles is discussed in \cite{ponstein}.}, 
-the result gives us an idea of the behaviour of the modified HITS method: There are many paths beginning from 
+% Although Theorem \ref{polut} considers a special class of 
+% graphs\footnote{The calculation of self-avoiding paths in graphs with cycles is discussed in \cite{ponstein}.}, 
+The result gives us an idea of the behaviour of the modified HITS method: There are many paths beginning from 
 nodes with high hub scores. 
 
 In the following section, we show how the 
@@ -990,9 +993,9 @@ a backtracking algorithm for the dial-a-ride problem.
 \ref{jrbrorl} presents an exact constraint programming method for the single-vehicle DARP that 
 produces a feasible solution whenever one exists or proves that the problem is infeasible.
 In the latter case, the algorithm returns a route that maximizes the number of served customers.
-The main challenge is to find a sequence of pick-up and drop-off nodes for which 
-the time and precedence constraints are satisfied. While capacity constraints are 
-also considered, the focus is on problems, in which time limits are more restrictive.
+% The main challenge is to find a sequence of pick-up and drop-off nodes for which 
+% the time and precedence constraints are satisfied. While capacity constraints are 
+% also considered, the focus is on problems, in which time limits are more restrictive.
 
 Letting node $0 \in V$ be the location of the vehicle at $t=0$,
 we aim to find a feasible path $(0,p_1,\ldots,p_{2n},0)$
@@ -1007,15 +1010,10 @@ The search begins from node $0$ by ranking the pick-up and drop-off nodes $P$ of
 Then, the node $p^{*}$ with the highest ranking is added to the sequence and the ranking procedure is
 repeated for the remaining nodes $P \setminus \{p^{*}\}$.
 
-The main idea of the algorithm is that at each recursion step, we have the current sequence $S$ 
+More formally, at each recursion step, we have the current sequence $S$ 
 and the set of remaining nodes $R_S$ (nodes that can possibly be added to the sequence). 
-At first, we check the time, capacity and precedence constraints of $S$.
-If $S$ is feasible and all customers have been served, that is, if $C(S) = n$, a feasible solution is found and 
-the recursion is terminated.
-Otherwise,
-the remaining nodes $R_S$ are ranked by hub scores and the infeasible nodes 
-are removed from $R_S$.
-Then, the recursion continues for all sequences $(S,i)$ in ranked order.
+Then, the remaining nodes $R_S$ are ranked by hub scores.
+The recursion continues for all sequences $(S,i)$, where $i \in R_S$ in ranked order.
 In the following, we describe the ranking of remaining nodes in more detail.
 
 
@@ -1023,31 +1021,31 @@ In the following, we describe the ranking of remaining nodes in more detail.
 \label{feasibility}
 The ranking of the remaining nodes $R_S$ is determined in two phases: 
 First, the adjacency matrix of the remaining nodes is determined by studying 
-feasible transitions between the nodes.
+\emph{feasible transitions} between the nodes.
 Then, the hub vector is calculated by means of Equation \eqref{modhub}.
 
 The definition of feasible transitions is similar to the one studied in \cite{dumas03}, 
 in which the set of \emph{admissible arcs} between the pick-up and delivery nodes is constructed
 as a preprocessing step in the pickup and delivery problem. The set of admissible arcs is 
 made up of arcs which a priori satisfy the precedence, capacity and time constraints of the problem.
-The difference in \ref{jrbrorl} is that feasibility of 
+The difference in \ref{jrbrorl} is that the feasibility of 
 transitions is defined as a function of the state of the vehicle (see Figure \ref{transitions01}).
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.7\columnwidth]{transitions01.pdf}
+\includegraphics[width=0.5\columnwidth]{transitions01.pdf}
 \caption{Feasible transitions. The figure shows the 
 locations and time windows of two nodes $i$ and $j$.
 If the vehicle left from $a$ at the instant $t_a$, visited node $i$
 and moved directly to node $j$, the time constraint $L_j$ would be satisfied. 
 However, assuming that at the instant $t_b$ the vehicle is located at $b$, the
-transition $i \to j$ is seen to be infeasible.
+transition $i \to j$ is seen to be $S$-infeasible.
 }
 \label{transitions01}
 \end{center}
 \end{figure}
 The elements of the adjacency matrix are defined for all $i,j \in R_S$ by 
-$L_{ij}= 1$, if $i \neq j$ and $i \to j$ is feasible, $L_{ij} = 0$ otherwise.
+$L_{ij}= 1$, if $i \neq j$ and $i \to j$ is $S$-feasible, $L_{ij} = 0$ otherwise.
 
 After the adjacency matrix $L$ has been determined, the hub vector $h=(h_1,\ldots,h_{|R_S|})$ of $L$ is determined by 
 Equation \eqref{modhub} (here the remaining nodes $i \in R_S$ are numbered from $1$ to $|R_S|$ for clarity). 
@@ -1066,7 +1064,8 @@ $h_{i_1} \geq h_{i_2} \geq \ldots \geq h_{i_{|R_S|}}$.
 % The remaining nodes are sorted in ascending order of the authority scores; branches beginning from
 % bad authorities are evaluated first.
 The hub scores are used to give guidance to the algorithm regarding the order in which the 
-depth-first search visits the nodes. 
+depth-first search visits the nodes. In the best case, no infeasible states are encountered and thus 
+the complexity is of order $\mathcal{O}(n^3)$.
 
 \subsubsection{A heuristic extension}
 \label{rrheuristic}
@@ -1080,29 +1079,29 @@ if $J = (2n)!/2^n$ (the number of permutations that satisfy precedence constrain
 coincides with the exact algorithm.
 
 
-\subsubsection{Structure and complexity}
-\label{rrstructure}
-The structure of the ranking algorithm is as follows. 
-Briefly described, each recursion step involves checking the the feasibility
-of sequences $(S,i,j)$, where $i,j \in R_S$.
-Clearly, this process has a complexity of order $\mathcal{O} (|R_S|^2)$,
-where $|R_S|$ is the number of remaining nodes. 
-After the adjacency matrix $L$ of the remaining nodes has been determined, the complexity of 
-calculating $k$ steps of the power method (Equation \eqref{modhub}) is of order $\mathcal{O} (k |R_S|^2)$.
-
-The overall complexity of finding a feasible solution is strongly dependent on the number of recursion
-steps needed to find the solution. 
-Finding a feasible solution to a problem with $n$ customers involves at least $2n$
-recursion steps: At first, the number of remaining nodes is $2n$ and each time 
-a feasible node is added to the end of the service sequence, the 
-number of remaining nodes is decreased by one.
-In the best case, no infeasible states are encountered and thus there are $2n$ recursion steps 
-(one for each node added to the sequence).
-At step $k \in \{1,\ldots,2n\}$, the number of remaining nodes is $2n+1-k$
-and thus the complexity is of order $\mathcal{O} (\sum_{k=1}^{2n} (2n+1-k)^2) =\mathcal{O}(n^3)$.
-Roughly, the computational work is linearly increased with the 
-number of dead ends $D(n)$ encountered during the recursion.
-The overall complexity of the single vehicle algorithm is thus $\mathcal{O}(D(n)n^3)$.
+% \subsubsection{Structure and complexity}
+% \label{rrstructure}
+% The structure of the ranking algorithm is as follows. 
+% Briefly described, each recursion step involves checking the the feasibility
+% of sequences $(S,i,j)$, where $i,j \in R_S$.
+% Clearly, this process has a complexity of order $\mathcal{O} (|R_S|^2)$,
+% where $|R_S|$ is the number of remaining nodes. 
+% After the adjacency matrix $L$ of the remaining nodes has been determined, the complexity of 
+% calculating $k$ steps of the power method (Equation \eqref{modhub}) is of order $\mathcal{O} (k |R_S|^2)$.
+% 
+% The overall complexity of finding a feasible solution is strongly dependent on the number of recursion
+% steps needed to find the solution. 
+% Finding a feasible solution to a problem with $n$ customers involves at least $2n$
+% recursion steps: At first, the number of remaining nodes is $2n$ and each time 
+% a feasible node is added to the end of the service sequence, the 
+% number of remaining nodes is decreased by one.
+% In the best case, no infeasible states are encountered and thus there are $2n$ recursion steps 
+% (one for each node added to the sequence).
+% At step $k \in \{1,\ldots,2n\}$, the number of remaining nodes is $2n+1-k$
+% and thus the complexity is of order $\mathcal{O} (\sum_{k=1}^{2n} (2n+1-k)^2) =\mathcal{O}(n^3)$.
+% Roughly, the computational work is linearly increased with the 
+% number of dead ends $D(n)$ encountered during the recursion.
+% The overall complexity of the single vehicle algorithm is thus $\mathcal{O}(D(n)n^3)$.
 
 
 \subsection{Numerical experiments}
@@ -1116,12 +1115,13 @@ square-shaped service area and the ride times between the points were modeled by
 
 At first, the complexity of the problem was studied with respect to three parameters, namely
 i) the number of customers $N$, ii) travel time ratio $R$ and iii) the average time interval $\mu$
-between customer requests. The complexity was measured in terms of the
-average number of feasible sequences
-in \emph{feasible problem instances}, that is, randomized
-problems for which at least one feasible solution was found. 
-The number of feasible sequences gives us an insight on the complexity of the problem itself,
-since any enumeration algorithm would have to evaluate the same number of feasible sequences.
+between customer requests. 
+% The complexity was measured in terms of the
+% average number of feasible sequences
+% in \emph{feasible problem instances}, that is, randomized
+% problems for which at least one feasible solution was found. 
+% The number of feasible sequences gives us an insight on the complexity of the problem itself,
+% since any enumeration algorithm would have to evaluate the same number of feasible sequences.
 
 Then, the performance of the heuristic with different objective functions was evaluated.
 The complexity was measured in terms of the number of sequences evaluated by the heuristic.
@@ -1131,15 +1131,13 @@ The CPU times and the number of evaluated sequences appeared to have a roughly l
 A typical problem instance involving 20 customers could be solved up to optimality within less than a second.
 
 
-
-
-
 \subsubsection{Experiment 1: Number of customers}
 %At first we study the complexity of the exact algorithm with respect to the number of customers.
-In practice, the number of customers assigned to a single vehicle is governed by the
-pre-order time of the dial-a-ride service: If customers may request service in
-advance, the planned vehicle routes are expected to be longer than in immediate-request
-services. Figure \ref{nvertailu01} shows, as a function of the number of customers, the average number of feasible sequences in feasible problem instances 
+% In practice, the number of customers assigned to a single vehicle is governed by the
+% pre-order time of the dial-a-ride service: If customers may request service in
+% advance, the planned vehicle routes are expected to be longer than in immediate-request
+% services. 
+Figure \ref{nvertailu01} shows, as a function of the number of customers, the average number of feasible sequences in feasible problem instances 
 on a logarithmic scale.
 %, computed over 10000
 %randomized instances for $N=1\ldots 20$, $R = 2,2.5,3$ and $\mu = 1800$s.
@@ -1334,18 +1332,18 @@ In the context of passenger transportation, a good level of service means that t
 In such problems, the number of feasible solutions becomes so limited that often
 any feasible solution will be relatively close to the optimal solution with respect to the
 objective function \cite{psaraftis02}.
-Thus, we suggest that in highly constrained cases, solving the constraint satisfaction problem provides, 
+Thus, in highly constrained cases, solving the constraint satisfaction problem provides, 
 if not the optimal solution, at least a good initial solution. 
 
-The main result of \ref{jhitsdarpts} is an exact algorithm for the constraint satisfaction dial-a-ride problem
-introduced in \cite{berbegliafeas}. In contrast to most works related to vehicle routing and dial-a-ride problems,
-no specific cost function is considered\footnote{
-For approaches to vehicle routing and dial-a-ride problems with cost functions, 
-see \cite{braysy01,braysy02,groer} and \cite{cordeau02,berbegliahybrid}.}. 
-The algorithm stops as soon as a feasible solution is found regardless of
-the quality of the solution. If a feasible solution is not found through exhaustive search, the algorithm 
-proves that the problem instance is infeasible. In addition, some infeasible instances are detected in advance
-by studying the feasibility of routes involving two customers. 
+% The main result of \ref{jhitsdarpts} is an exact algorithm for the constraint satisfaction dial-a-ride problem
+% introduced in \cite{berbegliafeas}. In contrast to most works related to vehicle routing and dial-a-ride problems,
+% no specific cost function is considered\footnote{
+% For approaches to vehicle routing and dial-a-ride problems with cost functions, 
+% see \cite{braysy01,braysy02,groer} and \cite{cordeau02,berbegliahybrid}.}. 
+% The algorithm stops as soon as a feasible solution is found regardless of
+% the quality of the solution. If a feasible solution is not found through exhaustive search, the algorithm 
+% proves that the problem instance is infeasible. In addition, some infeasible instances are detected in advance
+% by studying the feasibility of routes involving two customers. 
 
 
 \subsection{The maximum cluster algorithm [\ref{jhitsdarpts}]}
@@ -1376,7 +1374,7 @@ First, a route is constructed for vehicle $1$, serving as many
 customers as possible. Then, the process is repeated with vehicle $2$ for the set of customers
 that were not served by vehicle $1$ and so forth (see Figure \ref{greedyidea}). 
 If a feasible solution is not found directly, % by using the above procedure, %described in Algorithm \ref{alg02}, 
-the process is repeated. 
+the process is repeated by attempting to add the remaining customers to the existing vehicle routes. 
 % Letting $X$ denote a
 % set of customers, we denote by SV($X$) a single-vehicle subroutine
 % that returns a route 
@@ -1424,11 +1422,11 @@ the process is repeated.
 % If an iteration results in a visited partition of customers, a non-visited candidate partition is generated.
 % If all possible candidate partitions have been checked, the problem is infeasible.
 
-The iterative process is justified by the fact that a customer $x$ with relatively few out-links to all nodes may 
-be in a good position with respect to the customers assigned to a
-single vehicle $v$. That is, even if customer $x$ was left out of the initial 
-vehicle routes due to a small number of links to other nodes,
-$x$ can be added to one of the routes during a later iteration. 
+% The iterative process is justified by the fact that a customer $x$ with relatively few out-links to all nodes may 
+% be in a good position with respect to the customers assigned to a
+% single vehicle $v$. That is, even if customer $x$ was left out of the initial 
+% vehicle routes due to a small number of links to other nodes,
+% $x$ can be added to one of the routes during a later iteration. 
 
 The above approach produces a set of customer-vehicle assignments 
 such that for each vehicle there exists a feasible route serving all customers assigned to the vehicle
@@ -1463,20 +1461,20 @@ The number of a priori feasible partitions satisfies $|\mathcal{P}'| \leq m^{n-|
 \end{theorem}
 
 
-\subsection{Structure and complexity}
-\label{mvstructure}
-The multi-vehicle algorithm involves solving the single-vehicle case
-for each vehicle in $r$ iterations. Thus the complexity is bounded above by $\mathcal{O}\left(rmD(n)n^3\right)$, 
-where the number of dead ends satisfies $D(n) \leq (2n)!/2^n$.                                                                                                                  
-
-% Note that the complexity is in general lower since the size of the set of customers is
-% $n$ only for the first vehicle in the first iteration. For the other vehicles, the number of customers is
-% smaller since the customers that are already included in another vehicle route
-% are not a part of the subproblem. 
-Since the total number of possible partitions is 
-equal to the Stirling number of the second kind, the number of iterations $r$ needed to find a feasible solution
-or to prove infeasibility satisfies $r \leq S_2(n,m) = \frac {1}{m!} \sum_{i=0}^{m} (-1)^i {m \choose i} (m-i)^n$.
-Given the maximum clique $C$ (see section \ref{earlydetection}), we have $r \leq |\mathcal{P}'| = \prod_{i=1}^n |V_i| \leq m^{n-|C|}$.
+% \subsection{Structure and complexity}
+% \label{mvstructure}
+% The multi-vehicle algorithm involves solving the single-vehicle case
+% for each vehicle in $r$ iterations. Thus the complexity is bounded above by $\mathcal{O}\left(rmD(n)n^3\right)$, 
+% where the number of dead ends satisfies $D(n) \leq (2n)!/2^n$.                                                                                                                  
+% 
+% % Note that the complexity is in general lower since the size of the set of customers is
+% % $n$ only for the first vehicle in the first iteration. For the other vehicles, the number of customers is
+% % smaller since the customers that are already included in another vehicle route
+% % are not a part of the subproblem. 
+% Since the total number of possible partitions is 
+% equal to the Stirling number of the second kind, the number of iterations $r$ needed to find a feasible solution
+% or to prove infeasibility satisfies $r \leq S_2(n,m) = \frac {1}{m!} \sum_{i=0}^{m} (-1)^i {m \choose i} (m-i)^n$.
+% Given the maximum clique $C$ (see section \ref{earlydetection}), we have $r \leq |\mathcal{P}'| = \prod_{i=1}^n |V_i| \leq m^{n-|C|}$.
 
 In summary, the worst case complexity is high especially when the set of a priori feasible partitions $\mathcal{P}'$ is large. 
 However, as will be seen in the next section, solutions to problems with loose constraints are usually found with little effort. 
@@ -1486,8 +1484,7 @@ and thus also the complexity of the algorithm.
 
 \subsection{Numerical experiments}
 \label{mvexperience}
-In the following, we present a summary of the results of computational tests reported in \ref{jhitsdarpts}.
-An algorithm using the ranking idea is compared with two existing solution methods,
+In the following, an algorithm using the ranking idea is compared with two existing solution methods,
 namely, a tabu search algorithm \citep{cordeau02} and
 a constraint programming (CP) algorithm \citep{berbegliafeas}. 
 
@@ -1496,12 +1493,7 @@ The tabu and CP algorithms were tested on a 2.5 GHz Dual Core AMD Opteron comput
 
 In the studied instances the pick-up and drop-off points are located in a $20 \times 20$ square and the 
 ride times between points (in minutes) are equal to Euclidean distances. The time windows
-have 15 minutes of length. In the first set of instances marked with $a$, the capacity of a vehicle equals $Q=3$ and 
-the load of each customer is $1$. In the 
-second set marked with $b$, we have $Q=6$ and the load associated to each customer
-is chosen randomly according to a uniform distribution on the set $\{1, \ldots,Q\}$.
-In both sets, the maximum ride time is equal to $R=22$ and the service time is 
-proportional to the number of passengers, namely $d_i = d_{n+i} = q_i$.
+have 15 minutes of length. 
 The instances are described in more detail in \citep{cordeau01,ropke2007,berbegliafeas}.
 
 The results of the tests are shown in Table \ref{comparisontable}. The first
@@ -1510,15 +1502,15 @@ indicates the number of vehicles and $n$ corresponds to the number of customers.
 The other columns show the average time (in seconds) needed to solve the
 instances and the corresponding modifications by using the different solution methods,
 calculated over ten runs. 
-The results obtained by the first two algorithms, tabu and CP, have been reported
-previously in \citep{berbegliathesis,berbegliafeas}\footnote{The computing time for the instance 
-'b6-48' has been reported for the tabu algorithm in \citep{ropke2007}.}. 
+% The results obtained by the first two algorithms, tabu and CP, have been reported
+% previously in \citep{berbegliathesis,berbegliafeas}\footnote{The computing time for the instance 
+% 'b6-48' has been reported for the tabu algorithm in \citep{ropke2007}.}. 
 A number in parentheses indicates that the instance was proven to be infeasible,
 a dash indicates that a solution was not found in three minutes computing time and
 a star indicates that results for the instance have not been reported. 
-First, the heuristic version of the ranking algorithm was executed with $L=1$. If a solution was not found and the problem
-was not rendered infeasible by the a priori screening procedure described in
-Section \ref{earlydetection}, the exact version of the algorithm was executed.
+% First, the heuristic version of the ranking algorithm was executed with $L=1$. If a solution was not found and the problem
+% was not rendered infeasible by the a priori screening procedure described in
+% Section \ref{earlydetection}, the exact version of the algorithm was executed.
 
 \begin{table}
 {\tiny
