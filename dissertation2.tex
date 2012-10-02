@@ -2731,73 +2731,11 @@ equilibrium is achieved by using price regulation exclusively. That is, the resu
 the optimal solution from the customers' point of view would be to regulate price and allow free 
 entry.
 
-
-\section{Monopoly \cite{kuhmostok}}
-\label{monopdescription}
-In a demand-responsive transport monopoly, a single transport operator controls the transition probabilities of vehicles
+Reference \cite{kuhmostok} repeats the above example for a demand-responsive transport monopoly, where 
+a single transport operator controls the transition probabilities of vehicles
 between states, in contrast to the competitive market in which the routing decisions are made by individual drivers.
-In this case, the matrix $P$ containing the transition probabilities $P_{s,s'}$ is referred to as a \emph{routing strategy}.
-Each routing strategy produces an arrival rate vector $T$ (the dominant eigenvector of $P$) that contains the arrival rates $T_s$ of
-vehicles at states.
-
-\subsection{Algorithm}
-The idea for finding an optimal routing strategy is as follows.
-1) The routing strategy $P$ is initialized. 
-%Second, a routing strategy candidate $P'$ 
-%is produced by randomly perturbing $P$ and the objective function is evaluated again. 
-2) The objective function (for example, profit rate) is evaluated. 
-If the value of the objective function is improved, $P$ becomes the new optimal routing strategy, that is, $P^* \leftarrow P$.
-3) A new routing strategy $P$ is produced by randomly perturbing $P^*$.
-Steps 2 and 3 are repeated until convergence.
-% The outline of the procedure is presented in Algorithm \ref{monopalg}.
-% 
-% \begin{algorithm}[H]
-% \begin{algorithmic}
-% \STATE \emph{Input}: Set $I$ of nodes, direct ride time $t_{ij}$, cost $c_{ij}$, demand $Q_{ij}$,
-% ticket price $p_{r}$, cost of virtual mode $\bar{g}_{ij}$ 
-% for all pairs $i,j \in I$ of nodes, number of vehicles $N$, 
-% customers' monetary value for unit time $\beta$
-% and the uncertainty parameter $\theta$.
-% \STATE \emph{Output}: Optimal routing strategy $P$ and the corresponding arrival rates $T_s$ of 
-% vehicles at states $s \in \mathcal{S}$.
-% \STATE Initialize the routing strategy $P$; \hfill (Transition probabilities between states) 
-% \REPEAT
-% \STATE \textbf{Arrival rates:} Calculate the arrival rate $T_s$ for all states $s \in \mathcal{S}$;
-% \STATE \textbf{Customer demand:} Calculate the demand $Q_r^{\rm DRT}$ for all trips
-% $r \in \mathcal{R}$;
-% \STATE Evaluate the objective function;
-% \IF{the value of the objective function is improved}
-% \STATE $P^* \leftarrow P$; \hfill (Store the current solution)
-% \ENDIF
-% \STATE Set $P \leftarrow P^* * \epsilon$ and normalize $P$, 
-% where $\epsilon$ is a random matrix; 
-% \UNTIL{convergence}
-% \end{algorithmic}
-% \caption{Finding an optimal routing strategy.}
-% \label{monopalg}
-% \end{algorithm}
-
-\subsection{A three-node example}
-The three-node example described in \ref{compexample} was repeated with the maximum profit routing strategy and 
-the results were compared. Table \ref{verkkovertailu} shows the total profit rate, demand and social welfare for 
-the competitive market equilibrium and the profit-maximizing strategy.
-
-\begin{table}[ht]
-\begin{center}
-{\footnotesize
-\begin{tabular}{|c|p{2.4cm}p{2.4cm}p{2.4cm}|}
-\hline
-Market mechanism & Profit rate (EUR / minute) & Demand (Customers / minute) & Social welfare (EUR / minute)\\
-\hline
-Competitive equilibrium & 3.7 & 12.0 & 23.5 \\
-Maximum profit & 5.8 & 15.6 & 35.6 \\
-\hline 
-\end{tabular}
-\caption{Total profit rate, demand and social welfare for the competitive market equilibrium and maximum profit routing strategy.}
-\label{verkkovertailu}
-}
-\end{center}
-\end{table}
+In this case, the matrix $P$ containing the transition probabilities $P_{s,s'}$ between states is referred to as a \emph{routing strategy} 
+and the goal is to find a routing strategy that maximizes a given objective.
 
 The results suggest that centralized routing strategies can be used to improve the efficiency of demand-responsive transport:
 By maximizing profit by means of a centralized strategy, the total profit rate, demand and social welfare are increased from
