@@ -11,6 +11,7 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem*{definition}{Definition}
+%\newtheorem*{example}{Example}
 
 \newcommand{\E}[1]{\mathrm{E}[ #1 ]}
 \newcommand{\prob}[1]{\mathrm{P}( #1 )}
@@ -106,33 +107,37 @@ the vehicle routes are updated daily or in real time by incorporating informatio
 the demand for transportation. Usually, the customers of a DRT service are required to
 request and book their trips in advance by placing trip requests including information
 on the origin and destination of the trip as well as the desired pick-up or drop-off time.
-The vehicle operator uses this information to provide service in a way that the passenger
-needs are satisfied.
+The vehicle operator uses this information to provide service that satisfies the passenger needs.
 
 
-DRT systems are typically used to provide transportation in areas with low 
-transportation demand, where a regular bus service might not be as efficient. 
+DRT services are often fully or partially funded by local 
+authorities as providers of socially necessary transport. 
+They are typically used to provide transportation in areas with low 
+transportation demand where a regular bus service might not be as efficient. 
 Another common application of DRT arises in door-to-door transportation
 of elderly or handicapped people (paratransit).
+Most services provided by private companies for commercial reasons
+are related to transporting passengers between airports and urban areas.
 %Paratransit: DRT is available to the general public, whereas paratransit is available to pre-qualified user bases
 %share taxis: DRT is pre-booked in advance, whereas share taxis are operated on an ad-hoc basis
 %Taxicabs: DRT generally carries more people, and passengers may have less control over their journey on the principle of DRT being a shared[4] system as opposed to an exclusive vehicle for hire. Additionally, journeys may divert en-route for new bookings.[6]
-DRT services are often fully or partially funded by local 
-authorities, as providers of socially necessary transport. 
+
 %A small fraction 
-Most services that are provided by private companies for commercial reasons
-are related to transporting passengers between airports and urban areas.
+
 %Demand-responsive transport services are restricted to a certain operating zone.
 
 The implementation of demand-responsive transport is strongly dependent on the target group
-or the business concept of the service. In some services, the vehicle routes are built 
-freely according to customer requests, whereas 
-other services make use of so-called skeleton routes and schedules, that are varied as required. 
+or the business concept of the service. 
+%In some services, the vehicle routes are built 
+%freely according to customer requests, whereas 
+%other services make use of so-called skeleton routes and schedules, that are varied as required. 
 %As such, customers are given specific pick-up and drop-off points and time windows for pick-up and drop-off. 
 Some DRT systems make use of terminals, at one or both ends of a route, such as an urban center or airport.
 In these applications (one-to-many or many-to-one), customers may specify either the origin or destination of the 
-desired trip. Some systems provide door-to-door service within a certain service area and others provide 
-service between a set of specified stops. 
+desired trip. 
+In many-to-many services, vehicle routes are built freely according to customer requests.
+Such systems provide either a door-to-door service within a specific area or
+a transport service between a set of specified stops. 
 For example, a DRT service operating in Nurmij\"arvi (Finland) aims to improve the level and
 accessibility of services in a sparsely populated area and
 to reduce the costs of public transport. The service operates on
@@ -151,19 +156,19 @@ special users, the stop points are non-predefined (door-to-door service).
 %\subsection{Strengths}
 The popularity of demand-responsive transport has recently grown
 mainly due to the shortcomings of conventional
-bus and taxi services and new technical developments.
+bus and taxi services, and new technical developments.
 In addition, flexible public transport services provided by local authorities and bus operators in
-partnerships with employers, stores and leisure centres are thought to help to break down social exclusion \cite{detr}.
+partnerships with employers, stores, and leisure centres are thought to help to break down social exclusion \cite{detr}.
 %\subsection{Weaknesses}
 However, current DRT services have often been
 criticised because of their relatively high cost of provision,
-their lack of flexibility in route planning and their
+their lack of flexibility in route planning, and their
 inability to manage high demand \cite{mageean}. 
 
 At the present moment, a large number of demand-responsive transport services are 
 in operation. Most of such services operate within relatively small neighbourhoods and 
 during low-use daytime hours, when there is not enough demand for traditional 
-public transport. Thus, while the current services meet their current needs,
+public transport. Thus, while the current services meet their requirements,
 demand-responsive transport remains a relatively small business
 compared to traditional transportation services, not to speak of private cars.
 
@@ -182,9 +187,9 @@ with private car and taxicab traffic}.
 
 The popularity of the private car as a means of transport is partly based on
 a direct connection between the origin and destination of a trip and
-a short total travel time. In order to compete with private cars, public transport 
-should thus offer connections as direct and fast as possible, in which also
-the walking and waiting time are minimized. 
+a short total travel time. 
+%In order to compete with private cars, public transport 
+%should thus offer connections as direct and fast as possible. %, in which also the walking and waiting time are minimized. 
 Another major advantage of the private car is seen to be the availability
 of the car at any time, even without planning beforehand. The study of large scale 
 demand-responsive transport has therefore been directed towards highly dynamic services, which allow 
@@ -209,11 +214,11 @@ vehicle, possible \emph{transfer time} and walking time from
 drop-off point to destination. In order %for this door-to-door travel time
 to attract people with private cars, it is necessary that the waiting and 
 riding times are within acceptable bounds. In addition, it can be suggested that
-the service should be a near door-to-door service and the amount of
+the service should be as close to a door-to-door service as possible and the amount of
 transfers between vehicles should be minimal. 
 
 Intuitively, the idea of a large scale DRT system seems promising.
-With state-of-the-art engineering, there should be no insuperable technical hindrances
+With state-of-the-art engineering, there should be no severe technical obstacles
 in implementing such a service.
 
 %In the following sections, the strengths and weaknesses of a large scale DRT
@@ -260,7 +265,7 @@ due to the high efficiency of heavy rail.
 Moreover, traditional public transport in general has many significant advantages compared to
 demand-responsive transport: Taking into account the current experience from DRT services,
 a major issue can be seen to be the reliability of the service. So far, estimating ride times accurately
-in a service with no fixed routes has proven to be somewhat insuperable, not least because
+in a service with no fixed routes has proven to be a major challenge, not least because
 of the human drivers, who are required to follow routes that are constantly changing, and the
 differences in their driving styles. Another disadvantage of DRT arises when customers are 
 required to book their trips in advance and thus commit themselves to the service or payment
@@ -276,8 +281,8 @@ the car has many characteristics that are hard to compensate with public service
 Firstly, a person who has already invested in a car and thus settles with yearly taxes and
 maintenance costs, is often not willing to use other transportation services since it would
 cost more than the marginal cost of using the car.
-Secondly, the car is unbeatable in many cases when speaking of flexibility: 
-It is available at any time of the day, even without planning beforehand. 
+Secondly, the car is unbeatable in terms of flexibility: 
+It is available at any time of the day without planning beforehand. 
 Even if a demand-responsive transport service accepted immediate requests without
 a minimum pre-order time, the customer would still be committed to wait for the 
 designated vehicle to arrive. Thirdly, the private car is thought to be the most convenient 
@@ -285,7 +290,7 @@ way of carrying large amounts of luggage and goods. The car is also often used f
 storing equipment, which is not likely to be possible in a public service. 
 %Finally, the private car is still thought to give its owner a certain status.   
 
-Despite the above threats related to large scale 
+Despite the above issues related to large scale 
 demand-responsive transport, the concept should be studied carefully.
 Even if the private car has its advantages in the current state of the world,
 it may become practically useless in congested urban areas.
@@ -319,6 +324,7 @@ This work is focused on the discrete and combinatorial problems arising in the p
 public transport in general and demand-responsive transport in particular. The main goals are (i) to develop models for a priori studying 
 different forms of demand-responsive transport without having to implement them in practice and (ii) to
 develop algorithms for solving combinatorial problems related to public transport.
+%Uncertainty in public transport services is taken into account by stochastic modeling.
 
 Generally, public transport can be viewed as a market where demand affects supply and vice versa.
 For a given demand, we are interested in the optimal actions for the transport operator and for a given supply, 
@@ -331,8 +337,9 @@ More precisely, the three main research questions considered in this work are st
 In Chapter \ref{vehiclerouting}: \emph{Vehicle routing}, the demand for transportation is assumed to be known at the passenger level. 
 The research question is: Using a given fleet of vehicles, what is the best way to satisfy the demand? 
 
-In Chapter \ref{journeyplanning}: \emph{Journey planning}, the schedules and routes of transport services are assumed to be known during a specific time horizon.
-Using the scheduled transport services, what is the best way for a commuter to travel from a given origin to a given destination?
+In Chapter \ref{journeyplanning}: \emph{Journey planning}, the routes of transport services are assumed to be known during a specific time horizon,
+and the travel times are assumed to be stochastic.
+Taking into account the uncertainty in transport services, what is the best way for a commuter to travel from a given origin to a given destination?
 
 In Chapter \ref{economicmodels}: \emph{Economic models}, we define the demand model by assuming that customers seek trips with
 small travel times and the supply model by assuming that transport service providers aim to maximize profit. Given these models,
@@ -345,7 +352,7 @@ at which point does the demand for transportation meet the supply and how do reg
 %\end{table} 
 
 
-Both deterministic and stochastic problem formulations are considered. 
+The remainder of this work is organized as follows.
 Section \ref{singlevehicle} in Chapter \ref{vehiclerouting} presents deterministic algorithms for constructing a route for a 
 single vehicle serving a set of customers (\ref{jeadarp} and \ref{jrbrorl}). 
 An extension to the multi-vehicle case is discussed in Section \ref{multivehicle} (\ref{jhitsdarpts}). 
@@ -353,22 +360,23 @@ Chapter \ref{journeyplanning} studies a stochastic
 journey planning problem involving a single customer and a set of transport services (\ref{jtoits} and \ref{jdjuejor}). 
 Finally, Chapter \ref{economicmodels} introduces a 
 stochastic network model, with multiple vehicles and stochastic demand, for determining the economic equilibrium in a transport network (\ref{ccompejor}). 
-The contribution of the publications is summarized in the following table. %\ref{yhteenveto}. 
-\\
-\\
-{\footnotesize
+The classification of the publications is summarized in Table \ref{taulu}. 
+
+\begin{table}
 \begin{tabular}{p{4.3cm}|p{3.7cm}|p{3.7 cm}|}  
 \cline{2-3}  
  & Deterministic model & Stochastic model \\
 \hline
 \multicolumn{1}{|p{4cm}|}{Single vehicle / single customer} 
-& \ref{jeadarp}, \ref{jrbrorl} 
-&  \ref{jtoits}, \ref{jdjuejor} \\
+& Publications \cp{jeadarp}, \cp{jrbrorl} 
+& Publications \cp{jtoits}, \cp{jdjuejor} \\
  \hline        
  \multicolumn{1}{|p{4.3cm}|}{Multiple vehicles and customers} & \ref{jhitsdarpts} & \ref{ccompejor} \\
  \hline  
 \end{tabular} 
-}
+\caption{Classification of publications.}
+\label{taulu}
+\end{table}
 
 
 
@@ -416,7 +424,7 @@ A vast majority of theoretical studies related to demand-responsive transport ar
 optimization problems involving the construction of vehicle routes with respect to
 a set of customers, whose pick-up and drop-off points are known a priori \cite{toth03}.
 This problem is often referred to as the \emph{dial-a-ride problem}.
-A demand-responsive transport service operating in real time induces the following specific challenges: 
+A demand-responsive transport service operating in real time induces the following major challenge: 
 In order to be able to compete with private cars, service
 should be available within a short period of time from the trip request.
 This calls for routing algorithms capable of adapting to high-demand situations, since the modifications 
@@ -425,11 +433,13 @@ In order to ensure a sufficient level of service, the customers' waiting and rid
 should be relatively limited. Thus, the vehicle dispatching algorithms should be designed
 in a way that the constrained nature of the problem is taken into account.
 
-In Section \ref{singlevehicle}, we study the \emph{single-vehicle dial-a-ride problem} which involves the construction
-of a single vehicle route serving a set of customers. This problem is motivated by the
-fact that solutions to the single-vehicle problem can be used as subroutines in environments with 
-multiple vehicles \cite{psaraftis01,psaraftis02}. The extension from the single-vehicle problem to the multi-vehicle
-case is dicussed in Section \ref{multivehicle}.
+In Section \ref{multivehicle}, we study the \emph{multi-vehicle dial-a-ride problem} which involves the construction
+of a set of vehicle routes serving a set of customers. The multi-vehicle problem can be decomposed as a set 
+of \emph{single-vehicle dial-a-ride problems} (Section \ref{singlevehicle}). That is, solutions to the single-vehicle problem can be 
+used as subroutines in environments with multiple vehicles \cite{psaraftis01,psaraftis02}. 
+
+%The extension from the single-vehicle problem to the multi-vehicle
+%case is dicussed in Section \ref{multivehicle}.
 
 \section{Single-vehicle dial-a-ride problem}
 \label{singlevehicle}
@@ -470,7 +480,7 @@ but only the route duration is minimized.
 
 In \ref{jeadarp}, both aspects of the problem (general objective function and time windows)
 are considered. The main contribution is a solution method designed in a way that (i) it is capable of
-handling practically any objective function suitable for dynamic routing and (ii) the computational
+handling practically any objective function suitable for dynamic routing, and (ii) the computational
 effort of the algorithm can be controlled smoothly: If the problem size is reasonable, 
 the algorithm produces optimal solutions efficiently and as the problem size increases,
 the search space may be narrowed down in order to achieve locally optimal solutions with a small computational effort.
@@ -557,7 +567,7 @@ that several cost functions, that are thought to be suitable for dynamic setting
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.6 \columnwidth]{timeline01}
+\includegraphics[width=0.8 \columnwidth]{timeline01}
 \caption{Time pick-up and drop-off time windows. The pick-up point of
 customer $i$ is denoted by $i^{+}$ and the drop-off point is denoted by $i^{-}$.
 The customer should be picked up at $i^{+}$ within the time window $[E_{i^+},L_{i^+}]$
@@ -642,35 +652,40 @@ In addition, exact optimization can be seen to be needless at run-time if routes
 Despite these facts, exact algorithms are useful in the sense that the 
 performance of different heuristics may be compared to the optimal solution. 
 
-The main idea in the algorithm presented in \citepub{jeadarp} is that customers are added to 
+The main idea in the adaptive algorithm presented in \citepub{jeadarp} is that customers are added to 
 the vehicle route one by one by using an \emph{exhaustive insertion} method,
-which leads to a globally optimal solution, that is a vehicle route 
+which leads to a globally optimal solution, that is, a vehicle route 
 which is feasible with respect to all customers and minimizes a given cost function. 
 
 Many studies related to the dial-a-ride problem, see for example \cite{jaw,madsen,diana,wong},
 make use of what is called the insertion procedure, in the classical version of which   
 the pick-up and delivery node of a new customer are inserted into the 
 \emph{current optimal sequence} of pick-up and delivery nodes of existing customers.
-In these references, several improvements to the insertion algorithm 
-have been suggested. However, the main idea of the classical insertion algorithm a priori
-excludes the possibility that the appearance of a new customer may render
-the optimal sequencing of already existing customers no longer optimal.
-While the basic insertion algorithm can be seen to
-produce relatively good results for unconstrained problems, 
-the performance compared to an exact algorithm is decreased as the
-problem becomes more constrained.
+%In these references, several improvements to the insertion algorithm 
+%have been suggested. However, 
+%The main idea of 
+That is, the classical insertion algorithm does not take into account the fact that %possibility that the appearance 
+the insertion of a new customer may render
+the optimal sequencing of existing customers no longer optimal.
+%While the basic insertion algorithm can be seen to
+%produce relatively good results for unconstrained problems, 
+%the performance decreases as the constraints are tightened.
 
-The main idea is to construct the optimal route iteratively by implementing 
+The main idea in the \emph{adaptive insertion algorithm} is to construct the optimal route iteratively by implementing 
 an insertion algorithm for each customer, one by one \emph{for all feasible sequences 
 of pick-up and delivery nodes of existing customers}.
 Namely, the procedure involves two steps for each customer:
-\begin{enumerate}
-	\item 
-	Perform insertion of the new customer to all feasible service sequences with respect to
+%\begin{enumerate}
+%	\item 
+\\
+\\
+\noindent 1.	Perform insertion of the new customer to all feasible service sequences with respect to
 	existing customers.
-	\item
-	Determine the set of feasible service sequences with respect to the new customer and existing customers.
-\end{enumerate}
+%	\item
+
+\noindent 2.	Determine the set of feasible service sequences with respect to the new customer and existing customers.
+%\end{enumerate}
+\\
 
 It can be readily shown that the insertion of a new customer to all feasible service sequences with respect to 
 existing customers 
@@ -685,6 +700,8 @@ capable of handling any types of time windows.
 The idea of the advanced insertion method is 
 clarified by the following example, where no
 capacity or time constraints are taken into account. 
+
+\noindent \textbf{Example 1.}
 Let $i^{+}$ denote the \emph{pick-up node} of customer $i$ and let $i^{-}$ denote 
 the \emph{delivery node} of customer $i$.
 A \emph{service sequence} is defined as an ordered list consisting of pick-up and delivery nodes.
@@ -697,6 +714,14 @@ the only possible service sequence at this point is $( 1^{+},  1^{-})$. Thus, th
 set of potential service sequences with respect to customer $1$ consists of this single service sequence. 
 By insertion of customer $2$ into the service sequence $( 1^{+}, 1^{-})$ we get the six 
 service sequences presented in Table \ref{ykskakstaulukko01}.
+
+By inserting the pick-up and delivery node of customer $3$ into all of these service sequences we get a total
+of $6(5+4+3+2+1) = 90$ new potential service sequences. However, if the time and capacity
+constraints are taken into account, not all service sequences described above are necessarily feasible.
+\\ \
+\\ \
+\\
+
 \begin{table}[ht] 
 \caption{Potential service sequences with respect to customers 1 and 2. 
 No capacity or time constraints are taken into account. 
@@ -716,11 +741,6 @@ F: & $ 2^{+} $ & $  2^{-} $ & $  1^{+} $ & $  1^{-} $ \\ %[1ex]
 \end{tabular} 
 \label{ykskakstaulukko01} 
 \end{table} 
-
-
-By inserting the pick-up and delivery node of customer $3$ into all of these service sequences we get a total
-of $6(5+4+3+2+1) = 90$ new potential service sequences. However, if the time and capacity
-constraints are taken into account, not all service sequences described above are necessarily feasible.
 
 % For example, if after the insertion of customer $2$ it can be seen that only the
 % service sequences A and B in table \ref{ykskakstaulukko01}, namely 
@@ -2875,6 +2895,10 @@ demand for and performance of demand-responsive transport.
 \addcontribution{The author was the main author of this article.}
 \addpublicationpdf{articles/toits2.pdf}
 
+\addpublication{Lauri H\"ame, Harri Hakula}{Dynamic journeying under uncertainty}{European Journal of Operational Research}{numero, p. xx-xx}{October}{2012}{Elsevier}{jdjuejor}
+\addcontribution{The author was the main author of this article.}
+\addpublicationpdf{articles/djuejor3.pdf}
+
 %% The second publication (conference article, note the optional parameter)
 % Set the publication information.
 %\addpublication[conference]{Esa Hyyti\"a, Lauri H\"ame, Aleksi Penttinen, Reijo Sulonen}{Simulation of a Large Scale Dynamic Pickup and Delivery Problem}{SIMUTools}{Malaga, Spain. 10 pages}{March}{2010}{ICST}{csimutools}
@@ -2914,9 +2938,7 @@ The article is under review for publication in Transportation Research Part B.}
 %% The fourth publication (yet another journal paper, submitted for publication, note the optional parameter)
 %% Note that you are allowed to use this option only when submitting the dissertation for pre-examination!
 % Set the publication information, detailed information is not printed
-\addpublication[submitted]{Lauri H\"ame, Harri Hakula}{Dynamic journeying under uncertainty}{European Journal of Operational Research}{}{30 pages, 20.12.2011}{}{No copyright holder at this moment}{jdjuejor}
-\addcontribution{The author was the main author of this article.}
-\addpublicationpdf{articles/djuejor3.pdf}
+
 
 
 \addpublication[submitted]{Lauri H\"ame, Harri Hakula}{A Maximum Cluster Algorithm for Checking the
