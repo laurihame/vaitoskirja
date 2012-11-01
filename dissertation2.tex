@@ -433,10 +433,15 @@ In order to ensure a sufficient level of service, the customers' waiting and rid
 should be relatively limited. Thus, the vehicle dispatching algorithms should be designed
 in a way that the constrained nature of the problem is taken into account.
 
+
+
 In Section \ref{multivehicle}, we study the \emph{multi-vehicle dial-a-ride problem} which involves the construction
 of a set of vehicle routes serving a set of customers. The multi-vehicle problem can be decomposed as a set 
 of \emph{single-vehicle dial-a-ride problems} (Section \ref{singlevehicle}). That is, solutions to the single-vehicle problem can be 
 used as subroutines in environments with multiple vehicles \cite{psaraftis01,psaraftis02}. 
+
+
+
 
 %The extension from the single-vehicle problem to the multi-vehicle
 %case is dicussed in Section \ref{multivehicle}.
@@ -485,9 +490,21 @@ effort of the algorithm can be controlled smoothly: If the problem size is reaso
 the algorithm produces optimal solutions efficiently and as the problem size increases,
 the search space may be narrowed down in order to achieve locally optimal solutions with a small computational effort.
 
+
 Publication \cp{jrbrorl} discusses a single-vehicle algorithm based on hyperlink-induced topic search \cite{kleinberg} 
-for maximizing the number of customers in a single vehicle route. The method is seen to
-be useful in determining the feasibility of multi-vehicle instances. 
+for maximizing the number of customers in a single vehicle route. The algorithm is designed to find feasible solutions to highly constrained
+instances without defining a specific objective function. This approach is motivated by the fact that
+in such instances, the number of feasible solutions becomes so limited that often
+any feasible solution will be close to the optimal solution \cite{psaraftis02}.
+The method is seen to
+be useful in determining the feasibility of multi-vehicle instances (Section \ref{multivehicle}). 
+
+%In the context of passenger transportation, a good level of service means that the problem is highly constrained \cite{jokinen-fists-2011}. 
+
+%Thus, in such cases, solving the constraint satisfaction problem provides, 
+%if not the optimal solution, at least a good initial solution. 
+
+
 
 % \subsection{Literature review}
 % In the following paragraphs, a short review on the studies related to the single vehicle dial-a-ride problem is
@@ -568,7 +585,7 @@ that several cost functions, that are thought to be suitable for dynamic setting
 \begin{figure}[ht]
 \begin{center}
 \includegraphics[width=0.8 \columnwidth]{timeline01}
-\caption{Time pick-up and drop-off time windows. The pick-up point of
+\caption{Pick-up and drop-off time windows. The pick-up point of
 customer $i$ is denoted by $i^{+}$ and the drop-off point is denoted by $i^{-}$.
 The customer should be picked up at $i^{+}$ within the time window $[E_{i^+},L_{i^+}]$
 and the customer should be dropped off at $i^{-}$ within the time window $[E_{i^{-}},L_{i^{-}}]$.
@@ -701,7 +718,7 @@ The idea of the advanced insertion method is
 clarified by the following example, where no
 capacity or time constraints are taken into account. 
 
-\noindent \textbf{Example 1.}
+\noindent \textbf{Example.}
 Let $i^{+}$ denote the \emph{pick-up node} of customer $i$ and let $i^{-}$ denote 
 the \emph{delivery node} of customer $i$.
 A \emph{service sequence} is defined as an ordered list consisting of pick-up and delivery nodes.
@@ -779,7 +796,10 @@ minimal cost $C(s)$, where $C(\cdot)$ denotes the cost function, for example, ro
 % Thus, in the worst case, the number of feasible solutions is of order
 % $\mathcal{O}(\sqrt{N} (N^2/2)^N)$.
 In the worst case, the number of feasible solutions is of order $\mathcal{O}(\sqrt{N} (N^2/2)^N)$.
-However, the 
+However, an average case study of the exact algorithm discussed in Section \ref{svexperience} suggests 
+that as time limits reduce the number of feasible solutions, instances with up to 20 customers 
+can be solved up to optimality with reasonable computational effort.
+In addition, the 
 algorithm has a special property of being extendable to an adjustable heuristic,
 as described in the following section.
 
@@ -793,7 +813,7 @@ for each customer $i$. More precisely, if after inserting
 customer $i$, the number of feasible service sequences with respect to customers $1,\ldots, i$
 is larger than $L$, the set of feasible service sequences $S_i$ with respect to 
 customers $1,\ldots, i$ is narrowed by including only $L$  
-service sequences, that seem to allow the insertion of remaining customers.
+service sequences that seem to allow the insertion of remaining customers.
 After the last customer has been inserted, the feasible service sequences are evaluated
 by means of the objective function.
 
@@ -801,7 +821,7 @@ This modification leads to a heuristic algorithm, in which the computational
 effort can be controlled by the parameter $L$, referred to as the \emph{degree} of
 the heuristic. The resulting algorithm is
 somewhat sophisticated in a way that it produces globally optimal solutions for
-small sets of customers and when the number of customers is increased, the
+small sets of customers. When the number of customers is increased, the
 algorithm still produces locally optimal solutions with 
 reasonable computational effort. In the special case where $L=1$, the
 algorithm reduces to the classical insertion algorithm. 
@@ -826,7 +846,7 @@ find a feasible solution when one exists.
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{flexibility03.pdf}
+\includegraphics[width=0.7\textwidth]{flexibility03.pdf}
 \caption{Route flexibility. A vehicle is located at $A$ at $t = 0$,
 and two customers are due to be picked up within the presented time windows at $i$ and $j$.
 The dashed lines represent two possible routes for the vehicle.
@@ -921,6 +941,8 @@ each web page \cite{langville}.
 Here the DARP is examined as a \emph{constraint satisfaction problem}, in which the goal
 is to find a feasible vehicle route that serves all customers, or to maximize the number of served customers.
 
+
+
 In the context of the dial-a-ride problem, 
 the links between nodes are defined as feasible transitions with respect to the %time, capacity and precedence 
 constraints of the problem: If node $j$ can be visited after $i$, a link from $i$ to $j$ 
@@ -962,7 +984,7 @@ where $L$ is the adjacency matrix of the graph.
 \label{modifiedhits}
 For constrained routing problems, a modified version of the HITS algorithm is used, in which only the hub scores
 are considered. More precisely, the thesis is that \emph{good hubs point to good hubs}. 
-This formulation is motivated by Theorem \ref{polut}, which states that for a specific class of graphs,
+This formulation is motivated by Theorem \ref{polut} below, which states that for a specific class of graphs,
 the hub score of a node $i$ corresponds to the number of self-avoiding paths
 from $i$ to a given destination node.
 When attempting to construct a path that visits all nodes, or to maximize the number of visited nodes, 
@@ -1053,7 +1075,7 @@ transitions is defined as a function of the state of the vehicle (see Figure \re
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.5\columnwidth]{transitions01.pdf}
+\includegraphics[width=0.7\columnwidth]{transitions01.pdf}
 \caption{Feasible transitions. The figure shows the 
 locations and time windows of two nodes $i$ and $j$.
 If the vehicle left from $a$ at the instant $t_a$, visited node $i$
@@ -1175,21 +1197,20 @@ on a logarithmic scale.
 
 \begin{figure}
 \centering
-\parbox{0.45\textwidth}{
-\includegraphics[width=0.47\textwidth]{nvertailu01.pdf}
-\caption{\tiny Experiment 1. The complexity of the exact algorithm with respect to the number of customers on a logarithmic scale. 
+\includegraphics[width=0.7\textwidth]{nvertailu01.pdf}
+\caption{Experiment 1. The complexity of the exact algorithm with respect to the number of customers on a logarithmic scale. 
 The three curves represent, as a function of the number of customers, the average number of feasible sequences 
 for $R=2,2.5,3$ and $\mu=1800$s. }
 \label{nvertailu01}
-}
-\qquad
-\begin{minipage}{0.45\textwidth}
-\includegraphics[width=1.0\textwidth]{ttivertailu01.pdf}
-\caption{\tiny  Experiment 2. The complexity of the exact algorithm with respect to travel time ratio on a logarithmic scale. 
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{ttivertailu01.pdf}
+\caption{Experiment 2. The complexity of the exact algorithm with respect to travel time ratio on a logarithmic scale. 
 The three curves represent, as a function of the travel time ratio, the average number of feasible sequences
 for $N=5,10,20$ and $\mu = 1800$s.}
 \label{ttivertailu01}
-\end{minipage}
 \end{figure}
 
 
@@ -1253,27 +1274,16 @@ of problem instances, for which at least one feasible solution was found.
 
 \begin{figure}
 \centering
-\parbox{0.45\textwidth}{
-\includegraphics[width=0.45\textwidth]{intvertailu01.pdf}
-\caption{\tiny Experiment 3. The complexity of the exact algorithm with respect to the average time 
+\includegraphics[width=0.7\textwidth]{intvertailu01.pdf}
+\caption{Experiment 3. The complexity of the exact algorithm with respect to the average time 
 interval between customers. The solid lines represent the average number of feasible sequences in
 feasible problem instances and all problem instances, on a logarithmic scale for $N=10$ and $R=3$.
 The dashed line corresponds to the fraction
 of problem instances, for which at least one feasible solution was found.}
 \label{intvertailu01}
-}
-\qquad
-\begin{minipage}{0.45\textwidth}
-\includegraphics[width=1.0\textwidth]{objvertailu01.pdf}
-\caption{\tiny Experiment 4. The performance of three different heuristic objective functions as functions of degree $L$.
-The curves represent the fractions of instances for which a feasible solution was found by the objective functions 
-(compared to the exact algorithm), 
-for $N=20$, $R=3$ and $\mu=1800$s. The total slack time objective function
-outperforms the other two in all studied cases.
-}
-\label{objvertailu01}
-\end{minipage}
 \end{figure}
+
+
 
 The figure indicates that the complexity of feasible problem instances decreases exponentially 
 with respect to the average time interval $\mu$. On the other hand, the probability of finding
@@ -1289,6 +1299,8 @@ finding a feasible solution and the number of feasible sequences in feasible cas
 %and drop-off locations are completely random. However, the above results give us an insight on
 %how the complexity of the single vehicle subroutine behaves with respect to the average time interval between
 %the earliest pick-up times of customers assigned to a single vehicle.
+
+
 
 
 % \begin{figure}[ht]
@@ -1318,6 +1330,18 @@ found by the heuristic (compared to the exact algorithm).
 %The number of customers was set to $N=20$, the travel time ratio
 %was $3$ and the average time interval $\mu = 1800$s was used.
 
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{objvertailu01.pdf}
+\caption{Experiment 4. The performance of three different heuristic objective functions as functions of degree $L$.
+The curves represent the fractions of instances for which a feasible solution was found by the objective functions 
+(compared to the exact algorithm), 
+for $N=20$, $R=3$ and $\mu=1800$s. The total slack time objective function
+outperforms the other two in all studied cases.
+}
+\label{objvertailu01}
+\end{figure}
+
 
 Referring to the figure, it can be seen that the total time slack cost function is capable of finding
 a feasible solution to randomized problems most often, while the performance of the route duration cost
@@ -1336,7 +1360,7 @@ Reference \cite{berbegliafeas} examines the multi-vehicle dial-a-ride problem as
 is to find a set of $m$ feasible vehicle routes that serve all customers, where $m$ is the 
 number of vehicles, or to prove that such a set of routes does not exist.
 In this reference, it is noted that 
-an algorithm for checking the feasibility of a DARP instance has two main applications:  
+an algorithm for checking the feasibility of a multi-vehicle DARP instance has two main applications:  
 1) Determining the feasibility can be the first phase in an 
 optimization algorithm in a \emph{static} setting, where all trip requests are known, for example, one day in advance. 
 2) In \emph{dynamic} services, a constraint satisfaction algorithm can be used 
@@ -1347,13 +1371,6 @@ for deciding whether to accept or reject incoming user requests.
 % \emph{meals} from restaurants to specified delivery points within guaranteed time limits.
 % Similarly as in the dynamic DARP, the food delivery service provider needs to decide quickly whether to take an incoming order or not,
 % if there is a guaranteed maximum delivery time, for example, one hour.
-
-In the context of passenger transportation, a good level of service means that the problem is highly constrained \cite{jokinen-fists-2011}. 
-In such problems, the number of feasible solutions becomes so limited that often
-any feasible solution will be relatively close to the optimal solution with respect to the
-objective function \cite{psaraftis02}.
-Thus, in highly constrained cases, solving the constraint satisfaction problem provides, 
-if not the optimal solution, at least a good initial solution. 
 
 % The main result of \ref{jhitsdarpts} is an exact algorithm for the constraint satisfaction dial-a-ride problem
 % introduced in \cite{berbegliafeas}. In contrast to most works related to vehicle routing and dial-a-ride problems,
@@ -1376,10 +1393,10 @@ one by one, each maximizing the number of served customers in the set of remaini
 The customers are denoted by numbers $1,\ldots,n$ and the vehicles are denoted by numbers $1,\ldots,m$.
 
 \begin{figure}[ht]
-\includegraphics[width=0.45\textwidth]{greedy01b.pdf} \ \ \ \ \  \ \ \ \ \  
-\includegraphics[width=0.45\textwidth]{greedy05b.pdf}  \\ \ \\  
-\includegraphics[width=0.45\textwidth]{greedy06b.pdf} \ \ \ \ \  \ \ \ \ \   
-\includegraphics[width=0.45\textwidth]{greedy07b.pdf}  \\ \ \\   
+\includegraphics[width=0.5\textwidth]{greedy01b.pdf} \ 
+\includegraphics[width=0.5\textwidth]{greedy05b.pdf}  \\ \ \\  
+\includegraphics[width=0.5\textwidth]{greedy06b.pdf} \   
+\includegraphics[width=0.5\textwidth]{greedy07b.pdf}  \\ \ \\   
 \caption{A one-dimensional example of the approach to the multi-vehicle problem involving five customers 
 and three vehicles. The first route is constructed by maximizing 
 the number of customers that can be served by a single vehicle (Figure b). 
@@ -1459,8 +1476,8 @@ Since the
 number of possible partitions of $n$ customers into $m$ sets is equal to the Stirling number of the second kind, that is,
 $|\mathcal{P}| = S_2(n,m) = \frac {1}{m!} \sum_{i=0}^{m} (-1)^i {m \choose i} (m-i)^n$,
 going through all possible partitions is computationally taxing. However, some instances 
-are rendered infeasible by studying the feasibility of routes involving two customers: 
-If there exist no feasible routes involving customers $\{i,j\}$, an arc between $i$ and $j$ is formed 
+are rendered infeasible by studying routes consisting two customers: 
+If all possible routes consisting of customers $\{i,j\}$ are infeasible, an arc between $i$ and $j$ is formed 
 (customers $i$ and $j$ can not be assigned to the same vehicle). Then, we find the \emph{maximum clique} $C$
 within the set of customers (the largest set for which there is
 an arc between all $i,j \in C$). If the size $|C|$ of the maximum clique
@@ -1651,7 +1668,7 @@ a constant headway for each transit line is assumed \cite{wong1998}
 and 2) the schedule-based model, which assumes a
 fixed route and timetable for each transit line.
 
-\ref{jtoits} extends approach 2) into a dynamic model taking into account the 
+\ref{jdjuejor} extends approach 2) into a dynamic model taking into account the 
 uncertainty of transport services (buses, trams, trains, ferries, \ldots). 
 In contrast to existing itinerary planning algorithms designed for scheduled public transport networks, 
 where the path is a priori optimized with respect to an objective, for example,
@@ -1723,7 +1740,7 @@ as \emph{Markov decision processes} \cite{psaraftis93,polychronopoulos}, in whic
 \ref{jdjuejor} presents a conditional Markov model, in which the path history is included in each state by
 defining states as sequences of legs in the transport network.
 That is, the current state is determined by the path taken so far.
-This model is approximated in \ref{jtoits}, where the current state is defined as the current leg.
+This model is further approximated in \ref{jtoits}, where the current state is defined as the current leg.
 
 % The demand-responsive transport service currently being planned to operate in Helsinki
 % is designed to operate on a demand-responsive basis, that is, 
@@ -2106,16 +2123,21 @@ In the following, we present an algorithm for calculating the values for all sta
 \label{alg01}
 The values $V(s)$ of states can be determined
 by means of backward induction. The recursive function Rec($s$) executes the following procedures at each recursion step:
-\begin{enumerate}
- \item 
-Check if the value of the current state $s$ has been determined. If yes, return the value.
-\item
-For all successors $s'$ of the current state: Calculate the value of $s'$ by calling Rec($s'$).
-\item
-Determine the optimal action for the current state $s$ by ranking the successors.
-\item
-Calculate and return the value of the current state.
-\end{enumerate}
+\\
+
+\noindent
+1. Check if the value of the current state $s$ has been determined. If yes, return the value.
+
+\noindent
+2. For all successors $s'$ of the current state: Calculate the value of $s'$ by calling Rec($s'$).
+
+\noindent
+3. Determine the optimal action for the current state $s$ by ranking the successors.
+
+\noindent
+4. Calculate and return the value of the current state.
+\\
+
 By executing Rec($1$), the program recursively calculates the values and optimal actions for 
 all states $s$ that are reachable from the origin state $1$.
 Initially, we only know the value of the destination state, that is, $V(n)=0$.
@@ -2338,7 +2360,7 @@ decomposed as a set of legs.
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.5\columnwidth]{verkot01a}
+\includegraphics[width=0.7\columnwidth]{verkot01a}
 \end{center}
 \caption{The tram network of Helsinki consisting of ten tram lines and 154 stops. 
 }
@@ -2573,9 +2595,9 @@ For any finite transportation network, there exists a network equilibrium.
 \end{theorem}
 
 
-\subsection{Algorithm}
-\label{ratkaisu01}
-The idea for finding a steady-state equilibrium is to solve 
+%\subsection{Algorithm}
+%\label{ratkaisu01}
+The idea for finding a network equilibrium is to solve 
 both the customer choice subproblem and the vehicle movement subproblem iteratively 
 until a convergence criterion is met, similarly as in \citep{yang2010}. 
 % The outline of the procedure is presented in Algorithm \ref{compalg}.
@@ -2609,7 +2631,7 @@ in which the network consists of three nodes denoted by $1,2,3$, as shown in Fig
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.4\columnwidth]{3node01}
+\includegraphics[width=0.6\columnwidth]{3node01}
 \caption{A three node example network. The distances between the nodes 
 (in kilometers) are equal to the direct ride times $t_{ij}$.}
 \label{3node01}
@@ -2773,7 +2795,7 @@ in a transport network.
 
 First,
 we show how the demand for transportation can be satisfied by constructing routes for a fleet of vehicles,
-assuming that the origins, destinations and time limits of customers' trips are known.
+assuming that the origins, destinations, and time limits of customers' trips are known.
 Then, by considering a stochastic journey planning problem in a public transport network we determine
 the optimal actions of commuters, assuming that the vehicle routes are fixed during a specific time horizon.
 Finally, we present a stochastic network model
@@ -2789,7 +2811,7 @@ The new methods for solving vehicle routing and journey planning problems can be
 used to improve the performance of different types of intelligent transportation systems and
 to provide real-time travel information via mobile devices and electronic displays.
 In addition to public transport, potential applications of the proposed algorithms
-include freight transportation, courier and food delivery services, military logistics and air traffic.
+include freight transportation, courier and food delivery services, military logistics, and air traffic.
 
 %This work is focused on combinatorial problems arising from the planning of demand-responsive transport.
 %Particularly, the single vehicle dial-a-ride problem and related problems are studied.
@@ -2854,7 +2876,7 @@ include freight transportation, courier and food delivery services, military log
 % the amount of work can be reduced considerably. That is, the
 % transportation cost per trip can be reduced significantly.
 
-As a final conclusion, it can be stated that there are many theoretical results
+Finally, it can be stated that there are many theoretical results
 that support the technical viability of demand-responsive transport.
 However, as suggested in \cite{cortes}, one of the key issues in a large scale demand 
 responsive service ever becoming a reality, is the
@@ -2890,14 +2912,15 @@ demand for and performance of demand-responsive transport.
 % Add the publication pdf file, the filename is the parameter (must be the last).
 \addpublicationpdf{articles/eadarpejor.pdf}
 
+\addpublication{Lauri H\"ame, Harri Hakula}{Dynamic journeying under uncertainty}{European Journal of Operational Research}{numero, p. xx-xx}{October}{2012}{Elsevier}{jdjuejor}
+\addcontribution{The author was the main author of this article.}
+\addpublicationpdf{articles/djuejor3.pdf}
 
 \addpublication{Lauri H\"ame, Harri Hakula}{Dynamic journeying in scheduled networks}{IEEE Transactions on Intelligent Transportation Systems}{numero, p. xx–xx}{September}{2012}{IEEE}{jtoits}
 \addcontribution{The author was the main author of this article.}
 \addpublicationpdf{articles/toits2.pdf}
 
-\addpublication{Lauri H\"ame, Harri Hakula}{Dynamic journeying under uncertainty}{European Journal of Operational Research}{numero, p. xx-xx}{October}{2012}{Elsevier}{jdjuejor}
-\addcontribution{The author was the main author of this article.}
-\addpublicationpdf{articles/djuejor3.pdf}
+
 
 %% The second publication (conference article, note the optional parameter)
 % Set the publication information.
