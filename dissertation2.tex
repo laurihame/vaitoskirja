@@ -2834,19 +2834,40 @@ to provide real-time travel information via mobile devices and electronic displa
 In addition to public transport, potential applications of the proposed algorithms
 include freight transportation, courier and food delivery services, military logistics, and air traffic.
 
-The main contributions to scientific methodology include the following.
+The main contributions to scientific methodology are summarized a follows.
 
 The \emph{adaptive insertion algorithm} introduced in \ref{jeadarp} generalizes the insertion algorithm 
 which is used to solve routing problems. The computational complexity of the adaptive algorithm can be controlled
 smoothly, closing the gap between a greedy heuristic and complete enumeration.
 
-\ref{jrbrorl} presents the \emph{routing by ranking} method, which is an example of how recommendation-type 
-link analysis can be used to solve combinatorial path-finding problems. The idea is based on HITS, an eigenvector algorithm
+\ref{jrbrorl} presents the \emph{routing by ranking} method, which connects recommendation-type 
+link analysis to combinatorial path-finding problems. The idea is based on HITS, an eigenvector algorithm
 originally developed for web information retrieval.
 
-The \emph{maximum cluster algorithm} 
+The \emph{maximum cluster algorithm} (\ref{jhitsdarpts}) is used to solve constrained routing problems with multiple vehicles by 
+finding maximal sets of customers that can be assigned to a single vehicle. The article also 
+introduces the \emph{clique detection method}, which finds a maximal set of customers, such that
+no pair of customers in the set can be served by a single vehicle due to the constraints of the problem. 
+This method is used to narrow down the search space and to detect infeasible problem instances.
 
+\ref{jtoits} and \ref{jdjuejor} model the journey planning problem in a scheduled transport network as 
+a Markov Decision Process (MDP). The \emph{actions} of the MDP are defined as \emph{preference orders} of possible 
+alternatives in each part of the journey. 
+The articles also show how the calculation of an optimal policy can be accelerated by assuming history independence and 
+how the reliability of a journey is maximized by considering the \emph{expected number of successful paths} 
+to the destination.
 
+\ref{ccompejor} introduces a stochastic network model for determining the 
+economic equilibrium for demand-responsive transport. The existence of such an equilibrium is proved by using Brouwer's fixed point theorem. 
+The model is used for optimizing fleet size and pricing as well as studying the effects of different regulation policies.
+
+The following directions for future work are suggested:
+%In its current form, routing by ranking seems to be an efficient method for finding feasible solutions to constrained routing problems with multiple vehicles. 
+One could attempt to extend the routing by ranking algorithm to handle different types of cost functions. For example, the reliability 
+of solutions could be optimized by defining travel times as random variables. The dynamic journey planning models could be enhanced 
+by partitioning public transport stops into clusters, which would reduce the complexity of dynamic journey planning 
+in large transport networks. Finally, the economic equilibrium model could be used to study the feasibility of demand-responsive transport
+services in different types of real-life scenarios.
 
 
 
@@ -2913,8 +2934,9 @@ The \emph{maximum cluster algorithm}
 % the amount of work can be reduced considerably. That is, the
 % transportation cost per trip can be reduced significantly.
 
-As a conclusion, it can be stated that there are many theoretical results
-that support the technical viability of demand-responsive transport.
+As a conclusion, it can be stated that there are many computational results
+that support the technical viability of demand-responsive transport. State-of-the-art 
+algortihms are capable of efficiently solving complex routing problems with multiple vehicles (see for example Table 2.2. in Chapter 2).
 However, as suggested in \cite{cortes}, one of the key issues in a large scale demand 
 responsive service ever becoming a reality, is the
 institutional inertia against change in transit paradigms. No models exist that are
