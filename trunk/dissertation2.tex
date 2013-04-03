@@ -2151,7 +2151,7 @@ The algorithm then proceeds backwards until the value $V(1)$ of the origin state
 Since the algorithm involves sorting, the complexity is bounded above by $\mathcal{O}(n m \log m + nm) = \mathcal{O}(n m (1+\log m))$,
 where $m = \max_{s \in \{1,\ldots,n-1\}}|S_s|$ is the size of the largest successor set. Note that although the total number of 
 possible actions for a successor set $S_s$ equals $|S_s|!$, the complexity of the algorithm is smaller due to the fact that 
-only the optimal action is calculated by the algorithm. 
+only an optimal action is calculated by the algorithm. 
 
 % \begin{figure}
 % \centering{
@@ -2343,10 +2343,10 @@ probability density function
 \label{gammakaava}
 f(x)=\frac{(x-\delta)^{\alpha-1} e^{-(x-\delta)/\beta}}{\beta^{\alpha} \Gamma (\alpha)} \ \ \ \mbox{ for } x > \delta \geq 0.
 \end{align}
-The experiments in this work are restricted to calculating the the expected number of feasible paths and 
+The numerical examples are restricted to calculating the the expected number of feasible paths and 
 the probability of reaching the destination during a pre-defined time horizon. However, a general objective function
 defined as a combination of expected waiting time, number of transfers, expected ride time, expected walking time and reliability
-can be incorporated with minimal effort.
+is incorporated with minimal effort (see Equation (6) in \ref{jtoits}).
 
 
 \subsection{Description of instances}
@@ -2513,7 +2513,7 @@ The expected demand for a trip $r \in \mathcal{R}_{ij}$ is given by
 %\label{matkakysynta}
 $Q_{r}^{\rm DRT} = Q_{ij} P_{r}^{\rm DRT},$
 %\end{align}
-where $Q_{ij}$ denotes the total demand from $i$ to $j$, including the demand for DRT and the demand for the virtual mode.
+where $Q_{ij}$ denotes the total demand from $i$ to $j$, including the demand $Q_{ij}^{DRT}$ for DRT and the demand for the virtual mode.
 
 \section{Supply}
 \label{vehiclemovements}
@@ -2724,7 +2724,17 @@ as a function of the number of vehicles $N$ and average price per kilometer $p$.
 The network equilibrium was calculated for different numbers
 of vehicles $N$ and prices per kilometer $p$.
 For each combination of $N$ and $p$, the total profit rate, profit 
-rate per vehicle and customer surplus were calculated. The results are shown in Figure \ref{a-equilibria01}.
+rate per vehicle and customer surplus\footnote{\emph{Customer surplus} is defined
+as the difference between the subjective price of the virtual mode and 
+the subjective price of DRT ,namely, by
+$
+\sum_{(i,j) \in I \times I} \sum_{r \in \mathcal{R}_{ij}} Q^{DRT}_r  (\bar{g}_{ij}-g_r),
+$
+where $Q^{DRT}_{ij}$ is the total demand for DRT trips from $i$ to $j$,
+$Q_{ij} - Q^{DRT}_{ij}$ is the demand for the virtual mode from $i$ to $j$, $\mathcal{R}_{ij}$
+is the set of DRT trips from $i$ to $j$, $g_r$ is the subjective price
+of trip $r$ and $\bar{g}_{ij}$ is the subjective price of the virtual mode from $i$ to $j$.} 
+were calculated. The results are shown in Figure \ref{a-equilibria01}.
 
 \begin{figure}[ht]
 \begin{center}
@@ -2954,7 +2964,9 @@ demand for and performance of demand-responsive transport.
 %% The following commands are for article dissertations, remove them if you write a monograph dissertation.
 
 % Errata list, if you have errors in the publications.
-%\errata
+\errata
+In \ref{jtoits}, Theorem 1, $L$ should be replaced with $P$.
+
 
 \bibliographystyle{plain}
 \bibliography{dju,vk,eadarp,hitsdarp,kuhmo}
@@ -3038,7 +3050,7 @@ The article is under revision for publication in Transportation Research Part B.
 \addpublication[submitted]{Lauri H\"ame, Harri Hakula}{A Maximum Cluster Algorithm for Checking the
 Feasibility of Dial-A-Ride Instances}{Transportation Science}{Under minor revision}{16 pages, 16.3.2012}{}{No copyright holder at this moment}{jhitsdarpts}
 \addcontribution{The author was the main author of this article.}
-\addpublicationpdf{articles/hitsdarpts2.pdf}
+\addpublicationpdf{articles/hitsdarpts3.pdf}
 
 
 

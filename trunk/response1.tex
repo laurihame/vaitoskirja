@@ -1,0 +1,107 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{longtable,amsmath,amssymb}
+\addtolength{\textwidth}{0.5in}
+\addtolength{\hoffset}{-0.5in}
+\addtolength{\textheight}{0in}
+\addtolength{\voffset}{-0.5in}
+
+
+\begin{document}
+\section*{Demand-Responsive Transport: Models and Algorithms}
+\subsection*{Statement of corrections}
+The responses to the comments are presented in the table below. \\
+Lauri H\"ame
+
+\begin{longtable}{|p{0.5\textwidth}|p{0.5\textwidth}|}
+\hline
+Comment & Response \\ \hline
+Chapter 3 solves the problem of journey planning by the passengers using Markov decision
+processes (MDP). \ldots I am concerned with two points. First
+is the computational complexity. Assume that $m$ is the maximal number of possible next states.
+Then the author says that the complexity of performing an iteration is $m$ ln$(m)$ because of the
+ordering. However, if each ordering corresponds to an action then there are $m!$ possible actions,
+and this must affect the complexity, but I do not see this in the complexity evaluation in the
+thesis. It has to be made clear how the candidate got around this problem. 
+& 
+In the current version, a note on the complexity has been added. Although the total number of 
+possible actions for a successor set $S_s$ equals $|S_s|!$, the complexity of the algorithm is smaller due to the fact that 
+only an optimal action is calculated by the algorithm. That is, the algorithm does not go through all possible
+actions. 
+\\ \hline
+Second, starting from
+Section 3.2.4, the ranking by expected number of paths has been introduced, giving a larger value
+to the states that have more possible routes to the destination. Then in numerical experiments
+the author computes the probabilities of reaching the destination. It is not clear how this affects
+the travel times. Intuitively, from the model, it seems that the passengers are encouraged to hop
+from one hub to another, and the travel times are ignored. This does not look realistic, and must
+be better explained to the reader. 
+& 
+In the current version it is noted that ``The numerical examples are restricted to calculating the the expected number of feasible paths and 
+the probability of reaching the destination during a pre-defined time horizon. However, a general objective function
+defined as a combination of expected waiting time, number of transfers, expected ride time, expected walking time and reliability
+is incorporated with minimal effort (see Equation (6) in Publication III).''
+\\ \hline
+In Theorem 3, ‘of L’ must be ‘of P ’ (same typo appears in
+Publication III).
+& 
+Theorem 3 has been corrected and an errata has been added.
+\\ \hline
+First, the chapter is difficult to understand without reading Publication IV, because many terms 
+are not clear or not defined (for instance ‘combination of price and
+waiting time’), but even after reading the publication many terms remain unclear (for example,
+‘customer surplus’). Also, the important features of the model should be directly emphasized (for
+example, that the customers may choose not to use the service so $Q_{ij}^{DRT}$ is not necessarily 
+equal to $Q_ij$ ). 
+& 
+I have made an effort to clarify and define the terms used in Chapter IV. The combination of ticket price and travel time
+is explained in Section 4.1 and a definition of customer surplus has been added to Section 4.3.3.
+The important features have been emphasized, for example, 
+``$Q_{ij}$ denotes the total demand from $i$ to $j$, including the demand $Q_{ij}^{DRT}$ for DRT and the demand for the virtual mode.''
+\\ \hline
+Second, the state is defined as the remaining route, and thus there are many states even
+in the simple three-node case. In a larger network, such definition of the state will result in the
+state space explosion. It will be helpful to include at least some comments in this regard. 
+& 
+The definition of states has been commented in Section 4.3.2:
+``In large networks, one might want to
+limit the number of states by including only a part of all 
+possible sequences, since the number of possible sequences of $n$ nodes equals $n!$. ''
+\\ \hline
+Finally,
+the author says repeatedly that the model is similar to the one in [85]. Then I suggest to state
+clearly what are is novel in Chapter 4 compared to [85].
+& 
+The novelty in Chapter 4 has been stated in the beginning of the Chapter:
+``The main difference is that in a taxi service [85], 
+customers are delivered to their destinations directly, whereas in a demand-responsive transport service, a vehicle can serve several customers 
+simultaneously and therefore a customer's trip from an origin to a destination is not necessarily a direct one. 
+In other words, the route of a taxi is determined by two points (origin and destination), but 
+demand-responsive transport routes may include several stops, similarly as bus routes.''
+
+\\ \hline
+The Conclusions is the weakest part of the thesis. The statement that there is a theoretical
+evidence for advantages of the DRT does not sound convincing in the current form, I suggest to
+support it with an example, preferably from the thesis itself. 
+& 
+This part has been modified to the following form: ``\ldots many computational results
+that support the technical viability of demand-responsive transport. State-of-the-art 
+algortihms are capable of efficiently solving complex routing problems with multiple vehicles (see for example Table 2.2. in Chapter 2).''
+\\ \hline
+Next, I think the Conclusions will
+be stronger if the candidate lists innovative aspects of the thesis and the main contributions into
+scientific methodology. 
+& 
+A list of innovative aspects and main contributions has been added to the conclusions.
+\\ \hline
+Also, I suggest to add a well-grounded discussion of future research.
+& 
+A discussion of future research has been added to the conclusions.
+\\ \hline
+There is a small number of typo’s in the thesis, one more round of proofreading will help to
+eliminate those.
+& 
+Corrected.
+\\ \hline
+\end{longtable}
+\end{document}
+
