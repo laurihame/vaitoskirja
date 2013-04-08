@@ -2151,7 +2151,8 @@ The algorithm then proceeds backwards until the value $V(1)$ of the origin state
 Since the algorithm involves sorting, the complexity is bounded above by $\mathcal{O}(n m \log m + nm) = \mathcal{O}(n m (1+\log m))$,
 where $m = \max_{s \in \{1,\ldots,n-1\}}|S_s|$ is the size of the largest successor set. Note that although the total number of 
 possible actions for a successor set $S_s$ equals $|S_s|!$, the complexity of the algorithm is smaller due to the fact that 
-only an optimal action is calculated by the algorithm. 
+the successors of each state are ordered only once. That is, the algorithm goes through all states reachable from the origin state 
+but not through all possible actions. 
 
 % \begin{figure}
 % \centering{
@@ -2368,7 +2369,7 @@ decomposed as a set of legs.
 
 \begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.7\columnwidth]{verkot01a}
+\includegraphics[width=0.6\columnwidth]{verkot01a}
 \end{center}
 \caption{The tram network of Helsinki consisting of ten tram lines and 154 stops. 
 }
@@ -2865,7 +2866,8 @@ a Markov Decision Process (MDP). The \emph{actions} of the MDP are defined as \e
 alternatives in each part of the journey. 
 The articles also show how the calculation of an optimal policy can be accelerated by assuming history independence and 
 how the reliability of a journey is maximized by considering the \emph{expected number of successful paths} 
-to the destination.
+to the destination. In this context, a \emph{path} is defined as a sequence of scheduled legs in the transport network and for 
+each pair $(i,j)$ of successive legs there is a specific transfer probability from $i$ to $j$.
 
 \ref{ccompejor} introduces a stochastic network model for determining the 
 economic equilibrium for demand-responsive transport. The existence of such an equilibrium is proved by using Brouwer's fixed point theorem. 
