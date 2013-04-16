@@ -2,6 +2,10 @@
 % See the documentation for more information about the available class options
 % If you give option 'draft' or 'draft*', the draft mode is set on
 \documentclass[dissertation,draft*]{aaltoseries}
+%\addtolength{\textwidth}{0.8in}
+%\addtolength{\hoffset}{-0.4in}
+%\addtolength{\textheight}{1.0in}
+%\addtolength{\voffset}{-0.5in}
 \usepackage[utf8]{inputenc}
 % Lipsum package generates bullshit
 \usepackage{multirow, amsthm, amssymb, amsmath,natbib, algorithm, algorithmic, amsxtra, txfonts,cancel}
@@ -84,25 +88,53 @@ rahti- ja lentoliikenteess\"a, l\"ahetti- ja ruoankuljetuspalveluissa sek\"a sot
 % If you write this somewhere else than in Helsinki, use the optional location.
 \begin{preface}[Helsinki]
 %\lipsum[1-4]
-Dr. Harri Hakula once said: ``Sometimes things are what they seem to be''. 
-Afterwards, when Teemu Sihvola read the first draft of this work, he said that it ``looks just like a dissertation''. 
-A few months later, I was granted permission to publish this dissertation.
-This answers the ultimate research question:
-``Is it possible to publish a public transport related doctoral dissertation in mathematics?''
+%Dr. Harri Hakula once said: ``Sometimes things are what they seem to be''. 
+%
+%This answers the ultimate research question:
+%Is it possible to publish a public transport related doctoral dissertation in mathematics?
+%This was the initial research question when I started my doctoral studies.
+%I would have to publish some research articles.
+%A few years later, when a colleague read the first draft of this work, he said that it ``looks just like a dissertation''. 
+%A few months later, I was granted permission to publish this work, which answers the initial research question.
+%This work is a collection of ideas related to public transport. %These ideas have been tested to work reasonably well on paper.
+
+%The results will probably not solve all the problems related to public transport but they could
+%make public transport more efficient. The work can be viewed as a recipe book for transport planners.
+%It is too practical for audiences with mathematical backgrounds and too theoretical for everyone else.
+%The main challenge in this work has been to present theoretically interesting ideas that could also be useful in practice.
+%I have been privileged to present the results to audiences with different types of backgrounds:
+%While some have found the results interesting methodologically, others think the results are interesting mainly due to the numerical experiments.
+%I have received many comments from anonymous referees with both operations research and transportation backgrounds.
+%In the best case, this type of work could act as a link between different schools of thought.
+%\begin{tabular}[l]{p{13.5cm}}
+In the beginning of my doctoral studies I worked in a research project related to demand-responsive public transport, 
+based in the
+Department of Computer Science in Helsinki University of Technology (currently a part of Aalto University) and
+launched by professor Reijo Sulonen.
+%The project was  and in the beginning it involved project manager Teemu Sihvola and Tuukka Sarvi.
+One of the main tasks in the project was to design ``from scratch'' the routing strategy for a fleet of mini-buses without fixed routes, 
+for combining passengers' trips in an on-line fashion.
+After working in the project I continued to research on the same topic in the Department of Mathematics with Dr. Harri Hakula, 
+which led to the publication of this dissertation.
+%and in 2012 I had the sufficient amount of scientific publications for a doctoral dissertation.
+In the beginning of 2013, as an extension to the research project, a test version of a fully automatized 
+demand-responsive transport service was deployed in Helsinki. 
+
 
 First, I would like to thank Dr. Harri Hakula for being the instructor of this work
-and for providing professional guidance. I would also like to express my gratitude to Professors Esko Valkeila and 
+and for providing professional guidance throughout my doctoral studies. 
+I would also like to express my gratitude to Professors Esko Valkeila and 
 Olavi Nevanlinna for supervising the work.
 
 Furthermore, I would like to thank colleagues and superiors Dr. Esa Hyytiä, Dr. Aleksi Penttinen, Teemu Sihvola, Jani-Pekka Jokinen, 
-Jeremias Kangas, Tuukka Sarvi, Prof. Samuli Aalto, Prof. Reijo Sulonen and Prof. Jorma Virtamo for their scientific support, and
+Jeremias Kangas, Tuukka Sarvi, Prof. Samuli Aalto, Prof. Reijo Sulonen and Prof. Jorma Virtamo for scientific support, and
 Prof. Nelly Litvak, Dr. Silvio Nocera, Prof. Venkat Anantharam and Prof. Juuso Töyli for examining this dissertation.   
 
 Finally, I would like to thank my family and friends for their insightful comments to improve the quality of this work.
 
 This dissertation is dedicated to the memory of Esko Valkeila (1951–2012), late 
 professor in stochastics at Aalto University, and the supervisor of my master's thesis and this work until November 2012.  
-
+%\end{tabular}
 %With  his  sharp  intellect, 
 %warmth, and caring support, he had a tremendous influence on me during my 
 %time as a Master’s student in public health. Professor Axelson was without a 
