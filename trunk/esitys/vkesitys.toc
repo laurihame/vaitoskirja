@@ -1,0 +1,9 @@
+\beamer@endinputifotherversion {3.10pt}
+\select@language {finnish}
+\beamer@sectionintoc {1}{Johdanto}{2}{0}{1}
+\beamer@subsectionintoc {1}{1}{Johdanto}{2}{0}{1}
+\beamer@sectionintoc {2}{Reitinlaskenta}{4}{0}{2}
+\beamer@subsectionintoc {2}{1}{Ongelman m\IeC {\"a}\IeC {\"a}rittely}{4}{0}{2}
+\beamer@subsectionintoc {2}{2}{Hajautettu ratkaisu}{17}{0}{2}
+\beamer@subsectionintoc {2}{3}{Keskitetty ratkaisu}{40}{0}{2}
+\beamer@sectionintoc {3}{Matkansuunnittelu}{54}{0}{3}
