@@ -3,7 +3,7 @@
 %                        
 \usepackage[finnish]{babel}
 % Theme for beamer presentation.
-\usepackage{beamerthemesplit} 
+\usepackage{beamerthemesplit,xmpmulti} 
 % Other themes include: beamerthemebars, beamerthemelined,beamerthemetree, beamerthemeplain
 \usepackage[utf8]{inputenc}
 \usefonttheme{professionalfonts}
@@ -24,45 +24,26 @@
 \end{frame}
 %\note{Talk for 30 minutes} % Add notes to yourself that will be displayed when typeset with the notes class option.
 
-\section{Johdanto}
+%\section{Johdanto}
 % Creates table of contents slide incorporating all \section and \subsection commands.
 %\begin{frame}
 %  \tableofcontents
 %\end{frame}
 
-\subsection{Johdanto}
+%\subsection{Johdanto}
 \begin{frame}
   \frametitle{Johdanto}   % Insert frame title between curly braces
   \begin{itemize}
     \item 
 Kysyntäohjautuva joukkoliikenne = bussi- ja taksipalvelujen välimuoto, joka perustuu ajoneuvojen joustavaan reititykseen
-\item
-Väitöskirjan tärkeimpiä tuloksia ovat älykkäät reitinlaskentamenetelmät
-\item
-Menetelmiä voidaan joukkoliikenteen lisäksi hyödyntää esim.
-rahti- ja lentoliikenteessä, lähetti- ja ruoankuljetuspalveluissa sekä sotilaslogistiikassa
-  \end{itemize}
-\end{frame}
-
-
-%\subsection{Problem formulation}
-\begin{frame}
-  \frametitle{Kysyntä \& tarjonta}   % Insert frame title between curly braces
-%  \begin{columns}[c]
-%  \column{2.5in}  % slides are 3in high by 5in wide
-  \begin{itemize}
+\begin{itemize}
+ \item 
+ Matkat tilataan esim. internetistä ja ajoneuvojen reitit muodostuvat reaaliaikaisesti tilausten perusteella
+\end{itemize}
 \item
 Ajoneuvojen reitinlaskenta, ohjauslogiikka
-\begin{itemize}
-\item
-Esim. Kutsuplus
-\end{itemize}
 \item
 Matkustajien matkansuunnitteluongelma
-\begin{itemize}
-\item
-Esim. Reittiopas
-\end{itemize}
 \item
 Taloudellinen tasapaino
 \end{itemize}
@@ -529,7 +510,7 @@ Periaate sisältää hajautetut ratkaisut
 
 
 \begin{frame}
-  \frametitle{Arvojärjestysalgoritmi (Ranking algorithm)} 
+  \frametitle{Arvojärjestysmenetelmä (Routing by Ranking)} 
   \begin{itemize}
    \item 
    Maksimiklusterit voidaan määrittää tehokkaasti järjestämällä nouto- ja toimituspisteet arvojärjestykseen
@@ -546,12 +527,20 @@ Periaate sisältää hajautetut ratkaisut
 \end{frame}  
 
 \begin{frame}
-  \frametitle{Arvojärjestysalgoritmi, tuloksia} 
+  \frametitle{Keskitetty ratkaisu, tuloksia} 
   \begin{itemize}
    \item 
-    Arvojärjestysalgoritmi tuottaa tehokkaasti käypiä ratkaisuja tiukkojen rajoitusten vallitessa 
+    Arvojärjestysmenetelmä tuottaa tehokkaasti käypiä ratkaisuja tiukkojen rajoitusten vallitessa 
     \item
     Kertaluokkaa nopeampi aikaisempiin menetelmiin verrattuna
+    \item
+    Yleisesti keskitetyn ratkaisun merkitys korostuu, kun
+    \begin{itemize}
+     \item 
+     rajoitteet ovat tiukkoja
+     \item
+     reitit ovat pitkiä
+    \end{itemize}
    \end{itemize}
 \end{frame}  
 
@@ -583,6 +572,7 @@ Periaate sisältää hajautetut ratkaisut
 
 
 \section{Matkansuunnittelu}
+\subsection{Matkansuunnittelun mallit}
 \begin{frame}
   \frametitle{Matkansuunnittelu} 
   \begin{itemize}
@@ -605,22 +595,353 @@ Periaate sisältää hajautetut ratkaisut
 \end{frame} 
 
 \begin{frame}
-  \frametitle{Stokastinen malli} 
+  \frametitle{Deterministinen ja stokastinen malli} 
   \begin{itemize}
    \item 
-    Olemassaolevilla menetelmillä voidaan laskea etukäteen paras reitti esim. matka-ajan, odotusajan, kävelymatkan tai vaihtojen lukumäärän suhteen 
+    Olemassaolevilla deterministisillä menetelmillä voidaan laskea etukäteen paras reitti esim. matka-ajan, odotusajan, kävelymatkan tai vaihtojen lukumäärän suhteen 
     \item
     Todellisuudessa paras reitti ei välttämättä toteudu esim. myöhästymisien tai vuorojen peruutuksien takia
     \item
     Stokastinen malli ottaa huomioon mahdolliset reittimuutokset matkan varrella
     \item
-    Mallin avulla voidaan laskea paras matkastrategia eri tavoitteiden suhteen
+    Mallin avulla voidaan laskea parhaan reitin lisäksi paras matkastrategia eri tavoitteiden suhteen
    \end{itemize}
      \begin{center}
-
       \end{center}
 \end{frame} 
 
+\begin{frame}
+  \frametitle{Deterministinen malli, esimerkki} 
+  \begin{minipage}[t][0.3\textheight][t]{\textwidth}
+  \begin{itemize}
+   \item 
+Tavoitteena on saapua mahdollisimman aikaisin määränpäähän, vaihto pysäkillä A tai B
+\item
+Kaikki bussilinjat kulkevat 20 minuutin välein
+\item
+Nopein matka: bussi 1 klo 15:00, vaihto pysäkillä A, perillä klo 15:30
+   \end{itemize}
+   \end{minipage}
+   \vfill
+     \begin{minipage}{\textwidth}
+     \begin{center}
+     \includegraphics[scale=0.6]{matkansuunnittelu01}
+      \end{center}
+      \end{minipage}
+\end{frame} 
+
+\begin{frame}
+  \frametitle{Stokastinen malli, esimerkki} 
+  \begin{minipage}[t][0.3\textheight][t]{\textwidth}
+  \begin{itemize}
+   \item 
+Lisätään malliin vaihtojen onnistumisien todennäköisyydet 
+\item
+Jos kuljetaan busseilla 1 ja 3 pysäkin A kautta, saapumisajan odotusarvo on 15:40
+\item
+Paras matkastrategia: bussilla 2 pysäkille B, vaihto seuraavaksi saapuvaan bussiin, odotettu saapumisaika 15:37
+   \end{itemize}
+   \end{minipage}
+   \vfill
+     \begin{minipage}{\textwidth}
+     \begin{center}
+     \includegraphics[scale=0.6]{matkansuunnittelu02}
+      \end{center}
+      \end{minipage}
+\end{frame} 
+
+
+\subsection{Stokastinen malli}
+\begin{frame}
+  \frametitle{Matka-ajat stokastisessa mallissa} 
+  \begin{itemize}
+   \item 
+    Liikennepalvelujen arvioidut ohitusajat pysäkeillä määritellään satunnaismuuttujina (esim. gammajakauma) odotusarvojen sijaan
+\end{itemize}
+     \begin{center}
+     \includegraphics[scale=0.7]{stokvsdet02}
+      \end{center}
+    \end{frame} 
+    
+    
+    \begin{frame}
+  \frametitle{Vaihdon onnistumisen todennäköisyys} 
+  \begin{itemize}
+   \item 
+    Matka voidaan esittää etappeina, joista jokaisella on alkamis- ja päättymisaika
+    \begin{itemize}
+     \item 
+     $\tau_i:=$ etapin $i$ alkamisaika
+     \item 
+     $\tau_i':=$ etapin $i$ päättymisaika
+    \end{itemize}
+    \item
+    Vaihto etapilta $i$ etapille $j$ onnistuu todennäköisyydellä $p_{ij} = P(\tau_i' \leq \tau_j)$
+\end{itemize}
+     \begin{center}
+     \includegraphics[scale=0.7]{transferprob02}
+      \end{center}
+    \end{frame} 
+
+    
+            \begin{frame}
+  \frametitle{Todennäköisyyksien ehdollisuus matkansuunnittelussa} 
+  \begin{itemize}
+       \item
+    Onnistuneet vaihdot eivät ole riippumattomia tapahtumia
+        \begin{itemize}
+     \item 
+     Esim. Jos bussit 1 ja 2 lähtevät aikataulun mukaan samaan aikaan, on todennäköistä että 
+     vaihto onnistuu joko kumpaan tahansa tai ei kumpaankaan
+    \end{itemize}
+   \item 
+    Toteutuneet vaihdot vaikuttavat tulevien vaihtojen onnistumiseen
+    \begin{itemize}
+     \item 
+     Esim. Jos tiukka vaihto bussista 3 bussiin 4 on onnistunut, on todennäköistä että bussi 4 on ollut myöhässä
+    \end{itemize}
+\end{itemize}
+     \begin{center}
+     \includegraphics[scale=0.65]{stateexample}
+      \end{center}
+    \end{frame}  
+    
+    
+    
+        \begin{frame}
+  \frametitle{Markov-päätösprosessi (Markov Decision Process, MDP)} 
+  \begin{itemize}
+   \item 
+    Matka voidaan esittää Markov-päätösprosessina etappien verkossa
+    \item
+    Prosessin \emph{tilat} ovat etappeja ja \emph{tapahtumat} matkustajan valintoja 
+    \item
+    Tietty valinta tietyssä tilassa johtaa toiseen tilaan siirtymiseen
+    \item
+    Jokaiselle tilalle voidaan määrittää optimaalinen valinta (=matkastrategia) annetun tavoitteen suhteen
+\end{itemize}
+     \begin{center}
+     \includegraphics[scale=0.55]{walking01c}
+      \end{center}
+    \end{frame} 
+    
+    \subsection{Tuloksia}
+        \begin{frame}
+  \frametitle{Stokastinen matkansuunnittelu, tuloksia} 
+  \begin{itemize}
+   \item 
+Stokastisen matkansuunnittelun merkitys korostuu kun 
+\begin{itemize}
+ \item 
+vaihtojen lukumäärä on suuri 
+\item
+vaihtoihin liittyy epävarmuutta
+\item
+halutaan maksimoida matkan luotettavuutta
+\end{itemize}
+\item
+Laskentaa voidaan tehostaa yksinkertaistamalla todennäköisyysmallia
+\begin{itemize}
+ \item 
+Vaihtojen onnistumisien riippumattomuus
+\item
+Riippumattomuus matkahistoriasta: saapumisaika ei riipu aiempien vaihtojen onnistumisesta
+\end{itemize}
+\end{itemize}
+    \end{frame}     
+    
+    
+\section{Taloudellinen tasapaino}
+\subsection{Mallin kuvaus}
+\begin{frame}
+  \frametitle{Taloudellinen verkkotasapainomalli} 
+  \begin{itemize}
+   \item 
+   Taloudellisessa tarkastelussa otetaan huomioon sekä matkustajien että liikennöitsijän päätökset
+   \item
+   Ideana on tasapainottaa ajoneuvojen jakauma eri reiteillä kysynnän mukaan
+   \item
+   Mallin avulla voidaan kuvata kysyntäohjautuvan joukkoliikenteen \emph{keskimääräistä} toimintaa
+   \end{itemize}
+    \end{frame}   
+    
+
+\begin{frame}
+  \frametitle{Bussi, taksi ja kysyntäohjautuva joukkoliikenne}   % Insert frame title between curly braces
+  \begin{columns}[c]
+  \column{2.5in}  % slides are 3in high by 5in wide
+  \begin{itemize}
+\item
+Perinteinen joukkoliikenne noudattaa kiinteitä reittejä ja aikatauluja
+\item
+Taksit tuottavat suoria matkoja tilausten perusteella
+\item
+Kysyntäohjautuvassa joukkoliikenteessä kokonaisia reittejä muodostetaan reaaliaikaisesti kysynnän mukaan
+\end{itemize}
+  \column{2.5in}
+\framebox{\multiinclude[<+>][format=pdf,graphics={scale=0.5}]{kuvat/bustaxiexample}}
+  \end{columns}
+\end{frame}
+    
+    
+ 
+    \begin{frame}
+  \frametitle{Kysyntäohjautuvan joukkoliikenteen stokastinen verkkomalli}   % Insert frame title between curly braces
+\begin{itemize}
+ \item 
+ Kysyntäohjautuvaa joukkoliikennettä voidaan kuvata stokastisena prosessina, joka muodostuu
+ \emph{tiloista} ja tilojen välisistä \emph{siirtymätodennäköisyyksistä}
+ \item
+ Ajoneuvon tila $\approx$ reitti %, kyydissä olevat matkustajat ja sovitut matkat
+\end{itemize}
+\begin{center}
+ \includegraphics[scale=0.65]{tilat01}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Tilan tarkempi määritelmä}   % Insert frame title between curly braces
+  \begin{itemize}
+\item
+Tilan määrittelee
+\begin{itemize}
+ \item 
+ Reitti ja ajoneuvon sijainti reitillä
+ \item
+ Kyydissä olevien matkustajien nouto- ja toimituspisteet
+ \item
+ Sovittujen matkojen nouto- ja toimituspisteet
+\end{itemize}
+\end{itemize}
+\begin{center}
+ \includegraphics<1>[scale=0.65]{tilamaar01}
+  \includegraphics<2>[scale=0.65]{tilamaar02}
+   \includegraphics<3>[scale=0.65]{tilamaar03}
+    \includegraphics<4>[scale=0.65]{tilamaar04}
+     \includegraphics<5>[scale=0.65]{tilamaar05}
+\end{center}
+
+\end{frame}    
+    
+
+\subsection{Reititysstrategia ja kysyntä}
+\begin{frame}
+  \frametitle{Reititysstrategia}   % Insert frame title between curly braces
+\begin{itemize}
+ \item 
+ Tilojen $r$ ja $s$ välinen siirtymätodennäköisyys $p_{rs}$ kuvaa kuinka suuri osuus ajoneuvoista
+ siirtyy reitille $s$ kuljettuaan reitin $r$
+ \item
+Siirtymätodennäköisyydet määrittelevät ns. reititysstrategian, joka johtaa tiettyyn ajoneuvojen tasapainojakaumaan 
+\end{itemize}
+\begin{center}
+ \includegraphics<1>[scale=0.65]{tilat02}
+  \includegraphics<2>[scale=0.65]{tilat03}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Palvelutaso ja kysyntä}   % Insert frame title between curly braces
+\begin{itemize}
+ \item 
+Tietty reititysstrategia tuottaa tietyn palvelutason eri matkoille
+ \item
+Matkojen kysyntä määräytyy palvelutason ja vaihtoehtoisten kulkumuotojen mukaan
+\item
+Logit-valintamallissa matkustusvaihtoehdon $i$ utiliteetti muodostuu tunnetusta osasta $V_i$ ja satunnaisesta osasta $\epsilon_i$
+\item
+Olettaen, että $\epsilon_i \sim$ Gumbel, saadaan todennäköisyys valinnalle $i$:
+\begin{align*}
+ P_i = \frac{e^{V_i}}{\sum_j e^{V_j}}
+\end{align*}
+%\item
+%Kysyntä vaikuttaa optimaaliseen reititysstrategiaan
+\end{itemize}
+\end{frame}
+
+ 
+\begin{frame}
+  \frametitle{Taloudellinen optimi}   % Insert frame title between curly braces
+\begin{itemize}
+\item
+Mallin avulla voidaan optimoida ajoneuvojen lukumäärä ja matkojen hinnoittelu
+\end{itemize}
+\begin{center}
+ \includegraphics[scale=0.3]{a-optima02}
+\end{center}
+\end{frame}
+
+
+
+\subsection{Tuloksia}
+\begin{frame}
+  \frametitle{Taloudellinen tasapaino, tuloksia}   % Insert frame title between curly braces
+\begin{itemize}
+\item
+Analyyttinen malli, jolla voidaan kuvata kysyntäohjautuvaa joukkoliikennettä 
+\item
+Mikrosimulointiin verrattuna etuna on skaalautuvuus ajoneuvojen ja matkustajien lukumäärän suhteen
+\item
+Mallin sovelluksia:
+\begin{itemize}
+ \item 
+Optimaalisen reititysstrategian, hinnoittelun ja ajoneuvojen lukumäärän määrittäminen eri tilanteissa
+\item
+Säännöstelyn vaikutusten tutkiminen 
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Päätelmät}
+\begin{frame}
+  \frametitle{Yleisiä havaintoja}   % Insert frame title between curly braces
+\begin{itemize}
+\item
+Reitinlaskennassa tulee ottaa huomioon sekä kustannukset että palvelutaso: paras kokonaisratkaisu löytyy kahden optimin välistä
+\item
+Suuri kysyntä mahdollistaa sekä tehokkaan järjestelmän että hyvän palvelutason
+\item
+Pidemmät ennakkotilausajat mahdollistavat tehokkaamman reitinlaskennan
+%\item
+%Kysyntäohjautuvan joukkoliikenteen pitäisi olla osa olemassaolevaa joukkoliikennejärjestelmää 
+%\begin{itemize}
+\end{itemize}
+\end{frame}
+\begin{frame}
+  \frametitle{Yleisiä havaintoja}   % Insert frame title between curly braces
+\begin{itemize}
+ \item 
+ Matkansuunnittelun avulla voidaan liittää kysyntäohjautuva palvelu olemassaolevaan joukkoliikennejärjestelmään
+ \begin{itemize}
+  \item 
+ Vaihdolliset yhteydet (sisäiset ja kulkumuotojen väliset vaihdot) 
+ %\item
+ %``Liftaus'' - valmiiksi laskettujen reittien suora hyödyntäminen 
+ \end{itemize}
+ \end{itemize}
+  \begin{center}
+  \includegraphics<1>[scale=0.25]{vaihto01}
+    \includegraphics<2>[scale=0.25]{vaihto02}
+      \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Yleisiä havaintoja}   % Insert frame title between curly braces
+\begin{itemize}
+ \item 
+Helsingin seudun liikenne käynnisti vuoden 2013 alussa kaikille avoimen kysyntäohjautuvan joukkoliikennepalvelun
+\item
+Palvelu tarjoaa useita erihintaisia matkavaihtoehtoja
+\item
+Toimii noin 10 kilometrin säteellä Helsingin keskustasta
+\item
+10 minibussia, määrää kasvatetaan
+ \end{itemize}
+\end{frame}
 
 
     
