@@ -1,15 +1,15 @@
 \beamer@endinputifotherversion {3.10pt}
 \select@language {finnish}
 \beamer@sectionintoc {1}{Reitinlaskenta}{3}{0}{1}
-\beamer@subsectionintoc {1}{1}{Ongelman m\IeC {\"a}\IeC {\"a}rittely}{3}{0}{1}
-\beamer@subsectionintoc {1}{2}{Hajautettu ratkaisu}{16}{0}{1}
-\beamer@subsectionintoc {1}{3}{Keskitetty ratkaisu}{39}{0}{1}
-\beamer@sectionintoc {2}{Matkansuunnittelu}{53}{0}{2}
-\beamer@subsectionintoc {2}{1}{Matkansuunnittelun mallit}{53}{0}{2}
-\beamer@subsectionintoc {2}{2}{Stokastinen malli}{57}{0}{2}
-\beamer@subsectionintoc {2}{3}{Tuloksia}{61}{0}{2}
-\beamer@sectionintoc {3}{Taloudellinen tasapaino}{62}{0}{3}
-\beamer@subsectionintoc {3}{1}{Mallin kuvaus}{62}{0}{3}
-\beamer@subsectionintoc {3}{2}{Reititysstrategia ja kysynt\IeC {\"a}}{80}{0}{3}
-\beamer@subsectionintoc {3}{3}{Tuloksia}{84}{0}{3}
-\beamer@sectionintoc {4}{P\IeC {\"a}\IeC {\"a}telm\IeC {\"a}t}{85}{0}{4}
+\beamer@subsectionintoc {1}{1}{Ongelman m\IeC {\"a}\IeC {\"a}rittely}{4}{0}{1}
+\beamer@subsectionintoc {1}{2}{Hajautettu ratkaisu}{17}{0}{1}
+\beamer@subsectionintoc {1}{3}{Keskitetty ratkaisu}{41}{0}{1}
+\beamer@sectionintoc {2}{Matkansuunnittelu}{55}{0}{2}
+\beamer@subsectionintoc {2}{1}{Matkansuunnittelun mallit}{56}{0}{2}
+\beamer@subsectionintoc {2}{2}{Stokastinen malli}{60}{0}{2}
+\beamer@subsectionintoc {2}{3}{Tuloksia}{64}{0}{2}
+\beamer@sectionintoc {3}{Taloudellinen tasapaino}{65}{0}{3}
+\beamer@subsectionintoc {3}{1}{Mallin kuvaus}{66}{0}{3}
+\beamer@subsectionintoc {3}{2}{Reititysstrategia ja kysynt\IeC {\"a}}{84}{0}{3}
+\beamer@subsectionintoc {3}{3}{Tuloksia}{88}{0}{3}
+\beamer@sectionintoc {4}{Tulosten tarkastelu}{89}{0}{4}

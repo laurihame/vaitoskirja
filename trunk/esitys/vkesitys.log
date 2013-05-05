@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.4.30)  2 MAY 2013 16:03
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.4.30)  6 MAY 2013 01:11
 entering extended mode
  %&-line parsing enabled.
 **vkesitys.tex
@@ -674,6 +674,9 @@ Package: beamerfontthemestructurebold 2010/06/17  (rcs-revision d02a7cf4d8ae)
 )) (/usr/share/texmf/tex/latex/beamer/base/multimedia/xmpmulti.sty
 \@mpm@count=\count151
 )
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/cancel.sty
+Package: cancel 2000/03/12 v2.1 Cancel math terms
+)
 (/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks41
@@ -900,20 +903,20 @@ e)
 ) (./vkesitys.aux)
 \openout1 = `vkesitys.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
 
 *geometry auto-detecting driver*
 *geometry detected driver: pdftex*
@@ -969,7 +972,7 @@ driver: pdftex
 \MPnumerator=\count156
 \everyMPtoPDFconversion=\toks44
 ) ABD: EveryShipout initializing macros
-Package hyperref Info: Link coloring OFF on input line 19.
+Package hyperref Info: Link coloring OFF on input line 31.
 
 (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
@@ -979,8 +982,8 @@ Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
 \c@section@level=\count157
 )
-LaTeX Info: Redefining \ref on input line 19.
-LaTeX Info: Redefining \pageref on input line 19.
+LaTeX Info: Redefining \ref on input line 31.
+LaTeX Info: Redefining \pageref on input line 31.
  (./vkesitys.out)
 (./vkesitys.out)
 \@outlinefile=\write5
@@ -1014,21 +1017,21 @@ Dictionary: translator-theorem-dictionary, Language: English
 ) (./vkesitys.nav)
 
 LaTeX Font Warning: Font shape `OT1/cmss/bx/n' in size <4> not available
-(Font)              size <5> substituted on input line 24.
+(Font)              size <5> substituted on input line 36.
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
-(Font)              size <5> substituted on input line 24.
+(Font)              size <5> substituted on input line 36.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
-LaTeX Font Info:    Try loading font information for U+msa on input line 56.
+LaTeX Font Info:    Try loading font information for U+msa on input line 72.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 56.
+LaTeX Font Info:    Try loading font information for U+msb on input line 72.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
@@ -1036,508 +1039,404 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 
 ] [3
 
-]
-<tspdemo01.png, id=176, 1180.41pt x 753.81625pt>
-File: tspdemo01.png Graphic file (type png)
- <use tspdemo01.png> [4
+] [4
 
- <./tspdemo01.png>] <tspdemo02.png, id=212, 1180.41pt x 753.81625pt>
+]
+<tspdemo01.png, id=210, 1180.41pt x 753.81625pt>
+File: tspdemo01.png Graphic file (type png)
+ <use tspdemo01.png> [5
+
+ <./tspdemo01.png>] <tspdemo02.png, id=246, 1180.41pt x 753.81625pt>
 File: tspdemo02.png Graphic file (type png)
 
-<use tspdemo02.png> [5
+<use tspdemo02.png> [6
 
- <./tspdemo02.png>] [6
+ <./tspdemo02.png>] [7
 
 ]
-<tilauskaavio02.pdf, id=280, 80.7015pt x 181.07649pt>
+<tilauskaavio02.pdf, id=315, 80.7015pt x 181.07649pt>
 File: tilauskaavio02.pdf Graphic file (type pdf)
  <use tilauskaavio02.pdf>
-[7
+[8
 
- <./tilauskaavio02.pdf>] <ekademo01.png, id=322, 853.1875pt x 646.415pt>
+ <./tilauskaavio02.pdf>] <ekademo01.png, id=356, 853.1875pt x 646.415pt>
 File: ekademo01.png Graphic file (type png)
 
 <use ekademo01.png>
-Overfull \vbox (8.06349pt too high) detected at line 153
- []
-
-[8
-
- <./ekademo01.png (PNG copy)>]
-<ekademo02.png, id=356, 853.1875pt x 646.415pt>
-File: ekademo02.png Graphic file (type png)
- <use ekademo02.png>
-Overfull \vbox (8.06349pt too high) detected at line 160
+Overfull \vbox (8.06349pt too high) detected at line 170
  []
 
 [9
 
- <./ekademo02.png (PNG copy)>]
-<ekademo03.png, id=390, 853.1875pt x 646.415pt>
-File: ekademo03.png Graphic file (type png)
- <use ekademo03.png>
-Overfull \vbox (8.06349pt too high) detected at line 167
+ <./ekademo01.png (PNG copy)>]
+<ekademo02.png, id=390, 853.1875pt x 646.415pt>
+File: ekademo02.png Graphic file (type png)
+ <use ekademo02.png>
+Overfull \vbox (8.06349pt too high) detected at line 177
  []
 
 [10
 
- <./ekademo03.png>] <ekademo04.png, id=425, 853.1875pt x 646.415pt>
-File: ekademo04.png Graphic file (type png)
-
-<use ekademo04.png>
-Overfull \vbox (8.06349pt too high) detected at line 174
+ <./ekademo02.png (PNG copy)>]
+<ekademo03.png, id=424, 853.1875pt x 646.415pt>
+File: ekademo03.png Graphic file (type png)
+ <use ekademo03.png>
+Overfull \vbox (8.06349pt too high) detected at line 184
  []
 
 [11
 
- <./ekademo04.png>] <ekademo05.png, id=460, 853.1875pt x 646.415pt>
-File: ekademo05.png Graphic file (type png)
+ <./ekademo03.png>] <ekademo04.png, id=459, 853.1875pt x 646.415pt>
+File: ekademo04.png Graphic file (type png)
 
-<use ekademo05.png>
-Overfull \vbox (8.06349pt too high) detected at line 181
+<use ekademo04.png>
+Overfull \vbox (8.06349pt too high) detected at line 191
  []
 
 [12
 
- <./ekademo05.png>] <ekademo06.png, id=495, 853.1875pt x 646.415pt>
-File: ekademo06.png Graphic file (type png)
+ <./ekademo04.png>] <ekademo05.png, id=494, 853.1875pt x 646.415pt>
+File: ekademo05.png Graphic file (type png)
 
-<use ekademo06.png>
-Overfull \vbox (8.06349pt too high) detected at line 188
+<use ekademo05.png>
+Overfull \vbox (8.06349pt too high) detected at line 198
  []
 
 [13
 
- <./ekademo06.png>] <aikaikkuna01.pdf, id=531, 273.4215pt x 30.24298pt>
+ <./ekademo05.png>] <ekademo06.png, id=530, 853.1875pt x 646.415pt>
+File: ekademo06.png Graphic file (type png)
+
+<use ekademo06.png>
+Overfull \vbox (8.06349pt too high) detected at line 205
+ []
+
+[14
+
+ <./ekademo06.png>] <aikaikkuna01.pdf, id=565, 273.4215pt x 30.24298pt>
 File: aikaikkuna01.pdf Graphic file (type pdf)
 
-<use aikaikkuna01.pdf> [14
+<use aikaikkuna01.pdf> [15
 
- <./aikaikkuna01.pdf>] [15
+ <./aikaikkuna01.pdf>] [16
 
-] [16
+] [17
 
 ]
-<valinta01.pdf, id=636, 354.22337pt x 121.35338pt>
+<valinta01.pdf, id=670, 354.22337pt x 121.35338pt>
 File: valinta01.pdf Graphic file (type pdf)
- <use valinta01.pdf> [17
+ <use valinta01.pdf> [18
 
- <./valinta01.pdf>] <valinta02.pdf, id=675, 354.22337pt x 121.35338pt>
+ <./valinta01.pdf>] <valinta02.pdf, id=709, 354.22337pt x 121.35338pt>
 File: valinta02.pdf Graphic file (type pdf)
 
-<use valinta02.pdf> [18
+<use valinta02.pdf> [19
 
  <./valinta02.pdf>]
-<valinta03.pdf, id=729, 354.22337pt x 121.35338pt>
+<valinta03.pdf, id=764, 354.22337pt x 121.35338pt>
 File: valinta03.pdf Graphic file (type pdf)
- <use valinta03.pdf> [19
+ <use valinta03.pdf> [20
 
- <./valinta03.pdf>] <valinta04.pdf, id=775, 354.22337pt x 121.35338pt>
+ <./valinta03.pdf>] <valinta04.pdf, id=809, 354.22337pt x 121.35338pt>
 File: valinta04.pdf Graphic file (type pdf)
 
-<use valinta04.pdf> [20
+<use valinta04.pdf> [21
 
  <./valinta04.pdf>]
-<insertion02.pdf, id=820, 382.32837pt x 81.70525pt>
+<insertion02.pdf, id=854, 382.32837pt x 81.70525pt>
 File: insertion02.pdf Graphic file (type pdf)
  <use insertion02.pdf>
-[21
+[22
 
- <./insertion02.pdf>] <insertion03.pdf, id=861, 382.32837pt x 81.70525pt>
+ <./insertion02.pdf>] <insertion03.pdf, id=895, 382.32837pt x 81.70525pt>
 File: insertion03.pdf Graphic file (type pdf)
 
-<use insertion03.pdf> [22
+<use insertion03.pdf> [23
 
  <./insertion03.pdf>]
-<insertion04.pdf, id=904, 382.32837pt x 81.70525pt>
+<insertion04.pdf, id=938, 382.32837pt x 81.70525pt>
 File: insertion04.pdf Graphic file (type pdf)
  <use insertion04.pdf>
-[23
+[24
 
- <./insertion04.pdf>] <insertion05.pdf, id=947, 382.32837pt x 81.70525pt>
+ <./insertion04.pdf>] <insertion05.pdf, id=981, 382.32837pt x 81.70525pt>
 File: insertion05.pdf Graphic file (type pdf)
 
-<use insertion05.pdf> [24
+<use insertion05.pdf> [25
 
  <./insertion05.pdf>]
-<insertion06.pdf, id=990, 382.32837pt x 81.70525pt>
+<insertion06.pdf, id=1025, 382.32837pt x 81.70525pt>
 File: insertion06.pdf Graphic file (type pdf)
  <use insertion06.pdf>
-[25
+[26
 
- <./insertion06.pdf>] <insertion07.pdf, id=1034, 382.32837pt x 81.71127pt>
+ <./insertion06.pdf>] <insertion07.pdf, id=1068, 382.32837pt x 81.71127pt>
 File: insertion07.pdf Graphic file (type pdf)
 
-<use insertion07.pdf> [26
+<use insertion07.pdf> [27
 
  <./insertion07.pdf>]
-<insertion08.pdf, id=1077, 382.32837pt x 81.71127pt>
+<insertion08.pdf, id=1111, 382.32837pt x 81.71127pt>
 File: insertion08.pdf Graphic file (type pdf)
  <use insertion08.pdf>
-[27
+[28
 
- <./insertion08.pdf>] <insertion09.pdf, id=1119, 382.32837pt x 81.70525pt>
+ <./insertion08.pdf>] <insertion09.pdf, id=1153, 382.32837pt x 81.70525pt>
 File: insertion09.pdf Graphic file (type pdf)
 
-<use insertion09.pdf> [28
+<use insertion09.pdf> [29
 
  <./insertion09.pdf>]
 File: insertion02.pdf Graphic file (type pdf)
  <use insertion02.pdf>
 File: insertion02.pdf Graphic file (type pdf)
 
-<use insertion02.pdf> [29
+<use insertion02.pdf> [30
 
 ]
 File: insertion03.pdf Graphic file (type pdf)
  <use insertion03.pdf>
 File: insertion03.pdf Graphic file (type pdf)
- <use insertion03.pdf> [30
+ <use insertion03.pdf> [31
 
 ]
 File: insertion04.pdf Graphic file (type pdf)
 
 <use insertion04.pdf>
 File: insertion04.pdf Graphic file (type pdf)
- <use insertion04.pdf> [31
+ <use insertion04.pdf> [32
 
 ]
 File: insertion05.pdf Graphic file (type pdf)
  <use insertion05.pdf>
 File: insertion05.pdf Graphic file (type pdf)
 
-<use insertion05.pdf> [32
+<use insertion05.pdf> [33
 
 ]
 File: insertion06.pdf Graphic file (type pdf)
  <use insertion06.pdf>
-<insertion06b.pdf, id=1296, 382.32837pt x 81.70525pt>
+<insertion06b.pdf, id=1330, 382.32837pt x 81.70525pt>
 File: insertion06b.pdf Graphic file (type pdf)
  <use insertion06b.pdf>
-[33
+[34
 
  <./insertion06b.pdf>]
 File: insertion07.pdf Graphic file (type pdf)
  <use insertion07.pdf>
-<insertion07b.pdf, id=1339, 382.32837pt x 81.71127pt>
+<insertion07b.pdf, id=1373, 382.32837pt x 81.71127pt>
 File: insertion07b.pdf Graphic file (type pdf)
  <use insertion07b.pdf>
-[34
+[35
 
  <./insertion07b.pdf>]
 File: insertion08.pdf Graphic file (type pdf)
  <use insertion08.pdf>
-<insertion08b.pdf, id=1382, 382.32837pt x 81.71127pt>
+<insertion08b.pdf, id=1416, 382.32837pt x 81.71127pt>
 File: insertion08b.pdf Graphic file (type pdf)
  <use insertion08b.pdf>
-[35
+[36
 
  <./insertion08b.pdf>]
 File: insertion09.pdf Graphic file (type pdf)
  <use insertion09.pdf>
-<insertion09b.pdf, id=1424, 382.32837pt x 81.71127pt>
+<insertion09b.pdf, id=1458, 382.32837pt x 81.71127pt>
 File: insertion09b.pdf Graphic file (type pdf)
  <use insertion09b.pdf>
-[36
+[37
 
  <./insertion09b.pdf>]
-Overfull \hbox (47.7434pt too wide) detected at line 434
+Overfull \hbox (47.7434pt too wide) detected at line 453
 [][][] $[]$[][][][][][][][] $[]$[][][][][][][][] $[]$[][][][][][] 
  []
 
-[37
+[38
 
-] <vskuva.pdf, id=1505, 376.3109pt x 57.06117pt>
+]
+Overfull \hbox (47.7434pt too wide) detected at line 501
+[][][] $[]$[][][][][][][][] $[]$[][][][][][][][] $[]$[][][][][][] 
+ []
+
+[39
+
+] <vskuva.pdf, id=1573, 376.3109pt x 57.06117pt>
 File: vskuva.pdf Graphic file (type pdf)
- <use vskuva.pdf> [38
+ <use vskuva.pdf> [40
 
- <./vskuva.pdf>] [39
+ <./vskuva.pdf>] [41
 
 ]
 File: valinta02.pdf Graphic file (type pdf)
  <use valinta02.pdf>
-<valinta05.pdf, id=1576, 354.22337pt x 121.35338pt>
+<valinta05.pdf, id=1644, 354.22337pt x 121.35338pt>
 File: valinta05.pdf Graphic file (type pdf)
  <use valinta05.pdf>
-[40
+[42
 
  <./valinta05.pdf>]
-<keskitettyesim01.pdf, id=1621, 358.23837pt x 132.1196pt>
+<keskitettyesim01.pdf, id=1689, 358.23837pt x 132.1196pt>
 File: keskitettyesim01.pdf Graphic file (type pdf)
 
-<use keskitettyesim01.pdf> [41
+<use keskitettyesim01.pdf> [43
 
  <./keskitettyesim01.pdf>]
-<keskitettyesim02.pdf, id=1666, 358.23837pt x 132.1196pt>
+<keskitettyesim02.pdf, id=1735, 358.23837pt x 132.1196pt>
 File: keskitettyesim02.pdf Graphic file (type pdf)
 
-<use keskitettyesim02.pdf> [42
+<use keskitettyesim02.pdf> [44
 
  <./keskitettyesim02.pdf>]
-<keskitettyesim03.pdf, id=1709, 358.23837pt x 132.1196pt>
+<keskitettyesim03.pdf, id=1778, 358.23837pt x 132.1196pt>
 File: keskitettyesim03.pdf Graphic file (type pdf)
 
-<use keskitettyesim03.pdf> [43
+<use keskitettyesim03.pdf> [45
 
  <./keskitettyesim03.pdf>]
-<keskitettyesim04.pdf, id=1752, 358.23837pt x 132.1196pt>
+<keskitettyesim04.pdf, id=1820, 358.23837pt x 132.1196pt>
 File: keskitettyesim04.pdf Graphic file (type pdf)
 
-<use keskitettyesim04.pdf> [44
+<use keskitettyesim04.pdf> [46
 
  <./keskitettyesim04.pdf>]
-<maxcesim04.pdf, id=1794, 475.21037pt x 212.99574pt>
+<maxcesim04.pdf, id=1862, 475.21037pt x 212.99574pt>
 File: maxcesim04.pdf Graphic file (type pdf)
  <use maxcesim04.pdf>
-[45
-
- <./maxcesim04.pdf>] <maxcesim03.pdf, id=1835, 475.21037pt x 212.99574pt>
-File: maxcesim03.pdf Graphic file (type pdf)
-
-<use maxcesim03.pdf> [46
-
- <./maxcesim03.pdf>]
-<maxcesim02.pdf, id=1874, 475.21037pt x 212.99574pt>
-File: maxcesim02.pdf Graphic file (type pdf)
- <use maxcesim02.pdf>
 [47
 
- <./maxcesim02.pdf>] <maxcesim01.pdf, id=1912, 475.21037pt x 212.99574pt>
+ <./maxcesim04.pdf>] <maxcesim03.pdf, id=1903, 475.21037pt x 212.99574pt>
+File: maxcesim03.pdf Graphic file (type pdf)
+
+<use maxcesim03.pdf> [48
+
+ <./maxcesim03.pdf>]
+<maxcesim02.pdf, id=1942, 475.21037pt x 212.99574pt>
+File: maxcesim02.pdf Graphic file (type pdf)
+ <use maxcesim02.pdf>
+[49
+
+ <./maxcesim02.pdf>] <maxcesim01.pdf, id=1981, 475.21037pt x 212.99574pt>
 File: maxcesim01.pdf Graphic file (type pdf)
 
-<use maxcesim01.pdf> [48
+<use maxcesim01.pdf> [50
 
  <./maxcesim01.pdf>]
-<hub01.pdf, id=1950, 260.17201pt x 156.10321pt>
+<hub01.pdf, id=2019, 260.17201pt x 156.10321pt>
 File: hub01.pdf Graphic file (type pdf)
- <use hub01.pdf> [49
+ <use hub01.pdf> [51
 
- <./hub01.pdf>] <hub02.pdf, id=1990, 260.17201pt x 156.39227pt>
+ <./hub01.pdf>] <hub02.pdf, id=2058, 260.17201pt x 156.39227pt>
 File: hub02.pdf Graphic file (type pdf)
- <use hub02.pdf> [50
+ <use hub02.pdf> [52
 
- <./hub02.pdf>] <hub03.pdf, id=2027, 260.17201pt x 156.39227pt>
+ <./hub02.pdf>] <hub03.pdf, id=2095, 260.17201pt x 156.39227pt>
 File: hub03.pdf Graphic file (type pdf)
  <use hub03.pdf>
-[51
+[53
 
- <./hub03.pdf>] [52
+ <./hub03.pdf>] [54
 
-] <reittiopas01.png, id=2096, 608.2725pt x 467.7475pt>
-File: reittiopas01.png Graphic file (type png)
-
-<use reittiopas01.png> [53
-
- <./reittiopas01.png (PNG copy)>] [54
+] [55
 
 ]
-<matkansuunnittelu01.pdf, id=2166, 302.79303pt x 156.60005pt>
+<reittiopas01.png, id=2201, 608.2725pt x 467.7475pt>
+File: reittiopas01.png Graphic file (type png)
+ <use reittiopas01.png>
+[56
+
+ <./reittiopas01.png (PNG copy)>] [57
+
+]
+<matkansuunnittelu01.pdf, id=2269, 302.79303pt x 156.60005pt>
 File: matkansuunnittelu01.pdf Graphic file (type pdf)
 
-<use matkansuunnittelu01.pdf> [55
+<use matkansuunnittelu01.pdf> [58
 
  <./matkansuunnittelu01.pdf>]
-<matkansuunnittelu02.pdf, id=2207, 302.79303pt x 156.07408pt>
+<matkansuunnittelu02.pdf, id=2309, 302.79303pt x 156.07408pt>
 File: matkansuunnittelu02.pdf Graphic file (type pdf)
 
-<use matkansuunnittelu02.pdf> [56
+<use matkansuunnittelu02.pdf> [59
 
  <./matkansuunnittelu02.pdf>]
-<stokvsdet02.pdf, id=2247, 341.40047pt x 82.09068pt>
+<stokvsdet02.pdf, id=2349, 341.40047pt x 82.09068pt>
 File: stokvsdet02.pdf Graphic file (type pdf)
  <use stokvsdet02.pdf>
-[57
+[60
 
  <./stokvsdet02.pdf>]
-<transferprob02.pdf, id=2291, 341.40047pt x 70.48734pt>
+<transferprob02.pdf, id=2393, 341.40047pt x 70.48734pt>
 File: transferprob02.pdf Graphic file (type pdf)
 
-<use transferprob02.pdf> [58
+<use transferprob02.pdf> [61
 
  <./transferprob02.pdf>]
-<stateexample.pdf, id=2341, 458.1115pt x 69.35913pt>
+<stateexample.pdf, id=2444, 458.1115pt x 69.35913pt>
 File: stateexample.pdf Graphic file (type pdf)
  <use stateexample.pdf>
-[59
+[62
 
- <./stateexample.pdf>] <walking01c.pdf, id=2403, 329.00035pt x 153.28166pt>
+ <./stateexample.pdf>] <walking01c.pdf, id=2506, 329.00035pt x 153.28166pt>
 File: walking01c.pdf Graphic file (type pdf)
 
-<use walking01c.pdf> [60
+<use walking01c.pdf> [63
 
- <./walking01c.pdf>] [61
+ <./walking01c.pdf>] [64
 
-] [62
+] [65
+
+] [66
 
 ]
-<kuvat/bustaxiexample-0.pdf, id=2518, 310.15875pt x 295.62444pt>
+<kuvat/bustaxiexample-0.pdf, id=2654, 310.15875pt x 295.62444pt>
 File: kuvat/bustaxiexample-0.pdf Graphic file (type pdf)
 
 <use kuvat/bustaxiexample-0.pdf>
-<kuvat/bustaxiexample-1.pdf, id=2519, 310.15875pt x 291.58937pt>
+<kuvat/bustaxiexample-1.pdf, id=2655, 310.15875pt x 291.58937pt>
 File: kuvat/bustaxiexample-1.pdf Graphic file (type pdf)
 
 <use kuvat/bustaxiexample-1.pdf>
-<kuvat/bustaxiexample-2.pdf, id=2520, 310.15875pt x 291.58937pt>
+<kuvat/bustaxiexample-2.pdf, id=2656, 310.15875pt x 291.58937pt>
 File: kuvat/bustaxiexample-2.pdf Graphic file (type pdf)
 
 <use kuvat/bustaxiexample-2.pdf>
-<kuvat/bustaxiexample-3.pdf, id=2521, 310.15875pt x 291.58937pt>
+<kuvat/bustaxiexample-3.pdf, id=2657, 310.15875pt x 291.58937pt>
 File: kuvat/bustaxiexample-3.pdf Graphic file (type pdf)
 
 <use kuvat/bustaxiexample-3.pdf>
-<kuvat/bustaxiexample-4.pdf, id=2522, 310.15875pt x 291.58937pt>
+<kuvat/bustaxiexample-4.pdf, id=2658, 310.15875pt x 291.58937pt>
 File: kuvat/bustaxiexample-4.pdf Graphic file (type pdf)
 
 <use kuvat/bustaxiexample-4.pdf>
-<kuvat/bustaxiexample-5.pdf, id=2523, 310.15875pt x 291.58937pt>
+<kuvat/bustaxiexample-5.pdf, id=2659, 310.15875pt x 291.58937pt>
 File: kuvat/bustaxiexample-5.pdf Graphic file (type pdf)
 
 <use kuvat/bustaxiexample-5.pdf>
-<kuvat/bustaxiexample-6.pdf, id=2524, 310.15875pt x 295.62444pt>
+<kuvat/bustaxiexample-6.pdf, id=2660, 310.15875pt x 295.62444pt>
 File: kuvat/bustaxiexample-6.pdf Graphic file (type pdf)
 
 <use kuvat/bustaxiexample-6.pdf>
-<kuvat/bustaxiexample-7.pdf, id=2525, 310.15875pt x 295.62444pt>
+<kuvat/bustaxiexample-7.pdf, id=2661, 310.15875pt x 295.62444pt>
 File: kuvat/bustaxiexample-7.pdf Graphic file (type pdf)
 
 <use kuvat/bustaxiexample-7.pdf>
-<kuvat/bustaxiexample-8.pdf, id=2526, 310.21394pt x 295.62444pt>
+<kuvat/bustaxiexample-8.pdf, id=2662, 310.21394pt x 295.62444pt>
 File: kuvat/bustaxiexample-8.pdf Graphic file (type pdf)
 
 <use kuvat/bustaxiexample-8.pdf>
-<kuvat/bustaxiexample-9.pdf, id=2527, 310.15875pt x 295.62444pt>
+<kuvat/bustaxiexample-9.pdf, id=2663, 310.15875pt x 295.62444pt>
 File: kuvat/bustaxiexample-9.pdf Graphic file (type pdf)
 
 <use kuvat/bustaxiexample-9.pdf>
-<kuvat/bustaxiexample-10.pdf, id=2528, 310.15875pt x 295.62444pt>
+<kuvat/bustaxiexample-10.pdf, id=2664, 310.15875pt x 295.62444pt>
 File: kuvat/bustaxiexample-10.pdf Graphic file (type pdf)
 
-<use kuvat/bustaxiexample-10.pdf> [63
+<use kuvat/bustaxiexample-10.pdf> [67
 
  <./kuvat/bustaxiexample-0.pdf> <./kuvat/bustaxiexample-1.pdf> <./kuvat/bustaxi
 example-2.pdf> <./kuvat/bustaxiexample-3.pdf> <./kuvat/bustaxiexample-4.pdf> <.
 /kuvat/bustaxiexample-5.pdf> <./kuvat/bustaxiexample-6.pdf> <./kuvat/bustaxiexa
 mple-7.pdf> <./kuvat/bustaxiexample-8.pdf> <./kuvat/bustaxiexample-9.pdf> <./ku
 vat/bustaxiexample-10.pdf>]
-File: kuvat/bustaxiexample-0.pdf Graphic file (type pdf)
-
-<use kuvat/bustaxiexample-0.pdf>
-File: kuvat/bustaxiexample-1.pdf Graphic file (type pdf)
- <use kuvat/bustaxiexample-1.pdf>
-File: kuvat/bustaxiexample-2.pdf Graphic file (type pdf)
-
-<use kuvat/bustaxiexample-2.pdf>
-File: kuvat/bustaxiexample-3.pdf Graphic file (type pdf)
- <use kuvat/bustaxiexample-3.pdf>
-File: kuvat/bustaxiexample-4.pdf Graphic file (type pdf)
-
-<use kuvat/bustaxiexample-4.pdf>
-File: kuvat/bustaxiexample-5.pdf Graphic file (type pdf)
- <use kuvat/bustaxiexample-5.pdf>
-File: kuvat/bustaxiexample-6.pdf Graphic file (type pdf)
-
-<use kuvat/bustaxiexample-6.pdf>
-File: kuvat/bustaxiexample-7.pdf Graphic file (type pdf)
- <use kuvat/bustaxiexample-7.pdf>
-File: kuvat/bustaxiexample-8.pdf Graphic file (type pdf)
-
-<use kuvat/bustaxiexample-8.pdf>
-File: kuvat/bustaxiexample-9.pdf Graphic file (type pdf)
- <use kuvat/bustaxiexample-9.pdf>
-File: kuvat/bustaxiexample-10.pdf Graphic file (type pdf)
-
-<use kuvat/bustaxiexample-10.pdf> [64
-
-]
-File: kuvat/bustaxiexample-0.pdf Graphic file (type pdf)
- <use kuvat/bustaxiexample-0.pdf>
-File: kuvat/bustaxiexample-1.pdf Graphic file (type pdf)
-
-<use kuvat/bustaxiexample-1.pdf>
-File: kuvat/bustaxiexample-2.pdf Graphic file (type pdf)
- <use kuvat/bustaxiexample-2.pdf>
-File: kuvat/bustaxiexample-3.pdf Graphic file (type pdf)
-
-<use kuvat/bustaxiexample-3.pdf>
-File: kuvat/bustaxiexample-4.pdf Graphic file (type pdf)
- <use kuvat/bustaxiexample-4.pdf>
-File: kuvat/bustaxiexample-5.pdf Graphic file (type pdf)
-
-<use kuvat/bustaxiexample-5.pdf>
-File: kuvat/bustaxiexample-6.pdf Graphic file (type pdf)
- <use kuvat/bustaxiexample-6.pdf>
-File: kuvat/bustaxiexample-7.pdf Graphic file (type pdf)
-
-<use kuvat/bustaxiexample-7.pdf>
-File: kuvat/bustaxiexample-8.pdf Graphic file (type pdf)
- <use kuvat/bustaxiexample-8.pdf>
-File: kuvat/bustaxiexample-9.pdf Graphic file (type pdf)
-
-<use kuvat/bustaxiexample-9.pdf>
-File: kuvat/bustaxiexample-10.pdf Graphic file (type pdf)
- <use kuvat/bustaxiexample-10.pdf> [65
-
-]
-File: kuvat/bustaxiexample-0.pdf Graphic file (type pdf)
-
-<use kuvat/bustaxiexample-0.pdf>
-File: kuvat/bustaxiexample-1.pdf Graphic file (type pdf)
- <use kuvat/bustaxiexample-1.pdf>
-File: kuvat/bustaxiexample-2.pdf Graphic file (type pdf)
-
-<use kuvat/bustaxiexample-2.pdf>
-File: kuvat/bustaxiexample-3.pdf Graphic file (type pdf)
- <use kuvat/bustaxiexample-3.pdf>
-File: kuvat/bustaxiexample-4.pdf Graphic file (type pdf)
-
-<use kuvat/bustaxiexample-4.pdf>
-File: kuvat/bustaxiexample-5.pdf Graphic file (type pdf)
- <use kuvat/bustaxiexample-5.pdf>
-File: kuvat/bustaxiexample-6.pdf Graphic file (type pdf)
-
-<use kuvat/bustaxiexample-6.pdf>
-File: kuvat/bustaxiexample-7.pdf Graphic file (type pdf)
- <use kuvat/bustaxiexample-7.pdf>
-File: kuvat/bustaxiexample-8.pdf Graphic file (type pdf)
-
-<use kuvat/bustaxiexample-8.pdf>
-File: kuvat/bustaxiexample-9.pdf Graphic file (type pdf)
- <use kuvat/bustaxiexample-9.pdf>
-File: kuvat/bustaxiexample-10.pdf Graphic file (type pdf)
-
-<use kuvat/bustaxiexample-10.pdf> [66
-
-]
-File: kuvat/bustaxiexample-0.pdf Graphic file (type pdf)
- <use kuvat/bustaxiexample-0.pdf>
-File: kuvat/bustaxiexample-1.pdf Graphic file (type pdf)
-
-<use kuvat/bustaxiexample-1.pdf>
-File: kuvat/bustaxiexample-2.pdf Graphic file (type pdf)
- <use kuvat/bustaxiexample-2.pdf>
-File: kuvat/bustaxiexample-3.pdf Graphic file (type pdf)
-
-<use kuvat/bustaxiexample-3.pdf>
-File: kuvat/bustaxiexample-4.pdf Graphic file (type pdf)
- <use kuvat/bustaxiexample-4.pdf>
-File: kuvat/bustaxiexample-5.pdf Graphic file (type pdf)
-
-<use kuvat/bustaxiexample-5.pdf>
-File: kuvat/bustaxiexample-6.pdf Graphic file (type pdf)
- <use kuvat/bustaxiexample-6.pdf>
-File: kuvat/bustaxiexample-7.pdf Graphic file (type pdf)
-
-<use kuvat/bustaxiexample-7.pdf>
-File: kuvat/bustaxiexample-8.pdf Graphic file (type pdf)
- <use kuvat/bustaxiexample-8.pdf>
-File: kuvat/bustaxiexample-9.pdf Graphic file (type pdf)
-
-<use kuvat/bustaxiexample-9.pdf>
-File: kuvat/bustaxiexample-10.pdf Graphic file (type pdf)
- <use kuvat/bustaxiexample-10.pdf> [67
-
-]
 File: kuvat/bustaxiexample-0.pdf Graphic file (type pdf)
 
 <use kuvat/bustaxiexample-0.pdf>
@@ -1715,70 +1614,192 @@ File: kuvat/bustaxiexample-10.pdf Graphic file (type pdf)
  <use kuvat/bustaxiexample-10.pdf> [73
 
 ]
-<tilat01.pdf, id=2951, 400.34769pt x 106.32121pt>
-File: tilat01.pdf Graphic file (type pdf)
- <use tilat01.pdf> [74
+File: kuvat/bustaxiexample-0.pdf Graphic file (type pdf)
 
- <./tilat01.pdf>] <tilamaar01.pdf, id=2996, 446.36763pt x 89.18921pt>
-File: tilamaar01.pdf Graphic file (type pdf)
+<use kuvat/bustaxiexample-0.pdf>
+File: kuvat/bustaxiexample-1.pdf Graphic file (type pdf)
+ <use kuvat/bustaxiexample-1.pdf>
+File: kuvat/bustaxiexample-2.pdf Graphic file (type pdf)
 
-<use tilamaar01.pdf> [75
+<use kuvat/bustaxiexample-2.pdf>
+File: kuvat/bustaxiexample-3.pdf Graphic file (type pdf)
+ <use kuvat/bustaxiexample-3.pdf>
+File: kuvat/bustaxiexample-4.pdf Graphic file (type pdf)
 
- <./tilamaar01.pdf>]
-<tilamaar02.pdf, id=3039, 446.36763pt x 89.18921pt>
-File: tilamaar02.pdf Graphic file (type pdf)
- <use tilamaar02.pdf>
-[76
+<use kuvat/bustaxiexample-4.pdf>
+File: kuvat/bustaxiexample-5.pdf Graphic file (type pdf)
+ <use kuvat/bustaxiexample-5.pdf>
+File: kuvat/bustaxiexample-6.pdf Graphic file (type pdf)
 
- <./tilamaar02.pdf>] <tilamaar03.pdf, id=3082, 446.36763pt x 89.18921pt>
-File: tilamaar03.pdf Graphic file (type pdf)
+<use kuvat/bustaxiexample-6.pdf>
+File: kuvat/bustaxiexample-7.pdf Graphic file (type pdf)
+ <use kuvat/bustaxiexample-7.pdf>
+File: kuvat/bustaxiexample-8.pdf Graphic file (type pdf)
 
-<use tilamaar03.pdf> [77
+<use kuvat/bustaxiexample-8.pdf>
+File: kuvat/bustaxiexample-9.pdf Graphic file (type pdf)
+ <use kuvat/bustaxiexample-9.pdf>
+File: kuvat/bustaxiexample-10.pdf Graphic file (type pdf)
 
- <./tilamaar03.pdf>]
-<tilamaar04.pdf, id=3125, 446.36763pt x 89.21832pt>
-File: tilamaar04.pdf Graphic file (type pdf)
- <use tilamaar04.pdf>
-[78
-
- <./tilamaar04.pdf>] <tilamaar05.pdf, id=3167, 446.36763pt x 89.19423pt>
-File: tilamaar05.pdf Graphic file (type pdf)
-
-<use tilamaar05.pdf> [79
-
- <./tilamaar05.pdf>]
-<tilat02.pdf, id=3210, 305.54149pt x 120.4751pt>
-File: tilat02.pdf Graphic file (type pdf)
- <use tilat02.pdf> [80
-
- <./tilat02.pdf>] <tilat03.pdf, id=3251, 305.54149pt x 120.4751pt>
-File: tilat03.pdf Graphic file (type pdf)
- <use tilat03.pdf>
-[81
-
- <./tilat03.pdf>] [82
-
-] <a-optima02.pdf, id=3324, 775.89874pt x 489.83pt>
-File: a-optima02.pdf Graphic file (type pdf)
-
-<use a-optima02.pdf> [83
-
- <./a-optima02.pdf>] [84
-
-] [85
+<use kuvat/bustaxiexample-10.pdf> [74
 
 ]
-<vaihto01.png, id=3438, 599.23875pt x 508.90125pt>
-File: vaihto01.png Graphic file (type png)
- <use vaihto01.png> [86
+File: kuvat/bustaxiexample-0.pdf Graphic file (type pdf)
+ <use kuvat/bustaxiexample-0.pdf>
+File: kuvat/bustaxiexample-1.pdf Graphic file (type pdf)
 
- <./vaihto01.png (PNG copy)>] <vaihto02.png, id=3469, 599.23875pt x 508.90125pt
+<use kuvat/bustaxiexample-1.pdf>
+File: kuvat/bustaxiexample-2.pdf Graphic file (type pdf)
+ <use kuvat/bustaxiexample-2.pdf>
+File: kuvat/bustaxiexample-3.pdf Graphic file (type pdf)
+
+<use kuvat/bustaxiexample-3.pdf>
+File: kuvat/bustaxiexample-4.pdf Graphic file (type pdf)
+ <use kuvat/bustaxiexample-4.pdf>
+File: kuvat/bustaxiexample-5.pdf Graphic file (type pdf)
+
+<use kuvat/bustaxiexample-5.pdf>
+File: kuvat/bustaxiexample-6.pdf Graphic file (type pdf)
+ <use kuvat/bustaxiexample-6.pdf>
+File: kuvat/bustaxiexample-7.pdf Graphic file (type pdf)
+
+<use kuvat/bustaxiexample-7.pdf>
+File: kuvat/bustaxiexample-8.pdf Graphic file (type pdf)
+ <use kuvat/bustaxiexample-8.pdf>
+File: kuvat/bustaxiexample-9.pdf Graphic file (type pdf)
+
+<use kuvat/bustaxiexample-9.pdf>
+File: kuvat/bustaxiexample-10.pdf Graphic file (type pdf)
+ <use kuvat/bustaxiexample-10.pdf> [75
+
+]
+File: kuvat/bustaxiexample-0.pdf Graphic file (type pdf)
+
+<use kuvat/bustaxiexample-0.pdf>
+File: kuvat/bustaxiexample-1.pdf Graphic file (type pdf)
+ <use kuvat/bustaxiexample-1.pdf>
+File: kuvat/bustaxiexample-2.pdf Graphic file (type pdf)
+
+<use kuvat/bustaxiexample-2.pdf>
+File: kuvat/bustaxiexample-3.pdf Graphic file (type pdf)
+ <use kuvat/bustaxiexample-3.pdf>
+File: kuvat/bustaxiexample-4.pdf Graphic file (type pdf)
+
+<use kuvat/bustaxiexample-4.pdf>
+File: kuvat/bustaxiexample-5.pdf Graphic file (type pdf)
+ <use kuvat/bustaxiexample-5.pdf>
+File: kuvat/bustaxiexample-6.pdf Graphic file (type pdf)
+
+<use kuvat/bustaxiexample-6.pdf>
+File: kuvat/bustaxiexample-7.pdf Graphic file (type pdf)
+ <use kuvat/bustaxiexample-7.pdf>
+File: kuvat/bustaxiexample-8.pdf Graphic file (type pdf)
+
+<use kuvat/bustaxiexample-8.pdf>
+File: kuvat/bustaxiexample-9.pdf Graphic file (type pdf)
+ <use kuvat/bustaxiexample-9.pdf>
+File: kuvat/bustaxiexample-10.pdf Graphic file (type pdf)
+
+<use kuvat/bustaxiexample-10.pdf> [76
+
+]
+File: kuvat/bustaxiexample-0.pdf Graphic file (type pdf)
+ <use kuvat/bustaxiexample-0.pdf>
+File: kuvat/bustaxiexample-1.pdf Graphic file (type pdf)
+
+<use kuvat/bustaxiexample-1.pdf>
+File: kuvat/bustaxiexample-2.pdf Graphic file (type pdf)
+ <use kuvat/bustaxiexample-2.pdf>
+File: kuvat/bustaxiexample-3.pdf Graphic file (type pdf)
+
+<use kuvat/bustaxiexample-3.pdf>
+File: kuvat/bustaxiexample-4.pdf Graphic file (type pdf)
+ <use kuvat/bustaxiexample-4.pdf>
+File: kuvat/bustaxiexample-5.pdf Graphic file (type pdf)
+
+<use kuvat/bustaxiexample-5.pdf>
+File: kuvat/bustaxiexample-6.pdf Graphic file (type pdf)
+ <use kuvat/bustaxiexample-6.pdf>
+File: kuvat/bustaxiexample-7.pdf Graphic file (type pdf)
+
+<use kuvat/bustaxiexample-7.pdf>
+File: kuvat/bustaxiexample-8.pdf Graphic file (type pdf)
+ <use kuvat/bustaxiexample-8.pdf>
+File: kuvat/bustaxiexample-9.pdf Graphic file (type pdf)
+
+<use kuvat/bustaxiexample-9.pdf>
+File: kuvat/bustaxiexample-10.pdf Graphic file (type pdf)
+ <use kuvat/bustaxiexample-10.pdf> [77
+
+]
+<tilat01.pdf, id=3087, 400.34769pt x 106.32121pt>
+File: tilat01.pdf Graphic file (type pdf)
+ <use tilat01.pdf> [78
+
+ <./tilat01.pdf>] <tilamaar01.pdf, id=3132, 446.36763pt x 89.18921pt>
+File: tilamaar01.pdf Graphic file (type pdf)
+
+<use tilamaar01.pdf> [79
+
+ <./tilamaar01.pdf>]
+<tilamaar02.pdf, id=3176, 446.36763pt x 89.18921pt>
+File: tilamaar02.pdf Graphic file (type pdf)
+ <use tilamaar02.pdf>
+[80
+
+ <./tilamaar02.pdf>] <tilamaar03.pdf, id=3219, 446.36763pt x 89.18921pt>
+File: tilamaar03.pdf Graphic file (type pdf)
+
+<use tilamaar03.pdf> [81
+
+ <./tilamaar03.pdf>]
+<tilamaar04.pdf, id=3262, 446.36763pt x 89.21832pt>
+File: tilamaar04.pdf Graphic file (type pdf)
+ <use tilamaar04.pdf>
+[82
+
+ <./tilamaar04.pdf>] <tilamaar05.pdf, id=3304, 446.36763pt x 89.19423pt>
+File: tilamaar05.pdf Graphic file (type pdf)
+
+<use tilamaar05.pdf> [83
+
+ <./tilamaar05.pdf>]
+<tilat02.pdf, id=3346, 305.54149pt x 120.4751pt>
+File: tilat02.pdf Graphic file (type pdf)
+ <use tilat02.pdf> [84
+
+ <./tilat02.pdf>] <tilat03.pdf, id=3387, 305.54149pt x 120.4751pt>
+File: tilat03.pdf Graphic file (type pdf)
+ <use tilat03.pdf>
+[85
+
+ <./tilat03.pdf>] [86
+
+] <a-optima02.pdf, id=3461, 775.89874pt x 489.83pt>
+File: a-optima02.pdf Graphic file (type pdf)
+
+<use a-optima02.pdf> [87
+
+ <./a-optima02.pdf>] [88
+
+] [89
+
+] [90
+
+]
+<vaihto01.png, id=3605, 599.23875pt x 508.90125pt>
+File: vaihto01.png Graphic file (type png)
+ <use vaihto01.png> [91
+
+ <./vaihto01.png (PNG copy)>] <vaihto02.png, id=3638, 599.23875pt x 508.90125pt
 >
 File: vaihto02.png Graphic file (type png)
 
-<use vaihto02.png> [87
+<use vaihto02.png> [92
 
- <./vaihto02.png>] [88
+ <./vaihto02.png>] [93
+
+] [94
 
 ]
 \tf@nav=\write6
@@ -1797,10 +1818,10 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 15720 strings out of 495061
- 288974 string characters out of 1182621
- 355661 words of memory out of 3000000
- 18221 multiletter control sequences out of 15000+50000
+ 15794 strings out of 495061
+ 290178 string characters out of 1182621
+ 362456 words of memory out of 3000000
+ 18280 multiletter control sequences out of 15000+50000
  12748 words of font info for 49 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  49i,20n,53p,424b,570s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1825,11 +1846,12 @@ type1/public/amsfonts/cm/cmss8.pfb></usr/share/texmf-texlive/fonts/type1/public
 hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-t
 exlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-texlive/fonts
 /type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/publi
-c/amsfonts/symbols/msam10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsf
-onts/symbols/msam7.pfb>
-Output written on vkesitys.pdf (88 pages, 4506600 bytes).
+c/amsfonts/latxfont/line10.pfb></usr/share/texmf-texlive/fonts/type1/public/ams
+fonts/symbols/msam10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
+symbols/msam7.pfb>
+Output written on vkesitys.pdf (94 pages, 4549787 bytes).
 PDF statistics:
- 3634 PDF objects out of 4296 (max. 8388607)
- 190 named destinations out of 1000 (max. 500000)
+ 3837 PDF objects out of 4296 (max. 8388607)
+ 202 named destinations out of 1000 (max. 500000)
  477 words of extra memory for PDF output out of 10000 (max. 10000000)
 
