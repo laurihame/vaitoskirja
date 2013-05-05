@@ -3,7 +3,8 @@
 %                        
 \usepackage[finnish]{babel}
 % Theme for beamer presentation.
-\usepackage{beamerthemesplit,xmpmulti} 
+\usepackage{beamerthemesplit,xmpmulti,cancel} 
+
 % Other themes include: beamerthemebars, beamerthemelined,beamerthemetree, beamerthemeplain
 \usepackage[utf8]{inputenc}
 \usefonttheme{professionalfonts}
@@ -16,13 +17,24 @@
 
 \usepackage{graphicx}
 
+    \setbeamerfont{section title}{parent=title}
+    \setbeamercolor{section title}{parent=titlelike}
+    \defbeamertemplate*{section pages}{default}[1][]
+    {
+      \centering
+        \begin{beamercolorbox}[sep=8pt,center,#1]{section title}
+          \usebeamerfont{section title}\insertsection\par
+        \end{beamercolorbox}
+    }
+    \newcommand*{\secpage}{\usebeamertemplate*{section pages}}
+    
 \begin{document}
 
 % Creates title page of slide show using above information
 \begin{frame}
   \titlepage
 \end{frame}
-%\note{Talk for 30 minutes} % Add notes to yourself that will be displayed when typeset with the notes class option.
+%\cancele{Talk for 30 minutes} % Add notes to yourself that will be displayed when typeset with the notes class option.
 
 %\section{Johdanto}
 % Creates table of contents slide incorporating all \section and \subsection commands.
@@ -39,16 +51,20 @@ Kysyntäohjautuva joukkoliikenne = bussi- ja taksipalvelujen välimuoto, joka pe
 \begin{itemize}
  \item 
  Matkat tilataan esim. internetistä ja ajoneuvojen reitit muodostuvat reaaliaikaisesti tilausten perusteella
-\end{itemize}
+ \end{itemize}
+ 
+  \item 
+Väitöskirjassa tarkastellaan kolmea teemaa
+ \begin{itemize}
 \item
-Ajoneuvojen reitinlaskenta, ohjauslogiikka
+Ajoneuvojen reitinlaskenta
 \item
 Matkustajien matkansuunnittelu
 \item
 Taloudellinen tasapaino
 \end{itemize}
 %  \column{2.5in}
-
+ \end{itemize}
 
 %\framebox{\includegraphics[scale=0.6]{esitys01}}
  
@@ -56,6 +72,7 @@ Taloudellinen tasapaino
 \end{frame}
 
 \section{Reitinlaskenta}
+\frame{\secpage}
 \subsection{Ongelman määrittely}
 \begin{frame}
   \frametitle{Kauppamatkustajan ongelma}   % Insert frame title between curly braces
@@ -119,8 +136,8 @@ Ajoneuvoja eli laskettavia reittejä voi olla useita
   \begin{columns}[c]
   \column{3.5in}  % slides are 3in high by 5in wide
   \begin{itemize}
-    \item 
-    Kysyntäohjautuva joukkoliikenne perustuu pienten tai keskisuurten ajoneuvojen (esim. minibussien) joustavaan reititykseen 
+    %\item 
+    %Kysyntäohjautuva joukkoliikenne perustuu pienten tai keskisuurten ajoneuvojen (esim. minibussien) joustavaan reititykseen 
     \item
     Asiakkaat voivat tilata matkoja reaaliaikaisesti esim. internet-käyttöliittymällä
     \item
@@ -394,6 +411,8 @@ Rakennetaan lisäysperiaatteella rinnakkain useampi vaihoehtoinen reitti ja vali
  \begin{itemize}
  \item
 Rakennetaan lisäysperiaatteella rinnakkain kaikki mahdolliset reitit (enintään $\frac{(2n)!}{2^n}$ kpl)
+\item
+Osa reiteistä voidaan hylätä rajoitusten perusteella
 %\item
 %Perusidea: luetellaan yhden ajoneuvon kaikki mahdolliset reitit ja valitaan niistä paras 
 %\item
@@ -432,6 +451,62 @@ Rakennetaan lisäysperiaatteella rinnakkain kaikki mahdolliset reitit (enintää
       }
       \end{columns}
 \end{frame}
+    
+    
+    
+    \begin{frame}
+\frametitle{Täydellinen lisäysalgoritmi (Exact insertion algorithm)}
+ \begin{itemize}
+ \item
+Rakennetaan lisäysperiaatteella rinnakkain kaikki mahdolliset reitit (enintään $\frac{(2n)!}{2^n}$ kpl)
+\item
+Osa reiteistä voidaan hylätä rajoitusten perusteella
+%\item
+%Perusidea: luetellaan yhden ajoneuvon kaikki mahdolliset reitit ja valitaan niistä paras 
+%\item
+%Kaikki mahdolliset reitit ($\frac{(2n)!}{2^n}$ kpl) saadaan lisäämällä asiakkaat yksi kerrallaan \emph{kaikkiin edellisiin} reitteihin
+\end{itemize}
+\hfill \\
+  \begin{columns}[c]
+  \column{0.7in}
+  \column{2.5in}  % slides are 3in high by 5in wide
+ $1^+,1^-$ \\
+ \hfill \\
+  $1^+,1^-,2^+,2^-$ \\
+    $\cancel{1^+,2^+,1^-,2^-}$ \\
+     $1^+,2^+,2^-,1^-$ \\
+      $\cancel{2^+,1^+,1^-,2^-}$ \\
+      $\cancel{2^+,1^+,2^-,1^-}$ \\
+      $2^+,2^-,1^+,1^-$ \\
+      \column{2.5in}
+      {\tiny 
+        $1^+,1^-,2^+,2^-,3^+,3^-$ \\
+        $1^+,1^-,2^+,3^+,2^-,3^-$ \\
+        $\cancel{1^+,1^-,3^+,2^+,2^-,3^-}$ \\
+        $\cancel{1^+,3^+,1^-,2^+,2^-,3^-}$ \\
+        $3^+,1^+,1^-,2^+,2^-,3^-$ \\
+        
+        $1^+,1^-,2^+,3^+,3^-,2^-$ \\
+        $1^+,1^-,3^+,2^+,3^-,2^-$ \\
+        $\cancel{1^+,3^+,1^-,2^+,3^-,2^-}$ \\
+        $3^+,1^+,1^-,2^+,3^-,2^-$ \\
+        
+        $\cancel{1^+,1^-,3^+,3^-,2^+,2^-}$ \\
+        $1^+,3^+,1^-,3^-,2^+,2^-$ \\
+        $3^+,1^+,1^-,3^-,2^+,2^-$ \\
+        \
+      \ldots
+      }
+      \end{columns}
+\end{frame}    
+    
+    
+    
+    
+    
+    
+    
+    
     
         \begin{frame}
 \frametitle{Lisäysalgoritmi, tuloksia}
@@ -496,7 +571,7 @@ Periaate sisältää hajautetut ratkaisut
   \frametitle{Maksimiklusteriperiaate (Maximum cluster algorithm)} 
   \begin{itemize}
    \item 
-   Perusidea: Pyritään palvelemaan mahdollisimman suuri asiakasjoukko (klusteri) aikarajojen sisällä kullakin ajoneuvolla
+   Perusidea: Etsitään suurin asiakasjoukko (klusteri), joka sopii yhden ajoneuvon reitille 
    \item
    Uuden matkatilauksen saapuessa klusterit lasketaan uudelleen
   \end{itemize}
@@ -572,6 +647,7 @@ Periaate sisältää hajautetut ratkaisut
 
 
 \section{Matkansuunnittelu}
+\frame{\secpage}
 \subsection{Matkansuunnittelun mallit}
 \begin{frame}
   \frametitle{Matkansuunnittelu} 
@@ -598,11 +674,11 @@ Periaate sisältää hajautetut ratkaisut
   \frametitle{Deterministinen ja stokastinen malli} 
   \begin{itemize}
    \item 
-    Olemassaolevilla deterministisillä menetelmillä voidaan laskea etukäteen paras reitti esim. matka-ajan, odotusajan, kävelymatkan tai vaihtojen lukumäärän suhteen 
+    \emph{Deterministisillä} menetelmillä voidaan laskea etukäteen paras reitti esim. matka-ajan, odotusajan, kävelymatkan tai vaihtojen lukumäärän suhteen 
     \item
-    Todellisuudessa paras reitti ei välttämättä toteudu esim. myöhästymisien tai vuorojen peruutuksien takia
+    Todellisuudessa etukäteen laskettu reitti ei välttämättä toteudu esim. myöhästymisien tai vuorojen peruutuksien takia
     \item
-    Stokastinen malli ottaa huomioon mahdolliset reittimuutokset matkan varrella
+    \emph{Stokastinen} malli ottaa huomioon mahdolliset reittimuutokset matkan varrella
     \item
     Mallin avulla voidaan laskea parhaan reitin lisäksi paras matkastrategia eri tavoitteiden suhteen
    \end{itemize}
@@ -752,22 +828,21 @@ Riippumattomuus matkahistoriasta eli aiempien vaihtojen onnistumisesta
     
     
 \section{Taloudellinen tasapaino}
+\frame{\secpage}
 \subsection{Mallin kuvaus}
 \begin{frame}
-  \frametitle{Taloudellinen verkkotasapainomalli} 
+  \frametitle{Taloudellinen tasapaino} 
   \begin{itemize}
    \item 
-   Taloudellisessa tarkastelussa otetaan huomioon sekä matkustajien että liikennöitsijän päätökset
+   Taloudellisessa tarkastelussa otetaan samanaikaisesti huomioon sekä matkustajien että liikennöitsijän päätökset
    \item
-   Ideana on tasapainottaa ajoneuvojen jakauma eri reiteillä kysynnän mukaan
-   \item
-   Mallin avulla voidaan kuvata kysyntäohjautuvan joukkoliikenteen \emph{keskimääräistä} toimintaa
+   Tasapaino = kysynnän ja tarjonnan kohtaamispiste liikenneverkossa
    \end{itemize}
     \end{frame}   
     
 
 \begin{frame}
-  \frametitle{Bussi, taksi ja kysyntäohjautuva joukkoliikenne}   % Insert frame title between curly braces
+  \frametitle{Liikennepalvelujen verkkomallit}   % Insert frame title between curly braces
   \begin{columns}[c]
   \column{2.5in}  % slides are 3in high by 5in wide
   \begin{itemize}
@@ -786,7 +861,7 @@ Kysyntäohjautuvassa joukkoliikenteessä kokonaisia reittejä muodostetaan reaal
     
  
     \begin{frame}
-  \frametitle{Kysyntäohjautuvan joukkoliikenteen stokastinen verkkomalli}   % Insert frame title between curly braces
+  \frametitle{Kysyntäohjautuva joukkoliikenne stokastisena prosessina}   % Insert frame title between curly braces
 \begin{itemize}
  \item 
  Kysyntäohjautuvaa joukkoliikennettä voidaan kuvata stokastisena prosessina, joka muodostuu
@@ -797,7 +872,6 @@ Kysyntäohjautuvassa joukkoliikenteessä kokonaisia reittejä muodostetaan reaal
 \begin{center}
  \includegraphics[scale=0.65]{tilat01}
 \end{center}
-
 \end{frame}
 
 
@@ -896,23 +970,23 @@ Säännöstelyn vaikutusten tutkiminen
 \end{itemize}
 \end{frame}
 
-\section{Päätelmät}
+\section{Tulosten tarkastelu}
+\frame{\secpage}
 \begin{frame}
-  \frametitle{Yleisiä havaintoja}   % Insert frame title between curly braces
+  \frametitle{Tulosten tarkastelu}   % Insert frame title between curly braces
 \begin{itemize}
 \item
 Reitinlaskennassa tulee ottaa huomioon sekä kustannukset että palvelutaso: paras kokonaisratkaisu löytyy kahden optimin välistä
 \item
-Suuri kysyntä mahdollistaa sekä tehokkaan järjestelmän että hyvän palvelutason
+Suuri kysyntä mahdollistaa hyvän palvelutason tuottamisen tehokkaasti
 \item
-Pidemmät ennakkotilausajat mahdollistavat tehokkaamman reitinlaskennan
-%\item
+Pidemmät ennakkotilausajat mahdollistavat tarkemman optimoinnin
 %Kysyntäohjautuvan joukkoliikenteen pitäisi olla osa olemassaolevaa joukkoliikennejärjestelmää 
 %\begin{itemize}
 \end{itemize}
 \end{frame}
 \begin{frame}
-  \frametitle{Yleisiä havaintoja}   % Insert frame title between curly braces
+  \frametitle{Tulosten tarkastelu}   % Insert frame title between curly braces
 \begin{itemize}
  \item 
  Matkansuunnittelun avulla voidaan liittää kysyntäohjautuva palvelu olemassaolevaan joukkoliikennejärjestelmään
@@ -930,7 +1004,7 @@ Pidemmät ennakkotilausajat mahdollistavat tehokkaamman reitinlaskennan
 \end{frame}
 
 \begin{frame}
-  \frametitle{Yleisiä havaintoja}   % Insert frame title between curly braces
+  \frametitle{Tulosten tarkastelu}   % Insert frame title between curly braces
 \begin{itemize}
  \item 
 Helsingin seudun liikenne käynnisti vuoden 2013 alussa kaikille avoimen kysyntäohjautuvan joukkoliikennepalvelun
@@ -943,6 +1017,41 @@ Toimii noin 10 kilometrin säteellä Helsingin keskustasta
  \end{itemize}
 \end{frame}
 
-
+\begin{frame}
+  \frametitle{Tulosten tarkastelu}   % Insert frame title between curly braces
+\begin{itemize}
+ \item 
+Joukkoliikenteen lisäksi reitinlaskenta- ja matkansuunnittelumenetelmiä voidaan hyödyntää muun muassa 
+\begin{itemize}
+\item
+rahti- ja lentoliikenteessä
+\item
+lähetti- ja ruoankuljetuspalveluissa 
+\item
+sotilaslogistiikassa
+ \end{itemize}
+ \end{itemize}
+\end{frame}
+% \begin{frame}
+%   \frametitle{Muita tutkimusmenetelmiä}   % Insert frame title between curly braces
+% \begin{itemize}
+%  \item 
+%  Kyselytutkimukset
+%  \begin{itemize}
+%  \item
+% Hinnoittelu, maksuhalukkuus
+%  \end{itemize}
+% \item
+% Mikrosimulointi
+% \begin{itemize}
+%  \item 
+%  Algoritmien testaus
+%  \item
+%  Skaalaedut
+% \end{itemize}
+% \item
+% Jonomallit
+%  \end{itemize}
+% \end{frame}
     
 \end{document}
