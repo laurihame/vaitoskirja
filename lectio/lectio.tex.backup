@@ -1,0 +1,59 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[finnish]{babel}
+\usepackage[utf8]{inputenc}
+\addtolength{\textwidth}{0.5in}
+\addtolength{\hoffset}{-0.5in}
+\addtolength{\textheight}{0in}
+\addtolength{\voffset}{-0.5in}
+
+
+\begin{document}
+\section*{Lectio Praecursoria 31.5.2013}
+Arvoisa valvoja, arvoisa vastaväittäjä, arvoisat kuulijat.
+
+%Esittelen väitöskirjani, jonka otsikko on ``Kysyntäohjautuvan joukkoliikenteen matemaattisia malleja ja algoritmeja''. 
+Kysyntäohjautuvalla joukkoliikenteellä tarkoitetaan bussi- ja taksipalvelujen välimuotoa, joka perustuu pienten tai 
+keskisuurten ajoneuvojen joustavaan reititykseen. Kysyntäohjautuvassa joukkoliikenteessä matkat tilataan etukäteen ja
+ajoneuvojen reitit muodostuvat matkatilausten perusteella.
+Väitöskirjassa on tutkittu ja kehitetty matemaattisia malleja kysyntäohjautuvalle joukkoliikenteelle, ja algoritmeja eli menetelmiä,
+joilla voidaan ratkaista ajoneuvojen reitinlaskentaan ja matkansuunnitteluun liittyviä kombinatorisia ongelmia liikenneverkossa.
+
+Väitöskirjan ensimmäinen osa käsittelee ajoneuvojen reitinlaskentaongelmaa, kun oletetaan kysyntä tunnetuksi yhden matkustajan tarkkuudella. 
+Toisessa osassa tarkastellaan matkustajien matkansuunnittelua, joka liittyy joukkoliikennevälineen ja reitin valintaan joukkoliikenneverkossa.
+Lopuksi tarkastellaan taloudellisen tasapainopisteen, eli kysynnän ja tarjonnan kohtaamispisteen, määrittämistä liikenneverkossa.
+
+Reitinlaskentaongelmista tunnetuin on niin sanottu kauppamatkustajan ongelma. Ongelman määrittelee joukko maantieteellisiä 
+pisteitä, esimerkiksi kaupunkeja, joiden väliset etäisyydet tunnetaan. Tavoitteena on löytää lyhin reitti joka kulkee kaikkien pisteiden kautta.
+Kauppamatkustajan ongelma on laskennallisesti haastava: sen ratkaisemiseen tunnetaan ainoastaan algoritmeja, joiden laskenta-aika kasvaa 
+eksponentiaalisesti pisteiden määrän suhteen.
+
+Käytännössä, esimerkiksi kuljetuspalveluissa, reitinlaskentaongelma on usein kauppamatkustajan ongelmaa monimutkaisempi. 
+Reitinlaskentaan voi liittyä erityyppisiä rajoituksia, ja lisäksi jos ajoneuvoja on useita, nouto- ja toimituspisteet voidaan 
+jakaa usealle reitille.
+
+Kapasiteettirajoituksilla tarkoitetaan sitä, että 
+ajoneuvoihin mahtuu vain tietty määrä kuljetettavaa tavaraa tai matkustajia kerrallaan. Aikarajoituksilla huolehditaan siitä että
+tavaran tai matkustajan kuljetus ei kestä liian kauan. Edeltävyysrajoitukset tarkoittavat kuljetuksessa sitä että tavaran
+tai matkustajan noutopisteessä pitää käydä ennen toimituspistettä. 
+
+Kysyntäohjautuvassa joukkoliikenteessä asiakkaat voivat tilata matkoja reaaliaikaisesti esim. internet-käyttöliittymällä ja 
+ajoneuvojen reitit muodostuvat tilattujen matkojen perusteella. Jokaisen matkatilauksen yhteydessä uudelle asiakkaalle valitaan sopiva
+ajoneuvo ja ajoneuvolle sopiva reitti.
+
+Ajoneuvon ja reitinvalintaongelma voidaan ratkaista hajautetusti tai keskitetysti. Hajautetussa ratkaisussa jokaiselle ajoneuvolle
+
+
+
+
+
+
+Väitöskirjan tärkeimmät tulokset tieteellisen metodologian näkökulmasta liittyvät reitinlaskentaan muuttuvissa
+Erityisesti matkustajaliikenteeseen
+
+
+
+
+Pyydän teitä, arvoisa professori, Aalto-yliopiston perustieteiden korkeakoulun määräämänä vastaväittäjänä esittämään ne muistutukset, joihin katsotte väitöskirjan antavan aihetta.
+
+
+\end{document}
