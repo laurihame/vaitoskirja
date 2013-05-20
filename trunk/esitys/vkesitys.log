@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.4.30)  6 MAY 2013 01:11
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.4.30)  20 MAY 2013 21:10
 entering extended mode
  %&-line parsing enabled.
 **vkesitys.tex
@@ -1063,7 +1063,7 @@ File: tilauskaavio02.pdf Graphic file (type pdf)
 File: ekademo01.png Graphic file (type png)
 
 <use ekademo01.png>
-Overfull \vbox (8.06349pt too high) detected at line 170
+Overfull \vbox (8.06349pt too high) detected at line 174
  []
 
 [9
@@ -1072,7 +1072,7 @@ Overfull \vbox (8.06349pt too high) detected at line 170
 <ekademo02.png, id=390, 853.1875pt x 646.415pt>
 File: ekademo02.png Graphic file (type png)
  <use ekademo02.png>
-Overfull \vbox (8.06349pt too high) detected at line 177
+Overfull \vbox (8.06349pt too high) detected at line 181
  []
 
 [10
@@ -1081,7 +1081,7 @@ Overfull \vbox (8.06349pt too high) detected at line 177
 <ekademo03.png, id=424, 853.1875pt x 646.415pt>
 File: ekademo03.png Graphic file (type png)
  <use ekademo03.png>
-Overfull \vbox (8.06349pt too high) detected at line 184
+Overfull \vbox (8.06349pt too high) detected at line 188
  []
 
 [11
@@ -1090,7 +1090,7 @@ Overfull \vbox (8.06349pt too high) detected at line 184
 File: ekademo04.png Graphic file (type png)
 
 <use ekademo04.png>
-Overfull \vbox (8.06349pt too high) detected at line 191
+Overfull \vbox (8.06349pt too high) detected at line 195
  []
 
 [12
@@ -1099,7 +1099,7 @@ Overfull \vbox (8.06349pt too high) detected at line 191
 File: ekademo05.png Graphic file (type png)
 
 <use ekademo05.png>
-Overfull \vbox (8.06349pt too high) detected at line 198
+Overfull \vbox (8.06349pt too high) detected at line 202
  []
 
 [13
@@ -1108,7 +1108,7 @@ Overfull \vbox (8.06349pt too high) detected at line 198
 File: ekademo06.png Graphic file (type png)
 
 <use ekademo06.png>
-Overfull \vbox (8.06349pt too high) detected at line 205
+Overfull \vbox (8.06349pt too high) detected at line 209
  []
 
 [14
@@ -1123,65 +1123,65 @@ File: aikaikkuna01.pdf Graphic file (type pdf)
 ] [17
 
 ]
-<valinta01.pdf, id=670, 354.22337pt x 121.35338pt>
+<valinta01.pdf, id=669, 354.22337pt x 121.35338pt>
 File: valinta01.pdf Graphic file (type pdf)
  <use valinta01.pdf> [18
 
- <./valinta01.pdf>] <valinta02.pdf, id=709, 354.22337pt x 121.35338pt>
+ <./valinta01.pdf>] <valinta02.pdf, id=708, 354.22337pt x 121.35338pt>
 File: valinta02.pdf Graphic file (type pdf)
 
 <use valinta02.pdf> [19
 
  <./valinta02.pdf>]
-<valinta03.pdf, id=764, 354.22337pt x 121.35338pt>
+<valinta03.pdf, id=763, 354.22337pt x 121.35338pt>
 File: valinta03.pdf Graphic file (type pdf)
  <use valinta03.pdf> [20
 
- <./valinta03.pdf>] <valinta04.pdf, id=809, 354.22337pt x 121.35338pt>
+ <./valinta03.pdf>] <valinta04.pdf, id=808, 354.22337pt x 121.35338pt>
 File: valinta04.pdf Graphic file (type pdf)
 
 <use valinta04.pdf> [21
 
  <./valinta04.pdf>]
-<insertion02.pdf, id=854, 382.32837pt x 81.70525pt>
+<insertion02.pdf, id=853, 382.32837pt x 81.70525pt>
 File: insertion02.pdf Graphic file (type pdf)
  <use insertion02.pdf>
 [22
 
- <./insertion02.pdf>] <insertion03.pdf, id=895, 382.32837pt x 81.70525pt>
+ <./insertion02.pdf>] <insertion03.pdf, id=894, 382.32837pt x 81.70525pt>
 File: insertion03.pdf Graphic file (type pdf)
 
 <use insertion03.pdf> [23
 
  <./insertion03.pdf>]
-<insertion04.pdf, id=938, 382.32837pt x 81.70525pt>
+<insertion04.pdf, id=937, 382.32837pt x 81.70525pt>
 File: insertion04.pdf Graphic file (type pdf)
  <use insertion04.pdf>
 [24
 
- <./insertion04.pdf>] <insertion05.pdf, id=981, 382.32837pt x 81.70525pt>
+ <./insertion04.pdf>] <insertion05.pdf, id=980, 382.32837pt x 81.70525pt>
 File: insertion05.pdf Graphic file (type pdf)
 
 <use insertion05.pdf> [25
 
  <./insertion05.pdf>]
-<insertion06.pdf, id=1025, 382.32837pt x 81.70525pt>
+<insertion06.pdf, id=1024, 382.32837pt x 81.70525pt>
 File: insertion06.pdf Graphic file (type pdf)
  <use insertion06.pdf>
 [26
 
- <./insertion06.pdf>] <insertion07.pdf, id=1068, 382.32837pt x 81.71127pt>
+ <./insertion06.pdf>] <insertion07.pdf, id=1067, 382.32837pt x 81.71127pt>
 File: insertion07.pdf Graphic file (type pdf)
 
 <use insertion07.pdf> [27
 
  <./insertion07.pdf>]
-<insertion08.pdf, id=1111, 382.32837pt x 81.71127pt>
+<insertion08.pdf, id=1110, 382.32837pt x 81.71127pt>
 File: insertion08.pdf Graphic file (type pdf)
  <use insertion08.pdf>
 [28
 
- <./insertion08.pdf>] <insertion09.pdf, id=1153, 382.32837pt x 81.70525pt>
+ <./insertion08.pdf>] <insertion09.pdf, id=1152, 382.32837pt x 81.70525pt>
 File: insertion09.pdf Graphic file (type pdf)
 
 <use insertion09.pdf> [29
@@ -1216,7 +1216,7 @@ File: insertion05.pdf Graphic file (type pdf)
 ]
 File: insertion06.pdf Graphic file (type pdf)
  <use insertion06.pdf>
-<insertion06b.pdf, id=1330, 382.32837pt x 81.70525pt>
+<insertion06b.pdf, id=1329, 382.32837pt x 81.70525pt>
 File: insertion06b.pdf Graphic file (type pdf)
  <use insertion06b.pdf>
 [34
@@ -1224,7 +1224,7 @@ File: insertion06b.pdf Graphic file (type pdf)
  <./insertion06b.pdf>]
 File: insertion07.pdf Graphic file (type pdf)
  <use insertion07.pdf>
-<insertion07b.pdf, id=1373, 382.32837pt x 81.71127pt>
+<insertion07b.pdf, id=1372, 382.32837pt x 81.71127pt>
 File: insertion07b.pdf Graphic file (type pdf)
  <use insertion07b.pdf>
 [35
@@ -1232,7 +1232,7 @@ File: insertion07b.pdf Graphic file (type pdf)
  <./insertion07b.pdf>]
 File: insertion08.pdf Graphic file (type pdf)
  <use insertion08.pdf>
-<insertion08b.pdf, id=1416, 382.32837pt x 81.71127pt>
+<insertion08b.pdf, id=1415, 382.32837pt x 81.71127pt>
 File: insertion08b.pdf Graphic file (type pdf)
  <use insertion08b.pdf>
 [36
@@ -1240,26 +1240,26 @@ File: insertion08b.pdf Graphic file (type pdf)
  <./insertion08b.pdf>]
 File: insertion09.pdf Graphic file (type pdf)
  <use insertion09.pdf>
-<insertion09b.pdf, id=1458, 382.32837pt x 81.71127pt>
+<insertion09b.pdf, id=1457, 382.32837pt x 81.71127pt>
 File: insertion09b.pdf Graphic file (type pdf)
  <use insertion09b.pdf>
 [37
 
  <./insertion09b.pdf>]
-Overfull \hbox (47.7434pt too wide) detected at line 453
+Overfull \hbox (47.7434pt too wide) detected at line 463
 [][][] $[]$[][][][][][][][] $[]$[][][][][][][][] $[]$[][][][][][] 
  []
 
 [38
 
 ]
-Overfull \hbox (47.7434pt too wide) detected at line 501
+Overfull \hbox (47.7434pt too wide) detected at line 511
 [][][] $[]$[][][][][][][][] $[]$[][][][][][][][] $[]$[][][][][][] 
  []
 
 [39
 
-] <vskuva.pdf, id=1573, 376.3109pt x 57.06117pt>
+] <vskuva.pdf, id=1572, 376.3109pt x 57.06117pt>
 File: vskuva.pdf Graphic file (type pdf)
  <use vskuva.pdf> [40
 
@@ -1268,67 +1268,67 @@ File: vskuva.pdf Graphic file (type pdf)
 ]
 File: valinta02.pdf Graphic file (type pdf)
  <use valinta02.pdf>
-<valinta05.pdf, id=1644, 354.22337pt x 121.35338pt>
+<valinta05.pdf, id=1643, 354.22337pt x 121.35338pt>
 File: valinta05.pdf Graphic file (type pdf)
  <use valinta05.pdf>
 [42
 
  <./valinta05.pdf>]
-<keskitettyesim01.pdf, id=1689, 358.23837pt x 132.1196pt>
+<keskitettyesim01.pdf, id=1688, 358.23837pt x 132.1196pt>
 File: keskitettyesim01.pdf Graphic file (type pdf)
 
 <use keskitettyesim01.pdf> [43
 
  <./keskitettyesim01.pdf>]
-<keskitettyesim02.pdf, id=1735, 358.23837pt x 132.1196pt>
+<keskitettyesim02.pdf, id=1734, 358.23837pt x 132.1196pt>
 File: keskitettyesim02.pdf Graphic file (type pdf)
 
 <use keskitettyesim02.pdf> [44
 
  <./keskitettyesim02.pdf>]
-<keskitettyesim03.pdf, id=1778, 358.23837pt x 132.1196pt>
+<keskitettyesim03.pdf, id=1777, 358.23837pt x 132.1196pt>
 File: keskitettyesim03.pdf Graphic file (type pdf)
 
 <use keskitettyesim03.pdf> [45
 
  <./keskitettyesim03.pdf>]
-<keskitettyesim04.pdf, id=1820, 358.23837pt x 132.1196pt>
+<keskitettyesim04.pdf, id=1819, 358.23837pt x 132.1196pt>
 File: keskitettyesim04.pdf Graphic file (type pdf)
 
 <use keskitettyesim04.pdf> [46
 
  <./keskitettyesim04.pdf>]
-<maxcesim04.pdf, id=1862, 475.21037pt x 212.99574pt>
+<maxcesim04.pdf, id=1861, 475.21037pt x 212.99574pt>
 File: maxcesim04.pdf Graphic file (type pdf)
  <use maxcesim04.pdf>
 [47
 
- <./maxcesim04.pdf>] <maxcesim03.pdf, id=1903, 475.21037pt x 212.99574pt>
+ <./maxcesim04.pdf>] <maxcesim03.pdf, id=1902, 475.21037pt x 212.99574pt>
 File: maxcesim03.pdf Graphic file (type pdf)
 
 <use maxcesim03.pdf> [48
 
  <./maxcesim03.pdf>]
-<maxcesim02.pdf, id=1942, 475.21037pt x 212.99574pt>
+<maxcesim02.pdf, id=1941, 475.21037pt x 212.99574pt>
 File: maxcesim02.pdf Graphic file (type pdf)
  <use maxcesim02.pdf>
 [49
 
- <./maxcesim02.pdf>] <maxcesim01.pdf, id=1981, 475.21037pt x 212.99574pt>
+ <./maxcesim02.pdf>] <maxcesim01.pdf, id=1980, 475.21037pt x 212.99574pt>
 File: maxcesim01.pdf Graphic file (type pdf)
 
 <use maxcesim01.pdf> [50
 
  <./maxcesim01.pdf>]
-<hub01.pdf, id=2019, 260.17201pt x 156.10321pt>
+<hub01.pdf, id=2018, 260.17201pt x 156.10321pt>
 File: hub01.pdf Graphic file (type pdf)
  <use hub01.pdf> [51
 
- <./hub01.pdf>] <hub02.pdf, id=2058, 260.17201pt x 156.39227pt>
+ <./hub01.pdf>] <hub02.pdf, id=2057, 260.17201pt x 156.39227pt>
 File: hub02.pdf Graphic file (type pdf)
  <use hub02.pdf> [52
 
- <./hub02.pdf>] <hub03.pdf, id=2095, 260.17201pt x 156.39227pt>
+ <./hub02.pdf>] <hub03.pdf, id=2094, 260.17201pt x 156.39227pt>
 File: hub03.pdf Graphic file (type pdf)
  <use hub03.pdf>
 [53
@@ -1338,7 +1338,7 @@ File: hub03.pdf Graphic file (type pdf)
 ] [55
 
 ]
-<reittiopas01.png, id=2201, 608.2725pt x 467.7475pt>
+<reittiopas01.png, id=2200, 608.2725pt x 467.7475pt>
 File: reittiopas01.png Graphic file (type png)
  <use reittiopas01.png>
 [56
@@ -1820,7 +1820,7 @@ LaTeX Font Warning: Size substitutions with differences
 Here is how much of TeX's memory you used:
  15794 strings out of 495061
  290178 string characters out of 1182621
- 362456 words of memory out of 3000000
+ 362457 words of memory out of 3000000
  18280 multiletter control sequences out of 15000+50000
  12748 words of font info for 49 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
@@ -1849,7 +1849,7 @@ exlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-texlive/fonts
 c/amsfonts/latxfont/line10.pfb></usr/share/texmf-texlive/fonts/type1/public/ams
 fonts/symbols/msam10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
 symbols/msam7.pfb>
-Output written on vkesitys.pdf (94 pages, 4549787 bytes).
+Output written on vkesitys.pdf (94 pages, 4550161 bytes).
 PDF statistics:
  3837 PDF objects out of 4296 (max. 8388607)
  202 named destinations out of 1000 (max. 500000)

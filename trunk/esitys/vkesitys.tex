@@ -124,6 +124,10 @@ Edeltävyys - Esim. noutopisteessä pitää käydä ennen toimituspistettä
 Tavoitefunktio: Lyhin reitti ei välttämättä ole paras
 \item
 Ajoneuvoja eli laskettavia reittejä voi olla useita
+\begin{itemize}
+ \item 
+ Ajoneuvojen ja matkustajien yhdistely
+\end{itemize}
   \end{itemize}
 
 \end{frame}
@@ -206,22 +210,22 @@ Ajoneuvoja eli laskettavia reittejä voi olla useita
 
     
 \begin{frame}
-\frametitle{Aikaikkunat}
+\frametitle{Aikarajoitteet}
 \begin{itemize}
  \item 
  Matka-aika voi pidentyä yllättäen reittimuutosten johdosta
  \item
- Palvelutasosta voidaan huolehtia ns. \emph{aikaikkunoilla}
+ Palvelutasosta voidaan huolehtia aikarajoitteilla
  \begin{itemize}
   \item 
   Esim. lähtö aikaisintaan klo 12:00, perillä viimeistään klo 13:00.
-  \item 
-  Aikaikkunat voivat olla osittain asiakkaan ja osittain järjestelmän määrittämiä
+  %\item 
+  %Aikarajoitteet voivat olla osittain asiakkaan ja osittain järjestelmän määrittämiä
  \end{itemize}
  \item
- Aikaikkunoita käytetään reitinlaskennassa, jotta tietty minimipalvelutaso toteutuisi
+  Käytetään reitinlaskennassa, jotta tietty minimipalvelutaso toteutuisi
  \item
- Liian tiukat aikaikkunat vähentävät reitin joustavuutta
+ Liian tiukat rajoitteet vähentävät reitin joustavuutta
 \end{itemize}
 \begin{center}
 \includegraphics[scale=0.8]{aikaikkuna01}
@@ -266,7 +270,13 @@ Yritetään lisätä uusi asiakas johonkin olemassaolevista reiteistä %$\to$ k�
 \item
 Lasketaan jokaiselle ajoneuvolle uusi reittiehdotus ja valitaan niistä paras/parhaat
 \item
-Ajoneuvojen reittiehdotukset lasketaan erikseen
+Ajoneuvojen reittiehdotukset lasketaan erikseen, toisistaan riippumatta 
+\begin{itemize}
+ \item 
+ Rinnakkaislaskenta
+\end{itemize}
+%\item
+%Asiakkaalle voidaan ilmoittaa ajoneuvon tunniste tilauksen yhteydessä
 \end{itemize}
 \end{frame}
 
@@ -614,7 +624,7 @@ Periaate sisältää hajautetut ratkaisut
      \item 
      rajoitteet ovat tiukkoja
      \item
-     reitit ovat pitkiä
+     reitit ovat pitkiä (pitkät ennakkotilausajat)
     \end{itemize}
    \end{itemize}
 \end{frame}  
@@ -1003,25 +1013,12 @@ Pidemmät ennakkotilausajat mahdollistavat tarkemman optimoinnin
       \end{center}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Tulosten tarkastelu}   % Insert frame title between curly braces
-\begin{itemize}
- \item 
-Helsingin seudun liikenne käynnisti vuoden 2013 alussa kaikille avoimen kysyntäohjautuvan joukkoliikennepalvelun
-\item
-Palvelu tarjoaa useita erihintaisia matkavaihtoehtoja
-\item
-Toimii noin 10 kilometrin säteellä Helsingin keskustasta
-\item
-10 minibussia, määrää kasvatetaan
- \end{itemize}
-\end{frame}
 
 \begin{frame}
   \frametitle{Tulosten tarkastelu}   % Insert frame title between curly braces
 \begin{itemize}
  \item 
-Joukkoliikenteen lisäksi reitinlaskenta- ja matkansuunnittelumenetelmiä voidaan hyödyntää muun muassa 
+Joukkoliikenteen lisäksi reitinlaskenta- ja matkansuunnittelumenetelmiä voidaan hyödyntää 
 \begin{itemize}
 \item
 rahti- ja lentoliikenteessä
@@ -1030,8 +1027,47 @@ lähetti- ja ruoankuljetuspalveluissa
 \item
 sotilaslogistiikassa
  \end{itemize}
+ \item
+ Menetelmät soveltuvat erityisesti
+ \begin{itemize}
+  \item 
+  tehtäviin, joihin liittyy rajoitusehtoja (aika, kapasiteetti)
+  \item
+  luotettavuuden optimointiin
+ \end{itemize}
  \end{itemize}
 \end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Tulosten tarkastelu}   % Insert frame title between curly braces
+\begin{itemize}
+ \item 
+Helsingin seudun liikenne käynnisti vuoden 2013 alussa kaikille avoimen kysyntäohjautuvan joukkoliikennepalvelun
+\item
+Enintään 60 minuutin ennakkotilausaika
+\item
+Useita erihintaisia matkavaihtoehtoja
+\item
+Toimii noin 10 kilometrin säteellä Helsingin keskustasta
+\item
+10 minibussia, määrää kasvatetaan
+\item
+Teoria on käytäntöä edellä
+\begin{itemize}
+ \item 
+ Reitinlaskennan merkitys korostuu suurissa järjestelmissä
+\end{itemize}
+ \end{itemize}
+\end{frame}
+
+
+
+
+
+
+
 % \begin{frame}
 %   \frametitle{Muita tutkimusmenetelmiä}   % Insert frame title between curly braces
 % \begin{itemize}
