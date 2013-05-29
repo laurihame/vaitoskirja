@@ -44,7 +44,7 @@ Tilauskuljetuspalveluissa asiakkaat voivat tilata matkoja tai tavarakuljetuksia 
 tilauksia siten että useampi asiakas tai tavarakuljetus voi olla samaan aikaan ajoneuvon kyydissä.
 
 Tilauskuljetukset voivat toimia joko staattisesti tai dynaamisesti. Staattisessa tapauksessa tilaukset tehdään ennakkoon, 
-esimerkiksi kuljetusta edeltävänä päivänä, ja ajoneuvojen reitit lasketaan tunnettujen tilausten perusteella ennen palvelun aloittamista. 
+esimerkiksi kuljetusta edeltävänä päivänä, ja ajoneuvojen reitit lasketaan etukäteen ennen palvelun aloittamista. 
 Dynaamisessa tapauksessa tilauksia voi tehdä reaaliaikaisesti ja ajoneuvojen reitit voivat muuttua palvelun toiminta-aikana.
 Esimerkiksi lähettipalvelut toimivat yleensä dynaamisesti, kun taas useat tilausbussipalvelut edellyttävät matkojen ennakkotilausta. %, jolloin reitinlaskentaongelma on staattinen.
 Dynaamisia reitinlaskentaongelmia käsitellään usein staattisten onelmien jonoina. Reitit voidaan optimoida uudelleen jokaisen uuden 
@@ -58,7 +58,7 @@ Matkustajaliikenteessä palvelutasoon vaikuttavat lisäksi kävely-, odotus-, aj
 
 Tilauskuljetuksissa nouto- ja toimitusaikoihin liittyy usein aikarajoitteita, %. %Erityisesti matkustajaliikenteessä aikaikkunat ovat %suhteellisen kapeita. 
 joilla pyritään takaamaan tietty minimipalvelutaso asiakkaille. Tiukat aikaikkunat parantavat palvelun laatua,
-mutta toisaalta rajoittavat matkojen yhdistelymahdollisuuksia.
+mutta toisaalta rajoittavat kuljetusten yhdistelymahdollisuuksia.
 
 \sepline
 
@@ -100,13 +100,14 @@ säätämisen käytettävissä olevan laskentakapasiteetin mukaan.
 
 Keskitetyn ratkaisun periaate on se, että uuden matkatilauksen saapuessa etsitään parasta mahdollista asiakkaiden, 
 ajoneuvojen ja reittien yhdistelmää. Toisin kuin hajautetussa mallissa, keskitetyssä ratkaisussa noutamattomia asiakkaita voidaan siirtää
-ajoneuvon reitiltä toiselle eli asiakkaalle määrätty ajoneuvo voi vaihtua ennen noutohetkeä. 
+ajoneuvolta toiselle eli asiakkaalle määrätty ajoneuvo voi vaihtua ennen noutohetkeä. 
 
 \sepline
 
 Väitöskirjassa esitetty maksimiklusterimenetelmä ratkaisee ajoneuvon- ja reitinvalintaongelman keskitetysti. 
-Menetelmän perusideana on etsiä jäljelläolevista asiakkaista suurin klusteri eli asiakasjoukko, joka sopii yhden ajoneuvon reitille. 
-Jokaisen uuden matkatilauksen yhteydessä maksimiklusterit lasketaan uudelleen.
+Menetelmän perusideana on etsiä toistuvasti jäljelläolevista asiakkaista suurin klusteri eli asiakasjoukko, joka sopii yhden ajoneuvon reitille. 
+Toisin sanoen menetelmä pyrkii maksimoimaan palveltujen asiakkaiden lukumäärän jokaisella ajoneuvolla.
+%Jokaisen uuden matkatilauksen yhteydessä maksimiklusterit lasketaan uudelleen.
 
 \sepline
 
@@ -236,11 +237,14 @@ Reititysstrategia kuvataan stokastisena prosessina, joka koostuu tiloista eli re
 siirtymätodennäköisyyksistä. Esimerkiksi tilojen $r$ ja $s$ välinen siirtymätodennäköisyys kuvaa sitä, kuinka suuri osuus 
 ajoneuvoista siirtyy reitille $s$ kuljettuaan reitin $r$.
 
+\sepline
+
 Tutkimalla reititysstrategioita voidaan optimoida kysyntäohjautuvan joukkoliikenteeen ajoneuvojen lukumäärä ja 
 matkojen hinnoittelu eri tilainteissa. Lisäksi yleinen tasapainomalli soveltuu erityyppisten säännöstelymallien, 
 kuten hinta- ja ajoneuvosäännöstelyn, vaikutusten tutkimiseen. Mikrosimulointiin verrattuna esitetyn analyyttisen mallin
 etuna on skaalautuvuus kysynnän ja ajoneuvojen lukumäärän suhteen.
 
+\sepline
 
 %Peliteorian näkökulmasta kysyntäohjautuvan joukkoliikenteen reititys muistuttaa niin sanottua sekastrategiaa, 
 %jossa jokaiselle deterministiselle strategialle määrätään tietty todennäköisyys.
@@ -253,25 +257,34 @@ etuna on skaalautuvuus kysynnän ja ajoneuvojen lukumäärän suhteen.
 Väitöskirjassa on kehitetty älykkään joukkoliikenteen matemaattista teoriaa reitinlaskennan, matkansuunnittelun ja
 liikennetalouden näkökulmista.
 
+\sepline
+
 Reitinlaskentaan liittyvien tutkimusten perusteella voidaan todeta, että ajoneuvon- ja reitinvalinnassa on tärkeää 
 ottaa huomioon sekä kustannukset että palvelutaso. Kustannuksia voidaan vähentää yhdistelemällä matkoja
 niin että reittien pituudet ja ajoneuvojen lukumäärä minimoituvat. Palvelutasoa voidaan säädellä asettamalla 
 matkoille aikarajoitteita.
 %Aikarajoitteiden avulla pyritään takaamaan tietty minimipalvelutaso kaikille asiakkaille. 
 
-Kysyntäohjautuvan joukkoliikennejärjestelmän koko on 
-merkittävä suorituskykyyn vaikuttava tekijä. Suuri kysyntä mahdollistaa hyvän palvelutason tuottamisen tehokkaasti.
+Kysyntäohjautuvan joukkoliikennejärjestelmän koko vaikuttaa
+merkittävästi sen tehokkuuteen. Suuri kysyntä mahdollistaa hyvän palvelutason tuottamisen tehokkaasti.
 Lisäksi ennakkoon tilatut matkat mahdollistavat reittien suunnittelun etukäteen ja näin ollen myös tarkemman optimoinnin.
+
+\sepline
 
 Matkansuunnittelun avulla voidaan liittää kysyntäohjautuva palvelu olemassaolevaan joukkoliikennejärjestelmään.
 Matkansuunnittelu mahdollistaa esimerkiksi kysyntäohjautuvan joukkoliikenteen hyödyntämisen syöttöliikenteessä
 juna- tai metroasemalle.
 
+\sepline
+
 Joukkoliikenteen lisäksi väitöskirjassa esiteltyjen menetelmien mahdollisia sovelluskohteita ovat 
 rahti- ja lentoliikenne, lähetti- ja ruoankuljetuspalvelut sekä sotilaslogistiikka. Menetelmät 
-soveltuvat erityisesti tehtäviin, joihin liittyy aikarajoituksia sekä kuljetusten luotettavuuden optimointiin.
+soveltuvat erityisesti tehtäviin, joihin liittyy aikarajoituksia, sekä kuljetusten luotettavuuden optimointiin.
 
-Helsingin seudun liikenne käynnisti vuoden 2013 alussa kaikille avoimen kysyntäohjautuvan joukkoliikennepalvelun.
+\sepline
+
+Esimerkki reitinlaskennan soveltamisesta on
+Helsingin seudun liikenteen vuoden alussa käynnistämä kaikille avoin kysyntäohjautuva joukkoliikennepalvelu.
 Palvelun tilaus- ja ohjausjärjestelmä on täysin automatisoitu, ja se mahdollistaa matkojen alkamisen lyhyen ajan
 kuluttua tilaushetkestä. Tällä hetkellä palvelu on kokeiluvaiheessa ja se toimii noin 10 kilometrin 
 säteellä Helsingin keskustasta. Liikenteessä on 10 minibussia ja suunnitelmissa on ajoneuvojen määrän kasvattaminen.
@@ -280,6 +293,8 @@ Lopullisena päätelmänä voidaan todeta, että nykytilanteessa kysyntäohjautu
 %Olemassaolevat palvelut ovat pääosin pienimuotoisia, erityisryhmille suunnattuja tai haja-asutusalueella toimivia
 Reitinlaskennan merkitys korostuu laajoissa kutsuliikennepalveluissa, joissa kysynnän
 ajallinen ja paikallinen tiheys mahdollistaa matkojen tehokkaan yhdistelyn samalle reitille. 
+
+\sepline
 
 Pyydän teitä, arvoisa professori, Aalto-yliopiston perustieteiden korkeakoulun määräämänä vastaväittäjänä esittämään ne 
 muistutukset, joihin katsotte väitöskirjan antavan aihetta.

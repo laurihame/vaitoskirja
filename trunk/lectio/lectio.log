@@ -1,11 +1,12 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.4.30)  29 MAY 2013 10:49
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.22)  29 MAY 2013 16:13
 entering extended mode
  %&-line parsing enabled.
 **lectio.tex
 (./lectio.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
-yphenation, loaded.
+yphenation, farsi, arabic, bulgarian, ukrainian, russian, finnish, swedish, loa
+ded.
 (/usr/share/texmf-texlive/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texmf-texlive/tex/latex/base/size12.clo
@@ -34,14 +35,9 @@ File: babel.def 2008/07/06 v3.8l Babel common definitions
 \babel@savecnt=\count87
 \U@D=\dimen103
 )
-
-Package babel Warning: No hyphenation patterns were loaded for
-(babel)                the language `Finnish'
-(babel)                I will use the patterns loaded for \language=0 instead.
-
-\l@finnish = a dialect from \language0
 Package babel Info: Making " an active character on input line 89.
-)) (/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
+))
+(/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
@@ -274,207 +270,100 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
 
 Overfull \hbox (22.24924pt too wide) in paragraph at lines 19--24
-\OT1/cmr/m/n/12 Kysynt[]aohjautuvalla joukkoli-iken-teell[]a tarkoite-taan buss
-i- ja tak-si-palvelu-jen v[]alimuotoa,
+\OT1/cmr/m/n/12 Kysynt[]aohjautuvalla jouk-ko-lii-ken-teell[]a tar-koi-te-taan 
+bussi- ja tak-si-pal-ve-lu-jen v[]alimuotoa,
  []
 
 
 Overfull \hbox (4.26749pt too wide) in paragraph at lines 30--32
-\OT1/cmr/m/n/12 Reitinlaskentaa hy[]odynnet[]a[]an useis-sa er-i-tyyp-pi-siss[]
-a kuljetus- ja lo-gis-ti-ikkate-ht[]aviss[]a.
+\OT1/cmr/m/n/12 Reitinlaskentaa hy[]odynnet[]a[]an useis-sa eri-tyyp-pi-siss[]a
+ kuljetus- ja lo-gis-tiik-ka-teht[]aviss[]a.
  []
 
 
 Overfull \hbox (7.56606pt too wide) in paragraph at lines 42--45
-[]\OT1/cmr/m/n/12 Tilausten pe-rus-teel-la toimivis-sa kul-je-tus-palveluis-sa 
-re-itin-lasken-taon-gel-ma on usein
- []
-
-
-Overfull \hbox (2.8661pt too wide) in paragraph at lines 42--45
-\OT1/cmr/m/n/12 kaup-pa-matkus-ta-jan on-gel-maa mon-imutkaisem-pi. Tilauskul-j
-e-tus-palveluis-sa asi-akkaat
- []
-
-
-Overfull \hbox (1.88695pt too wide) in paragraph at lines 46--52
-\OT1/cmr/m/n/12 tapauk-ses-sa tilauk-set tehd[]a[]an en-nakkoon, es-imerkik-si 
-kul-je-tus-ta edelt[]av[]an[]a p[]aiv[]an[]a,
- []
-
-
-Overfull \hbox (0.61197pt too wide) in paragraph at lines 46--52
-\OT1/cmr/m/n/12 aloit-tamista. Dy-naamises-sa tapauk-ses-sa tilauk-sia voi tehd
-[]a reaali-aikaises-ti ja ajoneu-
- []
-
-
-Overfull \hbox (3.25777pt too wide) in paragraph at lines 46--52
-\OT1/cmr/m/n/12 toimi-vat yleens[]a dy-naamis-es-ti, kun taas use-at tilaus-bus
--si-palve-lut edel-lytt[]av[]at matko-
+[]\OT1/cmr/m/n/12 Tilausten pe-rus-teel-la toi-mi-vis-sa kul-je-tus-pal-ve-luis
+-sa rei-tin-las-ken-taon-gel-ma on usein
  []
 
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (17.84512pt too wide) in paragraph at lines 78--82
-[]\OT1/cmr/m/n/12 Dynaamisessa kysynt[]aohjautuvassa joukkoli-iken-teess[]a asi
--akkaat voivat tila-ta matko-
- []
-
-
-Overfull \hbox (11.97018pt too wide) in paragraph at lines 78--82
-\OT1/cmr/m/n/12 dos-tu-vat tilat-tu-jen matko-jen pe-rus-teel-la. Jokaiselle uu
-delle asi-akkaalle val-i-taan ajoneu-
- []
-
-
-Overfull \hbox (5.5383pt too wide) in paragraph at lines 85--86
-[]\OT1/cmr/m/n/12 Ajoneuvon- ja re-it-in-val-in-taon-gel-ma voidaan ratkaista j
-oko ha-jaute-tusti tai keskite-
+Overfull \hbox (6.09525pt too wide) in paragraph at lines 78--82
+[]\OT1/cmr/m/n/12 Dynaamisessa ky-synt[]aohjautuvassa jouk-ko-lii-ken-teess[]a 
+asiak-kaat voi-vat ti-la-ta mat-
  []
 
 [2]
-Overfull \hbox (9.98131pt too wide) in paragraph at lines 101--104
-\OT1/cmr/m/n/12 kuin ha-jaute-tus-sa mallis-sa, keskite-tyss[]a ratkais-us-sa n
-outa-mat-to-mia asi-akkai-ta voidaan
+Overfull \hbox (23.09784pt too wide) in paragraph at lines 107--111
+\OT1/cmr/m/n/12 va-lin-taon-gel-man kes-ki-te-tys-ti. Me-ne-telm[]an pe-rus-ide
+a-na on et-si[]a tois-tu-vas-ti j[]aljell[]aolevista
  []
 
 
-Overfull \hbox (0.1203pt too wide) in paragraph at lines 113--116
-[]\OT1/cmr/m/n/12 Maksimiklusterit voidaan m[]a[]aritt[]a[]a tehokkaasti j[]arj
-est[]am[]all[]a asi-akkaiden nouto-
- []
-
-
-Overfull \hbox (47.96841pt too wide) in paragraph at lines 113--116
-\OT1/cmr/m/n/12 Ar-voj[]arjestys voidaan m[]a[]aritt[]a[]a laske-mal-la nouto- 
-ja toim-i-tus-pis-tei-den vierekk[]aisyysmatriisin
- []
-
-
-Overfull \hbox (13.63683pt too wide) in paragraph at lines 124--129
-\OT1/cmr/m/n/12 ai-ka -tai ka-p-a-siteet-ti-ra-joit-teet ovat tiukko-ja ja re-i
-t-tej[]a su-un-nitel-laan pitk[]alle aikav[]alille.
+Overfull \hbox (0.1203pt too wide) in paragraph at lines 114--117
+[]\OT1/cmr/m/n/12 Maksimiklusterit voi-daan m[]a[]aritt[]a[]a te-hok-kaas-ti j[
+]arjest[]am[]all[]a asiak-kai-den nouto-
  []
 
 [3]
-Overfull \hbox (9.5202pt too wide) in paragraph at lines 144--152
-[]\OT1/cmr/m/n/12 Yleisesti matkan-su-un-nit-telu-on-gel-ma koos-t-uu joukkoli-
-iken-nev[]alineen ja re-itin valin-
+Overfull \hbox (41.51015pt too wide) in paragraph at lines 163--169
+\OT1/cmr/m/n/12 ket-tu reit-ti ei kui-ten-kaan v[]altt[]am[]att[]a to-teu-du es
+i-mer-kik-si lii-ken-nev[]alineiden my[]oh[]astymisien
  []
 
 
-Overfull \hbox (41.51015pt too wide) in paragraph at lines 162--168
-\OT1/cmr/m/n/12 ket-tu re-it-ti ei kuitenkaan v[]altt[]am[]att[]a to-teudu es-i
-merkik-si li-iken-nev[]alineiden my[]oh[]astymisien
- []
-
-
-Overfull \hbox (49.99617pt too wide) in paragraph at lines 172--174
-\OT1/cmr/m/n/12 jat pys[]akeill[]a m[]a[]aritell[]a[]an sat-un-nais-muut-tu-ji-
-na. Sat-un-nais-muut-tu-jien jakau-mat m[]a[]arittelev[]at
- []
-
-
-Overfull \hbox (8.34105pt too wide) in paragraph at lines 177--181
-[]\OT1/cmr/m/n/12 Stokastinen matkan-su-un-nit-telu voidaan ku-va-ta Markov-p[]
-a[]at[]osprosessina. Markov-
+Overfull \hbox (49.99617pt too wide) in paragraph at lines 173--175
+\OT1/cmr/m/n/12 jat pys[]akeill[]a m[]a[]aritell[]a[]an sa-tun-nais-muut-tu-ji-
+na. Sa-tun-nais-muut-tu-jien ja-kau-mat m[]a[]arittelev[]at
  []
 
 [4]
-Overfull \hbox (6.26051pt too wide) in paragraph at lines 193--197
-\OT1/cmr/m/n/12 takap-er-oisel-la in-duk-ti-ol-la. Op-ti-maa-li-nen poli-ti-ik-
-ka koos-t-uu odotusar-voltaan parhaista
+Overfull \hbox (21.47008pt too wide) in paragraph at lines 201--204
+\OT1/cmr/m/n/12 lii-ken-nev[]alineiden v[]alisten vaih-to-jen lu-kum[]a[]ar[]a 
+on suu-ri, vaih-toi-hin liit-tyy ep[]avarmuutta
  []
 
 
-Overfull \hbox (21.47008pt too wide) in paragraph at lines 200--203
-\OT1/cmr/m/n/12 li-iken-nev[]alineiden v[]alisten vai-h-to-jen lukum[]a[]ar[]a 
-on su-uri, vai-h-toi-hin li-it-tyy ep[]avarmuutta
- []
-
-
-Overfull \hbox (55.21417pt too wide) in paragraph at lines 212--215
-[]\OT1/cmr/m/n/12 Yleinen tas-apain-o-teo-ria pyrkii selitt[]am[]a[]an kysynn[]
-an, tar-jon-nan, ja hin-to-jen k[]aytt[]aytymisen
+Overfull \hbox (55.21417pt too wide) in paragraph at lines 213--216
+[]\OT1/cmr/m/n/12 Yleinen ta-sa-pai-no-teo-ria pyr-kii se-litt[]am[]a[]an ky-sy
+nn[]an, tar-jon-nan, ja hin-to-jen k[]aytt[]aytymisen
  []
 
 [5]
-Overfull \hbox (16.6354pt too wide) in paragraph at lines 223--226
-[]\OT1/cmr/m/n/12 Kysynn[]an eri kulku-muodoille m[]a[]arittelee diskreet-ti va
-l-in-ta-malli, jo-ka ku-vaa matkus-
- []
-
-
-Overfull \hbox (5.27719pt too wide) in paragraph at lines 223--226
-\OT1/cmr/m/n/12 ta-jien kulku-muodon val-in-taa tar-jol-la ole-vista vai-h-toe-
-hdoista. Val-in-ta-mallis-sa jokainen
- []
-
-
-Overfull \hbox (19.18121pt too wide) in paragraph at lines 229--233
-\OT1/cmr/m/n/12 noi-ta. Kysynt[]aohjautuvan joukkoli-iken-nepalvelun tuot-ta-ma
- palve-lu-ta-so eri v[]alimatkoille
- []
-
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 236.
+(Font)              <12> on input line 238.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 236.
+(Font)              <8> on input line 238.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 236.
+(Font)              <6> on input line 238.
 
-Overfull \hbox (24.73393pt too wide) in paragraph at lines 234--238
-\OT1/cmr/m/n/12 essi-na, jo-ka koos-t-uu tiloista eli re-it-eist[]a sek[]a tilo
--jen v[]alisist[]a si-ir-tym[]atodenn[]ak[]oisyyksist[]a.
- []
-
-
-Overfull \hbox (3.97581pt too wide) in paragraph at lines 241--245
-\OT1/cmr/m/n/12 tyn ana-lyyt-tisen mallin etu-na on skaalau-tu-vu-us kysynn[]an
- ja ajoneu-vo-jen lukum[]a[]ar[]an
+Overfull \hbox (11.25214pt too wide) in paragraph at lines 262--267
+[]\OT1/cmr/m/n/12 Reitinlaskentaan liit-ty-vien tut-ki-mus-ten pe-rus-teel-la v
+oi-daan to-de-ta, ett[]a ajoneuvon-
  []
 
 [6]
-Overfull \hbox (11.25214pt too wide) in paragraph at lines 261--266
-[]\OT1/cmr/m/n/12 Reitinlaskentaan li-it-tyvien tutkimusten pe-rus-teel-la void
-aan tode-ta, ett[]a ajoneuvon-
- []
-
-
-Overfull \hbox (15.1382pt too wide) in paragraph at lines 267--270
-\OT1/cmr/m/n/12 tehokku-u-teen. Su-uri kysynt[]a mah-dol-lis-taa hyv[]an palve-
-lu-ta-son tuot-tamisen tehokkaasti.
- []
-
-
-Overfull \hbox (51.4281pt too wide) in paragraph at lines 286--290
-[]\OT1/cmr/m/n/12 Helsingin seudun li-ikenne k[]aynnisti vuo-den 2013 alus-sa k
-aikille avoimen kysynt[]aohjautuvan
- []
-
-
-Overfull \hbox (4.75914pt too wide) in paragraph at lines 298--300
+Overfull \hbox (4.75914pt too wide) in paragraph at lines 299--301
 \OT1/cmr/m/n/12 m[]a[]ar[]a[]am[]an[]a vas-tav[]aitt[]aj[]an[]a esitt[]am[]a[]a
-n ne muis-tu-tuk-set, joi-hin kat-sotte v[]ait[]oskirjan
+n ne muis-tu-tuk-set, joi-hin kat-sot-te v[]ait[]oskirjan
  []
 
-[7] [8] (./lectio.aux) ) 
+[7] (./lectio.aux) ) 
 Here is how much of TeX's memory you used:
- 761 strings out of 495061
- 8140 string characters out of 1182621
- 62347 words of memory out of 3000000
- 3988 multiletter control sequences out of 15000+50000
+ 760 strings out of 494790
+ 8131 string characters out of 1177468
+ 62689 words of memory out of 3000000
+ 4001 multiletter control sequences out of 15000+50000
  7587 words of font info for 27 fonts, out of 3000000 for 9000
- 28 hyphenation exceptions out of 8191
- 24i,4n,24p,206b,174s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
-m/cmbx12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi12.pf
-b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-Output written on lectio.pdf (8 pages, 59697 bytes).
+ 212 hyphenation exceptions out of 8191
+ 24i,4n,24p,206b,133s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
+bx12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb></
+usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb>
+Output written on lectio.pdf (7 pages, 59054 bytes).
 PDF statistics:
- 41 PDF objects out of 1000 (max. 8388607)
+ 38 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
