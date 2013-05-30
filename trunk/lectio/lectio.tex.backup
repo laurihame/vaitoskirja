@@ -23,9 +23,11 @@ Väitöskirjassa on tutkittu ja kehitetty matemaattisia malleja kysyntäohjautuv
 joilla voidaan ratkaista ajoneuvojen reitinlaskentaan ja matkansuunnitteluun liittyviä kombinatorisia ongelmia liikenneverkossa.
 
 Väitöskirjan ensimmäinen osa käsittelee ajoneuvojen reitinlaskentaongelmaa. %, kun oletetaan kysyntä tunnetuksi yhden matkustajan tarkkuudella. 
-Toisessa osassa tarkastellaan matkustajien matkansuunnittelua liittyen joukkoliikennevälineen ja reitin valintaan joukkoliikenneverkossa.
-Lopuksi tarkastellaan taloudellisen tasapainopisteen, eli kysynnän ja tarjonnan kohtaamispisteen, määrittämistä liikenneverkossa.
+Toisessa osassa tarkastellaan matkustajien matkansuunnittelua liittyen joukkoliikennevälineen ja reitin valintaan.
+Lopuksi tutkitaan taloudellisen tasapainopisteen, eli kysynnän ja tarjonnan kohtaamispisteen, määrittämistä liikenneverkossa.
+
 \sepline
+
 \subsection*{Reitinlaskenta}
 Reitinlaskentaa hyödynnetään useissa erityyppisissä kuljetus- ja logistiikkatehtävissä. 
 Matemaattisesti reitinlaskentaongelma voidaan määritellä usealla eri tavalla riippuen sovelluskohteesta.
@@ -40,13 +42,15 @@ eksponentiaalisesti pisteiden määrän suhteen.
 \sepline
 
 Tilausten perusteella toimivissa kuljetuspalveluissa reitinlaskentaongelma on usein kauppamatkustajan ongelmaa monimutkaisempi. 
-Tilauskuljetuspalveluissa asiakkaat voivat tilata matkoja tai tavarakuljetuksia lähtöpisteistä määräpaikkoihin. Ajoneuvot palvelevat 
+Tilauskuljetuspalveluissa asiakkaat voivat tilata matkoja tai tavarakuljetuksia noutopisteistä toimituspisteisiin. Ajoneuvot palvelevat 
 tilauksia siten että useampi asiakas tai tavarakuljetus voi olla samaan aikaan ajoneuvon kyydissä.
+
+\sepline
 
 Tilauskuljetukset voivat toimia joko staattisesti tai dynaamisesti. Staattisessa tapauksessa tilaukset tehdään ennakkoon, 
 esimerkiksi kuljetusta edeltävänä päivänä, ja ajoneuvojen reitit lasketaan etukäteen ennen palvelun aloittamista. 
 Dynaamisessa tapauksessa tilauksia voi tehdä reaaliaikaisesti ja ajoneuvojen reitit voivat muuttua palvelun toiminta-aikana.
-Esimerkiksi lähettipalvelut toimivat yleensä dynaamisesti, kun taas useat tilausbussipalvelut edellyttävät matkojen ennakkotilausta. %, jolloin reitinlaskentaongelma on staattinen.
+Esimerkiksi lähettipalvelut toimivat yleensä dynaamisesti, kun taas useat tilausbussipalvelut edellyttävät matkojen varhaista ennakkotilausta. %, jolloin reitinlaskentaongelma on staattinen.
 Dynaamisia reitinlaskentaongelmia käsitellään usein staattisten onelmien jonoina. Reitit voidaan optimoida uudelleen jokaisen uuden 
 tilauksen yhteydessä, tai tilaukset voidaan lisätä ajoneuvojen reiteille erissä. 
 
@@ -54,7 +58,7 @@ Tilauskuljetuksiin liittyvissä reitinlaskentaongelmissa on usein kolme osittain
 palveltujen tilausten lukumäärän maksimointi, kustannusten minimointi ja asiakkaiden palvelutason optimointi.
 Kustannukset liittyvät ajoneuvojen lukumäärään sekä ajettujen reittien kokonaiskestoon ja -pituuteen.
 Palvelutasoa mitataan usein sillä, kuinka paljon toteutuneet nouto- ja toimitusajat poikkeavat toivotuista. 
-Matkustajaliikenteessä palvelutasoon vaikuttavat lisäksi kävely-, odotus-, ajoaika sekä vaihtojen lukumäärä.
+Matkustajaliikenteessä palvelutasoon vaikuttavat lisäksi kävely-, odotus- ja ajoaika sekä vaihtojen lukumäärä.
 
 Tilauskuljetuksissa nouto- ja toimitusaikoihin liittyy usein aikarajoitteita, %. %Erityisesti matkustajaliikenteessä aikaikkunat ovat %suhteellisen kapeita. 
 joilla pyritään takaamaan tietty minimipalvelutaso asiakkaille. Tiukat aikaikkunat parantavat palvelun laatua,
@@ -85,13 +89,13 @@ uuden asiakkaan aiheuttama reitin pitenemä, uuden asiakkaan palvelutaso, muille
 Ajoneuvon- ja reitinvalintaongelma voidaan ratkaista joko hajautetusti tai keskitetysti. 
 
 Hajautetussa ratkaisussa lisätään uusi asiakas johonkin olemassaolevista reiteistä laskemalla jokaiselle 
-ajoneuvolle niin sanottu reittiehdotus. Ajoneuvojen reittiehdotukset lasketaan erikseen ja toisistaan riippumatta, 
+ajoneuvolle niin sanottu reittiehdotus ja valitsemalla niistä paras. Ajoneuvojen reittiehdotukset lasketaan erikseen ja toisistaan riippumatta, 
 mikä mahdollistaa rinnakkaisen reitinlaskennan usealla suorittimella. %Hajautetussa ratkaisussa asiakkaalle tilauksen 
 %yhteydessä määrätty ajoneuvo ei vaihdu ennen noutohetkeä.
 
 \sepline
 
-Hajautettu ratkaisu perustuu yksittäisten reittien tarkkaan optimoimintiin. Yksittäinen reitti voidaan laskea
+Hajautettu ratkaisu perustuu yksittäisten reittien tarkkaan optimoimintiin. Yksittäinen reitti voidaan muodostaa
 tehokkaasti niin sanotulla lisäysperiaatteella, jossa asiakkaat lisätään yksi kerrallaan reitille sopiviin väleihin. 
 Väitöskirjassa on esitetty lisäysperiaatteen yleistys, joka mahdollistaa reitinlaskennan tehokkuuden ja tarkkuuden 
 säätämisen käytettävissä olevan laskentakapasiteetin mukaan. 
@@ -123,10 +127,10 @@ jotka järjestävät internet-sivuja hakusanojen perusteella.
 \sepline
 
 Arvojärjestysmenetelmä tuottaa tehokkaasti käypiä ratkaisuja tiukkojen 
-rajoitusten vallitessa ja testiaineiston perusteella se on kertaluokkaa nopeampi aikaisempiin menetelmiin verrattuna.
-Yleisesti keskitetyn ratkaisun merkitys korostuu, kun aika -tai kapasiteettirajoitteet ovat tiukkoja ja reittejä 
-suunnitellaan pitkälle aikavälille. Hajautettu ratkaisu soveltuu tilanteisiin joissa reitit ovat lyhyitä ja
-ajoneuvojen tiheys on pieni.
+rajoitusten vallitessa ja testiaineiston perusteella se on keskimäärin kertaluokkaa nopeampi aikaisempiin menetelmiin verrattuna.
+Yleisesti keskitetyn ratkaisun merkitys korostuu, kun aika- tai kapasiteettirajoitteet ovat tiukkoja ja reittejä 
+suunnitellaan pitkälle aikavälille. Hajautettu ratkaisu soveltuu tilanteisiin joissa reitit ovat lyhyitä tai
+ajoneuvojen lukumäärä on pieni.
 
 \sepline
 
@@ -142,8 +146,9 @@ Väitöskirjan toisessa osassa tarkastellaan matkustajan matkansuunnitteluongelm
 kysyntäohjautuvan joukkoliikenteen lisäksi myös perinteiseen joukkoliikenteeseen. 
 \sepline
 
-Yleisesti matkansuunnitteluongelma koostuu joukkoliikennevälineen ja reitin valinnasta liikenneverkossa. Matkaan
-voi sisältyä vaihtoja eri kulkumuotojen välillä. Tavoitteena on löytää reitti ja aikataulu jossa matkustajan
+Yleisesti matkansuunnitteluongelma koostuu joukkoliikennevälineen, reitin ja aikataulun valinnasta liikenneverkossa. 
+%Matkaan voi sisältyä vaihtoja eri kulkumuotojen välillä. 
+Tavoitteena on löytää reitti ja aikataulu jossa matkustajan
 odotus- kävely- ja ajoaika sekä vaihtojen lukumäärä ja hinta minimoituvat. Useissa kaupungeissa, joissa 
 on laaja joukkoliikenneverkko, on käytössä internetissä toimiva matkansuunnittelupalvelu. Palveluissa 
 matkustaja valitsee lähtöpisteen ja määränpään sekä toivotun lähtöajan tai saapumisajan, jonka jälkeen
@@ -153,17 +158,17 @@ perinteiseen joukkoliikenneverkkoon.
 
 \sepline
 
-Graafiongelmien näkökulmasta matkansuunnitteluongelma muistuttaa niin sanottua lyhimmän polun ongelmaa, jossa
+Graafiongelmien näkökulmasta matkansuunnittelu muistuttaa niin sanottua lyhimmän polun ongelmaa, jossa
 tarkoituksena on löytää lyhin mahdollinen polku kahden pisteen välillä verkossa, jonka pisteiden väliset etäisyydet tunnetaan.
 Kauppamatkustajan ongelmaan verrattuna lyhimmän polun ongelma on helpompi, sillä polun ei tarvitse kulkea verkon jokaisen 
 pisteen kautta.
 
 \sepline
 
-Deterministisillä matkansuunnittelumenetelmillä voidaan laskea etukäteen paras reitti joukkoliikenneverkossa halutun 
+Deterministisillä matkansuunnittelumenetelmillä voidaan laskea etukäteen paras reitti joukkoliikenneverkossa halutun
 tavoitteen suhteen. Käytännössä etukäteen 
 laskettu reitti ei kuitenkaan välttämättä toteudu esimerkiksi liikennevälineiden myöhästymisien tai vuorojen peruutuksien takia. 
-Väitöskirjassa on esitelty uudentyyppinen stokastinen matkansuunnittelumalli ottaa huomioon mahdolliset reittimuutokset 
+Väitöskirjassa esitelty uudentyyppinen stokastinen matkansuunnittelumalli ottaa huomioon mahdolliset reittimuutokset 
 matkan varrella. 
 Stokastisen matkansuunnittelun avulla voidaan laskea parhaan reitin lisäksi paras matkastrategia tavoitefunktion suhteen.
 
@@ -175,17 +180,17 @@ Satunnaismuuttujien jakaumat määrittelevät vaihtojen onnistumisien todennäk�
 
 \sepline
 
-Stokastinen matkansuunnittelu voidaan kuvata Markov-päätösprosessina. Markov-päätösprosessi on matemaattinen rakenne, jolla
-voidaan mallintaa päätöksentekoa tilanteissa jossa lopputulos on osittain satunnainen ja osittain päätöksentekijän hallinnassa.
-Markov-päätösprosessin avulla voidaan ratkaista useita optimointiongelmia liittyen mm. robotiikkaan, automaatioon, taloustieteeseen 
+Matka joukkoliikenneverkossa voidaan esittää Markov-päätösprosessina. Prosessi kuvaa päätöksentekoa tilanteissa, jossa 
+lopputulos on osittain satunnainen ja osittain päätöksentekijän hallinnassa.
+Markov-päätösprosessin avulla voidaan ratkaista useita optimointiongelmia liittyen muun muassa robotiikkaan, automaatioon, taloustieteeseen 
 ja tuotantotekniikkaan. 
 
 Markov-päätösprosessi kuvaa päätöksentekoa diskreettiaikaisesti. Tietyllä ajanhetkellä prosessi on tietyssä tilassa ja 
 päätöksentekijä voi valita tietyn toiminnan. Seuraavalla ajanhetkellä
 prosessi siirtyy uuteen tilaan ja samalla päätöksentekijä saa tietyn palkkion.
 Todennäköisyys sille että prosessi siirtyy tiettyyn tilaan riippuu valitusta toiminnasta. 
-Toisin sanoen, se tila mihin prosessi siirtyy seuraavaksi
-riippuu nykyisestä tilasta ja päätöksentekijän valitsemasta toiminnasta.  
+%Toisin sanoen, se tila mihin prosessi siirtyy seuraavaksi
+%riippuu nykyisestä tilasta ja päätöksentekijän valitsemasta toiminnasta.  
 
 Matkansuunnittelussa päätösprosessin tilat määritellään joukkoliikenneverkon etappeina ja toiminnat matkustajan valintoina.
 Ollessaan tietyllä etapilla, matkustaja voi valita, mille etapille pyrkiä seuraavaksi. 
@@ -193,7 +198,7 @@ Stokastinen malli määrittelee, millä todennäköisyydellä matkustajan suunni
 
 Markov-päätösprosessille voidaan laskea optimaalinen politiikka niin sanotulla takaperoisella induktiolla. Optimaalinen politiikka
 koostuu odotusarvoltaan parhaista mahdollisista valinnoista matkan eri vaiheissa. Toisin sanoen optimaalinen politiikka 
-määrittää parhaan reitin lisäksi matkustusstrategian, joka neuvoo matkustajalle parhaat kiertotiet silloin kun 
+määrittää parhaan reitin lisäksi matkastrategian, joka neuvoo matkustajalle parhaat kiertotiet silloin kun 
 suunnitellut vaihdot eivät toteudu alkuperäisen reittisuunnitelman mukaisesti.
 
 \sepline
@@ -211,13 +216,13 @@ Väitöskirjan kolmannessa osassa tarkastellaan kysyntäohjautuvaa joukkoliikenn
 \sepline
 
 Yleinen tasapainoteoria pyrkii selittämään kysynnän, tarjonnan, ja hintojen käyttäytymisen toistensa kanssa vuorovaikutuksessa
-olevissa markkinoissa. Tasapainolla tarkoitetaan tilannetta, jossa kysyntä, tarjonta ja hinta eri markkinoilla pysyvät muuttumattomina
+olevilla markkinoilla. Tasapainolla tarkoitetaan tilannetta, jossa kysyntä, tarjonta ja hinta eri markkinoilla pysyvät muuttumattomina
 tietyn ajanjakson sisällä.
 
 Liikenneverkossa jokaisen lähtöpaikan ja määränpään välillä on markkina, jossa tarjonnan luovat eri kulkumuodot, 
 kuten henkilöauto, joukkoliikenne ja kevyt liikenne.
 Kulkumuotojen kysyntä riippuu niiden laadusta ja hinnasta. Koko liikenneverkon kattavassa verkkotasapainotilassa kaikkien kulkumuotojen
-kysyntä, tarjonta ja hinta pysyvät muuttumattomina kaikilla mahdollisilla välimatkoilla. 
+kysyntä, tarjonta ja hinta pysyvät muuttumattomina kaikilla välimatkoilla. 
 
 \sepline
 
@@ -227,20 +232,20 @@ Tietyn kulkumuodon kysyntä tietyllä välimatkalla riippuu sen utiliteetista ja
 
 \sepline
 
-Kysyntäohjautuvaa joukkoliikennettä voidaan tarkastella osana liikennemarkkinoita. Kysyntäohjautuvan joukkoliikennepalvelun
+Väitöskirjassa tarkastellaan kysyntäohjautuvaa joukkoliikennettä osana liikennemarkkinoita. Kysyntäohjautuvan joukkoliikennepalvelun
 tuottama palvelutaso eri välimatkoille riippuu ajoneuvojen tiheydestä liikenneverkon eri osissa.
 Ajoneuvojen lukumäärä ja jakauma liikenneverkossa vaikuttaa siihen, kuinka nopeasti ajoneuvoja on 
-saaatavilla kuljetusta varten eri välimatkoille.
+saatavilla kuljetusta varten eri välimatkoille.
 
 Ajoneuvojen jakauman liikenneverkossa määrittelee niin sanottu reititysstrategia, joka kuvaa ajoneuvojen liikkeitä.
-Reititysstrategia kuvataan stokastisena prosessina, joka koostuu tiloista eli reiteistä sekä tilojen välisistä
-siirtymätodennäköisyyksistä. Esimerkiksi tilojen $r$ ja $s$ välinen siirtymätodennäköisyys kuvaa sitä, kuinka suuri osuus 
+%Reititysstrategia kuvataan stokastisena prosessina, joka koostuu tiloista eli reiteistä sekä tilojen välisistä siirtymätodennäköisyyksistä. 
+Kysyntäohjautuvan joukkoliikenteen stokastisessa mallissa reititysstrategia vastaa siirtymätodennäköisyyksiä reittien välillä.
+Esimerkiksi tilojen $r$ ja $s$ välinen siirtymätodennäköisyys kuvaa sitä, kuinka suuri osuus 
 ajoneuvoista siirtyy reitille $s$ kuljettuaan reitin $r$.
 
 \sepline
-
-Tutkimalla reititysstrategioita voidaan optimoida kysyntäohjautuvan joukkoliikenteeen ajoneuvojen lukumäärä ja 
-matkojen hinnoittelu eri tilainteissa. Lisäksi yleinen tasapainomalli soveltuu erityyppisten säännöstelymallien, 
+Yleisellä tasapainomallilla voidaan optimoida kysyntäohjautuvan joukkoliikenteen ajoneuvojen lukumäärä ja 
+matkojen hinnoittelu eri tilanteissa. Lisäksi tasapainoteoria soveltuu erityyppisten säännöstelymallien, 
 kuten hinta- ja ajoneuvosäännöstelyn, vaikutusten tutkimiseen. Mikrosimulointiin verrattuna esitetyn analyyttisen mallin
 etuna on skaalautuvuus kysynnän ja ajoneuvojen lukumäärän suhteen.
 
@@ -259,32 +264,32 @@ liikennetalouden näkökulmista.
 
 \sepline
 
-Reitinlaskentaan liittyvien tutkimusten perusteella voidaan todeta, että ajoneuvon- ja reitinvalinnassa on tärkeää 
+Reitinlaskentaan liittyvien tutkimusten perusteella voidaan todeta, että ajoneuvon ja reitin valinnassa on tärkeää 
 ottaa huomioon sekä kustannukset että palvelutaso. Kustannuksia voidaan vähentää yhdistelemällä matkoja
 niin että reittien pituudet ja ajoneuvojen lukumäärä minimoituvat. Palvelutasoa voidaan säädellä asettamalla 
 matkoille aikarajoitteita.
 %Aikarajoitteiden avulla pyritään takaamaan tietty minimipalvelutaso kaikille asiakkaille. 
 
 Kysyntäohjautuvan joukkoliikennejärjestelmän koko vaikuttaa
-merkittävästi sen tehokkuuteen. Suuri kysyntä mahdollistaa hyvän palvelutason tuottamisen tehokkaasti.
-Lisäksi ennakkoon tilatut matkat mahdollistavat reittien suunnittelun etukäteen ja näin ollen myös tarkemman optimoinnin.
+merkittävästi sen suorituskykyyn. Suuri kysyntä mahdollistaa hyvän palvelutason tuottamisen tehokkaasti.
+Lisäksi varhain ennakkoon tilatut matkat mahdollistavat reittien suunnittelun etukäteen ja näin ollen myös tarkan optimoinnin.
 
 \sepline
 
 Matkansuunnittelun avulla voidaan liittää kysyntäohjautuva palvelu olemassaolevaan joukkoliikennejärjestelmään.
-Matkansuunnittelu mahdollistaa esimerkiksi kysyntäohjautuvan joukkoliikenteen hyödyntämisen syöttöliikenteessä
-juna- tai metroasemalle.
+Matkansuunnittelu mahdollistaa vaihdolliset yhteydet eri kulkumuotojen välillä ja erityisesti kysyntäohjautuvan 
+joukkoliikenteen hyödyntämisen syöttöliikenteessä esimerkiksi juna- tai metroasemalle.
 
 \sepline
 
-Joukkoliikenteen lisäksi väitöskirjassa esiteltyjen menetelmien mahdollisia sovelluskohteita ovat 
+Joukkoliikenteen lisäksi väitöskirjassa esiteltyjen menetelmien mahdollisia sovelluskohteita ovat muun muassa
 rahti- ja lentoliikenne, lähetti- ja ruoankuljetuspalvelut sekä sotilaslogistiikka. Menetelmät 
 soveltuvat erityisesti tehtäviin, joihin liittyy aikarajoituksia, sekä kuljetusten luotettavuuden optimointiin.
 
 \sepline
 
-Esimerkki reitinlaskennan soveltamisesta on
-Helsingin seudun liikenteen vuoden alussa käynnistämä kaikille avoin kysyntäohjautuva joukkoliikennepalvelu.
+Esimerkkinä reitinlaskennan soveltamisesta on
+Helsingin seudun liikenteen vuoden alussa käynnistämä kysyntäohjautuva joukkoliikennepalvelu.
 Palvelun tilaus- ja ohjausjärjestelmä on täysin automatisoitu, ja se mahdollistaa matkojen alkamisen lyhyen ajan
 kuluttua tilaushetkestä. Tällä hetkellä palvelu on kokeiluvaiheessa ja se toimii noin 10 kilometrin 
 säteellä Helsingin keskustasta. Liikenteessä on 10 minibussia ja suunnitelmissa on ajoneuvojen määrän kasvattaminen.
@@ -292,7 +297,7 @@ säteellä Helsingin keskustasta. Liikenteessä on 10 minibussia ja suunnitelmis
 Lopullisena päätelmänä voidaan todeta, että nykytilanteessa kysyntäohjautuvan joukkoliikenteen matemaattinen teoria on käytäntöä edellä.
 %Olemassaolevat palvelut ovat pääosin pienimuotoisia, erityisryhmille suunnattuja tai haja-asutusalueella toimivia
 Reitinlaskennan merkitys korostuu laajoissa kutsuliikennepalveluissa, joissa kysynnän
-ajallinen ja paikallinen tiheys mahdollistaa matkojen tehokkaan yhdistelyn samalle reitille. 
+ajallinen ja paikallinen tiheys mahdollistaa useiden matkojen yhdistelyn samalle reitille. 
 
 \sepline
 
